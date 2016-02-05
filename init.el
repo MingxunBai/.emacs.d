@@ -28,6 +28,9 @@
 ;; 直接打开／显示图片
 (auto-image-file-mode t)
 
+;; 设置回车后自动换行
+(global-set-key (kbd "RET") 'newline-and-indent)
+
 ;; 设置 tab
 (defun my-setup-indent (n)
 
