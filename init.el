@@ -48,7 +48,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (setq ac-use-quick-help nil)
-(setq ac-auto-start 2)
+(setq ac-auto-start 1)
 (setq ac-auto-show-menu 0.2)
 (setq ac-use-menu-map t) ; set menu hotkey
 (define-key ac-menu-map "\C-n" 'ac-next)
