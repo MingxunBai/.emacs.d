@@ -50,8 +50,8 @@
 ;; set auto-complete
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (require 'auto-complete-config)
+(global-auto-complete-mode t)
 (setq tab-always-indent 'complete) ; indent first, then complete
-(ac-config-default)
 (setq ac-use-quick-help nil)
 (setq ac-auto-start 1)
 ; (setq-default ac-expand-on-auto-complete nil) ; stop auto-start
