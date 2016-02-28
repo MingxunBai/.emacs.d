@@ -21,3 +21,4 @@
 (require 'init-auto-complete)
 (require-package 'diminish)
 (require 'init-editing-utils)
+(require 'init-javascript)
