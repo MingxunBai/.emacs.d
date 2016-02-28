@@ -12,7 +12,7 @@
 (setq x-select-enable-clipboard t) ; 支持和外部程序的拷贝
 
 (set-scroll-bar-mode nil)
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 
 ;; set Emmet
 (require-package 'emmet-mode)
