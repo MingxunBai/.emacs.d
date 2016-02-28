@@ -1,4 +1,0 @@
-(require-package 'emmet-mode)
-(require 'emmet-mode)
-
-(provide 'init-emmet-mode)
