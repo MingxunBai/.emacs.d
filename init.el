@@ -10,7 +10,6 @@
 
 (setq kill-ring-max 500) ; 设置历史记录数量
 
-
 (global-font-lock-mode t) ; 语法高亮
 
 (setq x-select-enable-clipboard t) ; 支持和外部程序的拷贝
@@ -20,3 +19,5 @@
 
 (require 'init-emmet-mode)
 (require 'init-auto-complete)
+(require-package 'diminish)
+(require 'init-editing-utils)
