@@ -33,8 +33,7 @@
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ; indent 2 space                                                                                      
 (add-hook 'css-mode-hook 'emmet-mode) ; enable Emmet's css abbreviation                                                                                                  
 (global-set-key (kbd "\C-x \C-e") 'emmet-mode)
-(add-hook 'web-mode-hook (lambda ()
-			   (emmet-mode t)))
+(add
 
 ;; Web-mode
 (require 'web-mode)
@@ -46,11 +45,3 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-;; highlight-parentheses-mode
-(require 'highlight-parentheses)
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t))) 
-(global-highlight-parentheses-mode t)
