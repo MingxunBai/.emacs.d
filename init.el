@@ -14,25 +14,24 @@
 
 (setq make-backup-files nil) ; 不生成备份文件
 
-(set-scroll-bar-mode nil)
-(tool-bar-mode -1)
+(set-scroll-bar-mode nil) ; 隐藏滚动条
+(tool-bar-mode -1) ; 隐藏工具栏
+
+(global-set-key (kbd"RET") 'newline-and-indent) ; 回车时缩进
 
 ;; Auto-complete
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
-(setq tab-always-indent 'complete) ; indent first, then complete                                                                                                         
+(setq tab-always-indent 'complete)
 (setq-default ac-auto-start nil)
 (setq-default ac-expand-on-auto-complete nil)
-(ac-set-trigger-key "TAB") ; use tab to complete                                                                                                                         
-(setq ac-use-menu-map t) ; set menu hotkey                                                                                                                               
+(ac-set-trigger-key "TAB")
+(setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; Emmet-mode
 (require 'emmet-mode)
-(add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ; indent 2 space                                                                                      
-(add-hook 'css-mode-hook 'emmet-mode) ; enable Emmet's css abbreviation                                                                                                  
-(global-set-key (kbd "\C-x \C-e") 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
 			   (emmet-mode t)))
 
