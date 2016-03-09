@@ -3,8 +3,6 @@
 (setq user-mail-address "MingxunBai@outlook.com")
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require 'init-site-lisp)
-(require 'init-elpa)
 
 (setq inhibit-startup-message t) ; 关闭启动动画
 
@@ -19,12 +17,24 @@
 (set-scroll-bar-mode nil)
 (tool-bar-mode -1)
 
-(require 'init-emmet-mode)
-(require 'init-auto-complete)
-(require-package 'diminish)
-(require 'init-editing-utils)
-(require 'init-css)
-(require 'init-javascript)
+;; Auto-complete
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(setq tab-always-indent 'complete) ; indent first, then complete                                                                                                         
+(setq-default ac-auto-start nil)
+(setq-default ac-expand-on-auto-complete nil)
+(ac-set-trigger-key "TAB") ; use tab to complete                                                                                                                         
+(setq ac-use-menu-map t) ; set menu hotkey                                                                                                                               
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+
+;; Emmet-mode
+(require 'emmet-mode)
+(add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ; indent 2 space                                                                                      
+(add-hook 'css-mode-hook 'emmet-mode) ; enable Emmet's css abbreviation                                                                                                  
+(global-set-key (kbd "\C-x \C-e") 'emmet-mode)
+
+;; Web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
