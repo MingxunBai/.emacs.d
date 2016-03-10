@@ -37,6 +37,7 @@
 (setq x-select-enable-clipboard t) ; 支持和外部程序的拷贝
 
 (setq make-backup-files nil) ; 不生成备份文件
+(setq auto-save-default nil) ; 不生成临时文件
 
 (set-scroll-bar-mode nil) ; 隐藏滚动条
 (tool-bar-mode -1) ; 隐藏工具栏
