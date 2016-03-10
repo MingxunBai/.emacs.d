@@ -43,6 +43,7 @@
 (tool-bar-mode -1) ; 隐藏工具栏
 
 (global-set-key (kbd"RET") 'newline-and-indent) ; 回车时缩进
+(setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
 ;; Auto-complete
 (require 'auto-complete-config)
