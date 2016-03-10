@@ -89,21 +89,3 @@
 (display-time-mode 1) ; 启用时间显示设置，在minibuffer上面的那个杠上
 (setq display-time-24hr-format t) ; 时间使用24小时制
 (setq display-time-day-and-date t) ; 时间显示包括日期和具体时间
-(setq display-time-use-mail-icon t) ; 时间栏旁边启用邮件设置
-(setq display-time-interval 10) ; 时间的变化频率，单位多少来着？
-
- ;;代码折叠
-(load-library "hideshow")
-(add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook 'hs-minor-mode)
-(add-hook 'java-mode-hook 'hs-minor-mode)
-(add-hook 'perl-mode-hook 'hs-minor-mode)
-(add-hook 'php-mode-hook 'hs-minor-mode)
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-;;能把一个代码块缩起来，需要的时候再展开
-;; M-x hs-minor-mode
-;; C-c @ ESC C-s show all
-;; C-c @ ESC C-h hide all
-;; C-c @ C-s show block
-;; C-c @ C-h hide block
-;; C-c @ C-c toggle hide/show
