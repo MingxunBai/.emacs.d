@@ -79,13 +79,14 @@
 		("\\.erb\\'" . web-mode)
 		("\\.mustache\\'" . web-mode)
 		("\\.djhtml\\'" . web-mode)
-		("\\.html?\\'" . web-mode))
+		("\\.html?\\'" . web-mode)
+		("\\.org\\'" . org-mode))
 	      auto-mode-alist))
 (add-hook 'web-mode-hook (lambda ()
 			   (emmet-mode t)))
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
-			   
+
 ;;显示时间设置
 (display-time-mode 1) ; 启用时间显示设置，在minibuffer上面的那个杠上
 (setq display-time-24hr-format t) ; 时间使用24小时制
