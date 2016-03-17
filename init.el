@@ -59,7 +59,6 @@
 ;; Emmet-mode
 (require 'emmet-mode)
 
-<<<<<<< HEAD
 ;; Multi-web-mode
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
@@ -68,11 +67,6 @@
                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
-=======
-;; Web-mode
-(require 'web-mode)
-(setq web-mode-markup-indent-offset 2)
->>>>>>> 11ede114814d129144515b2b582512c6aca69847
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -90,7 +84,7 @@
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))
 (add-hook 'multi-web-mode-hook (lambda ()
-			   (emmet-mode t)))
+                                 (emmet-mode t)))
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
 
