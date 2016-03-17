@@ -81,8 +81,7 @@
 
 ;; 自加载对应模式
 (setq auto-mode-alist
-      (append '(("\\.php\\'" . php-mode)
-                ("\\.org\\'" . org-mode)
+      (append '(("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.txt\\'" . org-mode)
 		("\\.py\\'" . python-mode))
