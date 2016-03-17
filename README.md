@@ -1,2 +1,6 @@
-# The configuration of my emacs
-Let get some new think.
+# How to install
+
+```bash
+  git clone https://github.com/MingxunBai/emacs.d
+  cp emacs.d .emacs.d
+```
