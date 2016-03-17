@@ -59,8 +59,8 @@
 ;; Emmet-mode
 (require 'emmet-mode)
 
+<<<<<<< HEAD
 ;; Multi-web-mode
-(add-to-list 'load-path (expand-file-name "lisp/multi-web-mode" user-emacs-directory))
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
@@ -68,6 +68,11 @@
                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
+=======
+;; Web-mode
+(require 'web-mode)
+(setq web-mode-markup-indent-offset 2)
+>>>>>>> 11ede114814d129144515b2b582512c6aca69847
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
