@@ -2,7 +2,7 @@
 (setq user-full-name "MingxunBai")
 (setq user-mail-address "MingxunBai@outlook.com")
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
 (setq inhibit-startup-message t) ; 关闭启动动画
 
