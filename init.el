@@ -76,9 +76,13 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
+;; php-mode
+(require 'php-mode)
+
 ;; 自加载对应模式
 (setq auto-mode-alist
-      (append '(("\\.org\\'" . org-mode)
+      (append '(("\\.php\\'" . php-mode)
+                ("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.txt\\'" . org-mode)
 		("\\.py\\'" . python-mode))
