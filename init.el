@@ -59,8 +59,15 @@
 ;; Emmet-mode
 (require 'emmet-mode)
 
-;; Web-mode
-(require 'web-mode)
+;; Multi-web-mode
+(add-to-list 'load-path (expand-file-name "lisp/multi-web-mode" user-emacs-directory))
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -72,22 +79,12 @@
 
 ;; 自加载对应模式
 (setq auto-mode-alist
-      (append '(("\\.css\\'" . css-mode)
-		("\\.js\\'" . javascript-mode)
-		("\\.phtml\\'" . web-mode)
-		("\\.tpl\\.php\\'" . web-mode)
-		("\\.[agj]sp\\'" . web-mode)
-		("\\.as[cp]x\\'" . web-mode)
-		("\\.erb\\'" . web-mode)
-		("\\.mustache\\'" . web-mode)
-		("\\.djhtml\\'" . web-mode)
-		("\\.html?\\'" . web-mode)
-		("\\.org\\'" . org-mode)
+      (append '(("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.txt\\'" . org-mode)
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))
-(add-hook 'web-mode-hook (lambda ()
+(add-hook 'multi-web-mode-hook (lambda ()
 			   (emmet-mode t)))
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
