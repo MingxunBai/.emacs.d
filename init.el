@@ -61,6 +61,7 @@
 
 ;; Web-mode
 (require 'web-mode)
+(setq web-mode-markup-indent-offset 2)
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
