@@ -58,15 +58,18 @@
 
 ;; Emmet-mode
 (require 'emmet-mode)
+(add-hook 'web-mode-hook (lambda ()
+                           (emmet-mode t)))
+(add-hook 'css-mode-hook (lambda ()
+			   (emmet-mode t)))
 
-;; Multi-web-mode
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
+;; Web-mode
+(require 'web-mode)
+(defun my-web-mode-hook ()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -76,22 +79,20 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
-;; php-mode
-(require 'php-mode)
-
 ;; 自加载对应模式
 (setq auto-mode-alist
-      (append '(("\\.org\\'" . org-mode)
+      (append '(("\\.html?\\'" . web-mode)
+                ("\\.php\\'" . web-mode)
+                ("\\.phtml\\'" . web-mode)
+                ("\\.djhtml\\'" . web-mode)
+                ("\\.[agj]sp\\'" . web-mode)
+                ("\\.as[cp]x\\'" . web-mode)
+                ("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.txt\\'" . org-mode)
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))
-(add-hook 'multi-web-mode-hook (lambda ()
-                                 (emmet-mode t)))
-(add-hook 'css-mode-hook (lambda ()
-			   (emmet-mode t)))
 
-;;显示时间设置
+;; 显示时间设置
 (display-time-mode 1) ; 启用时间显示设置，在minibuffer上面的那个杠上
 (setq display-time-24hr-format t) ; 时间使用24小时制
-(setq display-time-day-and-date t) ; 时间显示包括日期和具体时间
