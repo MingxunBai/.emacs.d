@@ -63,6 +63,12 @@
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
 
+;; org-mode
+(add-hook 'org-mode-hook ; 自动换行
+          (lambda ()
+            (setq truncate-lines nil)
+            (set-fill-column 70)))
+
 ;; Web-mode
 (require 'web-mode)
 (defun my-web-mode-hook ()
