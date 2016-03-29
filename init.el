@@ -43,7 +43,6 @@
 (tool-bar-mode -1) ; 隐藏工具栏
 
 (global-set-key (kbd"RET") 'newline-and-indent) ; 回车时缩进
-; (global-set-key (kbd"\C-RET") 'end-of-line && 'newline-and-indent)
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
 ;; Auto-complete
@@ -89,6 +88,28 @@
 ;; Yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+(setq yas-snippet-dirs '("~/emacs.d/snippets")) ; Set directories
+(defun yas-ido-expand () ; Completing point by some yasnippet key
+  (interactive)
+  (let ((original-point (point)))
+    (while (and
+            (not (= (point) (point-min) ))
+            (not
+             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
+      (backward-word 1))
+    (let* ((init-word (point))
+           (word (buffer-substring init-word original-point))
+           (list (yas-active-keys)))
+      (goto-char original-point)
+      (let ((key (remove-if-not
+                  (lambda (s) (string-match (concat "^" word) s)) list)))
+        (if (= (length key) 1)
+            (setq key (pop key))
+          (setq key (ido-completing-read "key: " list nil nil word)))
+        (delete-char (- init-word original-point))
+        (insert key)
+        (yas-expand)))))
+(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
 
 ;; 自加载对应模式
 (setq auto-mode-alist
