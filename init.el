@@ -43,6 +43,7 @@
 (tool-bar-mode -1) ; 隐藏工具栏
 
 (global-set-key (kbd"RET") 'newline-and-indent) ; 回车时缩进
+; (global-set-key (kbd"\C-RET") 'end-of-line && 'newline-and-indent)
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
 ;; Auto-complete
@@ -84,6 +85,10 @@
   (lambda ()
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
+
+;; Yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; 自加载对应模式
 (setq auto-mode-alist
