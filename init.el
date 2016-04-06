@@ -24,7 +24,8 @@
 (setq column-number-mode t)
 (setq line-number-mode t)
 
-(ido-mode t) ; C-x C-f 后有文件名提示
+;; Ido-mode
+(ido-mode t)
 (setq ido-save-directory-list-file nil)
 
 (show-paren-mode t)
