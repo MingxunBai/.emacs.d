@@ -8,6 +8,10 @@
 
 (setq kill-ring-max 500) ; 设置历史记录数量
 
+(setq inhibit-startup-message t) ; 关闭出错提示音
+
+(setq frame-title-format "emacs@%b") ; 标题显示 Buffer 名
+
 ;; 语法高亮(除了 shell-mode 和 text-mode)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
