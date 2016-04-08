@@ -65,6 +65,8 @@
 (require 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
                            (emmet-mode t)))
+(add-hook 'html-mode-hook (lambda ()
+                            (emmet-mode t)))
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
 
@@ -91,7 +93,6 @@
 (global-highlight-parentheses-mode)
 
 ;; YASnippet
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 
