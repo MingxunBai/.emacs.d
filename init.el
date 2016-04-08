@@ -95,6 +95,7 @@
 ;; YASnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+
 ;; Completing point by some yasnippet key
 (defun yas-ido-expand ()
   "Lets you select (and expand) a yasnippet key"
@@ -118,6 +119,24 @@
         (insert key)
         (yas-expand)))))
 (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
+
+;; use popup menu for yas-choose-value
+(require 'popup)
+(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  (when (featurep 'popup)
+    (popup-menu*
+     (mapcar
+      (lambda (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         :value choice))
+      choices)
+     :prompt prompt
+     ;; start isearch mode immediately
+     :isearch t
+     )))
+(setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
 ;; 自加载对应模式
 (setq auto-mode-alist
