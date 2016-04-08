@@ -2,5 +2,5 @@
 
 ```bash
   git clone https://github.com/MingxunBai/emacs.d
-  cp emacs.d .emacs.d
+  cp emacs.d ~/.emacs.d
 ```
