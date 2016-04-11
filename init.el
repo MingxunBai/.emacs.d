@@ -21,6 +21,7 @@
 
 ;; 显示行号
 (global-linum-mode t)
+(setq linum-format "%4d ")
 (setq column-number-mode t)
 (setq line-number-mode t)
 
