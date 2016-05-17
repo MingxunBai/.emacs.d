@@ -4,6 +4,14 @@
 
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
+;; For my language code setting (UTF-8)
+(setq current-language-environment "UTF-8")
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
 (setq inhibit-startup-message t) ; 关闭启动动画
 
 (setq kill-ring-max 500) ; 设置历史记录数量
