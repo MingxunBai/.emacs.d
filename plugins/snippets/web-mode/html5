@@ -4,11 +4,11 @@
 # --
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>${1:Document}</title>
-  </head>
-  <body>
-    
-  </body>
+<head>
+<meta charset="UTF-8" />
+<title>${1:Document}</title>
+</head>
+<body>
+$0
+</body>
 </html>
