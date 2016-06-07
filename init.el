@@ -18,7 +18,10 @@
 
 (setq inhibit-startup-message t) ; 关闭出错提示音
 
-(setq frame-title-format "Emacs@%b") ; 标题显示 Buffer 名
+;; 标题显示完整路径
+(setq frame-title-format  
+   '("Emacs@%S" (buffer-file-name "%f"  
+    (dired-directory dired-directory "%b"))))  
 
 ;; 语法高亮(除了 shell-mode 和 text-mode)
 (global-font-lock-mode t)
@@ -72,7 +75,7 @@
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq tab-always-indent 'complete)
-(setq-default ac-auto-start nil)
+(setq-default ac-auto-start 2)
 (setq-default ac-expand-on-auto-complete nil)
 (ac-set-trigger-key "TAB")
 (setq ac-use-menu-map t)
