@@ -160,6 +160,7 @@
 ;; 自加载对应模式
 (setq auto-mode-alist
       (append '(("\\.html?\\'" . web-mode)
+                ("\\.xml?\\'" . Web-mode)
                 ; ("\\.css\\'" . web-mode)
                 ("\\.js\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
