@@ -65,11 +65,10 @@
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;; Org-mode 自动换行
-(add-hook 'org-mode-hook
-          (lambda ()
-            (setq truncate-lines nil)
-            (set-fill-column 70)))
+;; Org-mode 自动换行和缩进
+(setq truncate-lines nil)
+(set-fill-column 70)
+(setq org-startup-indented t)
 
 ;; Auto-complete
 (require 'auto-complete-config)
