@@ -160,6 +160,7 @@
 (setq auto-mode-alist
       (append '(("\\.html?\\'" . web-mode)
                 ("\\.xml\\'" . web-mode)
+                ("\\.svg\\'" . Web-mode)
                 ; ("\\.css\\'" . web-mode)
                 ("\\.js\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
