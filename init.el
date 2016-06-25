@@ -29,6 +29,7 @@
 (setq font-lock-global-modes '(not shell-mode text-mode))
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
+(setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
 
 ;; 显示行号
 (global-linum-mode t)
@@ -55,11 +56,11 @@
 (set-scroll-bar-mode nil) ; 隐藏滚动条
 (tool-bar-mode -1) ; 隐藏工具栏
 
-(global-set-key (kbd"RET") 'newline-and-indent) ; 回车时缩进
+(global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
-(display-time-mode 1) ; 启用时间显示
 (setq display-time-24hr-format t) ; 24小时制
+(display-time) ; 启用时间显示
 
 ;; Ido-mode
 (ido-mode t)
@@ -85,8 +86,6 @@
 (require 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
                            (emmet-mode t)))
-(add-hook 'html-mode-hook (lambda ()
-                            (emmet-mode t)))
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
 
