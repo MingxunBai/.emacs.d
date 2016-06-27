@@ -62,6 +62,12 @@
 (setq display-time-24hr-format t) ; 24小时制
 (display-time) ; 启用时间显示
 
+;; hs-mode
+(add-hook 'web-mode-hook (lambda ()
+                           (hs-minor-mode t)))
+(global-set-key  [f1] 'hs-toggle-hiding)
+(global-set-key  [f2] 'hs-show-block)
+
 ;; Ido-mode
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
