@@ -65,8 +65,7 @@
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
                            (hs-minor-mode t)))
-(global-set-key  [f1] 'hs-toggle-hiding)
-(global-set-key  [f2] 'hs-show-block)
+(global-set-key  [f2] 'hs-toggle-hiding)
 
 ;; Ido-mode
 (ido-mode t)
