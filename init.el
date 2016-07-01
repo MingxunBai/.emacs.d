@@ -63,6 +63,15 @@
 (setq display-time-24hr-format t) ; 24小时制
 (display-time) ; 启用时间显示
 
+;; 启动后最大化
+(run-with-idle-timer 0 nil 'w32-send-sys-command 61488) ; for Windows
+;(defun my-max-window() ; for Linux | OS X
+;  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;                         '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+;  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;                         '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+;(run-with-idle-timer 1 nil 'my-max-window)
+
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
                            (hs-minor-mode t)))
@@ -176,6 +185,5 @@
                 ("\\.as[cp]x\\'" . web-mode)
                 ("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
-		("\\.txt\\'" . org-mode)
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))
