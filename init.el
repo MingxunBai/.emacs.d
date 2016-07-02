@@ -65,12 +65,12 @@
 
 ;; 启动后最大化
 (run-with-idle-timer 0 nil 'w32-send-sys-command 61488) ; for Windows
-;(defun my-max-window() ; for Linux | OS X
-;  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;                         '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-;  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;                         '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-;(run-with-idle-timer 1 nil 'my-max-window)
+; (defun my-max-window() ; for Linux | OS X
+;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+;                          '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+; (run-with-idle-timer 1 nil 'my-max-window)
 
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
@@ -122,7 +122,8 @@
 (defun my-web-mode-hook ()
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-current-element-highlight t))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;; YASnippet
@@ -176,13 +177,13 @@
       (append '(("\\.html?\\'" . web-mode)
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
-                ; ("\\.css\\'" . web-mode)
                 ("\\.js\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ("\\.phtml\\'" . web-mode)
-                ("\\.djhtml\\'" . web-mode)
-                ("\\.[agj]sp\\'" . web-mode)
-                ("\\.as[cp]x\\'" . web-mode)
+                ; ("\\.phtml\\'" . web-mode)
+                ; ("\\.djhtml\\'" . web-mode)
+                ; ("\\.[agj]sp\\'" . web-mode)
+                ; ("\\.as[cp]x\\'" . web-mode)
+                ; ("\\.css\\'" . web-mode)
                 ("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.py\\'" . python-mode))
