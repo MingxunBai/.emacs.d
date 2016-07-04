@@ -178,7 +178,7 @@
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ; ("\\.js\\'" . web-mode)
+                ("\\.js\\'" . web-mode)
                 ; ("\\.phtml\\'" . web-mode)
                 ; ("\\.djhtml\\'" . web-mode)
                 ; ("\\.[agj]sp\\'" . web-mode)
