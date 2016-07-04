@@ -3,6 +3,7 @@
 (setq user-mail-address "MingxunBai@outlook.com")
 
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+(setq default-directory "c:\\xampp\\htdocs") ; for Windows
 
 ;; For my language code setting (UTF-8)
 (setq current-language-environment "UTF-8")
