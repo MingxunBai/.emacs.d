@@ -27,7 +27,6 @@
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t)
-(setq font-lock-global-modes '(not shell-mode text-mode))
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 (setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
@@ -88,6 +87,7 @@
 ;; Org-mode 自动换行和缩进
 (require 'htmlize)
 (setq org-src-fontify-natively t) ; 代码高亮
+
 (setq truncate-lines nil)
 (set-fill-column 70)
 (setq org-startup-indented t)
@@ -163,7 +163,7 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
-  (setq web-mode-enable-current-element-highlight t))
+  (setq web-mode-enable-current-element-highlight t)) ; 高亮所在标签元素
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;; YASnippet
