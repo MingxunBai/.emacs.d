@@ -1,11 +1,12 @@
-;; ------ 设置个人信息 ------
+;; 设置个人信息
 (setq user-full-name "MingxunBai")
 (setq user-mail-address "MingxunBai@outlook.com")
 
+;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 (setq default-directory "c:\\xampp\\htdocs") ; for Windows
 
-;; For my language code setting (UTF-8)
+;; 编码环境
 (setq current-language-environment "UTF-8")
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -14,39 +15,47 @@
 (prefer-coding-system 'gb18030)
 (prefer-coding-system 'utf-8)
 
+;; 显示
 (setq inhibit-startup-message t) ; 关闭启动动画
 
-(setq kill-ring-max 500) ; 设置历史记录数量
+(setq split-height-threshold nil)
+(setq split-width-threshold 0) ; 垂直分屏
 
-(setq inhibit-startup-message t) ; 关闭出错提示音
+(setq frame-title-format
+   '("Emacs@%S" (buffer-file-name "%f"
+    (dired-directory dired-directory "%b")))) ; 标题显示完整路径
 
-;; 标题显示完整路径
-(setq frame-title-format  
-   '("Emacs@%S" (buffer-file-name "%f"  
-    (dired-directory dired-directory "%b"))))  
-
-;; 语法高亮(除了 shell-mode 和 text-mode)
-(global-font-lock-mode t)
+(global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t)
 (setq font-lock-global-modes '(not shell-mode text-mode))
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 (setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
 
-;; 显示行号
 (global-linum-mode t)
 (setq linum-format "%4d ")
 (setq column-number-mode t)
-(setq line-number-mode t)
+(setq line-number-mode t) ; 显示行号
 
-(show-paren-mode t)
-(setq show-paren-style 'parenthesis) ; 括号匹配时可以高亮显示另外一边的括号，但光标不会跳到另一个括号处
+(show-paren-mode t) ; 高亮匹配括号
+(setq show-paren-style 'parenthesis) ; 光标不会跳到另一个括号处
+
+(setq scroll-margin 3 scroll-conservatively 10000) ; 靠近屏幕边沿3行时就开始滚动
+
+(set-scroll-bar-mode nil) ; 隐藏滚动条
+(tool-bar-mode -1) ; 隐藏工具栏
+
+(setq display-time-24hr-format t) ; 24小时制
+(display-time) ; 启用时间显示
+
+;; 操作
+(setq kill-ring-max 500) ; 设置历史记录数量
+
+(setq inhibit-startup-message t) ; 关闭出错提示音
 
 (setq-default kill-whole-line t) ; 在行首 C-k 时，同时删除该行
 
 (setq track-eol t) ; 当光标在行尾上下移动的时候，始终保持在行尾
-
-(setq scroll-margin 3 scroll-conservatively 10000) ; 靠近屏幕边沿3行时就开始滚动
 
 (fset 'yes-or-no-p 'y-or-n-p) ; 使用 y/n 替代 yes/no
 
@@ -55,23 +64,17 @@
 (setq make-backup-files nil) ; 不生成备份文件
 (setq auto-save-default nil) ; 不生成临时文件
 
-(set-scroll-bar-mode nil) ; 隐藏滚动条
-(tool-bar-mode -1) ; 隐藏工具栏
-
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
-(setq display-time-24hr-format t) ; 24小时制
-(display-time) ; 启用时间显示
-
 ;; 启动后最大化
 (run-with-idle-timer 0 nil 'w32-send-sys-command 61488) ; for Windows
-; (defun my-max-window() ; for Linux | OS X
+; (defun my-max-window()
 ;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 ;                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
 ;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 ;                          '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-; (run-with-idle-timer 1 nil 'my-max-window)
+; (run-with-idle-timer 1 nil 'my-max-window) ; for Linux | OS X
 
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
