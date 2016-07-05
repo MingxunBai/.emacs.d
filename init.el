@@ -4,7 +4,8 @@
 
 ;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
-(setq default-directory "c:\\xampp\\htdocs") ; for Windows
+(if (eq system-type 'windows-nt)
+    (setq default-directory "c:\\xampp\\htdocs"))
 
 ;; 编码环境
 (setq current-language-environment "UTF-8")
@@ -66,13 +67,14 @@
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
 
 ;; 启动后最大化
-(run-with-idle-timer 0 nil 'w32-send-sys-command 61488) ; for Windows
-; (defun my-max-window()
-;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-;   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-;                          '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-; (run-with-idle-timer 1 nil 'my-max-window) ; for Linux | OS X
+(if (eq system-type 'windows-nt)
+    (run-with-idle-timer 0 nil 'w32-send-sys-command 61488)
+  ((defun my-max-window()
+     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                            '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                            '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+   (run-with-idle-timer 0 nil 'my-max-window)))
 
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
