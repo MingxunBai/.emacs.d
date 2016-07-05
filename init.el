@@ -4,6 +4,7 @@
 
 ;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+
 (if (eq system-type 'windows-nt)
     (setq default-directory "c:\\xampp\\htdocs"))
 
@@ -79,13 +80,13 @@
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
                            (hs-minor-mode t)))
-(global-set-key  [f2] 'hs-toggle-hiding)
+(global-set-key [f2] 'hs-toggle-hiding)
 
-;; Ido-mode
+;; ido-mode
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;; Org-mode 自动换行和缩进
+;; org-mode 自动换行和缩进
 (require 'htmlize)
 (setq org-src-fontify-natively t) ; 代码高亮
 
@@ -94,7 +95,6 @@
 (setq org-startup-indented t)
 
 (defun org-insert-src-block (src-code-type)
-  "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
   (interactive
    (let ((src-code-types
           '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
@@ -111,21 +111,17 @@
     (previous-line 2)
     (org-edit-src-code)))
 
-(add-hook 'org-mode-hook '(lambda ()
-                            ;; turn on flyspell-mode by default
-                            (flyspell-mode 1)
-                            ;; C-TAB for expanding
-                            (local-set-key (kbd "C-<tab>")
-                                           'yas/expand-from-trigger-key)
-                            ;; keybinding for editing source code blocks
-                            (local-set-key (kbd "C-c s e")
-                                           'org-edit-src-code)
-                            ;; keybinding for inserting code blocks
-                            (local-set-key (kbd "C-c s i")
-                                           'org-insert-src-block)
-                            ))
+(add-hook 'org-mode-hook ' (lambda ()
+                             (flyspell-mode 1) ; turn on flyspell-mode by default
+                             (local-set-key (kbd "C-<tab>") ; C-TAB for expanding
+                                            'yas/expand-from-trigger-key)
+                             (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
+                                            'org-edit-src-code)
+                             (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
+                                            'org-insert-src-block)
+                             ))
 
-;; Auto-complete
+;; auto-complete
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq tab-always-indent 'complete)
@@ -137,7 +133,7 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
-;; Emmet-mode
+;; emmet-mode
 (require 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
                            (emmet-mode t)))
@@ -146,7 +142,7 @@
 (add-hook 'css-mode-hook (lambda ()
 			   (emmet-mode t)))
 
-;; Highlight-parentheses-mode
+;; highlight-parentheses-mode
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
@@ -154,11 +150,15 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
-;; Windows numbering
+;; project-explorer
+(require 'project-explorer)
+(global-set-key (kbd "C-c e") 'project-explorer-open)
+
+;; windows numbering
 (require 'window-numbering)
 (window-numbering-mode 1)
 
-;; Web-mode
+;; web-mode
 (require 'web-mode)
 (defun my-web-mode-hook ()
   (setq web-mode-markup-indent-offset 2)
@@ -171,9 +171,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; Completing point by some yasnippet key
-(defun yas-ido-expand ()
-  "Lets you select (and expand) a yasnippet key"
+(defun yas-ido-expand () ; completing point by some yasnippet key
   (interactive)
   (let ((original-point (point)))
     (while (and
@@ -195,8 +193,7 @@
         (yas-expand)))))
 (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
 
-;; Use popup menu for yas-choose-value
-(require 'popup)
+(require 'popup) ; use popup menu for yas-choose-value
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   (when (featurep 'popup)
     (popup-menu*
@@ -208,8 +205,7 @@
          :value choice))
       choices)
      :prompt prompt
-     ;; start isearch mode immediately
-     :isearch t
+     :isearch t ; start isearch mode immediately
      )))
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
