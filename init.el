@@ -26,10 +26,9 @@
     (dired-directory dired-directory "%b")))) ; 标题显示完整路径
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
-(setq font-lock-maximum-decoration t)
+(setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
-(setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
 
 (global-linum-mode t)
 (setq linum-format "%4d ")
