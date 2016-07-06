@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-#name : addEvent
+#name : addEventListener
 # --
-addEvent('${1:event}', function($2) {
-  $0
+addEventListener('${1:event}', function($2){
+$0
 });
