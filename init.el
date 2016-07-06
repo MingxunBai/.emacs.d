@@ -133,6 +133,10 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
+;; ac-js2
+(require 'ac-js2)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
 ;; emmet-mode
 (require 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
@@ -149,6 +153,12 @@
   (lambda ()
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
+
+;;multiple-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; edit each line in region
+(global-unset-key (kbd "M-<down-mouse-1>"))
+(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click) ; bind mouse event
 
 ;; project-explorer
 (require 'project-explorer)
@@ -215,12 +225,12 @@
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ("\\.js\\'" . web-mode)
                 ; ("\\.phtml\\'" . web-mode)
                 ; ("\\.djhtml\\'" . web-mode)
                 ; ("\\.[agj]sp\\'" . web-mode)
                 ; ("\\.as[cp]x\\'" . web-mode)
                 ; ("\\.css\\'" . web-mode)
+                ("\\.js\\'" . js2-mode)
                 ("\\.org\\'" . org-mode)
 		("\\.md\\'" . org-mode)
 		("\\.py\\'" . python-mode))
