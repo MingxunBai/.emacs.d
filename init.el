@@ -88,13 +88,11 @@
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;; org-mode 自动换行和缩进
+;; org-mode
 (require 'htmlize)
 (setq org-src-fontify-natively t) ; 代码高亮
 
-(setq truncate-lines nil)
-(set-fill-column 70)
-(setq org-startup-indented t)
+(setq org-startup-indented t) ; 自动缩进
 
 (defun org-insert-src-block (src-code-type)
   (interactive
@@ -114,14 +112,12 @@
     (org-edit-src-code)))
 
 (add-hook 'org-mode-hook ' (lambda ()
-                             (flyspell-mode 1) ; turn on flyspell-mode by default
                              (local-set-key (kbd "C-<tab>") ; C-TAB for expanding
                                             'yas/expand-from-trigger-key)
                              (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
                                             'org-edit-src-code)
                              (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
-                                            'org-insert-src-block)
-                             ))
+                                            'org-insert-src-block)))
 
 ;; auto-complete
 (require 'auto-complete-config)
@@ -156,7 +152,7 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
-;;multiple-cursors
+;; multiple-cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; edit each line in region
 (global-unset-key (kbd "M-<down-mouse-1>"))
