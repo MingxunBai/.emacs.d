@@ -80,6 +80,8 @@
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
                            (hs-minor-mode t)))
+(add-hook 'js2-mode-hook (lambda ()
+                           (hs-minor-mode t)))
 (global-set-key [f2] 'hs-toggle-hiding)
 
 ;; ido-mode
