@@ -160,7 +160,7 @@
 
 ;; project-explorer
 (require 'project-explorer)
-(global-set-key (kbd "C-c e") 'project-explorer-open)
+(global-set-key [f1] 'project-explorer-toggle)
 
 ;; windows numbering
 (require 'window-numbering)
