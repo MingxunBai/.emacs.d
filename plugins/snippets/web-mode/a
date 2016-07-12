@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: a
-# key: a
-# --
-<a href="http://www.$1">$0</a>

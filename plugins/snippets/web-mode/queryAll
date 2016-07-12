@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: querySelectorAll
-# key: query
-# --
-document.querySelectorAll('$1');
