@@ -70,12 +70,12 @@
 ;; 启动后最大化
 (if (eq system-type 'windows-nt)
     (run-with-idle-timer 0 nil 'w32-send-sys-command 61488)
-  ((defun my-max-window()
-     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                            '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                            '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-   (run-with-idle-timer 0 nil 'my-max-window)))
+  (defun my-max-window()
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+			   '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+			   '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+  (run-with-idle-timer 0 nil 'my-max-window))
 
 ;; hs-mode
 (add-hook 'web-mode-hook (lambda ()
