@@ -20,22 +20,22 @@
 ;; 显示
 (setq inhibit-startup-message t) ; 关闭启动动画
 
-(setq split-height-threshold nil)
-(setq split-width-threshold 0) ; 垂直分屏
+(setq split-height-threshold nil) ; 垂直分屏
+(setq split-width-threshold 0)
 
-(setq frame-title-format
+(setq frame-title-format ; 标题显示完整路径
    '("Emacs@%S" (buffer-file-name "%f"
-    (dired-directory dired-directory "%b")))) ; 标题显示完整路径
+    (dired-directory dired-directory "%b"))))
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
 (setq font-lock-verbose t)
 (setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 
-(global-linum-mode t)
+(global-linum-mode t) ; 显示行号
 (setq linum-format "%4d ")
 (setq column-number-mode t)
-(setq line-number-mode t) ; 显示行号
+(setq line-number-mode t)
 
 (show-paren-mode t) ; 高亮匹配括号
 (setq show-paren-style 'parenthesis) ; 光标不会跳到另一个括号处
@@ -89,29 +89,29 @@
 (setq ido-save-directory-list-file nil)
 
 ;; org-mode
-(require 'htmlize)
-(setq org-src-fontify-natively t) ; 代码高亮
-
-(setq org-startup-indented t) ; 自动缩进
-
-(defun org-insert-src-block (src-code-type)
-  (interactive
-   (let ((src-code-types
-          '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-            "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
-            "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-            "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-            "scheme" "sqlite" "html")))
-     (list (ido-completing-read "Source code type: " src-code-types))))
-  (progn
-    (newline-and-indent)
-    (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-    (newline-and-indent)
-    (insert "#+END_SRC\n")
-    (previous-line 2)
-    (org-edit-src-code)))
-
 (add-hook 'org-mode-hook ' (lambda ()
+                             (setq org-startup-indented t) ; 自动缩进
+                             
+                             (require 'htmlize)
+                             (setq org-src-fontify-natively t) ; 代码高亮
+                             
+                             (defun org-insert-src-block (src-code-type)
+                               (interactive
+                                (let ((src-code-types
+                                       '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+                                         "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
+                                         "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+                                         "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+                                         "scheme" "sqlite" "html")))
+                                  (list (ido-completing-read "Source code type: " src-code-types))))
+                               (progn
+                                 (newline-and-indent)
+                                 (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                                 (newline-and-indent)
+                                 (insert "#+END_SRC\n")
+                                 (previous-line 2)
+                                 (org-edit-src-code)))
+
                              (local-set-key (kbd "C-<tab>") ; C-TAB for expanding
                                             'yas/expand-from-trigger-key)
                              (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
@@ -138,17 +138,20 @@
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; ac-js2
-(require 'ac-js2)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook (lambda ()
+                           (require 'ac-js2)
+                           (ac-js2-mode t)))
 
 ;; emmet-mode
-(require 'emmet-mode)
 (add-hook 'web-mode-hook (lambda ()
-                           (emmet-mode t)))
+                           (require 'emmet-mode)
+                           (emmet-mode)))
 (add-hook 'html-mode-hook (lambda ()
-                            (emmet-mode t)))
+                           (require 'emmet-mode)
+                           (emmet-mode)))
 (add-hook 'css-mode-hook (lambda ()
-			   (emmet-mode t)))
+			   (require 'emmet-mode)
+                           (emmet-mode)))
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -173,7 +176,6 @@
 (window-numbering-mode 1)
 
 ;; web-mode
-(require 'web-mode)
 (defun my-web-mode-hook ()
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
@@ -181,34 +183,12 @@
   (setq web-mode-enable-current-element-highlight t)) ; 高亮所在标签元素
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
-;; YASnippet
+;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(defun yas-ido-expand () ; completing point by some yasnippet key
-  (interactive)
-  (let ((original-point (point)))
-    (while (and
-            (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
-      (backward-word 1))
-    (let* ((init-word (point))
-           (word (buffer-substring init-word original-point))
-           (list (yas-active-keys)))
-      (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
-        (if (= (length key) 1)
-            (setq key (pop key))
-          (setq key (ido-completing-read "key: " list nil nil word)))
-        (delete-char (- init-word original-point))
-        (insert key)
-        (yas-expand)))))
-(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
-
-(require 'popup) ; use popup menu for yas-choose-value
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  (require 'popup) ; use popup menu for yas-choose-value
   (when (featurep 'popup)
     (popup-menu*
      (mapcar
@@ -221,21 +201,19 @@
      :prompt prompt
      :isearch t ; start isearch mode immediately
      )))
-(setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+(setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
 ;; 自加载对应模式
 (setq auto-mode-alist
-      (append '(("\\.html?\\'" . web-mode)
+      (append '(("\\.html?\\'" . (lambda ()
+                                   (require 'web-mode)
+                                   (web-mode)))
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ; ("\\.phtml\\'" . web-mode)
-                ; ("\\.djhtml\\'" . web-mode)
-                ; ("\\.[agj]sp\\'" . web-mode)
-                ; ("\\.as[cp]x\\'" . web-mode)
-                ; ("\\.css\\'" . web-mode)
-                ("\\.js\\'" . js2-mode)
-                ("\\.org\\'" . org-mode)
+                ("\\.js\\'" . (lambda ()
+                                (require 'js2-mode)
+                                (js2-mode)))
 		("\\.md\\'" . org-mode)
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))
