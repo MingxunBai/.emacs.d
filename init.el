@@ -72,9 +72,9 @@
     (run-with-idle-timer 0 nil 'w32-send-sys-command 61488)
   (defun my-max-window()
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			   '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+			   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			   '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+			   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
   (run-with-idle-timer 0 nil 'my-max-window))
 
 ;; hs-mode
@@ -118,6 +118,12 @@
                                             'org-edit-src-code)
                              (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
                                             'org-insert-src-block)))
+
+;; winner-mode
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+(global-set-key (kbd "C-x 4 u") 'winner-undo)
+(global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 ;; auto-complete
 (require 'auto-complete-config)
