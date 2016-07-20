@@ -129,13 +129,13 @@
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq tab-always-indent 'complete)
-(setq-default ac-auto-start 3)
-(setq ac-auto-show-menu 0.1)
+(setq-default ac-auto-start nil)
+(setq ac-auto-show-menu 0.2)
 (setq-default ac-expand-on-auto-complete nil)
-(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "C-;")
 (setq ac-use-menu-map t)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
+(define-key ac-menu-map "C-n" 'ac-next)
+(define-key ac-menu-map "C-p" 'ac-previous)
 
 ;; ac-js2
 (add-hook 'js2-mode-hook (lambda ()
