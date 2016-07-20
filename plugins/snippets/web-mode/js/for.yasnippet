@@ -1,6 +1,10 @@
 # name: for
 # key: for
 # --
-for( var ${1:i} = ${2:0}; ${3:i} < ${4:array}.length; ++${5:i} ){
+var ${1:i}, length;
+$1 = ${2:0};
+length = ${3:arr}.length;
+
+for( ; $1 < length; $1++ ){
 $0
 }

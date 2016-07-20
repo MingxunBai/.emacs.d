@@ -130,7 +130,7 @@
 (global-auto-complete-mode t)
 (setq tab-always-indent 'complete)
 (setq-default ac-auto-start 3)
-(setq ac-auto-show-menu 0.2)
+(setq ac-auto-show-menu 0.1)
 (setq-default ac-expand-on-auto-complete nil)
 (ac-set-trigger-key "TAB")
 (setq ac-use-menu-map t)
