@@ -112,8 +112,6 @@
                                  (previous-line 2)
                                  (org-edit-src-code)))
 
-                             (local-set-key (kbd "C-<tab>") ; C-TAB for expanding
-                                            'yas/expand-from-trigger-key)
                              (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
                                             'org-edit-src-code)
                              (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
@@ -171,10 +169,6 @@
 (require 'project-explorer)
 (global-set-key [f1] 'project-explorer-toggle)
 
-;; windows numbering
-(require 'window-numbering)
-(window-numbering-mode 1)
-
 ;; web-mode
 (defun my-web-mode-hook ()
   (setq web-mode-markup-indent-offset 2)
@@ -182,6 +176,10 @@
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-enable-current-element-highlight t)) ; 高亮所在标签元素
 (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+;; windows-numbering
+(require 'window-numbering)
+(window-numbering-mode 1)
 
 ;; yasnippet
 (require 'yasnippet)
@@ -214,6 +212,5 @@
                 ("\\.js\\'" . (lambda ()
                                 (require 'js2-mode)
                                 (js2-mode)))
-		("\\.md\\'" . org-mode)
 		("\\.py\\'" . python-mode))
 	      auto-mode-alist))

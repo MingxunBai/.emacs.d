@@ -1,0 +1,55 @@
+* How to install
+  
+  #+BEGIN_SRC bash
+  git clone https://github.com/MingxunBai/emacs.d
+  cp emacs.d/ ~/.emacs.d
+  #+END_SRC
+
+* 内置的插件
+** hs-mode
+    - 显示或隐藏代码块，快捷键 F2
+
+** ido-mode
+    - 快速选择 file 或 buffer
+
+** org-mode
+    - 添加代码高亮
+    - 快速插入代码块，快捷键 C-c s i
+    - 编辑代码块，快捷键 C-c s e
+
+** winner-mode
+    - 恢复窗口改变，快捷键 C-x 4 u
+    - 恢复窗口改变，快捷键 C-x 4 r
+
+* 安装的插件
+** auto-complete
+    - 关闭自动提示，C-; 触发自动补齐
+    - 添加 C-n C-p 上下移动候选项
+
+** emmet-mode
+    - css-mode, html-mode, web-mode 挂载后自动挂载
+
+** highlight-parentheses-mode
+    - 光标外括号分层级高亮
+
+** js2-mode
+    - JavaScript-IDE-mode，我就问你怕不怕！
+
+** multiple-cursors
+    - 多点编辑，快捷键 Alt ** 左键
+    - C-S-c C-S-c 为选定区块的每一行开启多点编辑
+
+** project-explorer
+    - 显示或隐藏项目树，快捷键 F1
+
+** web-mode
+    - 支持 web 相关所有模式
+    - 缩进均改为 2 个空格
+
+** windows-numbering
+    - 多窗口，左下角显示窗口编号，M+n 切换到第 n 个窗口
+
+** yasnippet
+    - 自定代码块，tab 键触发
+
+* 注意：除 .js 外，所有 web 相关模式均重定向至 web-mode
