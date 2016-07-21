@@ -24,8 +24,8 @@
 (setq split-width-threshold 0)
 
 (setq frame-title-format ; 标题显示完整路径
-   '("Emacs@%S" (buffer-file-name "%f"
-    (dired-directory dired-directory "%b"))))
+      '("Emacs@%S" (buffer-file-name "%f"
+                                     (dired-directory dired-directory "%b"))))
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
@@ -89,33 +89,35 @@
 (setq ido-save-directory-list-file nil)
 
 ;; org-mode
-(add-hook 'org-mode-hook ' (lambda ()
-                             (setq org-startup-indented t) ; 自动缩进
-                             
-                             (require 'htmlize)
-                             (setq org-src-fontify-natively t) ; 代码高亮
-                             
-                             (defun org-insert-src-block (src-code-type)
-                               (interactive
-                                (let ((src-code-types
-                                       '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-                                         "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
-                                         "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-                                         "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-                                         "scheme" "sqlite" "html")))
-                                  (list (ido-completing-read "Source code type: " src-code-types))))
-                               (progn
-                                 (newline-and-indent)
-                                 (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-                                 (newline-and-indent)
-                                 (insert "#+END_SRC\n")
-                                 (previous-line 2)
-                                 (org-edit-src-code)))
+(add-hook 'org-mode-hook '(lambda ()
+                            (auto-complete-mode)
 
-                             (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
-                                            'org-edit-src-code)
-                             (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
-                                            'org-insert-src-block)))
+                            (setq org-startup-indented t) ; 自动缩进
+
+                            (require 'htmlize)
+                            (setq org-src-fontify-natively t) ; 代码高亮
+
+                            (defun org-insert-src-block (src-code-type)
+                              (interactive
+                               (let ((src-code-types
+                                      '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+                                        "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
+                                        "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+                                        "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+                                        "scheme" "sqlite" "html")))
+                                 (list (ido-completing-read "Source code type: " src-code-types))))
+                              (progn
+                                (newline-and-indent)
+                                (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                                (newline-and-indent)
+                                (insert "#+END_SRC\n")
+                                (previous-line 2)
+                                (org-edit-src-code)))
+
+                            (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
+                                           'org-edit-src-code)
+                            (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
+                                           'org-insert-src-block)))
 
 ;; winner-mode
 (when (fboundp 'winner-mode)
@@ -124,16 +126,13 @@
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 ;; auto-complete
-(require 'auto-complete-config)
+(require 'auto-complete)
 (global-auto-complete-mode t)
-(setq tab-always-indent 'complete)
-(setq-default ac-auto-start nil)
-(setq ac-auto-show-menu 0.2)
-(setq-default ac-expand-on-auto-complete nil)
-(ac-set-trigger-key "C-;")
-(setq ac-use-menu-map t)
-(define-key ac-menu-map "C-n" 'ac-next)
-(define-key ac-menu-map "C-p" 'ac-previous)
+(setq ac-auto-start nil)
+(global-set-key (kbd "C-;") 'ac-start)
+(define-key ac-complete-mode-map (kbd "C-;") 'ac-stop)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
 ;; ac-js2
 (add-hook 'js2-mode-hook (lambda ()
@@ -145,8 +144,8 @@
                            (require 'emmet-mode)
                            (emmet-mode)))
 (add-hook 'html-mode-hook (lambda ()
-                           (require 'emmet-mode)
-                           (emmet-mode)))
+                            (require 'emmet-mode)
+                            (emmet-mode)))
 (add-hook 'css-mode-hook (lambda ()
 			   (require 'emmet-mode)
                            (emmet-mode)))
