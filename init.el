@@ -126,13 +126,14 @@
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 ;; auto-complete
-(require 'auto-complete)
+(require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq ac-auto-start nil)
-(global-set-key (kbd "C-;") 'ac-start)
-(define-key ac-complete-mode-map (kbd "C-;") 'ac-stop)
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(setq ac-use-menu-map t) ; set hot key for menu map
+(define-key ac-mode-map (kbd "C-;") 'auto-complete)
+(define-key ac-completing-map (kbd "C-;") 'ac-stop)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; ac-js2
 (add-hook 'js2-mode-hook (lambda ()
