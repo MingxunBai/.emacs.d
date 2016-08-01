@@ -52,7 +52,7 @@
 (setq kill-ring-max 500) ; 设置历史记录数量
 
 (setq inhibit-startup-message t) ; 关闭出错提示音
-
+1
 (setq-default kill-whole-line t) ; 在行首 C-k 时，同时删除该行
 
 (setq track-eol t) ; 当光标在行尾上下移动的时候，始终保持在行尾
@@ -130,8 +130,8 @@
 (global-auto-complete-mode t)
 (setq ac-auto-start nil)
 (setq ac-use-menu-map t) ; set hot key for menu map
-(define-key ac-mode-map (kbd "C-;") 'auto-complete)
-(define-key ac-completing-map (kbd "C-;") 'ac-stop)
+(define-key ac-mode-map "\M-;" 'auto-complete)
+(define-key ac-completing-map "\M-;" 'ac-stop)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
