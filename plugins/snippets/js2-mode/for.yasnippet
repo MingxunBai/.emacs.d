@@ -1,10 +1,6 @@
 # name: for
 # key: for
 # --
-var ${1:i}, length;
-$1 = ${2:0};
-length = ${3:arr}.length;
-
-for( ; $1 < length; $1++ ){
+for( var ${1:i} = ${2:0}; $1 < ${3:arr}.length; $1++ ){
 $0
 }
