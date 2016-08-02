@@ -1,6 +1,6 @@
 ;; 设置个人信息
-(setq user-full-name "MingxunBai")
-(setq user-mail-address "MingxunBai@outlook.com")
+(setq user-full-name "MingxunBai"
+      user-mail-address "MingxunBai@outlook.com")
 
 ;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
@@ -20,22 +20,22 @@
 ;; 显示
 (setq inhibit-startup-message t) ; 关闭启动动画
 
-(setq split-height-threshold nil) ; 垂直分屏
-(setq split-width-threshold 0)
+(setq split-height-threshold nil ; 垂直分屏
+      split-width-threshold 0)
 
 (setq frame-title-format ; 标题显示完整路径
       '("Emacs@%S" (buffer-file-name "%f"
                                      (dired-directory dired-directory "%b"))))
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
-(setq font-lock-maximum-decoration t) ; 只渲染当前 buffer 语法高亮
-(setq font-lock-verbose t)
-(setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
+(setq font-lock-maximum-decoration t ; 只渲染当前 buffer 语法高亮
+      font-lock-verbose t
+      font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 
 (global-linum-mode t) ; 显示行号
-(setq linum-format "%4d ")
-(setq column-number-mode t)
-(setq line-number-mode t)
+(setq linum-format "%4d "
+      column-number-mode t
+      line-number-mode t)
 
 (show-paren-mode t) ; 高亮匹配括号
 (setq show-paren-style 'parenthesis) ; 光标不会跳到另一个括号处
@@ -63,28 +63,24 @@
 
 (setq x-select-enable-clipboard t) ; 支持和外部程序的拷贝
 
-(setq make-backup-files nil) ; 不生成备份文件
-(setq auto-save-default nil) ; 不生成临时文件
+(setq make-backup-files nil ; 不生成备份文件
+      auto-save-default nil) ; 不生成临时文件
 
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
-(setq-default indent-tabs-mode  nil) ; 设置缩进为空格
-(setq-default tab-width 4) ; 设置默认缩进为 4
+(setq-default indent-tabs-mode  nil ; 设置缩进为空格
+              tab-width 4) ; 设置默认缩进为 4
 
 ;; 启动后最大化
 (if (eq system-type 'windows-nt)
     (run-with-idle-timer 0 nil 'w32-send-sys-command 61488)
   (defun my-max-window()
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+                           '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+                           '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
   (run-with-idle-timer 0 nil 'my-max-window))
 
 ;; hs-mode
-(add-hook 'web-mode-hook (lambda ()
-                           (hs-minor-mode t)))
-(add-hook 'js2-mode-hook (lambda ()
-                           (hs-minor-mode t)))
 (global-set-key [f2] 'hs-toggle-hiding)
 
 ;; ido-mode
@@ -92,35 +88,35 @@
 (setq ido-save-directory-list-file nil)
 
 ;; org-mode
-(add-hook 'org-mode-hook '(lambda ()
-                            (auto-complete-mode)
+(add-hook 'org-mode-hook (lambda ()
+                           (auto-complete-mode)
 
-                            (setq org-startup-indented t) ; 自动缩进
+                           (setq org-startup-indented t) ; 自动缩进
 
-                            (require 'htmlize)
-                            (setq org-src-fontify-natively t) ; 代码高亮
+                           (require 'htmlize)
+                           (setq org-src-fontify-natively t) ; 代码高亮
 
-                            (defun org-insert-src-block (src-code-type)
-                              (interactive
-                               (let ((src-code-types
-                                      '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-                                        "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
-                                        "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-                                        "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-                                        "scheme" "sqlite" "html")))
-                                 (list (ido-completing-read "Source code type: " src-code-types))))
-                              (progn
-                                (newline-and-indent)
-                                (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-                                (newline-and-indent)
-                                (insert "#+END_SRC\n")
-                                (previous-line 2)
-                                (org-edit-src-code)))
+                           (defun org-insert-src-block (src-code-type)
+                             (interactive
+                              (let ((src-code-types
+                                     '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+                                       "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
+                                       "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+                                       "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+                                       "scheme" "sqlite" "html")))
+                                (list (ido-completing-read "Source code type: " src-code-types))))
+                             (progn
+                               (newline-and-indent)
+                               (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+                               (newline-and-indent)
+                               (insert "#+END_SRC\n")
+                               (previous-line 2)
+                               (org-edit-src-code)))
 
-                            (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
-                                           'org-edit-src-code)
-                            (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
-                                           'org-insert-src-block)))
+                           (local-set-key (kbd "C-c s e") ; keybinding for editing source code blocks
+                                          'org-edit-src-code)
+                           (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
+                                          'org-insert-src-block)))
 
 ;; winner-mode
 (when (fboundp 'winner-mode)
@@ -138,22 +134,6 @@
 (define-key ac-completing-map "\M-;" 'ac-stop)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-
-;; ac-js2
-(add-hook 'js2-mode-hook (lambda ()
-                           (require 'ac-js2)
-                           (ac-js2-mode t)))
-
-;; emmet-mode
-(add-hook 'web-mode-hook (lambda ()
-                           (require 'emmet-mode)
-                           (emmet-mode)))
-(add-hook 'html-mode-hook (lambda ()
-                            (require 'emmet-mode)
-                            (emmet-mode)))
-(add-hook 'css-mode-hook (lambda ()
-			   (require 'emmet-mode)
-                           (emmet-mode)))
 
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -216,5 +196,20 @@
                 ("\\.js\\'" . (lambda ()
                                 (require 'js2-mode)
                                 (js2-mode)))
-		("\\.py\\'" . python-mode))
-	      auto-mode-alist))
+                ("\\.py\\'" . python-mode))
+              auto-mode-alist))
+
+(add-hook 'css-mode-hook (lambda ()
+                           (require 'emmet-mode)
+                           (emmet-mode)))
+(add-hook 'html-mode-hook (lambda ()
+                            (require 'emmet-mode)
+                            (emmet-mode)))
+(add-hook 'js2-mode-hook (lambda ()
+                           (hs-minor-mode t)
+                           (require 'ac-js2)
+                           (ac-js2-mode t)))
+(add-hook 'web-mode-hook (lambda ()
+                           (hs-minor-mode t)
+                           (require 'emmet-mode)
+                           (emmet-mode)))
