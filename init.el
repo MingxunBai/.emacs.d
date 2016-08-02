@@ -49,6 +49,8 @@
 (display-time) ; 启用时间显示
 
 ;; 操作
+(setq default-major-mode 'text-mode) ; 设置默认主模式为 text-mode
+
 (setq kill-ring-max 500) ; 设置历史记录数量
 
 (setq inhibit-startup-message t) ; 关闭出错提示音
@@ -66,6 +68,7 @@
 
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 (setq-default indent-tabs-mode  nil) ; 设置缩进为空格
+(setq-default tab-width 4) ; 设置默认缩进为 4
 
 ;; 启动后最大化
 (if (eq system-type 'windows-nt)
@@ -128,6 +131,7 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+(add-hook 'text-mode-hook 'auto-complete-mode)
 (setq ac-auto-start nil)
 (setq ac-use-menu-map t) ; set hot key for menu map
 (define-key ac-mode-map "\M-;" 'auto-complete)
