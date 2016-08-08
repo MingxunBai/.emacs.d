@@ -134,6 +134,11 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
+;; emmet-mode
+(defun enable-emmet-mode ()
+  (require 'emmet-mode)
+  (emmet-mode))
+
 ;; highlight-parentheses-mode
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
@@ -141,6 +146,11 @@
   (lambda ()
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
+
+;; js2-mode
+(defun enable-js2-mode ()
+  (require 'js2-mode)
+  (js2-mode))
 
 ;; multiple-cursors
 (require 'multiple-cursors)
@@ -192,23 +202,15 @@
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ("\\.js\\'" . (lambda ()
-                                (require 'js2-mode)
-                                (js2-mode)))
+                ("\\.js\\'" . enable-js2-mode)
                 ("\\.py\\'" . python-mode))
               auto-mode-alist))
 
-(add-hook 'css-mode-hook (lambda ()
-                           (require 'emmet-mode)
-                           (emmet-mode)))
-(add-hook 'html-mode-hook (lambda ()
-                            (require 'emmet-mode)
-                            (emmet-mode)))
+(add-hook 'css-mode-hook 'enable-emmet-mode)
+(add-hook 'html-mode-hook 'enable-emmet-mode)
 (add-hook 'js2-mode-hook (lambda ()
                            (hs-minor-mode t)
-                           (require 'ac-js2)
-                           (ac-js2-mode t)))
+                           (enable-js2-mode)))
 (add-hook 'web-mode-hook (lambda ()
                            (hs-minor-mode t)
-                           (require 'emmet-mode)
-                           (emmet-mode)))
+                           (enable-emmet-mode)))
