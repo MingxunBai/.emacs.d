@@ -23,9 +23,7 @@
 (setq split-height-threshold nil ; 垂直分屏
       split-width-threshold 0)
 
-(setq frame-title-format ; 标题显示完整路径
-      '("Emacs@%S" (buffer-file-name "%f"
-                                     (dired-directory dired-directory "%b"))))
+(setq frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b")))) ; 标题显示完整路径
 
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t ; 只渲染当前 buffer 语法高亮
@@ -54,7 +52,7 @@
 (setq kill-ring-max 500) ; 设置历史记录数量
 
 (setq inhibit-startup-message t) ; 关闭出错提示音
-1
+
 (setq-default kill-whole-line t) ; 在行首 C-k 时，同时删除该行
 
 (setq track-eol t) ; 当光标在行尾上下移动的时候，始终保持在行尾
