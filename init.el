@@ -147,11 +147,6 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
-;; js2-mode
-(defun enable-js2-mode ()
-  (require 'js2-mode)
-  (js2-mode))
-
 ;; multiple-cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; edit each line in region
@@ -164,6 +159,7 @@
 
 ;; web-mode
 (defun my-web-mode-hook ()
+  (web-plugins)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
@@ -202,15 +198,16 @@
                 ("\\.xml\\'" . web-mode)
                 ("\\.svg\\'" . web-mode)
                 ("\\.php\\'" . web-mode)
-                ("\\.js\\'" . enable-js2-mode)
+                ("\\.js\\'" . (lambda ()
+                                (require 'js2-mode)
+                                (js2-mode)))
                 ("\\.py\\'" . python-mode))
               auto-mode-alist))
 
-(add-hook 'css-mode-hook 'enable-emmet-mode)
-(add-hook 'html-mode-hook 'enable-emmet-mode)
-(add-hook 'js2-mode-hook (lambda ()
-                           (hs-minor-mode t)
-                           (enable-js2-mode)))
-(add-hook 'web-mode-hook (lambda ()
-                           (hs-minor-mode t)
-                           (enable-emmet-mode)))
+;; web plugins
+(defun web-plugins ()
+  (hs-minor-mode t)
+  (enable-emmet-mode))
+(add-hook 'css-mode-hook 'web-plugins)
+(add-hook 'html-mode-hook 'web-plugins)
+(add-hook 'js2-mode-hook 'web-plugins)
