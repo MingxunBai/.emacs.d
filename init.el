@@ -69,15 +69,15 @@
               tab-width 4) ; 设置默认缩进为 4
 
 ;; 启动后最大化
+(defun my-max-window()
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
 (if (eq system-type 'windows-nt)
     (run-with-idle-timer 0 nil 'w32-send-sys-command 61488)
   (if (eq system-type 'gnu/linux)
-      ((defun my-max-window()
-         (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                                '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-         (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                                '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-       (run-with-idle-timer 0 nil 'my-max-window))))
+      (run-with-idle-timer 0 nil 'my-max-window)))
 
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
