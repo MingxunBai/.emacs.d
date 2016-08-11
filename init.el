@@ -125,8 +125,6 @@
 (setq ac-use-menu-map t) ; set hot key for menu map
 (define-key ac-mode-map "\M-;" 'auto-complete)
 (define-key ac-completing-map "\M-;" 'ac-stop)
-(define-key ac-menu-map "\C-n" 'ac-next)
-(define-key ac-menu-map "\C-p" 'ac-previous)
 
 ;; emmet-mode
 (defun enable-emmet-mode ()
