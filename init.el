@@ -40,8 +40,9 @@
 
 (setq scroll-margin 3 scroll-conservatively 10000) ; 靠近屏幕边沿3行时就开始滚动
 
-(set-scroll-bar-mode nil) ; 隐藏滚动条
+(scroll-bar-mode -1) ; 隐藏滚动条
 (tool-bar-mode -1) ; 隐藏工具栏
+(menu-bar-mode -1) ; 隐藏菜单栏
 
 (setq display-time-24hr-format t) ; 24小时制
 (display-time) ; 启用时间显示
