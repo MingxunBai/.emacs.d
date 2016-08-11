@@ -69,18 +69,8 @@
               tab-width 4) ; 设置默认缩进为 4
 
 ;; 启动后最大化
-(if (eq system-type 'windows-nt)
-    (run-with-idle-timer 0 nil 'w32-send-sys-command 61488))
-(defun my-max-window()
-  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                         '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
-  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                         '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
-(if (eq system-type 'gnu/linux)
-    (run-with-idle-timer 0 nil 'my-max-window))
-(if (eq system-type 'darwin)
-    (setq default-frame-alist
-          (append '((top . 0)(left . 0)(width . 190)(height . 46)) default-frame-alist)))
+(custom-set-variables
+  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
