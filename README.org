@@ -18,7 +18,7 @@
     - 编辑代码块，快捷键 C-c s e
 
 ** winner-mode
-    - 恢复窗口改变，快捷键 C-x 4 u
+    - 撤销窗口改变，快捷键 C-x 4 u
     - 恢复窗口改变，快捷键 C-x 4 r
 
 * 安装的插件
@@ -28,15 +28,16 @@
 
 ** emmet-mode
     - css-mode, html-mode, web-mode 挂载后自动挂载
+    - C-j 触发
 
 ** highlight-parentheses-mode
-    - 光标外括号分层级高亮
+    - 光标所在括号分层级高亮
 
 ** js2-mode
-    - JavaScript-IDE-mode，我就问你怕不怕！
+    - JavaScript-IDE-mode
 
 ** multiple-cursors
-    - 多点编辑，快捷键 Alt ** 左键
+    - 多点编辑，快捷键 Alt + 左键
     - C-S-c C-S-c 为选定区块的每一行开启多点编辑
 
 ** project-explorer
@@ -44,7 +45,7 @@
 
 ** web-mode
     - 支持 web 相关所有模式
-    - 缩进均改为 2 个空格
+    - HTML 缩进改为 2 个空格
 
 ** windows-numbering
     - 多窗口，左下角显示窗口编号，M+n 切换到第 n 个窗口
