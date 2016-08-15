@@ -123,8 +123,8 @@
 (add-hook 'text-mode-hook 'auto-complete-mode)
 (setq ac-auto-start nil)
 (setq ac-use-menu-map t) ; set hot key for menu map
-(define-key ac-mode-map "\M-;" 'auto-complete)
-(define-key ac-completing-map "\M-;" 'ac-stop)
+(define-key ac-mode-map "\M-/" 'auto-complete)
+(define-key ac-completing-map "\M-/" 'ac-stop)
 
 ;; emmet-mode
 (defun enable-emmet-mode ()
