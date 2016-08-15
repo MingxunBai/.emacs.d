@@ -153,8 +153,8 @@
 (defun my-web-mode-hook ()
   (web-plugins)
   (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t)) ; 高亮所在标签元素
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
