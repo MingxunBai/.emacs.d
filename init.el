@@ -67,11 +67,28 @@
 
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 (setq-default indent-tabs-mode  nil ; 设置缩进为空格
-              tab-width 4) ; 设置默认缩进为 4
+              default-tab-width 4 ; 设置默认缩进为 4
+              c-basic-offset 4) ; 修改 C 语言缩进为 4
+
+(defun un-indent-by-removing-4-spaces () ; 回退缩进
+  (interactive)
+  (if (use-region-p)      
+      (let ((mark (mark)))
+        (save-excursion
+          (save-match-data
+            (indent-rigidly (region-beginning)
+                            (region-end)
+                            -4)
+            (push-mark mark t t)
+            (setq deactivate-mark nil))))
+    (indent-rigidly (line-beginning-position)
+                    (line-end-position)
+                    -4)))
+(global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
 
 ;; 启动后最大化
 (custom-set-variables
-  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
