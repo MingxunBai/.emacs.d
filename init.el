@@ -134,6 +134,11 @@
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
+;; ac-js2
+(defun enable-ac-js2-mode ()
+  (require 'ac-js2)
+  (ac-js2-mode))
+
 ;; auto-complete
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
@@ -216,6 +221,7 @@
 ;; web plugins
 (defun web-plugins ()
   (hs-minor-mode t)
+  (enable-ac-js2-mode)
   (enable-emmet-mode))
 (add-hook 'css-mode-hook 'web-plugins)
 (add-hook 'html-mode-hook 'web-plugins)
