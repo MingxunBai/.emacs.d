@@ -99,8 +99,6 @@
 
 ;; org-mode
 (add-hook 'org-mode-hook (lambda ()
-                           (auto-complete-mode)
-
                            (setq org-startup-indented t) ; 自动缩进
 
                            (require 'htmlize)
