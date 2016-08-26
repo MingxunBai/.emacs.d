@@ -25,6 +25,8 @@
 
 (setq frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b")))) ; 标题显示完整路径
 
+;; (set-default-font "Source Code Pro-12") ; 设置字体
+
 (global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
 (setq font-lock-maximum-decoration t ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
