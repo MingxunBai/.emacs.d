@@ -141,6 +141,8 @@
 
 ;; auto-complete
 (require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
+(ac-config-default)
 (global-auto-complete-mode t)
 (add-hook 'text-mode-hook 'auto-complete-mode)
 (setq ac-auto-start nil)
