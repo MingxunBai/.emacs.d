@@ -161,6 +161,11 @@
     (highlight-parentheses-mode t))) 
 (global-highlight-parentheses-mode)
 
+;; js2-mode
+(defun enable-js2-mode ()
+  (require 'js2-mode)
+  (js2-mode))
+
 ;; multiple-cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; edit each line in region
@@ -172,6 +177,9 @@
 (global-set-key [f1] 'project-explorer-toggle)
 
 ;; web-mode
+(defun enable-web-mode ()
+  (require 'web-mode)
+  (web-mode))
 (defun my-web-mode-hook ()
   (web-plugins)
   (setq web-mode-markup-indent-offset 2)
@@ -207,21 +215,22 @@
 ;; 自加载对应模式
 (setq auto-mode-alist
       (append '(("\\.html?\\'" . (lambda ()
-                                   (require 'web-mode)
-                                   (web-mode)))
-                ("\\.xml\\'" . web-mode)
-                ("\\.svg\\'" . web-mode)
-                ("\\.php\\'" . web-mode)
+                                   (enable-web-mode)))
+                ("\\.xml\\'" . (lambda ()
+                                 (enable-web-mode)))
+                ("\\.svg\\'" . (lambda ()
+                                 (enable-web-mode)))
+                ("\\.php\\'" . (lambda ()
+                                 (enable-web-mode)))
                 ("\\.js\\'" . (lambda ()
-                                (require 'js2-mode)
-                                (js2-mode)))
+                                (enable-js2-mode)
+                                (enable-ac-js2-mode)))
                 ("\\.py\\'" . python-mode))
               auto-mode-alist))
 
 ;; web plugins
 (defun web-plugins ()
   (hs-minor-mode t)
-  (enable-ac-js2-mode)
   (enable-emmet-mode))
 (add-hook 'css-mode-hook 'web-plugins)
 (add-hook 'html-mode-hook 'web-plugins)
