@@ -150,6 +150,10 @@
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-completing-map "\M-/" 'ac-stop)
 
+;; autopair
+(require 'autopair)
+(autopair-global-mode)
+
 ;; emmet-mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
