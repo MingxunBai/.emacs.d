@@ -92,6 +92,9 @@
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+;; 自动补齐括号
+(electric-pair-mode t)
+
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
 
@@ -149,10 +152,6 @@
 (setq ac-use-menu-map t) ; set hot key for menu map
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-completing-map "\M-/" 'ac-stop)
-
-;; autopair
-(require 'autopair)
-(autopair-global-mode)
 
 ;; emmet-mode
 (defun enable-emmet-mode ()
