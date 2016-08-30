@@ -1,6 +1,6 @@
 ;; 设置个人信息
 (setq user-full-name "MingxunBai"
-      user-mail-address "MingxunBai@outlook.com")
+      user-mail-address "mingxunbai@outlook.com")
 
 ;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
