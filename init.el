@@ -88,12 +88,27 @@
                     -4)))
 (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
 
+;; 自动匹配括号
+(setq skeleton-pair-alist 
+      '((?\" _ "\"" >)
+        (?\' _ "\'" >)
+        (?\( _ ")" >)
+        (?\[ _ "]" >)
+        (?\{ _ "}" >)
+        (?\< _ ">" >)))
+
+(setq skeleton-pair t)
+
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+
 ;; 启动后最大化
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
-;; 自动补齐括号
-(electric-pair-mode t)
 
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
