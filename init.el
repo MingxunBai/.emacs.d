@@ -69,18 +69,7 @@
 
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 
-(defun end-of-line-and-newline ()
-  (interactive)
-  (progn
-    (end-of-line)
-    (newline-and-indent)))
-(global-set-key (kbd "M-n") 'end-of-line-and-newline) ; 向下新建一行
-
-(setq-default indent-tabs-mode  nil ; 设置缩进为空格
-              default-tab-width 4 ; 设置默认缩进为 4
-              c-basic-offset 4) ; 修改 C 语言缩进为 4
-
-(defun un-indent-by-removing-4-spaces () ; 回退缩进
+(defun un-indent-by-removing-4-spaces () ; 缩进回退
   (interactive)
   (if (use-region-p)      
       (let ((mark (mark)))
@@ -94,7 +83,26 @@
     (indent-rigidly (line-beginning-position)
                     (line-end-position)
                     -4)))
-(global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+(global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces) ; 绑定 S-tab 回退缩进
+
+(setq-default indent-tabs-mode  nil ; 设置缩进为空格
+              default-tab-width 4 ; 设置默认缩进为 4
+              c-basic-offset 4) ; 修改 C 语言缩进为 4
+
+(defun up-newline ()
+  (interactive)
+  (progn
+    (previous-line)
+    (end-of-line)
+    (newline-and-indent)))
+(global-set-key (kbd "M-p") 'up-newline) ; 向上新建一行
+
+(defun down-newline ()
+  (interactive)
+  (progn
+    (end-of-line)
+    (newline-and-indent)))
+(global-set-key (kbd "M-n") 'down-newline) ; 向下新建一行
 
 ;;; 自动匹配括号
 (setq skeleton-pair-alist 
