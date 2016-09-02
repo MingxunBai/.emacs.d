@@ -74,7 +74,7 @@
   (progn
     (end-of-line)
     (newline-and-indent)))
-(global-set-key (kbd "M-RET") 'end-of-line-and-newline) ; 向下新建一行
+(global-set-key (kbd "M-n") 'end-of-line-and-newline) ; 向下新建一行
 
 (setq-default indent-tabs-mode  nil ; 设置缩进为空格
               default-tab-width 4 ; 设置默认缩进为 4
