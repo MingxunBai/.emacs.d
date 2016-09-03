@@ -92,9 +92,9 @@
 (defun up-newline ()
   (interactive)
   (progn
-    (previous-line)
-    (end-of-line)
-    (newline-and-indent)))
+    (beginning-of-line)
+    (newline-and-indent)
+    (previous-line)))
 (global-set-key (kbd "M-p") 'up-newline) ; 向上新建一行
 
 (defun down-newline ()
