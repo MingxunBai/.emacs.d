@@ -189,6 +189,8 @@
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
   (emmet-mode))
+(global-set-key (kbd "C-M-p") 'emmet-prev-edit-point)
+(global-set-key (kbd "C-M-n") 'emmet-next-edit-point)
 
 ;;; highlight-parentheses-mode
 (require 'highlight-parentheses)
