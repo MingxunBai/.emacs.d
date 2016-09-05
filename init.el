@@ -94,7 +94,8 @@
   (progn
     (beginning-of-line)
     (newline-and-indent)
-    (previous-line)))
+    (previous-line)
+    (indent-relative)))
 (global-set-key (kbd "M-p") 'up-newline) ; 向上新建一行
 
 (defun down-newline ()
