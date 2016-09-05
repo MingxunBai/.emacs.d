@@ -95,7 +95,7 @@
     (beginning-of-line)
     (newline-and-indent)
     (previous-line)
-    (indent-relative)))
+    (indent-according-to-mode)))
 (global-set-key (kbd "M-p") 'up-newline) ; 向上新建一行
 
 (defun down-newline ()
