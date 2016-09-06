@@ -96,14 +96,14 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-(global-set-key (kbd "M-p") 'up-newline) ; 向上新建一行
+(global-set-key (kbd "C-c p") 'up-newline) ; 向上新建一行
 
 (defun down-newline ()
   (interactive)
   (progn
     (end-of-line)
     (newline-and-indent)))
-(global-set-key (kbd "M-n") 'down-newline) ; 向下新建一行
+(global-set-key (kbd "C-c n") 'down-newline) ; 向下新建一行
 
 ;;; 自动匹配括号
 (setq skeleton-pair-alist 

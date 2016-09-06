@@ -4659,8 +4659,8 @@ Assumes match data is available for `markdown-regex-italic'."
     ;; Movement
     (define-key map (kbd "M-{") 'markdown-backward-paragraph)
     (define-key map (kbd "M-}") 'markdown-forward-paragraph)
-    (define-key map (kbd "C-M-n") 'markdown-next-link)
-    (define-key map (kbd "C-M-p") 'markdown-previous-link)
+    (define-key map (kbd "M-n") 'markdown-next-link)
+    (define-key map (kbd "M-p") 'markdown-previous-link)
     ;; Alternative keys (in case of problems with the arrow keys)
     (define-key map (kbd "C-c C-x u") 'markdown-move-up)
     (define-key map (kbd "C-c C-x d") 'markdown-move-down)
