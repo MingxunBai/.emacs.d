@@ -120,7 +120,7 @@
 (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
 ;; (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 
 ;;; 启动后最大化
@@ -204,6 +204,9 @@
 (defun enable-js2-mode ()
   (require 'js2-mode)
   (js2-mode))
+
+;;; markdown-mode
+(require 'markdown-mode)
 
 ;;; multiple-cursors
 (require 'multiple-cursors)
