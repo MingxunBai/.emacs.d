@@ -231,6 +231,9 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+;;; yaml-mode
+(require 'yaml-mode)
+
 ;;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
