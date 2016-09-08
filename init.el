@@ -69,7 +69,10 @@
 
 (global-set-key (kbd "RET") 'newline-and-indent) ; 回车时缩进
 
-(defun un-indent-by-removing-4-spaces () ; 缩进回退
+(global-set-key (kbd "C-c k") 'kill-buffer-and-window) ; C-c k 删除 buffer 和 window
+
+;; 缩进回退
+(defun un-indent-by-removing-4-spaces ()
   (interactive)
   (if (use-region-p)      
       (let ((mark (mark)))
@@ -89,6 +92,7 @@
               default-tab-width 4 ; 设置默认缩进为 4
               c-basic-offset 4) ; 修改 C 语言缩进为 4
 
+;; 向上新建一行
 (defun up-newline ()
   (interactive)
   (progn
@@ -96,16 +100,17 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-(global-set-key (kbd "C-c p") 'up-newline) ; 向上新建一行
+(global-set-key (kbd "C-c p") 'up-newline)
 
+;; 向下新建一行
 (defun down-newline ()
   (interactive)
   (progn
     (end-of-line)
     (newline-and-indent)))
-(global-set-key (kbd "C-c n") 'down-newline) ; 向下新建一行
+(global-set-key (kbd "C-c n") 'down-newline)
 
-;;; 自动匹配括号
+;; 自动匹配括号
 (setq skeleton-pair-alist 
       '((?\" _ "\"" >)
         (?\' _ "\'" >)
@@ -119,13 +124,19 @@
 (global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
-;; (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
-;; (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+                                        ; (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
 
-;;; 启动后最大化
+;; 启动后最大化
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+;;; emacs-lisp-mode
+(defun unable-quotation-hook ()
+  (setq skeleton-pair-alist 
+        '((?\' _ "" >))))
+(add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
 
 ;;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
@@ -136,10 +147,15 @@
 
 ;;; org-mode
 (add-hook 'org-mode-hook (lambda ()
+                           ;; org mode 中禁止自动匹配 ]
+                           (setq skeleton-pair-alist 
+                                 '((?\[ "" >)))
+                                   
                            (setq org-startup-indented t) ; 自动缩进
 
+                           ;; 代码高亮
                            (require 'htmlize)
-                           (setq org-src-fontify-natively t) ; 代码高亮
+                           (setq org-src-fontify-natively t)
 
                            (defun org-insert-src-block (src-code-type)
                              (interactive
@@ -188,9 +204,9 @@
 ;;; emmet-mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
-  (emmet-mode))
-(global-set-key (kbd "C-M-p") 'emmet-prev-edit-point)
-(global-set-key (kbd "C-M-n") 'emmet-next-edit-point)
+  (emmet-mode)
+  (global-set-key (kbd "C-M-p") 'emmet-prev-edit-point)
+  (global-set-key (kbd "C-M-n") 'emmet-next-edit-point))
 
 ;;; highlight-parentheses-mode
 (require 'highlight-parentheses)
@@ -206,9 +222,11 @@
   (js2-mode))
 
 ;;; markdown-mode
-(require 'markdown-mode)
-(if (eq system-type 'windows-nt)
-    (custom-set-variables '(markdown-command "markdown.pl"))) ; set markdown-command name
+(defun enable-markdown-mode ()
+  (require 'markdown-mode)
+  (markdown-mode)
+  (if (eq system-type 'windows-nt)
+      (custom-set-variables '(markdown-command "markdown.pl")))) ; set markdown-command name
 
 ;;; multiple-cursors
 (require 'multiple-cursors)
@@ -272,6 +290,8 @@
                 ("\\.js\\'" . (lambda ()
                                 (enable-js2-mode)
                                 (enable-ac-js2-mode)))
+                ("\\.md\\'" . (lambda ()
+                                (enable-markdown-mode)))
                 ("\\.py\\'" . python-mode))
               auto-mode-alist))
 
