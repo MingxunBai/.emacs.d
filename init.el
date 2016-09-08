@@ -207,6 +207,7 @@
 
 ;;; markdown-mode
 (require 'markdown-mode)
+(custom-set-variables '(markdown-command "markdown.pl")) ; set markdown-command name
 
 ;;; multiple-cursors
 (require 'multiple-cursors)
