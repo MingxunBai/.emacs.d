@@ -132,7 +132,7 @@
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-;;; emacs-lisp-mode
+;;; emacs-lisp-mode 下禁止自动匹配单引号
 (defun unable-quotation-hook ()
   (setq skeleton-pair-alist 
         '((?\' _ "" >))))
