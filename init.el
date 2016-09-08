@@ -126,13 +126,13 @@
 (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-                                        ; (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
 
 ;; 启动后最大化
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-;;; emacs-lisp-mode 下禁止自动匹配单引号
+;;; emacs-lisp-mode 下禁止自动匹配 '
 (defun unable-quotation-hook ()
   (setq skeleton-pair-alist 
         '((?\' _ "" >))))
@@ -147,7 +147,7 @@
 
 ;;; org-mode
 (add-hook 'org-mode-hook (lambda ()
-                           ;; org mode 中禁止自动匹配 ]
+                           ;; org mode 下禁止自动补齐 ]
                            (setq skeleton-pair-alist 
                                  '((?\[ "" >)))
                                    
@@ -297,6 +297,9 @@
 
 ;;; web plugins
 (defun web-plugins ()
+  ;; web mode 下禁止自动补齐 >
+  (setq skeleton-pair-alist 
+        '((?\< "" >)))
   (hs-minor-mode t)
   (enable-emmet-mode))
 (add-hook 'css-mode-hook 'web-plugins)
