@@ -49,7 +49,7 @@
 ** web-mode
     - 支持 web 相关所有模式
     - HTML 缩进改为 2 个空格
-    - 将 html, css, php 模式均重定向至 web-mode
+    - 将 html, css, php 模式重定向至 web-mode
 
 ** windows-numbering
     - 多窗口, 左下角显示窗口编号, M+n 切换到第 n 个窗口
