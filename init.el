@@ -207,7 +207,8 @@
 
 ;;; markdown-mode
 (require 'markdown-mode)
-(custom-set-variables '(markdown-command "markdown.pl")) ; set markdown-command name
+(if (eq system-type 'windows-nt)
+    (custom-set-variables '(markdown-command "markdown.pl"))) ; set markdown-command name
 
 ;;; multiple-cursors
 (require 'multiple-cursors)
