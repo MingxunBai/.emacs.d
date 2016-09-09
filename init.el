@@ -218,7 +218,9 @@
 ;; ac-js2
 (defun ac-js2-mode-hook ()
   (require 'ac-js2)
-  (ac-js2-mode))
+  (ac-js2-mode)
+
+  (my-web-dev-hook))
 
 (add-hook 'js2-mode-hook 'ac-js2-mode-hook)
 
@@ -236,18 +238,12 @@
 (define-key ac-completing-map "\M-/" 'ac-stop)
 
 ;; css-mode
-(defun my-css-mode-hook ()
-  (hs-minor-mode t)
-  (enable-emmet-mode))
-
-(add-hook 'css-mode-hook 'my-css-mode-hook)
+(add-hook 'css-mode-hook 'my-web-dev-hook)
 
 ;; emmet-mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
   (emmet-mode)
-  (define-key emmet-mode-keymap (kbd "<C-M-left>") nil)
-  (define-key emmet-mode-keymap (kbd "<C-M-right>") nil)
   (define-key emmet-mode-keymap (kbd "C-M-p") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-n") 'emmet-next-edit-point))
 
@@ -286,9 +282,6 @@
 (defun enable-web-mode ()
   (require 'web-mode)
   (web-mode)
-  
-  (hs-minor-mode t)
-  (enable-emmet-mode)
 
   (setq skeleton-pair-alist
         '((?\< "" >)))                  ; 禁止 < 自动补齐
@@ -300,6 +293,11 @@
 
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
+(add-hook 'web-mode-hook 'my-web-dev-hook)
+
+(defun my-web-dev-hook ()
+  (hs-minor-mode t)
+  (enable-emmet-mode))
 
 ;; windows-numbering
 (require 'window-numbering)
