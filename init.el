@@ -217,6 +217,13 @@
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-completing-map "\M-/" 'ac-stop)
 
+;; css-mode
+(defun my-css-mode-hook ()
+  (hs-minor-mode t)
+  (enable-emmet-mode))
+
+(add-hook 'css-mode-hook 'my-css-mode-hook)
+
 ;; emmet-mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
@@ -265,7 +272,6 @@
   (setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t))
 
-(add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 
