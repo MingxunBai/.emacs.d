@@ -1,14 +1,21 @@
-;;; 设置个人信息
+;;-------------------------------------------------
+;; basic setting
+;;-------------------------------------------------
+;; 设置个人信息
 (setq user-full-name "MingxunBai"
       user-mail-address "mingxunbai@outlook.com")
 
-;;; 路径配置
+;; 检测系统
+(defconst *Windows* (eq system-type 'windows-nt))
+
+;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
-(if (eq system-type 'windows-nt)
-    (setq default-directory "c:\\xampp\\htdocs"))
+(when *Windows* (setq default-directory "c:\\xampp\\htdocs"))
 
-;;; 编码环境
+;;-------------------------------------------------
+;; 编码环境
+;;-------------------------------------------------
 (setq current-language-environment "UTF-8")
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -17,7 +24,9 @@
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
-;;; 显示
+;;-------------------------------------------------
+;; 显示
+;;-------------------------------------------------
 (setq inhibit-startup-message t) ; 关闭启动动画
 
 (setq split-height-threshold nil ; 垂直分屏
@@ -25,14 +34,18 @@
 
 (setq frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b")))) ; 标题显示完整路径
 
-;; (set-default-font "Source Code Pro-12") ; 设置字体
+;; 设置字体
+;; (set-default-font "Source Code Pro-12")
+(when *Windows* (set-fontset-font t 'han (font-spec :family "Minglan_Code"))) ; 修改 windows 下的中文字体为 "明兰黑"
 
-(global-font-lock-mode t) ; 语法高亮(除了 shell-mode 和 text-mode)
+;; 语法高亮
+(global-font-lock-mode t)
 (setq font-lock-maximum-decoration t ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 
-(global-linum-mode t) ; 显示行号
+;; 显示行号
+(global-linum-mode t)
 (setq linum-format "%4d "
       column-number-mode t
       line-number-mode t)
@@ -49,7 +62,9 @@
 (setq display-time-24hr-format t) ; 24小时制
 (display-time) ; 启用时间显示
 
-;;; 操作
+;;-------------------------------------------------
+;; 操作
+;;-------------------------------------------------
 (setq default-major-mode 'text-mode) ; 设置默认主模式为 text-mode
 
 (setq kill-ring-max 500) ; 设置历史记录数量
@@ -129,28 +144,27 @@
 (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
 
 ;; 启动后最大化
-(custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-;;; emacs-lisp-mode 下禁止自动匹配 '
+;;-------------------------------------------------
+;; internal mode
+;;-------------------------------------------------
+;; emacs-lisp-mode 下禁止自动匹配 '
 (defun unable-quotation-hook ()
-  (setq skeleton-pair-alist 
-        '((?\' _ "" >))))
+  (setq skeleton-pair-alist '((?\' _ "" >))))
 (add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
 
-;;; hs-mode
+;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
 
-;;; ido-mode
+;; ido-mode
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;;; org-mode
-(add-hook 'org-mode-hook (lambda ()
-                           ;; org mode 下禁止自动补齐 ]
-                           (setq skeleton-pair-alist 
-                                 '((?\[ "" >)))
-                                   
+;; org-mode
+(add-hook 'org-mode-hook (lambda ()                           
+                           (setq skeleton-pair-alist '((?\[ "" >))) ; org mode 下禁止自动补齐 ]
+                           
                            (setq org-startup-indented t) ; 自动缩进
 
                            ;; 代码高亮
@@ -179,18 +193,20 @@
                            (local-set-key (kbd "C-c s i") ; keybinding for inserting code blocks
                                           'org-insert-src-block)))
 
-;;; winner-mode
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
+;; winner-mode
+(when (fboundp 'winner-mode) (winner-mode 1))
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
-;;; ac-js2
+;;-------------------------------------------------
+;; extension
+;;-------------------------------------------------
+;; ac-js2
 (defun enable-ac-js2-mode ()
   (require 'ac-js2)
   (ac-js2-mode))
 
-;;; auto-complete
+;; auto-complete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 (ac-config-default)
@@ -201,63 +217,66 @@
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-completing-map "\M-/" 'ac-stop)
 
-;;; emmet-mode
+;; emmet-mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
   (emmet-mode)
   (global-set-key (kbd "C-M-p") 'emmet-prev-edit-point)
   (global-set-key (kbd "C-M-n") 'emmet-next-edit-point))
 
-;;; highlight-parentheses-mode
+;; highlight-parentheses-mode
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
   (lambda ()
-    (highlight-parentheses-mode t))) 
+    (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode)
 
-;;; js2-mode
+;; js2-mode
 (defun enable-js2-mode ()
   (require 'js2-mode)
   (js2-mode))
 
-;;; markdown-mode
+;; markdown-mode
 (defun enable-markdown-mode ()
   (require 'markdown-mode)
   (markdown-mode)
-  (if (eq system-type 'windows-nt)
-      (custom-set-variables '(markdown-command "markdown.pl")))) ; set markdown-command name
+  (when *Windows* (custom-set-variables '(markdown-command "markdown.pl")))) ; set markdown-command name
 
-;;; multiple-cursors
+;; multiple-cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) ; edit each line in region
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click) ; bind mouse event
 
-;;; project-explorer
+;; project-explorer
 (require 'project-explorer)
 (global-set-key [f1] 'project-explorer-toggle)
 
-;;; web-mode
+;; web-mode
 (defun enable-web-mode ()
   (require 'web-mode)
-  (web-mode))
-(defun my-web-mode-hook ()
-  (web-plugins)
+  (web-mode)
+  (hs-minor-mode t)
+  (enable-emmet-mode)
+  (setq skeleton-pair-alist '((?\< "" >))) ; web mode 下禁止自动补齐 >
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
-  (setq web-mode-enable-current-element-highlight t)) ; 高亮所在标签元素
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+  (setq web-mode-enable-current-element-highlight t))
 
-;;; windows-numbering
+(add-hook 'css-mode-hook 'enable-web-mode)
+(add-hook 'html-mode-hook 'enable-web-mode)
+(add-hook 'nxml-mode-hook 'enable-web-mode)
+
+;; windows-numbering
 (require 'window-numbering)
 (window-numbering-mode 1)
 
-;;; yaml-mode
+;; yaml-mode
 (require 'yaml-mode)
 
-;;; yasnippet
+;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -277,31 +296,16 @@
      )))
 (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
-;;; 自加载对应模式
+;;-------------------------------------------------
+;; 指定主模式
+;;-------------------------------------------------
 (setq auto-mode-alist
-      (append '(("\\.html?\\'" . (lambda ()
-                                   (enable-web-mode)))
-                ("\\.xml\\'" . (lambda ()
-                                 (enable-web-mode)))
-                ("\\.svg\\'" . (lambda ()
-                                 (enable-web-mode)))
-                ("\\.php\\'" . (lambda ()
-                                 (enable-web-mode)))
-                ("\\.js\\'" . (lambda ()
+      (append '(("\\.js\\'" . (lambda ()
                                 (enable-js2-mode)
                                 (enable-ac-js2-mode)))
                 ("\\.md\\'" . (lambda ()
                                 (enable-markdown-mode)))
+                ("\\.php\\'" . (lambda ()
+                                 (enable-web-mode)))
                 ("\\.py\\'" . python-mode))
               auto-mode-alist))
-
-;;; web plugins
-(defun web-plugins ()
-  ;; web mode 下禁止自动补齐 >
-  (setq skeleton-pair-alist 
-        '((?\< "" >)))
-  (hs-minor-mode t)
-  (enable-emmet-mode))
-(add-hook 'css-mode-hook 'web-plugins)
-(add-hook 'html-mode-hook 'web-plugins)
-(add-hook 'js2-mode-hook 'web-plugins)
