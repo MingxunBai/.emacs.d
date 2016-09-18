@@ -89,31 +89,42 @@
       auto-save-default nil)            ; 不生成临时文件
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-c k") 'kill-buffer-and-window)
+(global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
 
 ;; 缩进回退
-(defun un-indent-by-removing-4-spaces ()
+(defun un-indent-by-removing-spaces (n)
   (interactive)
-  (if (use-region-p)      
+  (if (use-region-p)
       (let ((mark (mark)))
         (save-excursion
           (save-match-data
             (indent-rigidly
              (region-beginning)
              (region-end)
-             -4)
+             n)
             (push-mark mark t t)
             (setq deactivate-mark nil))))
     (indent-rigidly
      (line-beginning-position)
      (line-end-position)
-     -4)))
-(global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+     n)))
+(defun backtab ()
+  (interactive)
+  (un-indent-by-removing-spaces -4))    ; 设置回退 4 个空格
+(global-set-key (kbd "<backtab>") 'backtab)
 
 ;; 设置缩进
-(setq-default indent-tabs-mode  nil     ; 设置缩进为空格
+(setq-default indent-tabs-mode nil      ; 设置缩进为空格
               default-tab-width 4       ; 设置默认缩进为 4
               c-basic-offset 4)         ; 修改 C 语言缩进为 4
+
+;; 删除空白字符至上一行末尾
+(defun delete-whitespace-to-upline ()
+  (interactive)
+  (progn
+    (delete-indentation)
+    (indent-according-to-mode)))
+(global-set-key (kbd "C-c k") 'delete-whitespace-to-upline)
 
 ;; 向上新建一行
 (defun up-newline ()
@@ -134,7 +145,7 @@
 (global-set-key (kbd "M-o") 'down-newline)
 
 ;; 自动匹配括号
-(setq skeleton-pair-alist 
+(setq skeleton-pair-alist
       '((?\" _ "\"" >)
         (?\' _ "\'" >)
         (?\( _ ")" >)
@@ -153,6 +164,9 @@
 
 ;; 启动后最大化
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+;; 保存前删除多余空格
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;-------------------------------------------------
 ;; internal mode
@@ -173,10 +187,10 @@
 (setq ido-save-directory-list-file nil)
 
 ;; org-mode
-(defun my-org-mode-hook ()                     
+(defun my-org-mode-hook ()
   (setq skeleton-pair-alist
         '((?\[ "" >)))                  ; 禁止 [ 自动补齐
-  
+
   (setq org-startup-indented t)         ; 自动缩进
 
   ;; 代码高亮
@@ -285,7 +299,7 @@
 
   (setq skeleton-pair-alist
         '((?\< "" >)))                  ; 禁止 < 自动补齐
-  
+
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
