@@ -174,8 +174,9 @@
 
 ;; emacs-lisp-mode
 (defun unable-quotation-hook ()
+  ;; 禁止 ' 自动补齐
   (setq skeleton-pair-alist
-        '((?\' _ "" >))))               ; 禁止 ' 自动补齐
+        '((?\' "" >))))
 
 (add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
 
@@ -188,10 +189,12 @@
 
 ;; org-mode
 (defun my-org-mode-hook ()
+  ;; 禁止 [ 自动补齐
   (setq skeleton-pair-alist
-        '((?\[ "" >)))                  ; 禁止 [ 自动补齐
+        '((?\[ "" >)))
 
-  (setq org-startup-indented t)         ; 自动缩进
+  ;; 自动缩进
+  (setq org-startup-indented t)
 
   ;; 代码高亮
   (require 'htmlize)
@@ -296,22 +299,21 @@
 (defun enable-web-mode ()
   (require 'web-mode)
   (web-mode)
-
-  (setq skeleton-pair-alist
-        '((?\< "" >)))                  ; 禁止 < 自动补齐
-
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t))
 
+(defun my-web-dev-hook ()
+  ;; 禁止 < 自动补齐
+  (setq skeleton-pair-alist
+        '((?\< "" >)))
+  (hs-minor-mode t)
+  (enable-emmet-mode))
+
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 (add-hook 'web-mode-hook 'my-web-dev-hook)
-
-(defun my-web-dev-hook ()
-  (hs-minor-mode t)
-  (enable-emmet-mode))
 
 ;; windows-numbering
 (require 'window-numbering)
