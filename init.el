@@ -134,7 +134,7 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-(global-set-key (kbd "M-O") 'up-newline)
+(global-set-key (kbd "C-o") 'up-newline)
 
 ;; 向下新建一行
 (defun down-newline ()
@@ -309,7 +309,9 @@
   (setq skeleton-pair-alist
         '((?\< "" >)))
   (hs-minor-mode t)
-  (enable-emmet-mode))
+  (enable-emmet-mode)
+  ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
+  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
