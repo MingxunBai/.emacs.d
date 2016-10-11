@@ -15,6 +15,24 @@
 (when *Windows*
   (setq default-directory "C:/Programs/xampp/htdocs"))
 
+;; 配置五笔输入法
+(add-to-list 'load-path (expand-file-name "plugins/chinese-wbim" user-emacs-directory))
+(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+
+(setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
+
+(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+
+;; 用 ; 暂时输入英文
+(require 'chinese-wbim-extra)
+(global-set-key ";" 'chinese-wbim-insert-ascii)
+
+;; 设置默认输入法为五笔输入法英文状态, C-\ 切换
+(progn
+  (interactive)
+  (set-input-method 'chinese-wbim)
+  (toggle-input-method))
+
 ;;-------------------------------------------------
 ;; 编码环境
 ;;-------------------------------------------------
@@ -30,6 +48,8 @@
 ;;-------------------------------------------------
 ;; 显示
 ;;-------------------------------------------------
+
+(load-theme 'misterioso t)              ; 设置主题
 
 (setq inhibit-startup-message t)        ; 关闭启动动画
 
@@ -290,6 +310,10 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
+
+;; powerline
+(require 'powerline)
+(powerline-default-theme)
 
 ;; project-explorer
 (require 'project-explorer)
