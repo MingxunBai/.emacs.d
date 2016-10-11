@@ -13,7 +13,7 @@
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
 (when *Windows*
-  (setq default-directory "c:\\xampp\\htdocs"))
+  (setq default-directory "C:/Programs/xampp/htdocs"))
 
 ;;-------------------------------------------------
 ;; 编码环境
