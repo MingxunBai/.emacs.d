@@ -16,7 +16,7 @@
   (setq default-directory "C:/Programs/xampp/htdocs"))
 
 ;; 配置五笔输入法
-(add-to-list 'load-path (expand-file-name "plugins/chinese-wbim" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
 (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 
 (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
