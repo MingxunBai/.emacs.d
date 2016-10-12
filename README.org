@@ -28,8 +28,8 @@
     - M-n M-p 上下移动候选项
 
 ** emmet-mode
-    - css-mode，html-mode，web-mode 挂载后自动挂载
-    - C-j 触发，修改快捷键 C-M-p 移至上一个编辑点，C-M-n 移至下一个编辑点
+    - css-mode，html-mode，web-mode 加载后自动加载
+    - C-e 触发，修改快捷键 C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
 
 ** highlight-parentheses-mode
     - 光标所在括号分层级高亮
