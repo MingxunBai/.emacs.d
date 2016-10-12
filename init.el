@@ -281,7 +281,6 @@
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
   (emmet-mode)
-  (define-key emmet-mode-keymap (kbd "C-e") 'emmet-expand-line)
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
