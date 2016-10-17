@@ -13,7 +13,7 @@
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
 (when *Windows*
-  (setq default-directory "C:/Programs/xampp/htdocs"))
+  (setq default-directory "D:/Programs/xampp/htdocs"))
 
 ;; 配置五笔输入法
 (add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
