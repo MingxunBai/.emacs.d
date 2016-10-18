@@ -13,7 +13,7 @@
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
 (when *Windows*
-  (setq default-directory "D:/Programs/xampp/htdocs"))
+  (setq default-directory "D:/Tools/xampp/htdocs"))
 
 ;; 配置五笔输入法
 (add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
@@ -256,7 +256,6 @@
 (defun ac-js2-mode-hook ()
   (require 'ac-js2)
   (ac-js2-mode)
-
   (my-web-dev-hook))
 
 (add-hook 'js2-mode-hook 'ac-js2-mode-hook)
@@ -295,11 +294,13 @@
 
 ;; js2-mode
 (defun enable-js2-mode ()
+  (interactive)
   (require 'js2-mode)
   (js2-mode))
 
 ;; markdown-mode
 (defun enable-markdown-mode ()
+  (interactive)
   (require 'markdown-mode)
   (markdown-mode)
   (when *Windows*                       ; set markdown-command for windows
@@ -321,6 +322,7 @@
 
 ;; web-mode
 (defun enable-web-mode ()
+  (interactive)
   (require 'web-mode)
   (web-mode)
   (setq web-mode-markup-indent-offset 2)
