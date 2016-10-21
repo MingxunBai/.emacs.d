@@ -434,10 +434,10 @@ If there is no common part, this will be nil.")
 
 (defvar ac-completing-map
   (let ((map (make-sparse-keymap)))
-    ;; (define-key map "\t" 'ac-expand)
-    ;; (define-key map [tab] 'ac-expand)
-    ;; (define-key map "\r" 'ac-complete)
-    ;; (define-key map (kbd "M-TAB") 'auto-complete)
+    (define-key map "\t" 'ac-expand)
+    (define-key map [tab] 'ac-expand)
+    (define-key map "\r" 'ac-complete)
+    (define-key map (kbd "M-TAB") 'auto-complete)
 
     (define-key map "\M-n" 'ac-next)
     (define-key map "\M-p" 'ac-previous)

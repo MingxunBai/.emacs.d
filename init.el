@@ -16,22 +16,23 @@
   (setq default-directory "D:/Tools/xampp/htdocs"))
 
 ;; 配置五笔输入法
-(add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
-(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+(defun enable-wbpy-hook ()
+  (add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
+  (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 
-(setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
+  (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
 
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+  (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
 
-;; 用 ; 暂时输入英文
-(require 'chinese-wbim-extra)
-(global-set-key ";" 'chinese-wbim-insert-ascii)
+  ;; 用 ; 暂时输入英文
+  (require 'chinese-wbim-extra)
+  (global-set-key ";" 'chinese-wbim-insert-ascii)
 
-;; 设置默认输入法为五笔输入法英文状态, C-\ 切换
-(progn
-  (interactive)
-  (set-input-method 'chinese-wbim)
-  (toggle-input-method))
+  ;; 设置默认输入法为五笔输入法英文状态, C-\ 切换
+  (progn
+    (interactive)
+    (set-input-method 'chinese-wbim)
+    (toggle-input-method)))
 
 ;;-------------------------------------------------
 ;; 编码环境
@@ -91,6 +92,7 @@
 ;;-------------------------------------------------
 ;; 操作
 ;;-------------------------------------------------
+
 (setq default-major-mode 'text-mode)    ; 设置默认主模式为 text-mode
 
 (setq kill-ring-max 500)                ; 设置历史记录数量
@@ -165,28 +167,26 @@
 (global-set-key (kbd "M-o") 'down-newline)
 
 ;; 自动匹配括号
-(setq skeleton-pair-alist
-      '((?\" _ "\"" >)
-        (?\' _ "\'" >)
-        (?\( _ ")" >)
-        (?\[ _ "]" >)
-        (?\{ _ "}" >)
-        (?\< _ ">" >)))
+(defun auto-pair ()
+  (setq skeleton-pair-alist
+        '((?\" _ "\"" >)
+          (?\' _ "\'" >)
+          (?\( _ ")" >)
+          (?\[ _ "]" >)
+          (?\{ _ "}" >)
+          (?\< _ ">" >)))
 
-(setq skeleton-pair t)
+  (setq skeleton-pair t)
 
-(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+  (global-set-key (kbd "<") 'skeleton-pair-insert-maybe))
 
 ;; 启动后最大化
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
-;; 保存前删除多余空格
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;-------------------------------------------------
 ;; internal mode
@@ -197,8 +197,6 @@
   ;; 禁止 ' 自动补齐
   (setq skeleton-pair-alist
         '((?\' "" >))))
-
-(add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
 
 ;; hs-mode
 (global-set-key [f2] 'hs-toggle-hiding)
@@ -240,8 +238,6 @@
   (local-set-key (kbd "C-c s e") 'org-edit-src-code)
   (local-set-key (kbd "C-c s i") 'org-insert-src-block))
 
-(add-hook 'org-mode-hook 'my-org-mode-hook)
-
 ;; winner-mode
 (when (fboundp 'winner-mode)
   (winner-mode 1))
@@ -258,23 +254,20 @@
   (ac-js2-mode)
   (my-web-dev-hook))
 
-(add-hook 'js2-mode-hook 'ac-js2-mode-hook)
-
 ;; auto-complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
-;; enable
-(ac-config-default)
-(global-auto-complete-mode t)
-(add-hook 'text-mode-hook 'auto-complete-mode)
-(setq ac-auto-start nil)
-;; set hot key
-(setq ac-use-menu-map t)
-(define-key ac-mode-map "\M-/" 'auto-complete)
-(define-key ac-completing-map "\M-/" 'ac-stop)
+(defun enable-auto-complete-mode ()
+  (require 'auto-complete-config)
+  (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 
-;; css-mode
-(add-hook 'css-mode-hook 'my-web-dev-hook)
+  ;; enable
+  (ac-config-default)
+  (global-auto-complete-mode t)
+  (setq ac-auto-start nil)
+
+  ;; set hot key
+  (setq ac-use-menu-map t)
+  (define-key ac-mode-map "\M-/" 'auto-complete)
+  (define-key ac-completing-map "\M-/" 'ac-stop))
 
 ;; emmet-mode
 (defun enable-emmet-mode ()
@@ -284,13 +277,14 @@
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
 ;; highlight-parentheses-mode
-(require 'highlight-parentheses)
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
+(defun enable-highlight-parentheses-mode ()
+  (require 'highlight-parentheses)
+  (define-globalized-minor-mode global-highlight-parentheses-mode
+    highlight-parentheses-mode
+    (lambda ()
+      (highlight-parentheses-mode t)))
 
-(global-highlight-parentheses-mode)
+  (global-highlight-parentheses-mode))
 
 ;; js2-mode
 (defun enable-js2-mode ()
@@ -307,18 +301,21 @@
     (custom-set-variables '(markdown-command "markdown.pl"))))
 
 ;; multiple-cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-unset-key (kbd "M-<down-mouse-1>"))
-(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
+(defun enable-multiple-cursors ()
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-unset-key (kbd "M-<down-mouse-1>"))
+  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click))
 
 ;; powerline
-(require 'powerline)
-(powerline-default-theme)
+(defun enable-powerline ()
+  (require 'powerline)
+  (powerline-default-theme))
 
 ;; project-explorer
-(require 'project-explorer)
-(global-set-key [f1] 'project-explorer-toggle)
+(defun enable-project-explorer ()
+  (require 'project-explorer)
+  (global-set-key [f1] 'project-explorer-toggle))
 
 ;; web-mode
 (defun enable-web-mode ()
@@ -339,61 +336,61 @@
   ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
   (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
-(add-hook 'html-mode-hook 'enable-web-mode)
-(add-hook 'nxml-mode-hook 'enable-web-mode)
-(add-hook 'web-mode-hook 'my-web-dev-hook)
-
 ;; windows-numbering
-(require 'window-numbering)
-(window-numbering-mode 1)
+(defun enable-windows-numbering ()
+  (require 'window-numbering)
+  (window-numbering-mode 1))
 
 ;; yaml-mode
-(require 'yaml-mode)
+(defun enable-yaml-mode ()
+  (interactive)
+  (require 'yaml-mode))
 
 ;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
+(defun enable-yasnippet ()
+  (require 'yasnippet)
+  (yas-global-mode 1)
 
-;; use popup menu for yas-choose-value
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  (when (featurep 'popup)
-    (popup-menu*
-     (mapcar
-      (lambda (choice)
-        (popup-make-item
-         (or (and display-fn (funcall display-fn choice))
-             choice)
-         :value choice))
-      choices)
-     :prompt prompt
-     :isearch t ; start isearch mode immediately
-     )))
+  ;; use popup menu for yas-choose-value
+  (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+    (when (featurep 'popup)
+      (popup-menu*
+       (mapcar
+        (lambda (choice)
+          (popup-make-item
+           (or (and display-fn (funcall display-fn choice))
+               choice)
+           :value choice))
+        choices)
+       :prompt prompt
+       :isearch t ; start isearch mode immediately
+       )))
 
-(setq yas-prompt-functions '(yas-popup-isearch-prompt))
+  (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
-;; Completing point by some yasnippet key
-(defun yas-ido-expand ()
-  (interactive)
-  (let ((original-point (point)))
-    (while (and
-            (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
-      (backward-word 1))
-    (let* ((init-word (point))
-           (word (buffer-substring init-word original-point))
-           (list (yas-active-keys)))
-      (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
-        (if (= (length key) 1)
-            (setq key (pop key))
-          (setq key (ido-completing-read "key: " list nil nil word)))
-        (delete-char (- init-word original-point))
-        (insert key)
-        (yas-expand)))))
+  ;; Completing point by some yasnippet key
+  (defun yas-ido-expand ()
+    (interactive)
+    (let ((original-point (point)))
+      (while (and
+              (not (= (point) (point-min) ))
+              (not
+               (string-match "[[:space:]\n]" (char-to-string (char-before)))))
+        (backward-word 1))
+      (let* ((init-word (point))
+             (word (buffer-substring init-word original-point))
+             (list (yas-active-keys)))
+        (goto-char original-point)
+        (let ((key (remove-if-not
+                    (lambda (s) (string-match (concat "^" word) s)) list)))
+          (if (= (length key) 1)
+              (setq key (pop key))
+            (setq key (ido-completing-read "key: " list nil nil word)))
+          (delete-char (- init-word original-point))
+          (insert key)
+          (yas-expand)))))
 
-(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand)
+  (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand))
 
 ;;-------------------------------------------------
 ;; 指定主模式
@@ -406,5 +403,65 @@
                                 (enable-markdown-mode)))
                 ("\\.php\\'" . (lambda ()
                                  (enable-web-mode)))
-                ("\\.py\\'" . python-mode))
+                ("\\.py\\'" . python-mode)
+                ("\\.yaml\\'" . (lambda ()
+                                  (enable-yaml-mode))))
               auto-mode-alist))
+
+;;-------------------------------------------------
+;; Hook
+;;-------------------------------------------------
+
+;; Auto complete hook
+(add-hook 'text-mode-hook 'auto-complete-mode)
+
+;; CSS mode hook
+(add-hook 'css-mode-hook 'my-web-dev-hook)
+
+;; Elisp hook
+(add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
+
+;; Emacs init hook
+(add-hook 'after-init-hook (lambda ()
+
+                             ;; Auto complete mode
+                             (enable-auto-complete-mode)
+
+                             ;; Auto pair
+                             (auto-pair)
+
+                             ;; Highlight parentheses
+                             (enable-highlight-parentheses-mode)
+
+                             ;; Mulitple cursors
+                             (enable-multiple-cursors)
+
+                             ;; Powerline
+                             (if window-system
+                                 (enable-powerline))
+
+                             ;; Project explorer
+                             (enable-project-explorer)
+
+                             ;; Windows numbering
+                             (enable-windows-numbering)
+
+                             ;; YASnippet
+                             (enable-yasnippet)
+
+                             ;; 五笔输入法
+                             (enable-wbpy-hook)))
+
+;; JavaScript IDE hook
+(add-hook 'js2-mode-hook 'ac-js2-mode-hook)
+
+;; Org mode hook
+(add-hook 'org-mode-hook 'my-org-mode-hook)
+
+;; Web mode hook
+(add-hook 'html-mode-hook 'enable-web-mode)
+(add-hook 'nxml-mode-hook 'enable-web-mode)
+(add-hook 'web-mode-hook 'my-web-dev-hook)
+
+;; 保存前删除多余空格
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
