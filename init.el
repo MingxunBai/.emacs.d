@@ -407,6 +407,7 @@
 ;;-------------------------------------------------
 
 ;; Auto complete hook
+(add-hook 'conf-mode-hook 'auto-complete-mode)
 (add-hook 'text-mode-hook 'auto-complete-mode)
 
 ;; CSS mode hook
