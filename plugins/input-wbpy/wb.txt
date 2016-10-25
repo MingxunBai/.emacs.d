@@ -396,9 +396,9 @@ adha 欺瞒
 adhb 荐
 adhd 葜
 adhf 茬
-adhh 基础上 项目
+adhh 项目 基础上
 adhi 基督
-adhk 苦战 基点
+adhk 基点 苦战
 adht 蒧
 adhu 革故鼎新 蘴
 adhv 惹眼 蔧
@@ -10625,7 +10625,7 @@ esdg 采石
 esdm 彩页
 esdy 采矿
 ese 彩 綵
-eset 彩 采用
+eset 采用 彩
 esf 膘 臕
 esfc 彩云
 esfi 膘
@@ -13913,7 +13913,7 @@ ftce 才能 都能
 ftcn 罄竹难书
 ftcw 考验
 ftdc 老友
-ftdd 老套 老大
+ftdd 老大 老套
 ftde 都有 才有
 ftdg 考古 教研 考研 老三
 ftdh 都在 埄
@@ -31996,7 +31996,7 @@ mtjt 颬 飋
 mtjw 颫 颶
 mtk 赂
 mtkf 峉
-mtkg 赂 账号 峈 賂
+mtkg 账号 赂 峈 賂
 mtkw 几只
 mtle 败胃
 mtlg 賉
@@ -32257,7 +32257,7 @@ mwld 内因
 mwlf 内置
 mwlt 内力
 mwma 内嵌
-mwmq 赊购
+mwmq 内网 赊购
 mwmr 崔嵬
 mwmt 见仁见智
 mwn 嶭
@@ -42413,7 +42413,7 @@ rauq 拭净
 rauy 拱门 抠门
 rava 撕毁
 ravb 搭好
-ravf 找寻 搭建
+ravf 搭建 找寻
 ravt 撒娇
 raw 拱
 rawc 擭
@@ -59613,6 +59613,7 @@ wfbg 侍卫
 wfbm 付出 传出
 wfc 会 伎
 wfcb 郐 付予 鄶
+wfcd 传参
 wfce 会通 佳能
 wfcg 坐井观天
 wfcj 刽 劊

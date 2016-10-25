@@ -113,9 +113,9 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
 
-;; 缩进回退
-(defun un-indent-by-removing-spaces (n)
-  (interactive)
+;; 移动缩进
+(defun resize-indentation (n)
+  (interactive "nEnter indentation Size:")
   (if (use-region-p)
       (let ((mark (mark)))
         (save-excursion
@@ -130,10 +130,7 @@
      (line-beginning-position)
      (line-end-position)
      n)))
-(defun backtab ()
-  (interactive)
-  (un-indent-by-removing-spaces -4))    ; 设置回退 4 个空格
-(global-set-key (kbd "<backtab>") 'backtab)
+(global-set-key (kbd "<backtab>") 'resize-indentation)
 
 ;; 设置缩进
 (setq-default indent-tabs-mode nil      ; 设置缩进为空格
@@ -185,27 +182,24 @@
   (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
   (global-set-key (kbd "<") 'skeleton-pair-insert-maybe))
 
-;; 启动后最大化
-(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
 ;;-------------------------------------------------
-;; internal mode
+;; Internal mode
 ;;-------------------------------------------------
 
-;; emacs-lisp-mode
+;; Emacs lisp mode
 (defun unable-quotation-hook ()
   ;; 禁止 ' 自动补齐
   (setq skeleton-pair-alist
         '((?\' "" >))))
 
-;; hs-mode
+;; HS mode
 (global-set-key [f2] 'hs-toggle-hiding)
 
-;; ido-mode
+;; Ido mode
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;; org-mode
+;; Org mode
 (defun my-org-mode-hook ()
   ;; 禁止 [ 自动补齐
   (setq skeleton-pair-alist
@@ -238,23 +232,23 @@
   (local-set-key (kbd "C-c s e") 'org-edit-src-code)
   (local-set-key (kbd "C-c s i") 'org-insert-src-block))
 
-;; winner-mode
+;; Winner mode
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 ;;-------------------------------------------------
-;; extension
+;; Extension
 ;;-------------------------------------------------
 
-;; ac-js2
+;; AC js2 mode
 (defun ac-js2-mode-hook ()
   (require 'ac-js2)
   (ac-js2-mode)
   (my-web-dev-hook))
 
-;; auto-complete
+;; Auto complete mode
 (defun enable-auto-complete-mode ()
   (require 'auto-complete-config)
   (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
@@ -269,14 +263,14 @@
   (define-key ac-mode-map "\M-/" 'auto-complete)
   (define-key ac-completing-map "\M-/" 'ac-stop))
 
-;; emmet-mode
+;; Emmet mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
   (emmet-mode)
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
-;; highlight-parentheses-mode
+;; Highlight parentheses mode
 (defun enable-highlight-parentheses-mode ()
   (require 'highlight-parentheses)
   (define-globalized-minor-mode global-highlight-parentheses-mode
@@ -286,13 +280,13 @@
 
   (global-highlight-parentheses-mode))
 
-;; js2-mode
+;; JS2 mode
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
   (js2-mode))
 
-;; markdown-mode
+;; Markdown mode
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
@@ -300,24 +294,24 @@
   (when *Windows*                       ; set markdown-command for windows
     (custom-set-variables '(markdown-command "markdown.pl"))))
 
-;; multiple-cursors
+;; Multiple cursors
 (defun enable-multiple-cursors ()
   (require 'multiple-cursors)
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
   (global-unset-key (kbd "M-<down-mouse-1>"))
   (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click))
 
-;; powerline
+;; Powerline
 (defun enable-powerline ()
   (require 'powerline)
   (powerline-default-theme))
 
-;; project-explorer
+;; Project explorer
 (defun enable-project-explorer ()
   (require 'project-explorer)
   (global-set-key [f1] 'project-explorer-toggle))
 
-;; web-mode
+;; Web mode
 (defun enable-web-mode ()
   (interactive)
   (require 'web-mode)
@@ -336,17 +330,17 @@
   ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
   (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
-;; windows-numbering
+;; Windows-numbering
 (defun enable-windows-numbering ()
   (require 'window-numbering)
   (window-numbering-mode 1))
 
-;; yaml-mode
+;; Yaml-mode
 (defun enable-yaml-mode ()
   (interactive)
   (require 'yaml-mode))
 
-;; yasnippet
+;; YASnippet
 (defun enable-yasnippet ()
   (require 'yasnippet)
   (yas-global-mode 1)
@@ -368,7 +362,7 @@
 
   (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
-  ;; Completing point by some yasnippet key
+  ;; completing point by some yasnippet key
   (defun yas-ido-expand ()
     (interactive)
     (let ((original-point (point)))
@@ -393,7 +387,7 @@
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand))
 
 ;;-------------------------------------------------
-;; 指定主模式
+;; 主模式
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
@@ -450,7 +444,10 @@
                              (enable-yasnippet)
 
                              ;; 五笔输入法
-                             (enable-wbpy-hook)))
+                             (enable-wbpy-hook)
+
+                             ;; 最大化
+                             (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))))
 
 ;; JavaScript IDE hook
 (add-hook 'js2-mode-hook 'ac-js2-mode-hook)

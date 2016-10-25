@@ -6,6 +6,7 @@
   #+END_SRC
 
 * 内置的插件
+
 ** hs-mode
     - 显示或隐藏代码块，快捷键 F2
 
@@ -22,14 +23,16 @@
     - 恢复窗口改变，快捷键 C-x 4 r
 
 * 安装的插件
+
 ** 添加了内置五笔输入法, 默认为英文状态, C-\ 切换
+
 ** auto-complete
     - 关闭自动提示，M-/ 触发自动补齐
     - M-n M-p 上下移动候选项
 
 ** emmet-mode
     - css-mode，html-mode，web-mode 加载后自动加载
-    - C-j 触发，修改快捷键 C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
+    - C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
 
 ** highlight-parentheses-mode
     - 光标所在括号分层级高亮
@@ -40,11 +43,14 @@
 ** markdown-mode
    - markdown 语法支持
      + 需要 markdown-command，windows 用户可在 [[http://daringfireball.net/projects/markdown/][Markdown]] 上下载后丢到 bin 文件夹中(需要安装 perl)，并设置路径: (custom-set-variables '(markdown-command "markdown.pl"))
+
 ** multiple-cursors
     - 多点编辑，快捷键 Alt + 左键
     - C-S-c C-S-c 为选定区块的每一行开启多点编辑
+
 ** powerlin-mode
    - 修改状态栏样式
+
 ** project-explorer
     - 显示或隐藏项目树，快捷键 F1
 
