@@ -60227,7 +60227,7 @@ whnd 候
 whnh 偉
 whnn 修书 佀
 whnr 从此以后
-whnt 个性 修改
+whnt 修改 个性
 whnu 修习
 whoa 修炼
 whog 企业 修业
@@ -66632,7 +66632,7 @@ ymgf 文风不动 高球 高于
 ymgg 褒贬不一 譝
 ymgh 市政 设下 高下
 ymgj 调理 高更
-ymgk 高速 调整 詷
+ymgk 调整 高速 詷
 ymgm 讽刺 高丽
 ymgq 腐败现象
 ymgv 譝
