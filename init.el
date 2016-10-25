@@ -1,5 +1,5 @@
 ;;-------------------------------------------------
-;; basic setting
+;; Basic setting
 ;;-------------------------------------------------
 
 ;; 设置个人信息
@@ -52,18 +52,26 @@
 ;;-------------------------------------------------
 
 (load-theme 'misterioso t)              ; 设置主题
+(set-cursor-color "Wheat")              ; 设置光标颜色
+(set-face-background 'region "Blue")    ; 设置选中区块背景色
 
-(setq inhibit-startup-message t)        ; 关闭启动动画
+(setq inhibit-startup-message t         ; 关闭启动动画
 
-(setq split-height-threshold nil        ; 垂直分屏
-      split-width-threshold 0)
+      visible-bell t                    ; 关闭错误提示音
+      ring-bell-function 'ignore save-abbrevs nil
 
-(setq frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b")))) ; 标题显示完整路径
+      split-height-threshold nil        ; 垂直分屏
+      split-width-threshold 0
+
+      scroll-margin 3                   ; 靠近屏幕边沿3行时就开始滚动
+      scroll-conservatively 10000
+
+      frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
 (when *Windows*
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))    ; 修改 windows 下的中文字体为 "明兰黑"
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code"))) ; 修改 windows 下的中文字体为 "明兰黑"
 
 ;; 语法高亮
 (global-font-lock-mode t)
@@ -80,9 +88,6 @@
 (show-paren-mode t)                     ; 高亮匹配括号
 (setq show-paren-style 'parenthesis)    ; 光标不会跳到另一个括号处
 
-(setq scroll-margin 3                   ; 靠近屏幕边沿3行时就开始滚动
-      scroll-conservatively 10000)
-
 (scroll-bar-mode -1)                    ; 隐藏滚动条
 (tool-bar-mode -1)                      ; 隐藏工具栏
 (menu-bar-mode -1)                      ; 隐藏菜单栏
@@ -94,22 +99,22 @@
 ;; 操作
 ;;-------------------------------------------------
 
-(setq default-major-mode 'text-mode)    ; 设置默认主模式为 text-mode
+(setq default-major-mode 'text-mode     ; 设置默认主模式为 text-mode
 
-(setq kill-ring-max 500)                ; 设置历史记录数量
+      kill-ring-max 500                 ; 设置历史记录数量
 
-(setq inhibit-startup-message t)        ; 关闭出错提示音
+      inhibit-startup-message t         ; 关闭出错提示音
 
-(setq-default kill-whole-line t)        ; 在行首 C-k 时，同时删除该行
+      kill-whole-line t                 ; 在行首 C-k 时，同时删除该行
 
-(setq track-eol t)                      ; 当光标在行尾上下移动的时候，始终保持在行尾
+      track-eol t                       ; 换毛换行时，光标始终保持在行首尾
+
+      x-select-enable-clipboard t       ; 支持和外部程序的拷贝
+
+      make-backup-files nil             ; 不生成备份文件
+      auto-save-default nil)            ; 不生成临时文件
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
-
-(setq x-select-enable-clipboard t)      ; 支持和外部程序的拷贝
-
-(setq make-backup-files nil             ; 不生成备份文件
-      auto-save-default nil)            ; 不生成临时文件
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)

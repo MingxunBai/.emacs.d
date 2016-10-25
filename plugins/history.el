@@ -163,8 +163,7 @@ but contains absolute path.")
                                  (history-beginning-of-line)
                                  (history-end-of-line)))
           (t
-           (message "not a valid file")))
-    (forward-line)))
+           (message "not a valid file")))))
 
 (defun history-add-to-project (s)
   "HISTORY-ADD-TO-PROJECT adds the marked files to a project named S."
