@@ -18,7 +18,6 @@
 ;; 配置五笔输入法
 (defun enable-wbpy-hook ()
   (add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
-  (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 
   (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
 
@@ -27,6 +26,8 @@
   ;; 用 ; 暂时输入英文
   (require 'chinese-wbim-extra)
   (global-set-key ";" 'chinese-wbim-insert-ascii)
+
+  (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 
   ;; 设置默认输入法为五笔输入法英文状态, C-\ 切换
   (progn
@@ -182,6 +183,13 @@
   (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
   (global-set-key (kbd "<") 'skeleton-pair-insert-maybe))
 
+;; 在右侧新建一个窗口
+(defun new-right-window ()
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+(global-set-key (kbd "C-x 3") 'new-right-window)
+
 ;;-------------------------------------------------
 ;; Internal mode
 ;;-------------------------------------------------
@@ -229,8 +237,8 @@
       (previous-line 2)
       (org-edit-src-code)))
 
-  (local-set-key (kbd "C-c s e") 'org-edit-src-code)
-  (local-set-key (kbd "C-c s i") 'org-insert-src-block))
+  (local-set-key (kbd "C-c c e") 'org-edit-src-code)
+  (local-set-key (kbd "C-c c i") 'org-insert-src-block))
 
 ;; Winner mode
 (when (fboundp 'winner-mode)
@@ -245,6 +253,7 @@
 ;; AC js2 mode
 (defun ac-js2-mode-hook ()
   (require 'ac-js2)
+
   (ac-js2-mode)
   (my-web-dev-hook))
 
@@ -253,22 +262,23 @@
   (require 'auto-complete-config)
   (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 
-  ;; enable
-  (ac-config-default)
-  (global-auto-complete-mode t)
-  (setq ac-auto-start nil)
-
   ;; set hot key
   (setq ac-use-menu-map t)
   (define-key ac-mode-map "\M-/" 'auto-complete)
-  (define-key ac-completing-map "\M-/" 'ac-stop))
+  (define-key ac-completing-map "\M-/" 'ac-stop)
+
+  ;; enable
+  (ac-config-default)
+  (global-auto-complete-mode t)
+  (setq ac-auto-start nil))
 
 ;; Emmet mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
-  (emmet-mode)
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
-  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
+  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
+
+  (emmet-mode))
 
 ;; Highlight parentheses mode
 (defun enable-highlight-parentheses-mode ()
@@ -280,19 +290,25 @@
 
   (global-highlight-parentheses-mode))
 
+;; History
+(defun enable-history ()
+  (require 'history))
+
 ;; JS2 mode
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
+
   (js2-mode))
 
 ;; Markdown mode
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
-  (markdown-mode)
   (when *Windows*                       ; set markdown-command for windows
-    (custom-set-variables '(markdown-command "markdown.pl"))))
+    (custom-set-variables '(markdown-command "markdown.pl")))
+
+  (markdown-mode))
 
 ;; Multiple cursors
 (defun enable-multiple-cursors ()
@@ -315,27 +331,30 @@
 (defun enable-web-mode ()
   (interactive)
   (require 'web-mode)
-  (web-mode)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
-  (setq web-mode-enable-current-element-highlight t))
+  (setq web-mode-enable-current-element-highlight t)
+
+  (web-mode))
 
 (defun my-web-dev-hook ()
   ;; 禁止 < 自动补齐
   (setq skeleton-pair-alist
         '((?\< "" >)))
-  (hs-minor-mode t)
-  (enable-emmet-mode)
-  ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
-  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
-;; Windows-numbering
+  ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
+  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
+
+  (hs-minor-mode t)
+  (enable-emmet-mode))
+
+;; Windows numbering
 (defun enable-windows-numbering ()
   (require 'window-numbering)
   (window-numbering-mode 1))
 
-;; Yaml-mode
+;; Yaml mode
 (defun enable-yaml-mode ()
   (interactive)
   (require 'yaml-mode))
@@ -343,6 +362,7 @@
 ;; YASnippet
 (defun enable-yasnippet ()
   (require 'yasnippet)
+
   (yas-global-mode 1)
 
   ;; use popup menu for yas-choose-value
@@ -427,6 +447,9 @@
 
                              ;; Highlight parentheses
                              (enable-highlight-parentheses-mode)
+
+                             ;; History
+                             (enable-history)
 
                              ;; Mulitple cursors
                              (enable-multiple-cursors)
