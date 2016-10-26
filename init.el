@@ -123,7 +123,7 @@
 (defun resize-indentation (n)
   (interactive "nEnter indentation Size:")
   (if (use-region-p)
-      (let ((mark (mark)))
+      (let (mark (mark))
         (save-excursion
           (save-match-data
             (indent-rigidly
@@ -436,7 +436,7 @@
 (add-hook 'text-mode-hook 'auto-complete-mode)
 
 ;; CSS mode hook
-(add-hook 'css-mode-hook 'my-web-dev-hook)
+(add-hook 'css-mode-hook 'enable-web-mode)
 
 ;; Elisp hook
 (add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)

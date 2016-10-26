@@ -2296,6 +2296,7 @@ aqfa 区域
 aqfd 荡然无存
 aqfi 获救
 aqfm 敬献
+aqfn 区块
 aqfp 其乐无穷
 aqfq 欧元
 aqft 敬老
@@ -44869,7 +44870,7 @@ rqss 拘禁
 rqtb 换季
 rqtd 捣乱 欣逢
 rqte 捕鲸船
-rqtf 换毛 换行
+rqtf 换行 换毛
 rqth 换算
 rqtj 挣得
 rqtk 搀和
@@ -50415,7 +50416,7 @@ tfkc 赞叹
 tfkd 靠
 tfkf 告 籉
 tfkg 秸 鹄 千吨 行号 等号 鵠
-tfkh 行距 先遣 行路 行踪 等距 选中
+tfkh 选中 等距 行距 先遣 行路 行踪
 tfkk 穯
 tfkl 告别 勂
 tfkm 頶
