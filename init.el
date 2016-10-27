@@ -159,7 +159,7 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-(global-set-key (kbd "C-o") 'up-newline)
+(global-set-key (kbd "M-o") 'up-newline)
 
 ;; 向下新建一行
 (defun down-newline ()
@@ -167,7 +167,7 @@
   (progn
     (end-of-line)
     (newline-and-indent)))
-(global-set-key (kbd "M-o") 'down-newline)
+(global-set-key (kbd "C-o") 'down-newline)
 
 ;; 自动匹配括号
 (defun auto-pair ()
@@ -212,39 +212,6 @@
 (ido-mode t)
 (setq ido-save-directory-list-file nil)
 
-;; Org mode
-(defun my-org-mode-hook ()
-  ;; 禁止 [ 自动补齐
-  (setq skeleton-pair-alist
-        '((?\[ "" >)))
-
-  ;; 自动缩进
-  (setq org-startup-indented t)
-
-  ;; 代码高亮
-  (require 'htmlize)
-  (setq org-src-fontify-natively t)
-
-  (defun org-insert-src-block (src-code-type)
-    (interactive
-     (let ((src-code-types
-            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
-              "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
-              "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
-              "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-              "scheme" "sqlite" "html")))
-       (list (ido-completing-read "Source code type: " src-code-types))))
-    (progn
-      (newline-and-indent)
-      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-      (newline-and-indent)
-      (insert "#+END_SRC\n")
-      (previous-line 2)
-      (org-edit-src-code)))
-
-  (local-set-key (kbd "C-c c e") 'org-edit-src-code)
-  (local-set-key (kbd "C-c c i") 'org-insert-src-block))
-
 ;; Winner mode
 (when (fboundp 'winner-mode)
   (winner-mode 1))
@@ -255,45 +222,38 @@
 ;; Extension
 ;;-------------------------------------------------
 
-;; AC js2 mode
-(defun ac-js2-mode-hook ()
-  (require 'ac-js2)
-
-  (ac-js2-mode)
-  (my-web-dev-hook))
-
 ;; Auto complete mode
 (defun enable-auto-complete-mode ()
   (require 'auto-complete-config)
   (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 
-  ;; set hot key
-  (setq ac-use-menu-map t)
-  (define-key ac-mode-map "\M-/" 'auto-complete)
-  (define-key ac-completing-map "\M-/" 'ac-stop)
-
   ;; enable
   (ac-config-default)
   (global-auto-complete-mode t)
-  (setq ac-auto-start nil))
+  (setq ac-auto-start nil)
+
+  ;; set hot key
+  (setq ac-use-menu-map t)
+  (define-key ac-mode-map "\M-/" 'auto-complete)
+  (define-key ac-completing-map "\M-/" 'ac-stop))
 
 ;; Emmet mode
 (defun enable-emmet-mode ()
   (require 'emmet-mode)
-  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
-  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
+  (emmet-mode)
 
-  (emmet-mode))
+  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
+  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
 ;; Highlight parentheses mode
 (defun enable-highlight-parentheses-mode ()
   (require 'highlight-parentheses)
+  (global-highlight-parentheses-mode)
+
   (define-globalized-minor-mode global-highlight-parentheses-mode
     highlight-parentheses-mode
     (lambda ()
-      (highlight-parentheses-mode t)))
-
-  (global-highlight-parentheses-mode))
+      (highlight-parentheses-mode t))))
 
 ;; History
 (defun enable-history ()
@@ -303,17 +263,16 @@
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
-
   (js2-mode))
 
 ;; Markdown mode
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
-  (when *Windows*                       ; set markdown-command for windows
-    (custom-set-variables '(markdown-command "markdown.pl")))
+  (markdown-mode)
 
-  (markdown-mode))
+  (when *Windows*                       ; set markdown-command for windows
+    (custom-set-variables '(markdown-command "markdown.pl"))))
 
 ;; Multiple cursors
 (defun enable-multiple-cursors ()
@@ -336,23 +295,15 @@
 (defun enable-web-mode ()
   (interactive)
   (require 'web-mode)
+  (web-mode)
+
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t)
 
-  (web-mode))
-
-(defun my-web-dev-hook ()
-  ;; 禁止 < 自动补齐
-  (setq skeleton-pair-alist
-        '((?\< "" >)))
-
   ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
-  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
-
-  (hs-minor-mode t)
-  (enable-emmet-mode))
+  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
 ;; Windows numbering
 (defun enable-windows-numbering ()
@@ -367,7 +318,6 @@
 ;; YASnippet
 (defun enable-yasnippet ()
   (require 'yasnippet)
-
   (yas-global-mode 1)
 
   ;; use popup menu for yas-choose-value
@@ -384,7 +334,6 @@
        :prompt prompt
        :isearch t ; start isearch mode immediately
        )))
-
   (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
   ;; completing point by some yasnippet key
@@ -408,7 +357,6 @@
           (delete-char (- init-word original-point))
           (insert key)
           (yas-expand)))))
-
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand))
 
 ;;-------------------------------------------------
@@ -416,9 +364,7 @@
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("\\.js\\'" . (lambda ()
-                                (enable-js2-mode)))
-                ("\\.md\\'" . (lambda ()
+      (append '(("\\.md\\'" . (lambda ()
                                 (enable-markdown-mode)))
                 ("\\.php\\'" . (lambda ()
                                  (enable-web-mode)))
@@ -431,19 +377,24 @@
 ;; Hook
 ;;-------------------------------------------------
 
-;; Auto complete hook
+;; AC js2 mode
+(defun ac-js2-mode-hook ()
+  (require 'ac-js2)
+
+  (ac-js2-mode)
+  (my-web-dev-hook))
+
+(add-hook 'js2-mode-hook 'ac-js2-mode-hook)
+
+;; Auto complete mode
 (add-hook 'conf-mode-hook 'auto-complete-mode)
 (add-hook 'text-mode-hook 'auto-complete-mode)
 
-;; CSS mode hook
-(add-hook 'css-mode-hook 'enable-web-mode)
-
-;; Elisp hook
+;; Elisp mode
 (add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
 
-;; Emacs init hook
+;; Emacs init
 (add-hook 'after-init-hook (lambda ()
-
                              ;; Auto complete mode
                              (enable-auto-complete-mode)
 
@@ -478,13 +429,53 @@
                              ;; 最大化
                              (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))))
 
-;; JavaScript IDE hook
-(add-hook 'js2-mode-hook 'ac-js2-mode-hook)
+;; JavaScript IDE
+(add-hook 'js-mode-hook 'enable-js2-mode)
 
-;; Org mode hook
+;; Org mode
+(defun my-org-mode-hook ()
+  ;; 禁止 [ 自动补齐
+  (setq skeleton-pair-alist
+        '((?\[ "" >)))
+
+  (setq org-startup-indented t)         ; 自动缩进
+
+  ;; 代码高亮
+  (require 'htmlize)
+  (setq org-src-fontify-natively t)
+
+  (defun org-insert-src-block (src-code-type)
+    (interactive
+     (let ((src-code-types
+            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++" "css"
+              "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
+              "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
+              "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
+              "scheme" "sqlite" "html")))
+       (list (ido-completing-read "Source code type: " src-code-types))))
+    (progn
+      (newline-and-indent)
+      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+      (newline-and-indent)
+      (insert "#+END_SRC\n")
+      (previous-line 2)
+      (org-edit-src-code)))
+  (local-set-key (kbd "C-c c e") 'org-edit-src-code)
+  (local-set-key (kbd "C-c c i") 'org-insert-src-block))
+
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 
-;; Web mode hook
+;; Web mode
+(defun my-web-dev-hook ()
+  ;; 禁止 < 自动补齐
+  (setq skeleton-pair-alist
+        '((?\< "" >)))
+
+  ;; plugins
+  (hs-minor-mode t)
+  (enable-emmet-mode))
+
+(add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 (add-hook 'web-mode-hook 'my-web-dev-hook)

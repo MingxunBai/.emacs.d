@@ -36553,7 +36553,7 @@ peih 家小
 peip 家常 家学 农学
 peit 农活
 peiv 家当
-pejf 农时 家里
+pejf 家里 农时
 pejj 宜昌
 pejk 家用电器
 pejn 家电 农电
