@@ -10,11 +10,12 @@
 (defconst *Windows* (eq system-type 'windows-nt))
 
 ;; 路径配置
-(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins/company" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins/es-lib" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins/skewer" user-emacs-directory))
+(defun add-subdirs-to-load-path (dir)
+  "Recursive add directories to `load-path'."
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
+    (normal-top-level-add-subdirs-to-load-path)))
+(add-subdirs-to-load-path (expand-file-name "plugins/" user-emacs-directory))
 
 (when *Windows*
   (setq default-directory "D:/Tools/xampp/htdocs"))
@@ -82,7 +83,7 @@
 
 ;; 当前行高亮
 (global-hl-line-mode)
-(set-face-background hl-line-face "#6898D1")
+(set-face-background hl-line-face "#FFFFFF")
 (set-face-foreground hl-line-face "#000000")
 
 ;; 显示行号
