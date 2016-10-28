@@ -156,7 +156,7 @@
         (concat (file-name-directory load-file-name) "snippets")))
 
 (defconst yas--default-user-snippets-dir
-  (concat user-emacs-directory "snippets"))
+  (concat user-emacs-directory "plugins/snippets"))
 
 (defcustom yas-snippet-dirs (remove nil
                                     (list yas--default-user-snippets-dir
