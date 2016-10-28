@@ -149,8 +149,8 @@ but contains absolute path.")
   (interactive)
   (let ((file (history-get-file-name)))
     (cond ((and (file-readable-p file)
-             (not (equal file ""))
-             (not (member file history-marked-files)))
+                (not (equal file ""))
+                (not (member file history-marked-files)))
            ;; mark it
            (push file history-marked-files)
            (history-hight-region file
@@ -167,7 +167,7 @@ but contains absolute path.")
 
 (defun history-add-to-project (s)
   "HISTORY-ADD-TO-PROJECT adds the marked files to a project named S."
-;  (interactive (list (read-string "Add to project: " history-current-project  nil)))
+                                        ;  (interactive (list (read-string "Add to project: " history-current-project  nil)))
   (interactive (list (completing-read "Add to project: "
                                       history-projects  ; collection
                                       nil nil
@@ -356,11 +356,11 @@ project, all files in the project can be opened.
     (history-display-projects history-projects)))
 
 (defun history-revert-buffer ()
-;  (setq history-marked-files nil)       ; reset it
-;  (setq history-projects nil)           ; reset it
-;  (setq history-current-project nil)    ; reset it
+                                        ;  (setq history-marked-files nil)       ; reset it
+                                        ;  (setq history-projects nil)           ; reset it
+                                        ;  (setq history-current-project nil)    ; reset it
   (history-read)
-;  (history-read-project)
+                                        ;  (history-read-project)
   (setq buffer-read-only nil)
   (erase-buffer)
   (history-display history)

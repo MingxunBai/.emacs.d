@@ -36,6 +36,13 @@
    - css-mode，html-mode，web-mode 加载后自动加载
    - C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
 
+** elpy-mode
+   - Python IDE mode
+   - 需要安装 flake8 jedi 包:
+      #+BEGIN_SRC python
+        pip install flake8 jedi
+      #+END_SRC
+
 ** highlight-parentheses-mode
    - 光标所在括号分层级高亮
 
@@ -44,7 +51,7 @@
    - m 标记文件，O 打开标记的文件，p 定义标记的文件为 project，s 保存
 
 ** js2-mode
-   - JavaScript-IDE-mode
+   - JavaScript IDE mode
 
 ** markdown-mode
   - markdown 语法支持

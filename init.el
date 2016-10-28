@@ -11,23 +11,24 @@
 
 ;; 路径配置
 (add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins/company" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins/es-lib" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins/skewer" user-emacs-directory))
 
 (when *Windows*
   (setq default-directory "D:/Tools/xampp/htdocs"))
 
 ;; 配置五笔输入法
-(defun enable-wbpy-hook ()
-  (add-to-list 'load-path (expand-file-name "plugins/input-wbpy" user-emacs-directory))
+(defun auto-enable-wbpy-hook ()
+  (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+  (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
 
   (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
-
-  (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
 
   ;; 用 ; 暂时输入英文
   (require 'chinese-wbim-extra)
   (global-set-key ";" 'chinese-wbim-insert-ascii)
-
-  (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 
   ;; 设置默认输入法为五笔输入法英文状态, C-\ 切换
   (progn
@@ -74,18 +75,23 @@
   (set-fontset-font t 'han (font-spec :family "Minglan_Code"))) ; 修改 windows 下的中文字体为 "明兰黑"
 
 ;; 语法高亮
-(global-font-lock-mode t)
+(global-font-lock-mode)
 (setq font-lock-maximum-decoration t    ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
 
-;; 显示行号
-(global-linum-mode t)
-(setq linum-format "%4d "
-      column-number-mode t
-      line-number-mode t)
+;; 当前行高亮
+(global-hl-line-mode)
+(set-face-background hl-line-face "#6898D1")
+(set-face-foreground hl-line-face "#000000")
 
-(show-paren-mode t)                     ; 高亮匹配括号
+;; 显示行号
+(global-linum-mode)
+(setq linum-format "%4d "
+      column-number-mode
+      line-number-mode)
+
+(show-paren-mode)                       ; 高亮匹配括号
 (setq show-paren-style 'parenthesis)    ; 光标不会跳到另一个括号处
 
 (scroll-bar-mode -1)                    ; 隐藏滚动条
@@ -107,21 +113,28 @@
 
       kill-whole-line t                 ; 在行首 C-k 时，同时删除该行
 
-      track-eol t                       ; 换毛换行时，光标始终保持在行首尾
+      track-eol t                       ; 换行时，光标始终保持在行首尾
 
       x-select-enable-clipboard t       ; 支持和外部程序的拷贝
 
       make-backup-files nil             ; 不生成备份文件
-      auto-save-default nil)            ; 不生成临时文件
+      auto-save-default nil             ; 不生成临时文件
+
+      max-lisp-eval-depth 10000)
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
 
+;; 设置缩进
+(setq-default indent-tabs-mode nil      ; 设置缩进为空格
+              default-tab-width 4       ; 设置默认缩进为 4
+              c-basic-offset 4)         ; 修改 C 语言缩进为 4
+
 ;; 移动缩进
 (defun resize-indentation (n)
-  (interactive "nEnter indentation Size:")
+  (interactive "nEnter indentation size:")
   (if (use-region-p)
       (let (mark (mark))
         (save-excursion
@@ -137,11 +150,6 @@
      (line-end-position)
      n)))
 (global-set-key (kbd "<backtab>") 'resize-indentation)
-
-;; 设置缩进
-(setq-default indent-tabs-mode nil      ; 设置缩进为空格
-              default-tab-width 4       ; 设置默认缩进为 4
-              c-basic-offset 4)         ; 修改 C 语言缩进为 4
 
 ;; 删除空白字符至上一行末尾
 (defun delete-whitespace-to-upline ()
@@ -170,23 +178,22 @@
 (global-set-key (kbd "C-o") 'down-newline)
 
 ;; 自动匹配括号
-(defun auto-pair ()
-  (setq skeleton-pair-alist
-        '((?\" _ "\"" >)
-          (?\' _ "\'" >)
-          (?\( _ ")" >)
-          (?\[ _ "]" >)
-          (?\{ _ "}" >)
-          (?\< _ ">" >)))
+(setq skeleton-pair-alist
+      '((?\" _ "\"" >)
+        (?\' _ "\'" >)
+        (?\( _ ")" >)
+        (?\[ _ "]" >)
+        (?\{ _ "}" >)
+        (?\< _ ">" >))
 
-  (setq skeleton-pair t)
+      skeleton-pair t)
 
-  (global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
-  (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
-  (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
-  (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
-  (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-  (global-set-key (kbd "<") 'skeleton-pair-insert-maybe))
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
 
 ;; 在右侧新建一个窗口
 (defun new-right-window ()
@@ -202,19 +209,18 @@
 ;; Emacs lisp mode
 (defun unable-quotation-hook ()
   ;; 禁止 ' 自动补齐
-  (setq skeleton-pair-alist
-        '((?\' "" >))))
+  )
 
 ;; HS mode
 (global-set-key [f2] 'hs-toggle-hiding)
 
 ;; Ido mode
-(ido-mode t)
+(ido-mode)
 (setq ido-save-directory-list-file nil)
 
 ;; Winner mode
 (when (fboundp 'winner-mode)
-  (winner-mode 1))
+  (winner-mode))
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
@@ -223,22 +229,26 @@
 ;;-------------------------------------------------
 
 ;; Auto complete mode
-(defun enable-auto-complete-mode ()
+(defun auto-enable-auto-complete-mode ()
   (require 'auto-complete-config)
   (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
-
-  ;; enable
   (ac-config-default)
-  (global-auto-complete-mode t)
+  (global-auto-complete-mode)
   (setq ac-auto-start nil)
 
-  ;; set hot key
   (setq ac-use-menu-map t)
   (define-key ac-mode-map "\M-/" 'auto-complete)
   (define-key ac-completing-map "\M-/" 'ac-stop))
 
+;; Elpy mode
+(defun enable-elpy-mode ()
+  (interactive)
+  (require 'elpy)
+  (elpy-mode))
+
 ;; Emmet mode
 (defun enable-emmet-mode ()
+  (interactive)
   (require 'emmet-mode)
   (emmet-mode)
 
@@ -246,20 +256,13 @@
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
 ;; Highlight parentheses mode
-(defun enable-highlight-parentheses-mode ()
-  (require 'highlight-parentheses)
-  (global-highlight-parentheses-mode)
-
-  (define-globalized-minor-mode global-highlight-parentheses-mode
-    highlight-parentheses-mode
-    (lambda ()
-      (highlight-parentheses-mode t))))
+(require 'highlight-parentheses)
+(highlight-parentheses-mode)
 
 ;; History
-(defun enable-history ()
-  (require 'history))
+(require 'history)
 
-;; JS2 mode
+;; JavaScript IDE mode
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
@@ -275,21 +278,20 @@
     (custom-set-variables '(markdown-command "markdown.pl"))))
 
 ;; Multiple cursors
-(defun enable-multiple-cursors ()
-  (require 'multiple-cursors)
-  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-unset-key (kbd "M-<down-mouse-1>"))
-  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click))
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-unset-key (kbd "M-<down-mouse-1>"))
+(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;; Powerline
-(defun enable-powerline ()
-  (require 'powerline)
-  (powerline-default-theme))
+(require 'powerline)
+(powerline-default-theme)
 
 ;; Project explorer
-(defun enable-project-explorer ()
-  (require 'project-explorer)
-  (global-set-key [f1] 'project-explorer-toggle))
+(require 'project-explorer)
+
+(global-set-key [f1] 'project-explorer-toggle)
 
 ;; Web mode
 (defun enable-web-mode ()
@@ -302,23 +304,23 @@
   (setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t)
 
-  ;; 绑定 用浏览器打开文件 快捷键为 C-c C-v
+  ;; C-c C-v: 在浏览器中预览
   (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file))
 
 ;; Windows numbering
-(defun enable-windows-numbering ()
-  (require 'window-numbering)
-  (window-numbering-mode 1))
+(require 'window-numbering)
+(window-numbering-mode)
 
 ;; Yaml mode
 (defun enable-yaml-mode ()
   (interactive)
-  (require 'yaml-mode))
+  (require 'yaml-mode)
+  (yaml-mode))
 
 ;; YASnippet
-(defun enable-yasnippet ()
+(defun auto-enable-yasnippet ()
   (require 'yasnippet)
-  (yas-global-mode 1)
+  (yas-global-mode)
 
   ;; use popup menu for yas-choose-value
   (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
@@ -369,74 +371,52 @@
                 ("\\.php\\'" . (lambda ()
                                  (enable-web-mode)))
                 ("\\.py\\'" . python-mode)
-                ("\\.yaml\\'" . (lambda ()
-                                  (enable-yaml-mode))))
+                ("\\.ya?ml\\'" . (lambda ()
+                                   (enable-yaml-mode))))
               auto-mode-alist))
 
 ;;-------------------------------------------------
 ;; Hook
 ;;-------------------------------------------------
 
-;; AC js2 mode
-(defun ac-js2-mode-hook ()
-  (require 'ac-js2)
-
-  (ac-js2-mode)
-  (my-web-dev-hook))
-
-(add-hook 'js2-mode-hook 'ac-js2-mode-hook)
-
 ;; Auto complete mode
 (add-hook 'conf-mode-hook 'auto-complete-mode)
 (add-hook 'text-mode-hook 'auto-complete-mode)
 
 ;; Elisp mode
-(add-hook 'emacs-lisp-mode-hook 'unable-quotation-hook)
+(add-hook 'emacs-lisp-mode-hook '(lambda ()
+                                   (setq skeleton-pair-alist
+                                         '((?\' _ "" >)))))
+
+;; Elpy mode
+(add-hook 'python-mode-hook 'enable-elpy-mode)
+(add-hook 'elpy-mode-hook (lambda ()
+                            (require 'py-autopep8)
+                            (py-autopep8-enable-on-save)))
 
 ;; Emacs init
 (add-hook 'after-init-hook (lambda ()
                              ;; Auto complete mode
-                             (enable-auto-complete-mode)
-
-                             ;; Auto pair
-                             (auto-pair)
-
-                             ;; Highlight parentheses
-                             (enable-highlight-parentheses-mode)
-
-                             ;; History
-                             (enable-history)
-
-                             ;; Mulitple cursors
-                             (enable-multiple-cursors)
-
-                             ;; Powerline
-                             (if window-system
-                                 (enable-powerline))
-
-                             ;; Project explorer
-                             (enable-project-explorer)
-
-                             ;; Windows numbering
-                             (enable-windows-numbering)
+                             (auto-enable-auto-complete-mode)
 
                              ;; YASnippet
-                             (enable-yasnippet)
+                             (auto-enable-yasnippet)
 
                              ;; 五笔输入法
-                             (enable-wbpy-hook)
+                             (auto-enable-wbpy-hook)
 
                              ;; 最大化
                              (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))))
 
 ;; JavaScript IDE
 (add-hook 'js-mode-hook 'enable-js2-mode)
+(add-hook 'js2-mode-hook 'my-web-dev-hook)
 
 ;; Org mode
 (defun my-org-mode-hook ()
   ;; 禁止 [ 自动补齐
   (setq skeleton-pair-alist
-        '((?\[ "" >)))
+        '((?\[ _ "" >)))
 
   (setq org-startup-indented t)         ; 自动缩进
 
@@ -454,10 +434,9 @@
               "scheme" "sqlite" "html")))
        (list (ido-completing-read "Source code type: " src-code-types))))
     (progn
-      (newline-and-indent)
       (insert (format "#+BEGIN_SRC %s\n" src-code-type))
       (newline-and-indent)
-      (insert "#+END_SRC\n")
+      (insert "#+END_SRC")
       (previous-line 2)
       (org-edit-src-code)))
   (local-set-key (kbd "C-c c e") 'org-edit-src-code)
@@ -469,11 +448,10 @@
 (defun my-web-dev-hook ()
   ;; 禁止 < 自动补齐
   (setq skeleton-pair-alist
-        '((?\< "" >)))
+        '((?\< _ "" >)))
 
-  ;; plugins
-  (hs-minor-mode t)
-  (enable-emmet-mode))
+  (enable-emmet-mode)
+  (hs-minor-mode))
 
 (add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)

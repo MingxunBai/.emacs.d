@@ -5169,7 +5169,7 @@ cbiq 预兆 柔光
 cbiu 柔润
 cbiw 驰誉
 cbj 予
-cbjt 牟取暴利 预览
+cbjt 预览 牟取暴利
 cbkd 柔顺
 cblf 预置
 cblq 柔软
@@ -21496,6 +21496,7 @@ ijjg 淐
 ijjn 浅显易懂
 ijjq 温煦
 ijjr 光明日报
+ijk 浏览器
 ijkd 温顺
 ijkk 浏览器
 ijkt 混响
