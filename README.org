@@ -38,9 +38,9 @@
 
 ** elpy-mode
    - Python IDE mode
-   - 需要安装 flake8 jedi 包:
+   - 安装依赖:
       #+BEGIN_SRC python
-        pip install flake8 jedi
+        pip install flake8 jedi autopep8 elpy
       #+END_SRC
 
 ** highlight-parentheses-mode

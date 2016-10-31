@@ -1594,7 +1594,9 @@ code is executed."
     (elpy-shell-display-buffer)
     (when has-if-main
       (message (concat "Removed if __main__ == '__main__' construct, "
-                       "use a prefix argument to evaluate.")))))
+                       "use a prefix argument to evaluate."))))
+  ;; switch to command window
+  (other-window 1))
 
 (defun elpy-shell-send-current-statement ()
   "Send current statement to Python shell."

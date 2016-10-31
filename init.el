@@ -207,11 +207,6 @@
 ;; Internal mode
 ;;-------------------------------------------------
 
-;; Emacs lisp mode
-(defun unable-quotation-hook ()
-  ;; 禁止 ' 自动补齐
-  )
-
 ;; HS mode
 (global-set-key [f2] 'hs-toggle-hiding)
 
@@ -240,12 +235,6 @@
   (setq ac-use-menu-map t)
   (define-key ac-mode-map "\M-/" 'auto-complete)
   (define-key ac-completing-map "\M-/" 'ac-stop))
-
-;; Elpy mode
-(defun enable-elpy-mode ()
-  (interactive)
-  (require 'elpy)
-  (elpy-mode))
 
 ;; Emmet mode
 (defun enable-emmet-mode ()
@@ -387,13 +376,7 @@
 ;; Elisp mode
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
                                    (setq skeleton-pair-alist
-                                         '((?\' _ "" >)))))
-
-;; Elpy mode
-(add-hook 'python-mode-hook 'enable-elpy-mode)
-(add-hook 'elpy-mode-hook (lambda ()
-                            (require 'py-autopep8)
-                            (py-autopep8-enable-on-save)))
+                                         '((?\' "" >)))))
 
 ;; Emacs init
 (add-hook 'after-init-hook (lambda ()
@@ -404,10 +387,7 @@
                              (auto-enable-yasnippet)
 
                              ;; 五笔输入法
-                             (auto-enable-wbpy-hook)
-
-                             ;; 最大化
-                             (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))))
+                             (auto-enable-wbpy-hook)))
 
 ;; JavaScript IDE
 (add-hook 'js-mode-hook 'enable-js2-mode)
@@ -417,7 +397,7 @@
 (defun my-org-mode-hook ()
   ;; 禁止 [ 自动补齐
   (setq skeleton-pair-alist
-        '((?\[ _ "" >)))
+        '((?\[ "" >)))
 
   (setq org-startup-indented t)         ; 自动缩进
 
@@ -445,11 +425,24 @@
 
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 
+;; Python mode
+(defun my-python-mode-hook ()
+  (interactive)
+  (require 'elpy)
+  (elpy-mode)
+
+  (require 'py-autopep8)
+  (py-autopep8-enable-on-save)
+
+  (setq python-shell-prompt-detect-enabled nil))
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+
 ;; Web mode
-(defun my-web-dev-hook ()
+(defun my-web-mode-hook ()
   ;; 禁止 < 自动补齐
   (setq skeleton-pair-alist
-        '((?\< _ "" >)))
+        '((?\< "" >)))
 
   (enable-emmet-mode)
   (hs-minor-mode))
@@ -457,7 +450,10 @@
 (add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
-(add-hook 'web-mode-hook 'my-web-dev-hook)
+(add-hook 'web-mode-hook 'my-web-mode-hook)
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; 最大化
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
