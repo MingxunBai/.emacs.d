@@ -275,8 +275,10 @@
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;; Powerline
-(require 'powerline)
-(powerline-default-theme)
+(defun enable-powerline ()
+  (require 'powerline)
+
+  (powerline-default-theme))
 
 ;; Project explorer
 (require 'project-explorer)
@@ -382,6 +384,10 @@
 (add-hook 'after-init-hook (lambda ()
                              ;; Auto complete mode
                              (auto-enable-auto-complete-mode)
+
+                             ;; Powerline
+                             (if window-system
+                                 (enable-powerline))
 
                              ;; YASnippet
                              (auto-enable-yasnippet)

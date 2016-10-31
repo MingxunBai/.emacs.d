@@ -68,7 +68,7 @@ utf-8."
                  (const slant)
                  (const wave)
                  (const zigzag)
-		 (const utf-8)
+                 (const utf-8)
                  (const nil)))
 
 (defcustom powerline-utf-8-separator-left #xe0b0
@@ -261,7 +261,7 @@ static char * %s[] = {
      'xpm t :ascent 'center)))
 
 (defun pl/percent-xpm
-  (height pmax pmin winend winstart width color1 color2)
+    (height pmax pmin winend winstart width color1 color2)
   "Generate percentage xpm of HEIGHT for PMAX to PMIN given WINEND and WINSTART with WIDTH and COLOR1 and COLOR2."
   (let* ((height- (1- height))
          (fillstart (round (* height- (/ (float winstart) (float pmax)))))
@@ -331,7 +331,7 @@ static char * %s[] = {
 (defmacro defpowerline (name body)
   "Create function NAME by wrapping BODY with powerline padding an propetization."
   `(defun ,name
-     (&optional face pad)
+       (&optional face pad)
      (powerline-raw ,body face pad)))
 
 (defun pl/property-substrings (str prop)
@@ -451,10 +451,10 @@ static char * %s[] = {
 (defpowerline powerline-vc
   (when (and (buffer-file-name (current-buffer)) vc-mode)
     (if (and window-system (not powerline-gui-use-vcs-glyph))
-	(format-mode-line '(vc-mode vc-mode))
+        (format-mode-line '(vc-mode vc-mode))
       (format " %s%s"
-	      (char-to-string #xe0a0)
-	      (format-mode-line '(vc-mode vc-mode))))))
+              (char-to-string #xe0a0)
+              (format-mode-line '(vc-mode vc-mode))))))
 
 ;;;###autoload (autoload 'powerline-buffer-size "powerline")
 (defpowerline powerline-buffer-size
@@ -474,14 +474,14 @@ static char * %s[] = {
   (powerline-raw
    (format-mode-line
     (concat " " (propertize
-		 "%b"
-		 'face face
-		 'mouse-face 'mode-line-highlight
-		 'help-echo "Buffer name\n\ mouse-1: Previous buffer\n\ mouse-3: Next buffer"
-		 'local-map (let ((map (make-sparse-keymap)))
-			      (define-key map [mode-line mouse-1] 'mode-line-previous-buffer)
-			      (define-key map [mode-line mouse-3] 'mode-line-next-buffer)
-			      map))))
+                 "%b"
+                 'face face
+                 'mouse-face 'mode-line-highlight
+                 'help-echo "Buffer name\n\ mouse-1: Previous buffer\n\ mouse-3: Next buffer"
+                 'local-map (let ((map (make-sparse-keymap)))
+                              (define-key map [mode-line mouse-1] 'mode-line-previous-buffer)
+                              (define-key map [mode-line mouse-3] 'mode-line-next-buffer)
+                              map))))
    face pad))
 
 ;;;###autoload (autoload 'powerline-process "powerline")
