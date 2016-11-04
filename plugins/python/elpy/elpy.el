@@ -69,7 +69,7 @@ This can be used to enable minor modes for Python development."
                           elpy-module-company
                           elpy-module-eldoc
                           elpy-module-flymake
-                          elpy-module-highlight-indentation
+                          ;; elpy-module-highlight-indentation
                           elpy-module-pyvenv
                           elpy-module-yasnippet)
   "Which Elpy modules to use.
@@ -84,8 +84,8 @@ can be inidividually enabled or disabled."
                      elpy-module-flymake)
               (const :tag "Show the virtualenv in the mode line (pyvenv)"
                      elpy-module-pyvenv)
-              (const :tag "Display indentation markers (highlight-indentation)"
-                     elpy-module-highlight-indentation)
+              ;; (const :tag "Display indentation markers (highlight-indentation)"
+              ;; elpy-module-highlight-indentation)
               (const :tag "Expand code snippets (YASnippet)"
                      elpy-module-yasnippet)
               (const :tag "Configure some sane defaults for Emacs"
@@ -3680,15 +3680,15 @@ description."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Module: Highlight Indentation
 
-(defun elpy-module-highlight-indentation (command &rest args)
-  "Module to highlight indentation in Python files."
-  (pcase command
-    (`global-init
-     (require 'highlight-indentation))
-    (`buffer-init
-     (highlight-indentation-mode 1))
-    (`buffer-stop
-     (highlight-indentation-mode -1))))
+;; (defun elpy-module-highlight-indentation (command &rest args)
+;;   "Module to highlight indentation in Python files."
+;;   (pcase command
+;;     (`global-init
+;;      (require 'highlight-indentation))
+;;     (`buffer-init
+;;      (highlight-indentation-mode 1))
+;;     (`buffer-stop
+;;      (highlight-indentation-mode -1))))
 
 ;;;;;;;;;;;;;;;;;;
 ;;; Module: pyvenv
@@ -3835,15 +3835,15 @@ which we're looking."
   )
 
 ;; highlight-indentation 0.5 does not use modes yet
-(when (not (fboundp 'highlight-indentation-mode))
-  (defun highlight-indentation-mode (on-or-off)
-    (cond
-     ((and (> on-or-off 0)
-           (not highlight-indent-active))
-      (highlight-indentation))
-     ((and (<= on-or-off 0)
-           highlight-indent-active)
-      (highlight-indentation)))))
+;; (when (not (fboundp 'highlight-indentation-mode))
+;;   (defun highlight-indentation-mode (on-or-off)
+;;     (cond
+;;      ((and (> on-or-off 0)
+;;            (not highlight-indent-active))
+;;       (highlight-indentation))
+;;      ((and (<= on-or-off 0)
+;;            highlight-indent-active)
+;;       (highlight-indentation)))))
 
 
 (provide 'elpy)

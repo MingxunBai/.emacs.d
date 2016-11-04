@@ -60261,7 +60261,7 @@ wht 修
 whta 修筑 修长 悠长
 whtd 倏 修辞
 whte 修 候船 脩
-whtf 修造 候选 修行 鞗
+whtf 候选 修行 修造 鞗
 whth 跾
 whti 絛
 whtj 修复

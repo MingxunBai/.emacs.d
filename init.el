@@ -236,6 +236,11 @@
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
+;; Highlight indent guides
+(require 'highlight-indent-guides)
+
+(setq highlight-indent-guides-method 'character)
+
 ;; Highlight parentheses mode
 (require 'highlight-parentheses)
 (highlight-parentheses-mode)
@@ -418,6 +423,8 @@
   (require 'elpy)
   (elpy-mode)
 
+  (highlight-indent-guides-mode)
+
   (require 'py-autopep8)
   (py-autopep8-enable-on-save)
 
@@ -432,6 +439,7 @@
         '((?\< "" >)))
 
   (enable-emmet-mode)
+  (highlight-indent-guides-mode)
   (hs-minor-mode))
 
 (add-hook 'css-mode-hook 'enable-web-mode)
