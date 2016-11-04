@@ -25,7 +25,7 @@
   (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
   (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
 
-  (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
+  (setq chinese-wbim-use-tooltip nil)   ; Tooltip 暂时还不好用
 
   ;; 用 ; 暂时输入英文
   (require 'chinese-wbim-extra)
@@ -53,10 +53,6 @@
 ;; 显示
 ;;-------------------------------------------------
 
-(load-theme 'misterioso t)              ; 设置主题
-(set-cursor-color "Wheat")              ; 设置光标颜色
-(set-face-background 'region "Blue")    ; 设置选中区块背景色
-
 (setq inhibit-startup-message t         ; 关闭启动动画
 
       visible-bell t                    ; 关闭错误提示音
@@ -72,19 +68,14 @@
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
-(when *Windows*
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code"))) ; 修改 windows 下的中文字体为 "明兰黑"
+(when *Windows*                         ; 设置中文字体为 "明兰黑"
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 ;; 语法高亮
 (global-font-lock-mode)
 (setq font-lock-maximum-decoration t    ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
-
-;; 当前行高亮
-(global-hl-line-mode)
-(set-face-background hl-line-face "#FFFFFF")
-(set-face-foreground hl-line-face "#000000")
 
 ;; 显示行号
 (global-linum-mode)
@@ -264,7 +255,7 @@
   (require 'markdown-mode)
   (markdown-mode)
 
-  (when *Windows*                       ; set markdown-command for windows
+  (when *Windows*                   ; set markdown-command for windows
     (custom-set-variables '(markdown-command "markdown.pl"))))
 
 ;; Multiple cursors
@@ -273,12 +264,6 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
-
-;; Powerline
-(defun enable-powerline ()
-  (require 'powerline)
-
-  (powerline-default-theme))
 
 ;; Project explorer
 (require 'project-explorer)
@@ -326,7 +311,7 @@
            :value choice))
         choices)
        :prompt prompt
-       :isearch t ; start isearch mode immediately
+       :isearch t                     ; start isearch mode immediately
        )))
   (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
@@ -384,10 +369,6 @@
 (add-hook 'after-init-hook (lambda ()
                              ;; Auto complete mode
                              (auto-enable-auto-complete-mode)
-
-                             ;; Powerline
-                             (if window-system
-                                 (enable-powerline))
 
                              ;; YASnippet
                              (auto-enable-yasnippet)
