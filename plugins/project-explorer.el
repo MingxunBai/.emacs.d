@@ -285,7 +285,6 @@ Set once, when the buffer is first created.")
     (set-process-sentinel process sentinel)))
 
 (defun pe/copy-relative-path ()
-  (interactive)
   (pe/copy-file-name-as-kill)
   (other-window 1)
   (kill-new (file-relative-name (car kill-ring)

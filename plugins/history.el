@@ -155,7 +155,8 @@ but contains absolute path.")
            (push file history-marked-files)
            (history-hight-region file
                                  (history-beginning-of-line)
-                                 (history-end-of-line)))
+                                 (history-end-of-line))
+           (next-line))
           ;; already marked, unmark-it
           ((member file history-marked-files)
            (setq history-marked-files (delete file history-marked-files))

@@ -68,6 +68,11 @@
       (list (format "%s %%S: %%j " (system-name))
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
+;; 隐藏滚动条及菜单工具栏
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
 (when *Windows*                         ; 设置中文字体为 "明兰黑"
@@ -75,9 +80,20 @@
 
 ;; 语法高亮
 (global-font-lock-mode)
+
 (setq font-lock-maximum-decoration t    ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
+
+;; 高亮当前行
+(global-hl-line-mode)
+
+(set-face-attribute hl-line-face nil :underline t)
+
+;; 高亮匹配括号
+(show-paren-mode)
+
+(setq show-paren-style 'parenthesis)    ; 光标不会跳到另一个括号处
 
 ;; 显示行号
 (global-linum-mode)
@@ -85,14 +101,8 @@
       column-number-mode
       line-number-mode)
 
-(show-paren-mode)                       ; 高亮匹配括号
-(setq show-paren-style 'parenthesis)    ; 光标不会跳到另一个括号处
-
-(scroll-bar-mode -1)                    ; 隐藏滚动条
-(tool-bar-mode -1)                      ; 隐藏工具栏
-(menu-bar-mode -1)                      ; 隐藏菜单栏
-
-(setq display-time-24hr-format t)       ; 24小时制
+;; 显示时间
+(setq display-time-24hr-format t)
 (display-time)                          ; 启用时间显示
 
 ;;-------------------------------------------------
@@ -126,7 +136,7 @@
               default-tab-width 4       ; 设置默认缩进为 4
               c-basic-offset 4)         ; 修改 C 语言缩进为 4
 
-;; 移动缩进
+;; 自定缩进
 (defun resize-indentation (n)
   (interactive "nEnter indentation size:")
   (if (use-region-p)
@@ -143,6 +153,7 @@
      (line-beginning-position)
      (line-end-position)
      n)))
+
 (global-set-key (kbd "<backtab>") 'resize-indentation)
 
 ;; 删除空白字符至上一行末尾
@@ -151,6 +162,7 @@
   (progn
     (delete-indentation)
     (indent-according-to-mode)))
+
 (global-set-key (kbd "C-c k") 'delete-whitespace-to-upline)
 
 ;; 向上新建一行
@@ -161,6 +173,7 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
+
 (global-set-key (kbd "M-o") 'up-newline)
 
 ;; 向下新建一行
@@ -169,6 +182,7 @@
   (progn
     (end-of-line)
     (newline-and-indent)))
+
 (global-set-key (kbd "C-o") 'down-newline)
 
 ;; 自动匹配括号
@@ -194,6 +208,7 @@
   (interactive)
   (split-window-right)
   (other-window 1))
+
 (global-set-key (kbd "C-x 3") 'new-right-window)
 
 ;;-------------------------------------------------
@@ -205,11 +220,14 @@
 
 ;; Ido mode
 (ido-mode)
-(setq ido-save-directory-list-file nil)
+
+(setq ido-save-directory-list-file nil
+      ido-enable-flex-matching t)       ; 模糊匹配
 
 ;; Winner mode
 (when (fboundp 'winner-mode)
   (winner-mode))
+
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
@@ -320,6 +338,7 @@
        :prompt prompt
        :isearch t                     ; start isearch mode immediately
        )))
+
   (setq yas-prompt-functions '(yas-popup-isearch-prompt))
 
   ;; completing point by some yasnippet key
@@ -343,6 +362,7 @@
           (delete-char (- init-word original-point))
           (insert key)
           (yas-expand)))))
+
   (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-ido-expand))
 
 ;;-------------------------------------------------

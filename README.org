@@ -66,6 +66,7 @@
 
 ** project-explorer
    - 显示或隐藏项目树，快捷键 F1
+   - 自定复制相对路径函数，快捷键 C-c c
 
 ** web-mode
    - 支持 web 相关所有模式
