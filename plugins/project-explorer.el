@@ -1,8 +1,5 @@
 ;;; project-explorer.el --- A project explorer sidebar -*- lexical-binding: t -*-
 
-;; Hi-lock: (("^;;; \\*.+" (0 '(:inherit (bold org-level-1)) t)))
-;; Hi-lock: end
-
 ;;; Version: 0.15.0
 ;;; Author: sabof
 ;;; URL: https://github.com/sabof/project-explorer
@@ -286,6 +283,13 @@ Set once, when the buffer is first created.")
              (kill-buffer buffer)
              )))
     (set-process-sentinel process sentinel)))
+
+(defun pe/copy-relative-path ()
+  (interactive)
+  (pe/copy-file-name-as-kill)
+  (other-window 1)
+  (kill-new (file-relative-name (car kill-ring)
+                                (file-name-directory (buffer-file-name)))))
 
 (defun pe/project-root-function-default ()
   (if (fboundp 'projectile-project-root)
@@ -1646,6 +1650,7 @@ Redraws the tree based on DATA. Will try to restore folds, if TYPE is
                 pe/mode-line-format))
 
   (es-define-keys project-explorer-mode-map
+    (kbd "C-c c") 'pe/copy-relative-path
     (kbd "+") 'pe/create-file
     (kbd "-") 'pe/delete-file
     (kbd "d") 'pe/delete-file

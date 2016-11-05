@@ -64,7 +64,9 @@
       scroll-margin 3                   ; 靠近屏幕边沿3行时就开始滚动
       scroll-conservatively 10000
 
-      frame-title-format '("Emacs@%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+      frame-title-format                ; Title 显示完整路径
+      (list (format "%s %%S: %%j " (system-name))
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
@@ -439,7 +441,6 @@
         '((?\< "" >)))
 
   (enable-emmet-mode)
-  (highlight-indent-guides-mode)
   (hs-minor-mode))
 
 (add-hook 'css-mode-hook 'enable-web-mode)
