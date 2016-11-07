@@ -66846,7 +66846,7 @@ yney 遍及
 ynf 讯 訊
 ynfa 记载 词霸
 ynfb 遍地
-ynfc 妄动 启动 扇动 忘却 亡魂 永劫
+ynfc 启动 扇动 忘却 亡魂 妄动 永劫
 ynff 启封
 ynfg 词干
 ynfh 讯 废墟 记起 肩起 訊
