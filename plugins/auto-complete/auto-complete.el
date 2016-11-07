@@ -210,9 +210,8 @@ Use `version-to-list' to get version component.")
     makefile-mode sh-mode fortran-mode f90-mode ada-mode
     xml-mode sgml-mode web-mode
     ts-mode
-    text-mode
-	conf-colon-mode conf-javaprop-mode conf-mode 	conf-ppd-mode 	conf-space-keywords
-	conf-space-mode conf-unix-mode conf-windows-mode conf-xdefaults-mode
+	text-mode
+	conf-colon-mode conf-javaprop-mode conf-mode conf-ppd-mode conf-space-mode conf-unix-mode conf-windows-mode conf-xdefaults-mode
     sclang-mode
     verilog-mode
     qml-mode

@@ -23,6 +23,7 @@
 				("<" . skeleton-pair-insert-maybe)
 
 				;; Auto complete mode
+				("C-." . auto-complete)
 				("M-/" . ac-stop)
 
 				;; Emmet mode
@@ -55,7 +56,7 @@
                 ("C-o" . custom-down-newline)
                 ("M-o" . custom-up-newline)
                 ("C-c k" . custom-delete-whitespace-to-upline)
-                ("<backtab>" . custom-resize-indentation)
+                ("<backtab>" . custom-resize-indentation--4)
 
 				;; 五笔输入法
 				(";" . chinese-wbim-insert-ascii)))

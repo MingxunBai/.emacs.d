@@ -156,6 +156,10 @@
      (line-end-position)
      n)))
 
+(defun custom-resize-indentation--4 ()
+  (interactive)
+  (custom-resize-indentation -4))
+
 ;; 删除空白字符至上一行末尾
 (defun custom-delete-whitespace-to-upline ()
   (interactive)
@@ -196,7 +200,7 @@
 (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 (ac-config-default)
 (ac-set-trigger-key "TAB")
-(setq ac-auto-start nil
+(setq ac-auto-start 2
       ac-use-menu-map t)
 
 ;; Emmet mode
@@ -293,11 +297,12 @@
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("\\.md\\'" . (lambda ()
+      (append '(("\\.js\\'" . (lambda ()
+								(enable-js2-mode)))
+				("\\.md\\'" . (lambda ()
                                 (enable-markdown-mode)))
                 ("\\.php\\'" . (lambda ()
                                  (enable-web-mode)))
-                ("\\.py\\'" . python-mode)
                 ("\\.ya?ml\\'" . (lambda ()
                                    (enable-yaml-mode))))
               auto-mode-alist))
@@ -306,21 +311,13 @@
 ;; Hook
 ;;-------------------------------------------------
 
-;; Elisp mode
-(add-hook 'emacs-lisp-mode-hook '(lambda ()
-                                   (setq skeleton-pair-alist
-                                         '((?\' "" >)))))
-
-;; JavaScript IDE
-(add-hook 'js-mode-hook 'enable-js2-mode)
-(add-hook 'js2-mode-hook 'my-web-dev-hook)
+;; Emacs lisp mode
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+								  (setq skeleton-pair-alist
+										'((?\' "" >)))))
 
 ;; Org mode
 (defun my-org-mode-hook ()
-  ;; 禁止 [ 自动补齐
-  (setq skeleton-pair-alist
-        '((?\[ "" >)))
-
   (setq org-startup-indented t)         ; 自动缩进
 
   ;; 代码高亮
@@ -347,7 +344,6 @@
 
 ;; Python mode
 (defun my-python-mode-hook ()
-  (interactive)
   (require 'elpy)
   (elpy-mode)
 
@@ -364,9 +360,8 @@
 
 ;; Web mode
 (defun my-web-mode-hook ()
-  ;; 禁止 < 自动补齐
   (setq skeleton-pair-alist
-        '((?\< "" >)))
+		'((?\< "" >)))
 
   (enable-emmet-mode)
   (hs-minor-mode))
@@ -374,6 +369,7 @@
 (add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
+(add-hook 'js2-mode-hook 'my-web-mode-hook)
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
 ;; 配置五笔输入法
@@ -384,7 +380,6 @@
 (setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
 
 (progn                                  ; 启动五笔输入法
-  (interactive)
   (set-input-method 'chinese-wbim)
   (toggle-input-method))
 

@@ -14890,7 +14890,7 @@ gayh 开店
 gayj 开课
 gayl 武库
 gaym 开设 开市
-gayn 开遍 开户 开启 开幕词 刑讯
+gayn 开启 开遍 开户 开幕词 刑讯
 gayo 形迹
 gayq 一劳永逸
 gayt 开放 开庭
@@ -38089,7 +38089,7 @@ puyc 补充 褵
 puye 衬衣
 puyg 补语 初评 实证 襢
 puyh 褯
-puyj 补课
+puyj 补齐 补课
 puyk 初衷
 puyl 裤 实为 褲
 puyn 实词
