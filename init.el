@@ -183,6 +183,15 @@
     (end-of-line)
     (newline-and-indent)))
 
+;; 标签内新建一行
+(defun custom-middle-newline ()
+  (interactive)
+  (progn
+	(newline-and-indent)
+	(newline-and-indent)
+	(previous-line)
+	(indent-according-to-mode)))
+
 ;; 在右侧新建一个窗口
 (defun custom-new-right-window ()
   (interactive)
@@ -200,7 +209,7 @@
 (add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
 (ac-config-default)
 (ac-set-trigger-key "TAB")
-(setq ac-auto-start 2
+(setq ac-auto-start nil
       ac-use-menu-map t)
 
 ;; Emmet mode

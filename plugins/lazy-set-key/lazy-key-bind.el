@@ -55,6 +55,7 @@
 				("C-x 3" . custom-new-fileright-window)
                 ("C-o" . custom-down-newline)
                 ("M-o" . custom-up-newline)
+				("<C-return>" . custom-middle-newline)
                 ("C-c k" . custom-delete-whitespace-to-upline)
                 ("<backtab>" . custom-resize-indentation--4)
 
