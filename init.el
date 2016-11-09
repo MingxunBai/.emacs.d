@@ -255,6 +255,12 @@
 ;; Project explorer
 (require 'project-explorer)
 
+;; Vimrc mode
+(defun enable-vimrc-mode ()
+  (interactive)
+  (require 'vimrc-mode)
+  (vimrc-mode))
+
 ;; Web mode
 (defun enable-web-mode ()
   (interactive)
@@ -312,6 +318,8 @@
                                 (enable-markdown-mode)))
                 ("\\.php\\'" . (lambda ()
                                  (enable-web-mode)))
+				("\\.vimrc\\'" . (lambda ()
+								   (enable-vimrc-mode)))
                 ("\\.ya?ml\\'" . (lambda ()
                                    (enable-yaml-mode))))
               auto-mode-alist))
