@@ -312,7 +312,10 @@
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("\\.js\\'" . (lambda ()
+      (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
+
+				("\\.bash" . conf-mode)
+				("\\.js\\'" . (lambda ()
 								(enable-js2-mode)))
 				("\\.md\\'" . (lambda ()
                                 (enable-markdown-mode)))
