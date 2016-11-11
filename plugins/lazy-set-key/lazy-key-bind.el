@@ -52,7 +52,7 @@
 				("<C-tab>" . yas-ido-expand)
 
 				;; Custom function
-				("C-x 3" . custom-new-fileright-window)
+				("C-x 3" . custom-new-right-window)
                 ("C-o" . custom-down-newline)
                 ("M-o" . custom-up-newline)
 				("<C-return>" . custom-middle-newline)

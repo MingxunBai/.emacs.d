@@ -24,13 +24,13 @@
 ;; 编码环境
 ;;-------------------------------------------------
 
-(setq current-language-environment "UTF-8")
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
+(setq current-language-environment 'utf-8
+	  default-buffer-file-coding-system 'utf-8
+	  locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
 
 ;;-------------------------------------------------
 ;; 显示 & 行为
