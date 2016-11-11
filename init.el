@@ -82,7 +82,13 @@
 
       frame-title-format (list          ; Title 显示完整路径
                           (format "%s %%S: %%j " (system-name))
-                          '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+                          '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+
+	  eshell-prompt-function (lambda () ; Eshell prompt
+							   (concat
+								(propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
+								(propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
+								(if (= (user-uid) 0) " # " " $ "))))
 
 (mouse-avoidance-mode 'animate)         ; 光标将鼠标自动弹开
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
