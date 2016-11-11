@@ -24,7 +24,7 @@
 ;; 编码环境
 ;;-------------------------------------------------
 
-(setq current-language-environment 'utf-8
+(setq current-language-environment "utf-8"
 	  default-buffer-file-coding-system 'utf-8
 	  locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
