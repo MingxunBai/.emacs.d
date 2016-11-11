@@ -211,6 +211,7 @@ Use `version-to-list' to get version component.")
     xml-mode sgml-mode web-mode
     ts-mode
 	bat-mode
+	vimrc-mode
 	text-mode
 	conf-colon-mode conf-javaprop-mode conf-mode conf-ppd-mode conf-space-mode conf-unix-mode conf-windows-mode conf-xdefaults-mode
     sclang-mode
