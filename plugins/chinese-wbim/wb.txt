@@ -6337,7 +6337,7 @@ cwxy 难缠
 cwy 难 骓
 cwya 难度 观众席
 cwyc 駖
-cwyg 难 骓 验证 騅
+cwyg 难 验证 骓 騅
 cwyl 难为
 cwyn 难忘 騐
 cwyt 通俗读物
@@ -37244,7 +37244,7 @@ pnbw 官阶
 pnbx 农民阶级
 pnce 官能
 pncn 官马
-pndc 密友 密码
+pndc 密码 密友
 pndf 空心砖
 pndm 密布
 pndq ▲
