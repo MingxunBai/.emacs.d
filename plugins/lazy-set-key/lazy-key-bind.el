@@ -9,6 +9,7 @@
 ;; This is custom key bind use lazy-set-key.
 
 ;;; Code:
+
 (lazy-unset-key '("M-<down-mouse-1>"))
 
 (lazy-set-key '(("RET" . newline-and-indent)
@@ -53,11 +54,15 @@
 
 				;; Custom function
 				("C-x 3" . custom-new-right-window)
+				("C-x 2" . custom-new-below-window)
                 ("C-o" . custom-down-newline)
                 ("M-o" . custom-up-newline)
 				("<C-return>" . custom-middle-newline)
+				("M-[" . custom-move-up-current-line)
+				("M-]" . custom-move-down-current-line)
                 ("C-c k" . custom-delete-whitespace-to-upline)
                 ("<backtab>" . custom-resize-indentation--4)
+				("C-y" . custom-yank)
 
 				;; 五笔输入法
 				(";" . chinese-wbim-insert-ascii)))
