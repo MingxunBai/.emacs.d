@@ -79,8 +79,12 @@
 ;; 移动当前行
 (defun is-whole-line ()
   (end-of-line)
-  (if (eobp)
-	  'true))
+  (if (eobp) 'true))
+
+(defun remember-pos ()
+  (set 'currpos (point))
+  (beginning-of-line)
+  (set 'step (- currpos (point))))
 
 (defun custom-move-current-line (n)
   (interactive)
@@ -88,44 +92,53 @@
 	(beginning-of-line)
 	(kill-whole-line)
 	(forward-line n)
-	(custom-yank)))
+	(custom-yank)
+	(forward-char step)))
 
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
+  (remember-pos)
   (progn
 	(beginning-of-line)
 	(if (bobp)
-		(message "Beginning of buffer now!")
+		(progn
+		  (message "Beginning of buffer now!")
+		  (forward-char step))
 	  (progn
 		(if (eq (is-whole-line) 'true)
 			(progn
 			  (newline)
 			  (forward-line -1)
 			  (custom-move-current-line -1))
-	  (custom-move-current-line -1))))))
+		  (custom-move-current-line -1))))))
 
 ;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
-  (end-of-line)
-  (if (eobp)
+  (remember-pos)
+  (progn
+	(end-of-line)
+	(if (eobp)
+		(progn
+		  (message "End of buffer now!")
+		  (beginning-of-line)
+		  (forward-char step))
 	  (progn
-		(message "End of buffer now!"))
-	(progn
-	  (if (eq (is-whole-line) 'true)
-		  (progn
-			(newline)
-			(forward-line)
-			(custom-move-current-line 1))
-		(custom-move-current-line 1)))))
+		(if (eq (is-whole-line) 'true)
+			(progn
+			  (newline)
+			  (forward-line)
+			  (custom-move-current-line 1))
+		  (custom-move-current-line 1))))))
 
 
 ;; 粘贴
 (defun custom-yank ()
   (interactive)
   (yank)
-  (previous-line)
+  (indent-according-to-mode)
+  (forward-line -1)
   (indent-according-to-mode))
 
 (provide 'custom-function)

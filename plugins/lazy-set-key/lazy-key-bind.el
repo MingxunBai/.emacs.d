@@ -62,7 +62,7 @@
 				("M-]" . custom-move-down-current-line)
                 ("C-c k" . custom-delete-whitespace-to-upline)
                 ("<backtab>" . custom-resize-indentation--4)
-				("C-y" . custom-yank)
+				("C-M-y" . custom-yank)
 
 				;; 五笔输入法
 				(";" . chinese-wbim-insert-ascii)))
