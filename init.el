@@ -128,7 +128,7 @@
 ;; Highlight line mode
 (global-hl-line-mode)
 
-(set-face-attribute hl-line-face nil :underline t)
+(set-face-attribute hl-line-face nil :underline t :background "#E8E8FF")
 
 ;; Ido mode
 (ido-mode)
