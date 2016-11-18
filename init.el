@@ -126,6 +126,8 @@
 
 (display-time)                          ; 显示时间
 
+(global-auto-revert-mode)				; auto revert
+
 ;; Highlight line mode
 (global-hl-line-mode)
 
