@@ -17,8 +17,9 @@
     (normal-top-level-add-subdirs-to-load-path)))
 (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
 
-(when *Windows*
-  (setq default-directory (format "C:/Users/%s/Documents" user-full-name)))
+(if *Windows*
+	(setq default-directory (format "C:/Users/%s/Documents" user-full-name))
+  (setq default-directory "~/Documents"))
 
 ;;-------------------------------------------------
 ;; 编码环境
