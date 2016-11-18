@@ -19,9 +19,9 @@
 				("(" . skeleton-pair-insert-maybe)
 				("[" . skeleton-pair-insert-maybe)
 				("{" . skeleton-pair-insert-maybe)
-				("\'" . skeleton-pair-insert-maybe)
-				("\"" . skeleton-pair-insert-maybe)
 				("<" . skeleton-pair-insert-maybe)
+				("\"" . skeleton-pair-insert-maybe)
+				("\'" . skeleton-pair-insert-maybe)
 
 				;; Auto complete mode
 				("C-." . auto-complete)

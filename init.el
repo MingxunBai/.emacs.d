@@ -15,10 +15,10 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-(add-subdirs-to-load-path (expand-file-name "plugins/" user-emacs-directory))
+(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
 
 (when *Windows*
-  (setq default-directory "D:/Tools/xampp/htdocs"))
+  (setq default-directory (format "C:/Users/%s/Documents" user-full-name)))
 
 ;;-------------------------------------------------
 ;; 编码环境
@@ -72,7 +72,7 @@
 
       max-lisp-eval-depth 10000
 
-      linum-format "%4d "               ; 四位数显示行号
+      linum-format " %4d "				; 四位数显示行号
       column-number-mode
       line-number-mode
 
@@ -90,7 +90,7 @@
 								(propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
 								(if (= (user-uid) 0) " # " " $ "))))
 
-(mouse-avoidance-mode 'animate)         ; 光标将鼠标自动弹开
+;; (mouse-avoidance-mode 'animate)         ; 光标将鼠标自动弹开
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
 ;; 设置字体
@@ -128,7 +128,9 @@
 ;; Highlight line mode
 (global-hl-line-mode)
 
-(set-face-attribute hl-line-face nil :underline t :background "#E8E8FF")
+(set-face-attribute hl-line-face nil
+					;; :underline t
+					:background "#E8E8FF")
 
 ;; Ido mode
 (ido-mode)
@@ -235,8 +237,27 @@
 (require 'yasnippet)
 (yas-global-mode)
 
+;; use popup menu for yas-choose-value
+(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  (when (featurep 'popup)
+    (popup-menu*
+     (mapcar
+      (lambda (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         :value choice))
+      choices)
+     :prompt prompt
+     ;; start isearch mode immediately
+     :isearch t
+     )))
+
+(setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+
 ;; completing point by some yasnippet key
 (defun yas-ido-expand ()
+  "Lets you select (and expand) a yasnippet key"
   (interactive)
   (let ((original-point (point)))
     (while (and
