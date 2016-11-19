@@ -50575,7 +50575,7 @@ tfwb 待他
 tfwc 赞颂 逢场作戏
 tfwd 选段 毛估
 tfwf 奥运会 行会 等值 冬运会 待会 稑
-tfwg 行使 待命 先例 行伍
+tfwg 全选 行使 待命 先例 行伍
 tfwh 等候 选修
 tfwj 簮
 tfwk 穡 簭

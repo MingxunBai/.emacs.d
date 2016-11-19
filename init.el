@@ -190,6 +190,18 @@
 (require 'lazy-set-key)
 (require 'lazy-key-bind)
 
+;; Less css mode
+(defun enable-less-css-mode ()
+  (interactive)
+  (require 'less-css-mode)
+  (less-css-mode)
+
+  (when *Windows*
+	(setq less-css-lessc-command "D:/Tools/NodeJS/lessc"))
+
+  (setq less-css-compile-at-save t
+		less-css-output-directory "../css"))
+
 ;; Markdown mode
 (defun enable-markdown-mode ()
   (interactive)
@@ -289,8 +301,12 @@
       (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
 
 				("\\.bash" . conf-mode)
+				("\\.css\\'" . (lambda ()
+								 (enable-web-mode)))
 				("\\.js\\'" . (lambda ()
 								(enable-js2-mode)))
+				("\\.less\\'". (lambda ()
+								 (enable-less-css-mode)))
 				("\\.md\\'" . (lambda ()
                                 (enable-markdown-mode)))
                 ("\\.php\\'" . (lambda ()
@@ -360,7 +376,7 @@
   (enable-emmet-mode)
   (hs-minor-mode))
 
-(add-hook 'css-mode-hook 'enable-web-mode)
+;; (add-hook 'css-mode-hook 'enable-web-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 (add-hook 'js2-mode-hook 'my-web-mode-hook)
