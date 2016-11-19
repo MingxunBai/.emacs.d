@@ -29,7 +29,7 @@
 	  default-buffer-file-coding-system 'utf-8
 	  locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
@@ -107,7 +107,6 @@
         (?\[ _ "]" >)
         (?\{ _ "}" >)
         (?\< _ ">" >))
-
       skeleton-pair t)
 
 ;;-------------------------------------------------
@@ -330,7 +329,7 @@
 (defun my-org-mode-hook ()
   (setq org-startup-indented t)         ; 自动缩进
 
-  ;; 代码高亮
+  ;; 生成 html 文件时代码高亮
   (require 'htmlize)
   (setq org-src-fontify-natively t)
 
