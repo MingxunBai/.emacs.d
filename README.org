@@ -1,80 +1,87 @@
+
 * How to install
 
- #+BEGIN_SRC bash
-     git clone https://github.com/MingxunBai/emacs.d
-     cp -r emacs.d/ ~/.emacs.d
- #+END_SRC
+	#+BEGIN_SRC bash
+		git clone https://github.com/MingxunBai/emacs.d
+		cp -r emacs.d/ ~/.emacs.d
+	#+END_SRC
 
 * 内置的插件
 
 ** hs-mode
-   - 显示或隐藏代码块，快捷键 F2
+	- 显示或隐藏代码块，快捷键 F2
 
 ** ido-mode
-   - 快速选择 file 或 buffer
+	- 快速选择 file 或 buffer
 
 ** org-mode
-   - 添加代码高亮
-   - 快速插入代码块，快捷键 C-c c i
-   - 编辑代码块，快捷键 C-c c e
+	- 添加代码高亮
+	- 快速插入代码块，快捷键 C-c c i
+	- 编辑代码块，快捷键 C-c c e
 
 ** winner-mode
-   - 撤销窗口改变，快捷键 C-x 4 u
-   - 恢复窗口改变，快捷键 C-x 4 r
+	- 撤销窗口改变，快捷键 C-x 4 u
+	- 恢复窗口改变，快捷键 C-x 4 r
 
 * 安装的插件
 
 ** 五笔输入法
-   - 默认为英文状态, C-\ 切换
-   - 可通过修改 plugins/input-wbpy/wb.txt 调整词序
+	- 默认为英文状态, C-\ 切换
+	- 可通过修改 plugins/input-wbpy/wb.txt 调整词序
 
 ** auto-complete
-   - 关闭自动提示，TAB 触发自动补齐，C-. 开启 补齐提示窗口，M-/ 关闭补齐提示窗口
-   - M-n M-p 上下移动候选项
+	- 关闭自动提示，TAB 触发自动补齐，C-. 开启 补齐提示窗口，M-/ 关闭补齐提示窗口
+	- M-n M-p 上下移动候选项
 
 ** emmet-mode
-   - css-mode，html-mode，web-mode 加载后自动加载
-   - C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
+	- css-mode，html-mode，web-mode 加载后自动加载
+	- C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
 
 ** elpy-mode
-   - Python IDE mode
-   - 安装依赖:
-      #+BEGIN_SRC python
-        pip install flake8 jedi autopep8 elpy
-      #+END_SRC
+	- Python IDE mode
+	- 安装依赖:
+	#+BEGIN_SRC python
+		pip install flake8 jedi autopep8 elpy
+	#+END_SRC
 
 ** highlight-parentheses-mode
-   - 光标所在括号分层级高亮
+	- 光标所在括号分层级高亮
 
 ** history
-   - 历史记录
-   - m 标记文件，O 打开标记的文件，p 定义标记的文件为 project，s 保存
+	- 历史记录
+	- m 标记文件，O 打开标记的文件，p 定义标记的文件为 project，s 保存
 
 ** js2-mode
-   - JavaScript IDE mode
+	- JavaScript IDE mode
+
+** lazy-set-key
+	- 设置快捷键
+** less-css-mode
+	- less 文件保存时自动生成 .css 文件
+	- Windows 需要指定 lessc 命令位置
 
 ** markdown-mode
-  - markdown 语法支持
-    + 需要 markdown-command，windows 用户可在 [[http://daringfireball.net/projects/markdown/][Markdown]] 上下载后丢到 bin 文件夹中(需要安装 perl)，并设置路径: (custom-set-variables '(markdown-command "markdown.pl"))
+	- markdown 语法支持
+	- 需要 markdown-command，Windows 用户可在 [[http://daringfireball.net/projects/markdown/][Markdown]] 上下载后丢到 bin 文件夹中(需要安装 perl)，并设置路径: (custom-set-variables '(markdown-command "markdown.pl"))
 
 ** multiple-cursors
-   - 多点编辑，快捷键 Alt + 左键
-   - C-S-c C-S-c 为选定区块的每一行开启多点编辑
+	- 多点编辑，快捷键 Alt + 左键
+	- C-S-c C-S-c 为选定区块的每一行开启多点编辑
 
 ** powerlin-mode
-  - 修改状态栏样式
+	- 修改状态栏样式
 
 ** project-explorer
-   - 显示或隐藏项目树，快捷键 F1
-   - 自定复制相对路径函数，快捷键 C-c c
+	- 显示或隐藏项目树，快捷键 F1
+	- 自定复制相对路径函数，快捷键 C-c c
 
 ** web-mode
-   - 支持 web 相关所有模式
-   - HTML 缩进改为 2 个空格
-   - 将 html，css，php 模式重定向至 web-mode
+	- 支持 web 相关所有模式
+	- HTML 缩进改为 2 个空格
+	- 将 html，css，php 模式重定向至 web-mode
 
 ** windows-numbering
-   - 多窗口，左下角显示窗口编号，M+n 切换到第 n 个窗口
+	- 多窗口，左下角显示窗口编号，M+n 切换到第 n 个窗口
 
 ** yasnippet
-   - 自定代码块，tab 键触发
+	- 自定代码块，tab 键触发
