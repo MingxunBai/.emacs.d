@@ -6,7 +6,7 @@ first-char=zyxwvutsrqponmlkjihgfedcba
 total-char=zvxmljstpofieycwukbrqnhgda
 lib=chinese-wbim-wb
 other-files=wbpy.txt
-page-length=3
+page-length=6
 
 [Punctuation]
 { 『
