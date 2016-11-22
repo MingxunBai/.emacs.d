@@ -1,8 +1,8 @@
 * How to install
 
-	#+BEGIN_SRC bash
-		git clone https://github.com/MingxunBai/emacs.d
-		cp -r emacs.d/ ~/.emacs.d
+	#+BEGIN_SRC sh
+      git clone https://github.com/MingxunBai/emacs.d
+      cp -r emacs.d/ ~/.emacs.d
 	#+END_SRC
 
 * 内置的插件
@@ -39,8 +39,8 @@
 ** elpy-mode
 	- Python IDE mode
 	- 安装依赖:
-	#+BEGIN_SRC python
-		pip install flake8 jedi autopep8 elpy
+	#+BEGIN_SRC sh
+      pip install flake8 jedi autopep8 elpy
 	#+END_SRC
 
 ** git-emacs
