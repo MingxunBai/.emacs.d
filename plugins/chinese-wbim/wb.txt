@@ -26840,7 +26840,7 @@ khev 蹈 跑腿
 khew 嘴脸
 khey 趿 中脉 中脑
 khf 趺 \x836\xCD4 
-khfa 路霸
+khfa 跨域 路霸
 khfb 踋 踍
 khfc 跳动 路劫 跑动 中去 跂
 khff 跬 足坛 跳墙 跱 踛 躊
@@ -26931,7 +26931,7 @@ khkq 嘘唏
 khkr 中听
 khks 躁
 khl 盅
-khlf 盅 中转
+khlf 跳转 盅 中转
 khlg 中国 贵国 跑车 跨国
 khlh 趾甲
 khlj 躅
@@ -31857,7 +31857,7 @@ mqty 岁入 购入
 mqu 岁 亗 嵗 歲 歳
 mqua 购并
 mqub 见闻 风闻
-mqud 风头 赡养 见状 岁差 网状 网关
+mqud 网关 风头 赡养 见状 岁差 网状
 mque 刚毅
 mquh 网站
 mquj 风韵
@@ -34192,7 +34192,7 @@ ntlg 恤 发车 属国
 ntlk 发回
 ntln 憁
 ntlq 发软
-ntlt 发力
+ntlt 发图 发力
 ntlv 发轫 屨
 ntm 懊
 ntmd 懊
@@ -34276,7 +34276,7 @@ nttt 发笑 履
 nttu 发乎
 ntty 发稿 改稿 发往
 ntub 忤逆
-ntud 改善 改判 性状 性善 发送
+ntud 发送 改善 改判 性状 性善
 ntuf 改装
 ntug 发病 性病
 ntuj 属意 发音
@@ -38327,7 +38327,7 @@ pwnk 鹤壁 窹
 pwnm 窟
 pwnn 安全局
 pwnt 安全性 社会性 突发
-pwny 穷尽 穿心 空心
+pwny 空心 穷尽 穿心
 pwo 窭 窶
 pwof 窲
 pwoo 窝火
@@ -44855,7 +44855,7 @@ rqrj 拘提
 rqrk 抵扣
 rqrl 抵押
 rqrm 掏 抵制 抑制 搖
-rqrn 托儿所 挣扎 拘留所 鬼气 换气 抑扬 揔
+rqrn 挣扎 换气 抑扬 鬼气 揔
 rqrq 捣鬼 鬼魅 欣欣
 rqrt 换手
 rqrv 拘执

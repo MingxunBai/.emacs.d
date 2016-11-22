@@ -1,4 +1,3 @@
-
 * How to install
 
 	#+BEGIN_SRC bash
@@ -44,6 +43,9 @@
 		pip install flake8 jedi autopep8 elpy
 	#+END_SRC
 
+** git-emacs
+    - M-x: git status
+
 ** highlight-parentheses-mode
 	- 光标所在括号分层级高亮
 
@@ -53,6 +55,11 @@
 
 ** js2-mode
 	- JavaScript IDE mode
+    - 添加交互式 node 运行环境
+      + M-x: node-repl
+      + C-x b，运行 buffer
+      + C-x C-b，运行 buffer 并跳转至交互环境
+      + C-x f，运行 js 文件
 
 ** lazy-set-key
 	- 设置快捷键

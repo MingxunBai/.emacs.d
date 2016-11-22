@@ -141,4 +141,9 @@
   (forward-line -1)
   (indent-according-to-mode))
 
+;; 显示主模式
+(defun custom-show-major-mode ()
+  (interactive)
+  (message "%s" major-mode))
+
 (provide 'custom-function)

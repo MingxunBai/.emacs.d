@@ -167,6 +167,9 @@
   (require 'emmet-mode)
   (emmet-mode))
 
+;; Git emacs mode
+(require 'git-emacs)
+
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
 
@@ -183,7 +186,28 @@
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
-  (js2-mode))
+  (js2-mode)
+
+  (require 'js-comint)
+  (setq inferior-js-program-command "node")
+  (setq inferior-js-program-arguments '("--interactive"))
+
+  (require 'js2-highlight-vars)
+  (js2-highlight-vars-mode)
+
+  (defun node-repl ()
+	(interactive)
+	(pop-to-buffer (make-comint "node-repl" "node" nil "--interactive")))
+
+  (local-set-key (kbd "C-c b") 'js-send-buffer)
+  (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
+  (local-set-key (kbd "C-c f") 'js-load-file-and-go))
+
+;; Json mode
+(defun enable-json-mode ()
+  (interactive)
+  (require 'json-mode)
+  (json-mode))
 
 ;; Lazy set key
 (require 'lazy-set-key)
@@ -212,6 +236,7 @@
 
 ;; Multiple cursors
 (require 'multiple-cursors)
+(lazy-unset-key '("M-<down-mouse-1>"))
 
 ;; Project explorer
 (require 'project-explorer)
@@ -304,6 +329,8 @@
 								 (enable-web-mode)))
 				("\\.js\\'" . (lambda ()
 								(enable-js2-mode)))
+				("\\.json\\'" . (lambda ()
+								  (enable-json-mode)))
 				("\\.less\\'". (lambda ()
 								 (enable-less-css-mode)))
 				("\\.md\\'" . (lambda ()
@@ -319,11 +346,6 @@
 ;;-------------------------------------------------
 ;; Hook
 ;;-------------------------------------------------
-
-;; Emacs lisp mode
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-								  (setq skeleton-pair-alist
-										'((?\' "" >)))))
 
 ;; Org mode
 (defun my-org-mode-hook ()

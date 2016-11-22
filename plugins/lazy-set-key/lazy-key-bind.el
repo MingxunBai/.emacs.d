@@ -10,8 +10,6 @@
 
 ;;; Code:
 
-(lazy-unset-key '("M-<down-mouse-1>"))
-
 (lazy-set-key '(("RET" . newline-and-indent)
 				("C-c C-k" . kill-buffer-and-window)
 				("<f2>" . hs-toggle-hiding)
