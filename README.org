@@ -75,7 +75,7 @@
 	- 多点编辑，快捷键 Alt + 左键
 	- C-S-c C-S-c 为选定区块的每一行开启多点编辑
 
-** powerlin-mode
+** smart-mode-line
 	- 修改状态栏样式
 
 ** project-explorer
