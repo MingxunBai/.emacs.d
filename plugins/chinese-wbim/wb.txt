@@ -21875,7 +21875,7 @@ impw 洞察 洞穿 洞穴
 imq 浻
 imqb 覍
 imqd 油然
-imqg 油印 灃
+imqg 没钱 油印 灃
 imqh 党内外 省内外 海内外
 imqk 油锅 浻
 imqn 少见多怪 油饼
@@ -34704,7 +34704,7 @@ nydr 心愿 民族压迫
 nyds 惊奇
 nydu 惊厥
 nydv 忙碌
-nydy 心碎 心态 以太
+nydy 心态 心碎 以太
 nyeb 心服
 nyef 心肝
 nyeg 心肺
@@ -62562,7 +62562,7 @@ wyeb 隽 信服 雋
 wyeg 邻县
 wyek 体育用品
 wyep 领受 令爱 偏爱
-wyet 信用 食用 停用
+wyet 食用 信用 停用
 wyev 停妥
 wyey 依 念及 偯
 wyf 储 隼 詧
