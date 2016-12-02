@@ -43471,7 +43471,7 @@ rhga 扯开
 rhgb 牛顿
 rhgc 看到
 rhge 年青 年表
-rhgh 爬下 年下 卸下 掉下 挊
+rhgh 看下 爬下 年下 卸下 掉下 挊
 rhgk 年事
 rhgl 年画
 rhgm 卸责
@@ -50416,7 +50416,7 @@ tfkb 郜
 tfkc 赞叹
 tfkd 靠
 tfkf 告 籉
-tfkg 秸 鹄 千吨 行号 等号 鵠
+tfkg 行号 等号 秸 鹄 千吨 鵠
 tfkh 选中 等距 行距 先遣 行路 行踪
 tfkk 穯
 tfkl 告别 勂
@@ -61269,7 +61269,7 @@ wqwq 爷爷 爸爸 爹爹
 wqwu 你们
 wqwv 低分
 wqww 低价 低谷
-wqxe 低级 低缓
+wqxe 父级 低级 低缓
 wqxg 父母
 wqxu 贫铀弹
 wqya 低度

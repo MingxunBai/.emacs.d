@@ -458,7 +458,7 @@ Set it to nil to hide the number."
   :package-version '(smart-mode-line . "2.0"))
 (put 'sml/position-percentage-format 'risky-local-variable t)
 
-(defcustom sml/line-number-format "%3l"
+(defcustom sml/line-number-format " %3l "
   "Format used to display line number.
 
 Empty it or disable `line-number-mode' to hide the number."

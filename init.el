@@ -73,7 +73,6 @@
 
       max-lisp-eval-depth 10000
 
-      linum-format " %4d "				; 四位数显示行号
       column-number-mode
       line-number-mode
 
@@ -113,6 +112,10 @@
 ;; Internal mode
 ;;-------------------------------------------------
 
+(global-auto-revert-mode)				; auto revert
+
+(display-time)                          ; 显示时间
+
 (scroll-bar-mode -1)                    ; 隐藏滚动条
 (tool-bar-mode -1)                      ; 隐藏工具栏
 (menu-bar-mode -1)                      ; 隐藏菜单栏
@@ -123,9 +126,29 @@
 
 (global-linum-mode)                     ; 显示行号
 
-(display-time)                          ; 显示时间
+;; 格式化并高亮行号
+(require 'hl-line)
 
-(global-auto-revert-mode)				; auto revert
+(defface my-linum-hl
+  `((t :inherit linum :background "#E8E8FF" :foreground "#000000",(face-background 'hl-line nil t)))
+  "Face for the current line number."
+  :group 'linum)
+
+(defvar my-linum-current-line-number 0)
+
+(setq linum-format 'my-linum-format)
+
+(defun my-linum-format (line-number)
+  (propertize (format " %4d " line-number) 'face
+              (if (eq line-number my-linum-current-line-number)
+                  'my-linum-hl
+                'linum)))
+
+(defadvice linum-update (around my-linum-update)
+  (let ((my-linum-current-line-number (line-number-at-pos)))
+    ad-do-it))
+
+(ad-activate 'linum-update)
 
 ;; Highlight line mode
 (global-hl-line-mode)
@@ -203,7 +226,7 @@
   (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
   (local-set-key (kbd "C-c f") 'js-load-file-and-go))
 
-;; Json mode
+;; JSON mode
 (defun enable-json-mode ()
   (interactive)
   (require 'json-mode)
@@ -325,22 +348,35 @@
       (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
 
 				("\\.bash" . conf-mode)
-				("\\.css\\'" . (lambda ()
-								 (enable-web-mode)))
-				("\\.js\\'" . (lambda ()
-								(enable-js2-mode)))
-				("\\.json\\'" . (lambda ()
-								  (enable-json-mode)))
-				("\\.less\\'". (lambda ()
-								 (enable-less-css-mode)))
-				("\\.md\\'" . (lambda ()
-                                (enable-markdown-mode)))
-                ("\\.php\\'" . (lambda ()
-                                 (enable-web-mode)))
-				("\\.vimrc\\'" . (lambda ()
-								   (enable-vimrc-mode)))
-                ("\\.ya?ml\\'" . (lambda ()
-                                   (enable-yaml-mode))))
+				("\\.css\\'" .
+				 (lambda ()
+				   (enable-web-mode)))
+				("\\.el\\'" .
+				 (lambda ()
+				   (emacs-lisp-mode)
+				   (setq skeleton-pair-alist
+						 '((?\' "" >)))))
+				("\\.js\\'" .
+				 (lambda ()
+				   (enable-js2-mode)))
+				("\\.json\\'" .
+				 (lambda ()
+				   (enable-json-mode)))
+				("\\.less\\'" .
+				 (lambda ()
+				   (enable-less-css-mode)))
+				("\\.md\\'" .
+				 (lambda ()
+				   (enable-markdown-mode)))
+                ("\\.php\\'" .
+				 (lambda ()
+				   (enable-web-mode)))
+				("\\.vimrc\\'" .
+				 (lambda ()
+				   (enable-vimrc-mode)))
+                ("\\.ya?ml\\'" .
+				 (lambda ()
+				   (enable-yaml-mode))))
               auto-mode-alist))
 
 ;;-------------------------------------------------
@@ -399,8 +435,9 @@
 
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
-(add-hook 'js2-mode-hook 'my-web-mode-hook)
-(add-hook 'web-mode-hook 'my-web-mode-hook)
+(add-hook 'js2-mode-hook  'my-web-mode-hook)
+(add-hook 'json-mode-hook 'my-web-mode-hook)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;; 配置五笔输入法
 (require 'chinese-wbim-extra)
@@ -417,4 +454,16 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 最大化
-(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(safe-local-variable-values (quote ((nameless-current-name . "rm")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
