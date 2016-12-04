@@ -73,12 +73,15 @@
 
       max-lisp-eval-depth 10000
 
+	  linum-format 'my-linum-format
       column-number-mode
       line-number-mode
 
       show-paren-style 'parenthesis     ; 光标不会跳到另一个括号处
 
+	  display-time-day-and-date t
       display-time-24hr-format t
+	  display-time-default-load-average nil
 
       frame-title-format (list          ; Title 显示完整路径
                           (format "%s %%S: %%j " (system-name))
@@ -90,7 +93,6 @@
 								(propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
 								(if (= (user-uid) 0) " # " " $ "))))
 
-;; (mouse-avoidance-mode 'animate)         ; 光标将鼠标自动弹开
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
 ;; 设置字体
@@ -120,14 +122,15 @@
 (tool-bar-mode -1)                      ; 隐藏工具栏
 (menu-bar-mode -1)                      ; 隐藏菜单栏
 
-(global-font-lock-mode)                 ; 语法高亮
-
 (show-paren-mode)                       ; 高亮匹配括号
+
+(global-font-lock-mode)                 ; 语法高亮
 
 (global-linum-mode)                     ; 显示行号
 
 ;; 格式化并高亮行号
 (require 'hl-line)
+(global-hl-line-mode)
 
 (defface my-linum-hl
   `((t :inherit linum :background "#E8E8FF" :foreground "#000000",(face-background 'hl-line nil t)))
@@ -136,10 +139,8 @@
 
 (defvar my-linum-current-line-number 0)
 
-(setq linum-format 'my-linum-format)
-
 (defun my-linum-format (line-number)
-  (propertize (format " %4d " line-number) 'face
+  (propertize (format "| %3d " line-number) 'face
               (if (eq line-number my-linum-current-line-number)
                   'my-linum-hl
                 'linum)))
@@ -151,8 +152,6 @@
 (ad-activate 'linum-update)
 
 ;; Highlight line mode
-(global-hl-line-mode)
-
 (set-face-attribute hl-line-face nil
 					;; :underline t
 					:background "#E8E8FF")
@@ -261,6 +260,10 @@
 (require 'multiple-cursors)
 (lazy-unset-key '("M-<down-mouse-1>"))
 
+;; Origami mode
+(require 'origami)
+(global-origami-mode)
+
 ;; Project explorer
 (require 'project-explorer)
 
@@ -347,7 +350,7 @@
 (setq auto-mode-alist
       (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
 
-				("\\.bash" . conf-mode)
+				("\\.bash" . sh-mode)
 				("\\.css\\'" .
 				 (lambda ()
 				   (enable-web-mode)))
@@ -430,8 +433,7 @@
   (setq skeleton-pair-alist
 		'((?\< "" >)))
 
-  (enable-emmet-mode)
-  (hs-minor-mode))
+  (enable-emmet-mode))
 
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
@@ -444,7 +446,7 @@
 
 (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
 (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
-(setq chinese-wbim-use-tooltip nil)     ; Tooltip 暂时还不好用
+(setq chinese-wbim-use-tooltip nil)
 
 (progn                                  ; 启动五笔输入法
   (set-input-method 'chinese-wbim)
@@ -454,16 +456,4 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 最大化
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(safe-local-variable-values (quote ((nameless-current-name . "rm")))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))

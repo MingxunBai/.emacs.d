@@ -4380,8 +4380,8 @@ bnrx 也指
 bnsk 也可
 bnsv 也要
 bntc 孔径
-bntf 孔德 也行
-bntj 了得
+bntf 也行 孔德
+bntj 也得 了得
 bntn 聊以自慰
 bnu 孞
 bnul 也曾
@@ -23847,7 +23847,7 @@ iywf 淬 流传 洽谈会 演讲会
 iywg 游侠
 iywn 渡假
 iywr 源文件
-iyws 流体 液体
+iyws 液体 流体
 iywu 淤 游伴
 iyww 流俗 游人
 iywx 液化
@@ -50051,7 +50051,7 @@ tdya 智谋 筹谋 适度
 tdyb 乱离
 tdyc 智育
 tdyf 短诗 血压计
-tdyg 短评 短语
+tdyg 短语 短评
 tdyh 辞让
 tdyi 适应
 tdyj 科研课题

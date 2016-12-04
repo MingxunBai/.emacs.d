@@ -12,7 +12,6 @@
 
 (lazy-set-key '(("RET" . newline-and-indent)
 				("C-c C-k" . kill-buffer-and-window)
-				("<f2>" . hs-toggle-hiding)
 
 				("(" . skeleton-pair-insert-maybe)
 				("[" . skeleton-pair-insert-maybe)
@@ -39,6 +38,16 @@
 				;; Org mode
 				("C-c c e" . org-edit-src-code)
 				("C-c c i" . org-insert-src-block)
+
+				;; Origami mode
+				("<f2>" . origami-toggle-node)
+				("C-c o a" . origami-show-only-node)
+				("C-c o o" . origami-open-node-recursively)
+				("C-c o n" . origami-next-fold)
+				("C-c o p" . origami-previous-fold)
+				("C-c o f" . origami-forward-fold-same-level)
+				("C-c o b" . origami-backward-fold-same-level)
+				("C-c o r" . origami-reset)
 
 				;; Web mode
 				("C-c C-v" . browse-url-of-file)
