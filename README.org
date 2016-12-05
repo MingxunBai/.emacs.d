@@ -70,6 +70,8 @@
 ** markdown-mode
     - markdown 语法支持
     - 需要 markdown-command，Windows 用户可在 [[http://daringfireball.net/projects/markdown/][Markdown]] 上下载后丢到 bin 文件夹中(需要安装 perl)，并设置路径: (custom-set-variables '(markdown-command "markdown.pl"))
+	- C-c C-c l 生成 HTML 文本
+	- C-c C-c m 在其它窗口预览 HTML 源代码
 
 ** multiple-cursors
     - 多点编辑，快捷键 Alt + 左键

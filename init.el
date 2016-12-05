@@ -18,7 +18,7 @@
 (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
 
 (if *Windows*
-	(setq default-directory (format "C:/Users/%s/Documents" user-full-name))
+    (setq default-directory (format "C:/Users/%s/Documents" user-full-name))
   (setq default-directory "~/Documents"))
 
 ;;-------------------------------------------------
@@ -26,8 +26,8 @@
 ;;-------------------------------------------------
 
 (setq current-language-environment "utf-8"
-	  default-buffer-file-coding-system 'utf-8
-	  locale-coding-system 'utf-8)
+      default-buffer-file-coding-system 'utf-8
+      locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
@@ -42,6 +42,8 @@
       visible-bell t                    ; 关闭错误提示音
       ring-bell-function 'ignore save-abbrevs nil
 
+      default-major-mode 'text-mode     ; 设置默认主模式为 text-mode
+
       split-height-threshold nil        ; 垂直分屏
       split-width-threshold 0
 
@@ -51,8 +53,6 @@
       font-lock-maximum-decoration t    ; 只渲染当前 buffer 语法高亮
       font-lock-verbose t
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
-
-      default-major-mode 'text-mode     ; 设置默认主模式为 text-mode
 
       kill-ring-max 500                 ; 设置历史记录数量
 
@@ -73,25 +73,25 @@
 
       max-lisp-eval-depth 10000
 
-	  linum-format 'my-linum-format
+      linum-format 'my-linum-format
       column-number-mode
       line-number-mode
 
       show-paren-style 'parenthesis     ; 光标不会跳到另一个括号处
 
-	  display-time-day-and-date t
+      display-time-day-and-date t
       display-time-24hr-format t
-	  display-time-default-load-average nil
+      display-time-default-load-average nil
 
       frame-title-format (list          ; Title 显示完整路径
                           (format "%s %%S: %%j " (system-name))
                           '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
-	  eshell-prompt-function (lambda () ; Eshell prompt
-							   (concat
-								(propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
-								(propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
-								(if (= (user-uid) 0) " # " " $ "))))
+      eshell-prompt-function (lambda () ; Eshell prompt
+                               (concat
+                                (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
+                                (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
+                                (if (= (user-uid) 0) " # " " $ "))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
@@ -114,7 +114,7 @@
 ;; Internal mode
 ;;-------------------------------------------------
 
-(global-auto-revert-mode)				; auto revert
+(global-auto-revert-mode)               ; auto revert
 
 (display-time)                          ; 显示时间
 
@@ -153,8 +153,8 @@
 
 ;; Highlight line mode
 (set-face-attribute hl-line-face nil
-					;; :underline t
-					:background "#E8E8FF")
+                    ;; :underline t
+                    :background "#E8E8FF")
 
 ;; Ido mode
 (ido-mode)
@@ -218,12 +218,12 @@
   (js2-highlight-vars-mode)
 
   (defun node-repl ()
-	(interactive)
-	(pop-to-buffer (make-comint "node-repl" "node" nil "--interactive")))
+    (interactive)
+    (pop-to-buffer (make-comint "node-repl" "node" nil "--interactive")))
 
+  (local-set-key (kbd "C-c f") 'js-load-file-and-go)
   (local-set-key (kbd "C-c b") 'js-send-buffer)
-  (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
-  (local-set-key (kbd "C-c f") 'js-load-file-and-go))
+  (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
 
 ;; JSON mode
 (defun enable-json-mode ()
@@ -242,19 +242,20 @@
   (less-css-mode)
 
   (when *Windows*
-	(setq less-css-lessc-command "D:/Tools/NodeJS/lessc"))
+    (setq less-css-lessc-command "D:/Tools/NodeJS/lessc"))
 
   (setq less-css-compile-at-save t
-		less-css-output-directory "../css"))
+        less-css-output-directory "../css"))
 
 ;; Markdown mode
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
-  (markdown-mode)
+  (markdown-mode))
 
-  (when *Windows*                   ; set markdown-command for windows
-    (custom-set-variables '(markdown-command "markdown.pl"))))
+;; (when *Windows*
+;;    (custom-set-variables '(markdown-command "markdown.pl")))
+
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -266,6 +267,13 @@
 
 ;; Project explorer
 (require 'project-explorer)
+
+;; SCSS mode
+(defun enable-scss-mode ()
+  (require 'scss-mode)
+  (scss-mode)
+
+  (setq scss-compile-at-save t))
 
 ;; Smart mode line
 (require 'smart-mode-line)
@@ -350,36 +358,39 @@
 (setq auto-mode-alist
       (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
 
-				("\\.bash" . sh-mode)
-				("\\.css\\'" .
-				 (lambda ()
-				   (enable-web-mode)))
-				("\\.el\\'" .
-				 (lambda ()
-				   (emacs-lisp-mode)
-				   (setq skeleton-pair-alist
-						 '((?\' "" >)))))
-				("\\.js\\'" .
-				 (lambda ()
-				   (enable-js2-mode)))
-				("\\.json\\'" .
-				 (lambda ()
-				   (enable-json-mode)))
-				("\\.less\\'" .
-				 (lambda ()
-				   (enable-less-css-mode)))
-				("\\.md\\'" .
-				 (lambda ()
-				   (enable-markdown-mode)))
+                ("\\.bash" . sh-mode)
+                ("\\.css\\'" .
+                 (lambda ()
+                   (enable-web-mode)))
+                ("\\.el\\'" .
+                 (lambda ()
+                   (emacs-lisp-mode)
+                   (setq skeleton-pair-alist
+                         '((?\' "" >)))))
+                ("\\.js\\'" .
+                 (lambda ()
+                   (enable-js2-mode)))
+                ("\\.json\\'" .
+                 (lambda ()
+                   (enable-json-mode)))
+                ("\\.less\\'" .
+                 (lambda ()
+                   (enable-less-css-mode)))
+                ("\\.md\\'" .
+                 (lambda ()
+                   (enable-markdown-mode)))
                 ("\\.php\\'" .
-				 (lambda ()
-				   (enable-web-mode)))
-				("\\.vimrc\\'" .
-				 (lambda ()
-				   (enable-vimrc-mode)))
+                 (lambda ()
+                   (enable-web-mode)))
+                ("\\.s[ac]ss" .
+                 (lambda ()
+                   (enable-scss-mode)))
+                ("\\.vimrc\\'" .
+                 (lambda ()
+                   (enable-vimrc-mode)))
                 ("\\.ya?ml\\'" .
-				 (lambda ()
-				   (enable-yaml-mode))))
+                 (lambda ()
+                   (enable-yaml-mode))))
               auto-mode-alist))
 
 ;;-------------------------------------------------
@@ -398,10 +409,10 @@
     (interactive
      (let ((src-code-types
             '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++"
-			  "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
-			  "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
-			  "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
-			  "org" "perl" "ruby" "scheme" "sqlite" "html")))
+              "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
+              "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
+              "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
+              "org" "perl" "ruby" "scheme" "sqlite" "html")))
        (list (ido-completing-read "Source code type: " src-code-types))))
     (progn
       (insert (format "#+BEGIN_SRC %s\n" src-code-type))
@@ -431,7 +442,7 @@
 ;; Web mode
 (defun my-web-mode-hook ()
   (setq skeleton-pair-alist
-		'((?\< "" >)))
+        '((?\< "" >)))
 
   (enable-emmet-mode))
 
