@@ -1,3 +1,3 @@
 alias ll ls -l
 alias la ls -a
-alias epush git add README.org init.el plugins/ eshell/alias; git commit -m "Update"; git push
+alias epush git add .; git commit -m "Update"; git push
