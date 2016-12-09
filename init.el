@@ -29,9 +29,13 @@
       default-buffer-file-coding-system 'utf-8
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-;; (set-terminal-coding-system 'utf-8)
-;; (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
+;; use gbk for cmd
+(when (eq system-type 'windows-nt)
+   (set-default 'process-coding-system-alist
+     '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
+	("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
 
 ;;-------------------------------------------------
 ;; 显示 & 行为
