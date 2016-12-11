@@ -3505,74 +3505,75 @@ Use the function by the same name instead of this variable.")
 
 ;;;###autoload
 (defun magit-version ()
-  "Return the version of Magit currently in use.
-When called interactive also show the used versions of Magit,
-Git, and Emacs in the echo area."
-  (interactive)
-  (let ((magit-git-global-arguments nil)
-        (toplib (or load-file-name buffer-file-name))
-        debug)
-    (unless (and toplib
-                 (equal (file-name-nondirectory toplib) "magit.el"))
-      (setq toplib (locate-library "magit.el")))
-    (push toplib debug)
-    (when toplib
-      (let* ((topdir (file-name-directory toplib))
-             (gitdir (expand-file-name
-                      ".git" (file-name-directory
-                              (directory-file-name topdir))))
-             (static (locate-library "magit-version.el" nil (list topdir))))
-        (or (progn
-              (push 'repo debug)
-              (when (and (file-exists-p gitdir)
-                         ;; It is a repo, but is it the Magit repo?
-                         (file-exists-p
-                          (expand-file-name "../lisp/magit.el" gitdir)))
-                (push t debug)
-                ;; Inside the repo the version file should only exist
-                ;; while running make.
-                (when (and static (not noninteractive))
-                  (ignore-errors (delete-file static)))
-                (setq magit-version
-                      (let ((default-directory topdir))
-                        (magit-git-string "describe" "--tags" "--dirty")))))
-            (progn
-              (push 'static debug)
-              (when (and static (file-exists-p static))
-                (push t debug)
-                (load-file static)
-                magit-version))
-            (when (featurep 'package)
-              (push 'elpa debug)
-              (ignore-errors
-                (--when-let (assq 'magit package-alist)
-                  (push t debug)
-                  (setq magit-version
-                        (and (fboundp 'package-desc-version)
-                             (package-version-join
-                              (package-desc-version (cadr it))))))))
-            (progn
-              (push 'debug debug)
-              (let ((dirname (file-name-nondirectory
-                              (directory-file-name topdir))))
-                (when (string-match "\\`magit-\\([0-9]\\{8\\}\\.[0-9]*\\)"
-                                    dirname)
-                  (setq magit-version (match-string 1 dirname))))))))
-    (if (stringp magit-version)
-        (when (called-interactively-p 'any)
-          (message "Magit %s, Git %s, Emacs %s, %s"
-                   (or magit-version "(unknown)")
-                   (or (magit-git-version t) "(unknown)")
-                   emacs-version
-                   system-type))
-      (setq debug (reverse debug))
-      (setq magit-version 'error)
-      (when magit-version
-        (push magit-version debug))
-      (unless (equal (getenv "TRAVIS") "true")
-        ;; The repository is a sparse clone.
-        (message "Cannot determine Magit's version %S" debug)))
-    magit-version))
+  ;;   "Return the version of Magit currently in use.
+  ;; When called interactive also show the used versions of Magit,
+  ;; Git, and Emacs in the echo area."
+  ;;   (interactive)
+  ;;   (let ((magit-git-global-arguments nil)
+  ;;         (toplib (or load-file-name buffer-file-name))
+  ;;         debug)
+  ;;     (unless (and toplib
+  ;;                  (equal (file-name-nondirectory toplib) "magit.el"))
+  ;;       (setq toplib (locate-library "magit.el")))
+  ;;     (push toplib debug)
+  ;;     (when toplib
+  ;;       (let* ((topdir (file-name-directory toplib))
+  ;;              (gitdir (expand-file-name
+  ;;                       ".git" (file-name-directory
+  ;;                               (directory-file-name topdir))))
+  ;;              (static (locate-library "magit-version.el" nil (list topdir))))
+  ;;         (or (progn
+  ;;               (push 'repo debug)
+  ;;               (when (and (file-exists-p gitdir)
+  ;;                          ;; It is a repo, but is it the Magit repo?
+  ;;                          (file-exists-p
+  ;;                           (expand-file-name "../lisp/magit.el" gitdir)))
+  ;;                 (push t debug)
+  ;;                 ;; Inside the repo the version file should only exist
+  ;;                 ;; while running make.
+  ;;                 (when (and static (not noninteractive))
+  ;;                   (ignore-errors (delete-file static)))
+  ;;                 (setq magit-version
+  ;;                       (let ((default-directory topdir))
+  ;;                         (magit-git-string "describe" "--tags" "--dirty")))))
+  ;;             (progn
+  ;;               (push 'static debug)
+  ;;               (when (and static (file-exists-p static))
+  ;;                 (push t debug)
+  ;;                 (load-file static)
+  ;;                 magit-version))
+  ;;             (when (featurep 'package)
+  ;;               (push 'elpa debug)
+  ;;               (ignore-errors
+  ;;                 (--when-let (assq 'magit package-alist)
+  ;;                   (push t debug)
+  ;;                   (setq magit-version
+  ;;                         (and (fboundp 'package-desc-version)
+  ;;                              (package-version-join
+  ;;                               (package-desc-version (cadr it))))))))
+  ;;             (progn
+  ;;               (push 'debug debug)
+  ;;               (let ((dirname (file-name-nondirectory
+  ;;                               (directory-file-name topdir))))
+  ;;                 (when (string-match "\\`magit-\\([0-9]\\{8\\}\\.[0-9]*\\)"
+  ;;                                     dirname)
+  ;;                   (setq magit-version (match-string 1 dirname))))))))
+  ;;     (if (stringp magit-version)
+  ;;         (when (called-interactively-p 'any)
+  ;;           (message "Magit %s, Git %s, Emacs %s, %s"
+  ;;                    (or magit-version "(unknown)")
+  ;;                    (or (magit-git-version t) "(unknown)")
+  ;;                    emacs-version
+  ;;                    system-type))
+  ;;       (setq debug (reverse debug))
+  ;;       (setq magit-version 'error)
+  ;;       (when magit-version
+  ;;         (push magit-version debug))
+  ;;       (unless (equal (getenv "TRAVIS") "true")
+  ;;         ;; The repository is a sparse clone.
+  ;;         (message "Cannot determine Magit's version %S" debug)))
+  ;;     magit-version)
+  )
 
 (defun magit-startup-asserts ()
   (let ((version (magit-git-version)))
