@@ -32,16 +32,16 @@
     - 关闭自动提示，TAB 触发自动补齐，C-. 开启 补齐提示窗口，M-/ 关闭补齐提示窗口
     - M-n M-p 上下移动候选项
 
-** emmet-mode
-    - css-mode，html-mode，web-mode 加载后自动加载
-    - C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
-
 ** elpy-mode
     - Python IDE mode
     - 安装依赖:
     #+BEGIN_SRC sh
       pip install flake8 jedi autopep8 elpy
     #+END_SRC
+
+** emmet-mode
+    - css-mode，html-mode，web-mode 加载后自动加载
+    - C-j 触发，C-M-[ 移至上一个编辑点，C-M-] 移至下一个编辑点
 
 ** git
     - M-x: my/git-status
