@@ -255,11 +255,11 @@
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
-  (markdown-mode))
+  (markdown-mode)
 
 ;; (when *Windows*
 ;;    (custom-set-variables '(markdown-command "markdown.pl")))
-
+)
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -442,6 +442,9 @@
   (setq python-shell-prompt-detect-enabled nil))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+;; Text mode
+(add-hook 'text-mode-hook (prefer-coding-system 'chinese-gbk))
 
 ;; Web mode
 (defun my-web-mode-hook ()
