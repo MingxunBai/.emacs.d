@@ -2,3 +2,4 @@ ac-comphist.dat
 auto-save-list/*
 eshell/history
 eshell/lastdir
+project-explorer-cache/*
