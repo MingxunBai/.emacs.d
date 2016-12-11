@@ -43,8 +43,8 @@
       pip install flake8 jedi autopep8 elpy
     #+END_SRC
 
-** git-emacs
-    - M-x: git status
+** git
+    - M-x: my/git-status
 
 ** highlight-parentheses-mode
     - 光标所在括号分层级高亮

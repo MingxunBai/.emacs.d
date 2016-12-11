@@ -193,8 +193,11 @@
   (require 'emmet-mode)
   (emmet-mode))
 
-;; Git emacs mode
-(require 'git-emacs)
+;; Git
+(defun my/git-status ()
+  (interactive)
+  (require 'magit)
+  (magit-status))
 
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
