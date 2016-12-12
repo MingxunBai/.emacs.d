@@ -6,8 +6,9 @@
 (setq user-full-name "MingxunBai"
       user-mail-address "mingxunbai@outlook.com")
 
-;; 检测系统
-(defconst *Windows* (eq system-type 'windows-nt))
+;; 定义常量
+(defconst *WINDOWS* (eq system-type 'windows-nt))
+(defconst *PATH* (expand-file-name "plugins" user-emacs-directory))
 
 ;; 路径配置
 (defun add-subdirs-to-load-path (dir)
@@ -15,11 +16,24 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
 
-(if *Windows*
-    (setq default-directory (format "C:/Users/%s/Documents" user-full-name))
-  (setq default-directory "~/Documents"))
+(add-subdirs-to-load-path *PATH*)
+
+(setq default-directory
+	  (if *WINDOWS*
+		  (format "C:/Users/%s/Documents" user-full-name)
+		("~/Documents")))
+
+;; 配置五笔输入法
+(require 'chinese-wbim-extra)
+
+(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+(setq chinese-wbim-use-tooltip nil)
+
+;; 启动五笔输入法
+(set-input-method 'chinese-wbim)
+(toggle-input-method)
 
 ;;-------------------------------------------------
 ;; 编码环境
@@ -30,12 +44,13 @@
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+(modify-coding-system-alist 'file "\\.txt\\'" 'chinese-iso-8bit)
 
 ;; use gbk for cmd
-(when (eq system-type 'windows-nt)
-   (set-default 'process-coding-system-alist
-     '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
-	("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
+(when *WINDOWS*
+  (set-default 'process-coding-system-alist
+			   '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
+				 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
 
 ;;-------------------------------------------------
 ;; 显示 & 行为
@@ -87,21 +102,21 @@
       display-time-24hr-format t
       display-time-default-load-average nil
 
-      frame-title-format (list          ; Title 显示完整路径
-                          (format "%s %%S: %%j " (system-name))
-                          '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+      frame-title-format				; Title 显示完整路径
+	  (list (format "%s %%S: %%j " (system-name))
+	   '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
-      eshell-prompt-function (lambda () ; Eshell prompt
-                               (concat
-                                (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
-                                (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
-                                (if (= (user-uid) 0) " # " " $ "))))
+      eshell-prompt-function			; Eshell prompt
+	  (lambda () (concat
+		 (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
+		 (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
+		 (if (= (user-uid) 0) " # " " $ "))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
-(when *Windows*                         ; 设置中文字体为 "明兰黑"
+(when *WINDOWS*                         ; 设置中文字体为 "明兰黑"
   (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 ;; 自动匹配
@@ -178,14 +193,13 @@
 (require 'auto-complete-config)
 (global-auto-complete-mode)
 
-(add-to-list 'ac-dictionary-directories (expand-file-name "plugins/auto-complete/dict" user-emacs-directory))
+(add-to-list 'ac-dictionary-directories (concat *PATH* "/auto-complete/dict"))
 (ac-config-default)
-(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "TAB")
 (setq ac-auto-start nil
       ac-use-menu-map t)
-
-;; Custom
-(require 'custom-function)
+(define-key ac-mode-map "\M-/" 'auto-complete)
+(define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
 ;; Emmet mode
 (defun enable-emmet-mode ()
@@ -248,9 +262,6 @@
   (require 'less-css-mode)
   (less-css-mode)
 
-  (when *Windows*
-    (setq less-css-lessc-command "D:/Tools/NodeJS/lessc"))
-
   (setq less-css-compile-at-save t
         less-css-output-directory "../css"))
 
@@ -258,11 +269,7 @@
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
-  (markdown-mode)
-
-;; (when *Windows*
-;;    (custom-set-variables '(markdown-command "markdown.pl")))
-)
+  (markdown-mode))
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -317,87 +324,31 @@
 (require 'yasnippet)
 (yas-global-mode)
 
-;; use popup menu for yas-choose-value
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  (when (featurep 'popup)
-    (popup-menu*
-     (mapcar
-      (lambda (choice)
-        (popup-make-item
-         (or (and display-fn (funcall display-fn choice))
-             choice)
-         :value choice))
-      choices)
-     :prompt prompt
-     ;; start isearch mode immediately
-     :isearch t
-     )))
-
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
-;; completing point by some yasnippet key
-(defun yas-ido-expand ()
-  "Lets you select (and expand) a yasnippet key"
-  (interactive)
-  (let ((original-point (point)))
-    (while (and
-            (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
-      (backward-word 1))
-    (let* ((init-word (point))
-           (word (buffer-substring init-word original-point))
-           (list (yas-active-keys)))
-      (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
-        (if (= (length key) 1)
-            (setq key (pop key))
-          (setq key (ido-completing-read "key: " list nil nil word)))
-        (delete-char (- init-word original-point))
-        (insert key)
-        (yas-expand)))))
+;; 自定义功能
+(require 'custom-function)
 
 ;;-------------------------------------------------
 ;; 主模式
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
+      (append '(("/[^\\./]*\\'" .	conf-mode) ; File name has no dot
 
-                ("\\.bash" . sh-mode)
-                ("\\.css\\'" .
-                 (lambda ()
-                   (enable-web-mode)))
-                ("\\.el\\'" .
-                 (lambda ()
-                   (emacs-lisp-mode)
-                   (setq skeleton-pair-alist
-                         '((?\' "" >)))))
-                ("\\.js\\'" .
-                 (lambda ()
-                   (enable-js2-mode)))
-                ("\\.json\\'" .
-                 (lambda ()
-                   (enable-json-mode)))
-                ("\\.less\\'" .
-                 (lambda ()
-                   (enable-less-css-mode)))
-                ("\\.md\\'" .
-                 (lambda ()
-                   (enable-markdown-mode)))
-                ("\\.php\\'" .
-                 (lambda ()
-                   (enable-web-mode)))
-                ("\\.s[ac]ss" .
-                 (lambda ()
-                   (enable-scss-mode)))
-                ("\\.vimrc\\'" .
-                 (lambda ()
-                   (enable-vimrc-mode)))
-                ("\\.ya?ml\\'" .
-                 (lambda ()
-                   (enable-yaml-mode))))
+                ("\\.bash"      .	sh-mode)
+                ("\\.css\\'"    .	(lambda () (enable-web-mode)))
+                ("\\.el\\'"     .	(lambda () (emacs-lisp-mode)
+									  (setq skeleton-pair-alist
+											'((?\' "" >)))))
+                ("\\.js\\'"     .	(lambda () (enable-js2-mode)))
+                ("\\.json\\'"   .	(lambda () (enable-json-mode)))
+                ("\\.less\\'"   .	(lambda () (enable-less-css-mode)))
+                ("\\.md\\'"     .	(lambda () (enable-markdown-mode)))
+                ("\\.php\\'"    .	(lambda () (enable-web-mode)))
+                ("\\.s[ac]ss"   .	(lambda () (enable-scss-mode)))
+                ("\\.vimrc\\'"  .	(lambda () (enable-vimrc-mode)))
+                ("\\.ya?ml\\'"  .	(lambda () (enable-yaml-mode))))
               auto-mode-alist))
 
 ;;-------------------------------------------------
@@ -405,73 +356,17 @@
 ;;-------------------------------------------------
 
 ;; Org mode
-(defun my-org-mode-hook ()
-  (setq org-startup-indented t)         ; 自动缩进
-
-  ;; 生成 html 文件时代码高亮
-  (require 'htmlize)
-  (setq org-src-fontify-natively t)
-
-  (defun org-insert-src-block (src-code-type)
-    (interactive
-     (let ((src-code-types
-            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++"
-              "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
-              "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
-              "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
-              "org" "perl" "ruby" "scheme" "sqlite" "html")))
-       (list (ido-completing-read "Source code type: " src-code-types))))
-    (progn
-      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-      (newline-and-indent)
-      (insert "#+END_SRC")
-      (previous-line 2)
-      (org-edit-src-code))))
-
-(add-hook 'org-mode-hook 'my-org-mode-hook)
+(add-hook 'org-mode-hook 'custom-org-mode-hook)
 
 ;; Python mode
-(defun my-python-mode-hook ()
-  (require 'elpy)
-  (elpy-mode)
-
-  (highlight-indent-guides-mode)
-
-  (require 'py-autopep8)
-  (py-autopep8-enable-on-save)
-
-  (lazy-unset-key '("<backtab>") python-mode-map)
-
-  (setq python-shell-prompt-detect-enabled nil))
-
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-
-;; Text mode
-(add-hook 'text-mode-hook (prefer-coding-system 'chinese-gbk))
+(add-hook 'python-mode-hook 'custom-python-mode-hook)
 
 ;; Web mode
-(defun my-web-mode-hook ()
-  (setq skeleton-pair-alist
-        '((?\< "" >)))
-
-  (enable-emmet-mode))
-
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 (add-hook 'js2-mode-hook  'my-web-mode-hook)
 (add-hook 'json-mode-hook 'my-web-mode-hook)
 (add-hook 'web-mode-hook  'my-web-mode-hook)
-
-;; 配置五笔输入法
-(require 'chinese-wbim-extra)
-
-(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
-(setq chinese-wbim-use-tooltip nil)
-
-(progn                                  ; 启动五笔输入法
-  (set-input-method 'chinese-wbim)
-  (toggle-input-method))
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

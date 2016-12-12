@@ -29,7 +29,7 @@
     - 可通过修改 plugins/input-wbpy/wb.txt 调整词序
 
 ** auto-complete
-    - 关闭自动提示，TAB 触发自动补齐，C-. 开启 补齐提示窗口，M-/ 关闭补齐提示窗口
+    - 关闭自动提示，M-/ 切换补齐提示窗口
     - M-n M-p 上下移动候选项
 
 ** elpy-mode
