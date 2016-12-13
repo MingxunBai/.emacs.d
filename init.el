@@ -44,7 +44,7 @@
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(modify-coding-system-alist 'file "\\.txt\\'" 'chinese-iso-8bit)
+(modify-coding-system-alist 'file "\\.[bt][ax]t\\'" 'chinese-iso-8bit)
 
 ;; use gbk for cmd
 (when *WINDOWS*
@@ -104,10 +104,11 @@
 
       frame-title-format				; Title 显示完整路径
 	  (list (format "%s %%S: %%j " (system-name))
-	   '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+			'(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
-      eshell-prompt-function			; Eshell prompt
-	  (lambda () (concat
+      eshell-prompt-function			; Eshell 提示符
+	  (lambda ()
+		(concat
 		 (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
 		 (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
 		 (if (= (user-uid) 0) " # " " $ "))))
@@ -123,10 +124,10 @@
 (setq skeleton-pair-alist
       '((?\" _ "\"" >)
         (?\' _ "\'" >)
-        (?\( _ ")" >)
-        (?\[ _ "]" >)
-        (?\{ _ "}" >)
-        (?\< _ ">" >))
+        (?\( _ ")"  >)
+        (?\[ _ "]"  >)
+        (?\{ _ "}"  >)
+        (?\< _ ">"  >))
       skeleton-pair t)
 
 ;;-------------------------------------------------
@@ -194,8 +195,6 @@
 (global-auto-complete-mode)
 
 (add-to-list 'ac-dictionary-directories (concat *PATH* "/auto-complete/dict"))
-(ac-config-default)
-;(ac-set-trigger-key "TAB")
 (setq ac-auto-start nil
       ac-use-menu-map t)
 (define-key ac-mode-map "\M-/" 'auto-complete)
@@ -238,12 +237,8 @@
   (require 'js2-highlight-vars)
   (js2-highlight-vars-mode)
 
-  (defun node-repl ()
-    (interactive)
-    (pop-to-buffer (make-comint "node-repl" "node" nil "--interactive")))
-
-  (local-set-key (kbd "C-c f") 'js-load-file-and-go)
-  (local-set-key (kbd "C-c b") 'js-send-buffer)
+  (local-set-key (kbd "C-c f")   'js-load-file-and-go)
+  (local-set-key (kbd "C-c b")   'js-send-buffer)
   (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
 
 ;; JSON mode
@@ -306,8 +301,8 @@
   (require 'web-mode)
   (web-mode)
 
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 4
+  (setq web-mode-markup-indent-offset             2
+        web-mode-css-indent-offset                4
         web-mode-enable-current-element-highlight t))
 
 ;; Windows numbering
