@@ -3868,6 +3868,7 @@ bf 际 陆
 bfaj 陵墓
 bfam 隫
 bfbb 孔夫子
+bfbi 陆逊
 bfbn 陈规陋习
 bfbt 随声附和
 bfc 阹
@@ -14857,7 +14858,7 @@ gaui 开阔
 gauj 形音
 gaum 开端
 gaup 武帝
-gauq 开奖
+gauq 武将 开奖
 gaut 开颜 开道
 gauy 开门
 gavb 弄好
@@ -29046,7 +29047,7 @@ lftf 转告 转行
 lftg 转生
 lftj 署 墨香
 lftl 置备
-lftm 转向 转身 置身
+lftm 转身 转向 置身
 lftq 转移
 lfts 黑箱
 lftt 罢笔
@@ -49816,7 +49817,7 @@ tdcq 雉鸡
 tdcu 叐
 tdcy 秡
 tdd 舌
-tddc 筹码 乱码
+tddc 乱码 筹码
 tddd 乱套
 tddg 乔石
 tddh 智慧

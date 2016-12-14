@@ -26,8 +26,7 @@
     (indent-rigidly
      (line-beginning-position)
      (line-end-position)
-     n))
-  (untabify (point-min) (point-max)))
+     n)))
 
 (defun custom-resize-indentation--4 ()
   (interactive)

@@ -20,9 +20,9 @@
 (add-subdirs-to-load-path *PATH*)
 
 (setq default-directory
-	  (if *WINDOWS*
-		  (format "C:/Users/%s/Documents" user-full-name)
-		("~/Documents")))
+      (if *WINDOWS*
+          (format "C:/Users/%s/Documents" user-full-name)
+        ("~/Documents")))
 
 ;; 配置五笔输入法
 (require 'chinese-wbim-extra)
@@ -49,12 +49,14 @@
 ;; use gbk for cmd
 (when *WINDOWS*
   (set-default 'process-coding-system-alist
-			   '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
-				 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
+               '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
+                 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
 
 ;;-------------------------------------------------
 ;; 显示 & 行为
 ;;-------------------------------------------------
+
+(setq-default indent-tabs-mode nil)     ; 使用空格缩进
 
 (setq inhibit-startup-message t         ; 关闭启动动画
 
@@ -86,7 +88,6 @@
       make-backup-files nil             ; 不生成备份文件
       auto-save-default nil             ; 不生成临时文件
 
-      indent-tabs-mode nil              ; 设置缩进为空格
       default-tab-width 4               ; 设置默认缩进为 4
       c-basic-offset 4                  ; 修改 C 语言缩进为 4
 
@@ -102,16 +103,16 @@
       display-time-24hr-format t
       display-time-default-load-average nil
 
-      frame-title-format				; Title 显示完整路径
-	  (list (format "%s %%S: %%j " (system-name))
-			'(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+      frame-title-format                ; Title 显示完整路径
+      (list (format "%s %%S: %%j " (system-name))
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
-      eshell-prompt-function			; Eshell 提示符
-	  (lambda ()
-		(concat
-		 (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
-		 (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
-		 (if (= (user-uid) 0) " # " " $ "))))
+      eshell-prompt-function            ; Eshell 提示符
+      (lambda ()
+        (concat
+         (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
+         (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
+         (if (= (user-uid) 0) " # " " $ "))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
 
@@ -329,21 +330,21 @@
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("/[^\\./]*\\'" .	conf-mode) ; File name has no dot
+      (append '(("/[^\\./]*\\'" .   conf-mode) ; File name has no dot
 
-                ("\\.bash"      .	sh-mode)
-                ("\\.css\\'"    .	(lambda () (enable-web-mode)))
-                ("\\.el\\'"     .	(lambda () (emacs-lisp-mode)
-									  (setq skeleton-pair-alist
-											'((?\' "" >)))))
-                ("\\.js\\'"     .	(lambda () (enable-js2-mode)))
-                ("\\.json\\'"   .	(lambda () (enable-json-mode)))
-                ("\\.less\\'"   .	(lambda () (enable-less-css-mode)))
-                ("\\.md\\'"     .	(lambda () (enable-markdown-mode)))
-                ("\\.php\\'"    .	(lambda () (enable-web-mode)))
-                ("\\.s[ac]ss"   .	(lambda () (enable-scss-mode)))
-                ("\\.vimrc\\'"  .	(lambda () (enable-vimrc-mode)))
-                ("\\.ya?ml\\'"  .	(lambda () (enable-yaml-mode))))
+                ("\\.bash"      .   sh-mode)
+                ("\\.css\\'"    .   (lambda () (enable-web-mode)))
+                ("\\.el\\'"     .   (lambda () (emacs-lisp-mode)
+                                      (setq skeleton-pair-alist
+                                            '((?\' "" >)))))
+                ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
+                ("\\.json\\'"   .   (lambda () (enable-json-mode)))
+                ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
+                ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
+                ("\\.php\\'"    .   (lambda () (enable-web-mode)))
+                ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
+                ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
+                ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
               auto-mode-alist))
 
 ;;-------------------------------------------------
