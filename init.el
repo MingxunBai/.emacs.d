@@ -343,6 +343,7 @@
                 ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
                 ("\\.php\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
+                ("\\.txt\\'"    .   org-mode)
                 ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
                 ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
               auto-mode-alist))
