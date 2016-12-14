@@ -49886,7 +49886,7 @@ tdj 乔 喬
 tdja 知晓
 tdjd 徘
 tdjf 适时 昋
-tdjg 适量 矢量
+tdjg 矢量 适量
 tdjh 刮 刋 颳
 tdjj 乔
 tdjm 知遇

@@ -85,11 +85,11 @@
 
       x-select-enable-clipboard t       ; 支持和外部程序的拷贝
 
-      make-backup-files nil             ; 不生成备份文件
       auto-save-default nil             ; 不生成临时文件
+      make-backup-files nil             ; 不生成备份文件
 
-      default-tab-width 4               ; 设置默认缩进为 4
-      c-basic-offset 4                  ; 修改 C 语言缩进为 4
+      c-basic-offset 4                  ; C 语言缩进为 4
+      default-tab-width 4               ; 默认缩进为 4
 
       max-lisp-eval-depth 10000
 
@@ -193,9 +193,8 @@
 
 ;; Auto complete mode
 (require 'auto-complete-config)
-(global-auto-complete-mode)
+(ac-config-default)
 
-(add-to-list 'ac-dictionary-directories (concat *PATH* "/auto-complete/dict"))
 (setq ac-auto-start nil
       ac-use-menu-map t)
 (define-key ac-mode-map "\M-/" 'auto-complete)
@@ -343,7 +342,6 @@
                 ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
                 ("\\.php\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
-                ("\\.txt\\'"    .   org-mode)
                 ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
                 ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
               auto-mode-alist))

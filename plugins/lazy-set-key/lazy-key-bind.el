@@ -13,7 +13,7 @@
 (lazy-set-key '(("RET"          .   newline-and-indent)
                 ("C-c C-k"      .   kill-buffer-and-window)
 
-				;; Auto complete pair
+                ;; Auto complete pair
                 ("("            .   skeleton-pair-insert-maybe)
                 ("["            .   skeleton-pair-insert-maybe)
                 ("{"            .   skeleton-pair-insert-maybe)
@@ -21,7 +21,7 @@
                 ("\""           .   skeleton-pair-insert-maybe)
                 ("\'"           .   skeleton-pair-insert-maybe)
 
-				;; Custom function
+                ;; Custom function
                 ("C-x 3"        .   custom-new-right-window)
                 ("C-x 2"        .   custom-new-below-window)
                 ("C-o"          .   custom-down-newline)
@@ -34,22 +34,22 @@
                 ("<backtab>"    .   custom-resize-indentation--4)
                 ("C-M-y"        .   custom-yank)
 
-				;; Emmet mode
+                ;; Emmet mode
                 ("C-M-["        .   emmet-prev-edit-point)
                 ("C-M-]"        .   emmet-next-edit-point)
 
-				;; Multiple cursors
+                ;; Multiple cursors
                 ("C-S-c C-S-c"  .   mc/edit-lines)
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)
 
-				;; Project explorer
+                ;; Project explorer
                 ("<f1>"         .   project-explorer-toggle)
 
-				;; Org mode
+                ;; Org mode
                 ("C-c c e"      .   org-edit-src-code)
                 ("C-c c i"      .   org-insert-src-block)
 
-				;; Origami mode
+                ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
                 ("C-c o a"      .   origami-show-only-node)
                 ("C-c o o"      .   origami-open-node-recursively)
@@ -59,17 +59,17 @@
                 ("C-c o b"      .   origami-backward-fold-same-level)
                 ("C-c o r"      .   origami-reset)
 
-				;; Web mode
+                ;; Web mode
                 ("C-c C-v"      .   browse-url-of-file)
 
-				;; Winner mode
+                ;; Winner mode
                 ("C-x 4 u"      .   winner-undo)
                 ("C-x 4 r"      .   winner-redo)
 
-				;; YASnippet mode
+                ;; YASnippet mode
                 ("<C-tab>"      .   yas-ido-expand)
 
-				;; 五笔输入法
+                ;; 五笔输入法
                 (";"            .   chinese-wbim-insert-ascii)))
 
 (provide 'lazy-key-bind)
