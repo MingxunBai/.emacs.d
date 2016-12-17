@@ -56,6 +56,8 @@
 ;; 显示 & 行为
 ;;-------------------------------------------------
 
+(defalias 'alr 'align-regexp)           ; 设置对齐别名
+
 (setq-default indent-tabs-mode nil)     ; 使用空格缩进
 
 (setq inhibit-startup-message t         ; 关闭启动动画
@@ -359,6 +361,8 @@
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
+
+(add-hook 'css-mode-hook  'my-web-mode-hook)
 (add-hook 'js2-mode-hook  'my-web-mode-hook)
 (add-hook 'json-mode-hook 'my-web-mode-hook)
 (add-hook 'web-mode-hook  'my-web-mode-hook)

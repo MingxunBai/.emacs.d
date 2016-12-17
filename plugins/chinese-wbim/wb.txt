@@ -13714,7 +13714,7 @@ fqtd 无敌 无知 顽敌
 fqte 远航
 fqtf 均等 元稹 远行
 fqtg 远征
-fqth 无处 远处
+fqth 远处 无处
 fqtk 过饱和 远程
 fqto 靎
 fqtq 均衡
@@ -22194,7 +22194,7 @@ ipir 学派 党派
 ipis 沉渣 深潭
 ipit 深省 深海 深渊
 ipiu 泶
-ipiv 沉浸 渲染
+ipiv 渲染 沉浸
 ipiw 沉沦
 ipix 沉溺
 ipiy 溶液
@@ -38047,7 +38047,7 @@ puut 襒
 puuv 补妆
 puuw 裨益 补益
 puv 初
-puvc 寝 初始 寢
+puvc 初始 寝 寢
 puve 裉
 puvf 襑
 puvi 实录
@@ -54192,7 +54192,7 @@ udpx 交感神经
 udpy 送礼 养神
 udq 羝
 udqa 差错
-udqc 减色 着色
+udqc 着色 减色
 udqe 头角 羊角 觠
 udqf 觠
 udqg 鲞 鲝 鮝 鮺 鯗
@@ -59320,7 +59320,7 @@ wcta 公升
 wctc 公私
 wctd 俟 公敌 颂辞
 wcte 俊秀
-wctf 公德 公告 仅靠
+wctf 公告 仅靠 公德
 wctl 公务
 wctr 公物
 wctu 仅剩

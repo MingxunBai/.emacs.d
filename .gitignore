@@ -1,6 +1,5 @@
 .mc-lists.el
 ac-comphist.dat
 auto-save-list/*
-eshell/history
-eshell/lastdir
+eshell/[^a]*
 project-explorer-cache/*
