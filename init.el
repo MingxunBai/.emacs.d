@@ -22,7 +22,7 @@
 (setq default-directory
       (if *WINDOWS*
           (format "C:/Users/%s/Documents" user-full-name)
-        ("~/Documents")))
+        "~/Documents"))
 
 ;; 配置五笔输入法
 (require 'chinese-wbim-extra)
