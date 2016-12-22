@@ -177,7 +177,7 @@
   (require 'elpy)
   (elpy-mode)
 
-  (highlight-indent-guides-mode)
+  ;; (highlight-indent-guides-mode)
 
   (require 'py-autopep8)
   (py-autopep8-enable-on-save)
