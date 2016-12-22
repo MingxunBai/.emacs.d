@@ -352,6 +352,9 @@
 ;; Hook
 ;;-------------------------------------------------
 
+;; Eshell mode
+(add-hook 'eshell-mode-hook 'custom-eshell-mode-hook)
+
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 
@@ -362,10 +365,10 @@
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 
-(add-hook 'css-mode-hook  'my-web-mode-hook)
-(add-hook 'js2-mode-hook  'my-web-mode-hook)
-(add-hook 'json-mode-hook 'my-web-mode-hook)
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+(add-hook 'css-mode-hook  'custom-web-mode-hook)
+(add-hook 'js2-mode-hook  'custom-web-mode-hook)
+(add-hook 'json-mode-hook 'custom-web-mode-hook)
+(add-hook 'web-mode-hook  'custom-web-mode-hook)
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

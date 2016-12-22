@@ -145,6 +145,11 @@
   (interactive)
   (message "%s" major-mode))
 
+;;; Eshell mode
+(defun custom-eshell-mode-hook ()
+  (setq skeleton-pair-alist
+        '((?\< "" >))))
+
 ;;; Org mode
 (defun custom-org-mode-hook ()
   (lazy-unset-key '("C-c C-k") org-mode-map)
@@ -185,7 +190,7 @@
   (setq python-shell-prompt-detect-enabled nil))
 
 ;;; Web mode
-(defun my-web-mode-hook ()
+(defun custom-web-mode-hook ()
   (setq skeleton-pair-alist
         '((?\< "" >)))
 
