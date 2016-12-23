@@ -58,23 +58,27 @@
 
 (defalias 'alr 'align-regexp)           ; 设置对齐别名
 
-(setq-default indent-tabs-mode nil)     ; 使用空格缩进
+(setq-default indent-tabs-mode nil      ; 使用空格缩进
+              cursor-type 'box)         ; 设置光标样式
 
 (setq inhibit-startup-message t         ; 关闭启动动画
 
-      visible-bell t                    ; 关闭错误提示音
-      ring-bell-function 'ignore save-abbrevs nil
+      visible-bell t                    ;;
+      ring-bell-function 'ignore        ; 关闭错误提示音
+      save-abbrevs nil                  ;;
+
+      mode-require-final-newline nil    ; 禁止在文件尾创建新行
 
       default-major-mode 'text-mode     ; 设置默认主模式为 text-mode
 
-      split-height-threshold nil        ; 垂直分屏
-      split-width-threshold 0
+      split-height-threshold nil        ;;
+      split-width-threshold 0           ; 垂直分屏
 
-      scroll-margin 3                   ; 靠近屏幕边沿3行时就开始滚动
-      scroll-conservatively 10000
+      scroll-margin 3                   ;;
+      scroll-conservatively 10000       ; 靠近屏幕边沿3行时就开始滚动
 
-      font-lock-maximum-decoration t    ; 只渲染当前 buffer 语法高亮
-      font-lock-verbose t
+      font-lock-maximum-decoration t    ;;
+      font-lock-verbose t               ; 渲染当前 buffer 语法高亮
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
 
       kill-ring-max 500                 ; 设置历史记录数量
@@ -93,16 +97,16 @@
       c-basic-offset 4                  ; C 语言缩进为 4
       default-tab-width 4               ; 默认缩进为 4
 
-      max-lisp-eval-depth 10000
+      max-lisp-eval-depth 10000         ; 设置函数嵌套深度
 
-      linum-format 'my-linum-format
-      column-number-mode
-      line-number-mode
+      linum-format 'my-linum-format     ;;
+      column-number-mode                ; 显示行号列号
+      line-number-mode                  ;;
 
       show-paren-style 'parenthesis     ; 光标不会跳到另一个括号处
 
-      display-time-day-and-date t
-      display-time-24hr-format t
+      display-time-day-and-date t       ;;
+      display-time-24hr-format t        ; 显示时间日期
       display-time-default-load-average nil
 
       frame-title-format                ; Title 显示完整路径
@@ -137,7 +141,7 @@
 ;; Internal mode
 ;;-------------------------------------------------
 
-(global-auto-revert-mode)               ; auto revert
+(global-auto-revert-mode)               ; Auto revert
 
 (display-time)                          ; 显示时间
 
@@ -221,7 +225,7 @@
 
 ;; Highlight parentheses mode
 (require 'highlight-parentheses)
-(highlight-parentheses-mode)
+(global-highlight-parentheses-mode)
 
 ;; History
 (require 'history)
