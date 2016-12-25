@@ -52295,7 +52295,7 @@ tqb 禿
 tqbk 称职
 tqbm 移出
 tqbt 稯 篘
-tqbw 先锋队 移除
+tqbw 移除 先锋队
 tqcd 生杀予夺
 tqcm 自然观
 tqd 稀 衡

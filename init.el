@@ -62,6 +62,7 @@
               cursor-type 'box)         ; 设置光标样式
 
 (setq inhibit-startup-message t         ; 关闭启动动画
+      initial-scratch-message nil       ; 移除草稿文本
 
       visible-bell t                    ;;
       ring-bell-function 'ignore        ; 关闭错误提示音
