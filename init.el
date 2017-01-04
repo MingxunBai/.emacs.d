@@ -207,6 +207,9 @@
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
+;; Batch mode
+(require 'batch-mode)
+
 ;; Emmet mode
 (defun enable-emmet-mode ()
   (interactive)
