@@ -36,7 +36,7 @@
     - Python IDE mode
     - 安装依赖:
     #+BEGIN_SRC sh
-      pip install flake8 jedi autopep8 elpy
+      pip install flake8 jedi autopep8 elpy importmagic
     #+END_SRC
 
 ** emmet-mode
