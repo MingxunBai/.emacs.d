@@ -203,6 +203,7 @@
 (ac-config-default)
 
 (setq ac-auto-start nil
+      ac-ignore-case nil
       ac-use-menu-map t)
 (define-key ac-mode-map "\M-/" 'auto-complete)
 (define-key ac-complete-mode-map "\M-/" 'ac-stop)

@@ -93,6 +93,7 @@
     (kill-whole-line)
     (forward-line n)
     (custom-yank)
+    (beginning-of-line)
     (forward-char step)))
 
 ;; 上移一行
