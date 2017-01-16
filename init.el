@@ -222,6 +222,11 @@
   (require 'magit)
   (magit-status))
 
+;; GoLang
+(defun enable-go-mode ()
+  (require 'go-mode-autoloads)
+  (go-mode))
+
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
 
@@ -343,9 +348,11 @@
 
                 ("\\.bash"      .   sh-mode)
                 ("\\.css\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.el\\'"     .   (lambda () (emacs-lisp-mode)
+                ("\\.el\\'"     .   (lambda ()
+                                      (emacs-lisp-mode)
                                       (setq skeleton-pair-alist
                                             '((?\' "" >)))))
+                ("\\.go\\'"     .   (lambda () (enable-go-mode)))
                 ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
                 ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
