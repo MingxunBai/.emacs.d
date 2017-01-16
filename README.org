@@ -46,6 +46,9 @@
 ** git
     - M-x: my/git-status
 
+** go
+    - Golang mode
+
 ** highlight-parentheses-mode
     - 光标所在括号分层级高亮
 
