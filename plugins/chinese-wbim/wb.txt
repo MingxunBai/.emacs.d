@@ -4464,7 +4464,7 @@ bpxn 陀
 bpyk 耽误
 bq 隐 聊 陷
 bqa 阺
-bqaa 隐慝 陶工 隐匿 隐式
+bqaa 隐式 隐匿 陶工 隐慝
 bqad 隐藏
 bqag 阺
 bqai 陷落
