@@ -225,6 +225,7 @@
 
 ;; GoLang
 (defun enable-go-mode ()
+  (interactive)
   (require 'go-mode-autoloads)
   (go-mode))
 

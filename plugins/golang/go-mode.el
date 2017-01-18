@@ -980,7 +980,7 @@ with goflymake \(see URL `https://github.com/dougm/goflymake'), gocode
   (imenu-add-to-menubar "Index")
 
   ;; Go style
-  (setq indent-tabs-mode t)
+  (setq indent-tabs-mode nil)
 
   ;; Handle unit test failure output in compilation-mode
   ;;
