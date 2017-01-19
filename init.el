@@ -44,7 +44,7 @@
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(modify-coding-system-alist 'file "\\.[bt][ax]t\\'" 'chinese-iso-8bit)
+(modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
 ;; use gbk for cmd
 (when *WINDOWS*
