@@ -211,6 +211,12 @@
 ;; Batch mode
 (require 'batch-mode)
 
+;; Emacs lisp mode
+(defun enable-emacs-lisp-mode ()
+  (emacs-lisp-mode)
+  (setq skeleton-pair-alist
+        '((?\' "" >))))
+
 ;; Emmet mode
 (defun enable-emmet-mode ()
   (interactive)
@@ -350,10 +356,7 @@
 
                 ("\\.bash"      .   sh-mode)
                 ("\\.css\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.el\\'"     .   (lambda ()
-                                      (emacs-lisp-mode)
-                                      (setq skeleton-pair-alist
-                                            '((?\' "" >)))))
+                ("\\.el\\'"     .   (lambda () (enable-emacs-lisp-mode)))
                 ("\\.go\\'"     .   (lambda () (enable-go-mode)))
                 ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
