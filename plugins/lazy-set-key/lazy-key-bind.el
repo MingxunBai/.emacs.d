@@ -17,7 +17,6 @@
                 ("("            .   skeleton-pair-insert-maybe)
                 ("["            .   skeleton-pair-insert-maybe)
                 ("{"            .   skeleton-pair-insert-maybe)
-                ("<"            .   skeleton-pair-insert-maybe)
                 ("\""           .   skeleton-pair-insert-maybe)
                 ("\'"           .   skeleton-pair-insert-maybe)
 

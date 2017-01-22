@@ -102,6 +102,10 @@
     - 支持 web 相关所有模式
     - HTML 缩进改为 2 个空格
     - 将 html，css，php 模式重定向至 web-mode
+    - C-c C-n 切换到标签开始/结束位置
+    - C-c C-t a 排序标签属性
+    - C-c C-t n 切换到下个标签
+    - C-c C-t p 切换到上个标签
 
 ** windows-numbering
     - 多窗口，左下角显示窗口编号，M+n 切换到第 n 个窗口

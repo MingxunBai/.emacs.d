@@ -146,11 +146,6 @@
   (interactive)
   (message "%s" major-mode))
 
-;;; Eshell mode
-(defun custom-eshell-mode-hook ()
-  (setq skeleton-pair-alist
-        '((?\< "" >))))
-
 ;;; Org mode
 (defun custom-org-mode-hook ()
   (lazy-unset-key '("C-c C-k") org-mode-map)
@@ -189,13 +184,6 @@
   (py-autopep8-enable-on-save)
 
   (setq python-shell-prompt-detect-enabled nil))
-
-;;; Web mode
-(defun custom-web-mode-hook ()
-  (setq skeleton-pair-alist
-        '((?\< "" >)))
-
-  (enable-emmet-mode))
 
 ;;; YASnippet
 ;; use popup menu for yas-choose-value

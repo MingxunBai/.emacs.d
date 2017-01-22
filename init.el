@@ -134,8 +134,7 @@
         (?\' _ "\'" >)
         (?\( _ ")"  >)
         (?\[ _ "]"  >)
-        (?\{ _ "}"  >)
-        (?\< _ ">"  >))
+        (?\{ _ "}"  >))
       skeleton-pair t)
 
 ;;-------------------------------------------------
@@ -324,9 +323,19 @@
   (require 'web-mode)
   (web-mode)
 
+  (enable-emmet-mode)
+
   (setq web-mode-markup-indent-offset             2
         web-mode-css-indent-offset                4
-        web-mode-enable-current-element-highlight t))
+        web-mode-code-indent-offset               4
+
+        web-mode-style-padding                    4
+        web-mode-script-padding                   4
+        web-mode-block-padding                    4
+
+        web-mode-enable-current-element-highlight t)
+
+  (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
 
 ;; Windows numbering
 (require 'window-numbering)
@@ -372,9 +381,6 @@
 ;; Hook
 ;;-------------------------------------------------
 
-;; Eshell mode
-(add-hook 'eshell-mode-hook 'custom-eshell-mode-hook)
-
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 
@@ -385,10 +391,9 @@
 (add-hook 'html-mode-hook 'enable-web-mode)
 (add-hook 'nxml-mode-hook 'enable-web-mode)
 
-(add-hook 'css-mode-hook  'custom-web-mode-hook)
-(add-hook 'js2-mode-hook  'custom-web-mode-hook)
-(add-hook 'json-mode-hook 'custom-web-mode-hook)
-(add-hook 'web-mode-hook  'custom-web-mode-hook)
+(add-hook 'css-mode-hook  'enable-emmet-mode)
+(add-hook 'js2-mode-hook  'enable-emmet-mode)
+(add-hook 'json-mode-hook 'enable-emmet-mode)
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
