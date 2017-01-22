@@ -52497,7 +52497,7 @@ trfp 科技支农
 trg 徨
 trga 牼
 trgf 篁
-trgg 徨 循环
+trgg 循环 徨
 trgi 物质刺激 我还
 trgj 物理
 trgk 牾
