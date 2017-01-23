@@ -48615,7 +48615,7 @@ ssds 酩酊大醉
 ssdt 可想而知 格林布拉特
 sse 彬
 ssep 禁受
-sset 彬 禁用
+sset 禁用 彬
 ssf 禁
 ssfb 禁地 林地
 ssfc 禁运
