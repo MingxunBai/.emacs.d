@@ -92,9 +92,11 @@
     (beginning-of-line)
     (kill-whole-line)
     (forward-line n)
-    (custom-yank)
+    (yank)
+    (forward-line -1)
     (beginning-of-line)
-    (forward-char step)))
+    (forward-char step)
+    (indent-according-to-mode)))
 
 ;; 上移一行
 (defun custom-move-up-current-line ()
