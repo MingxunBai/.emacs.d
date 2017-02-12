@@ -32,7 +32,7 @@
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-c r"        .   custom-resize-indentation)
                 ("<backtab>"    .   custom-resize-indentation--4)
-                ("C-M-y"        .   custom-yank)
+                ("C-y"          .   custom-yank)
 
                 ;; Emmet mode
                 ("C-M-["        .   emmet-prev-edit-point)
