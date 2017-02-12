@@ -9,6 +9,7 @@
 ;; This is custom key bind use lazy-set-key.
 
 ;;; Code:
+(lazy-unset-key '("M-<down-mouse-1>"))
 
 (lazy-set-key '(("RET"          .   newline-and-indent)
                 ("C-c C-k"      .   kill-buffer-and-window)

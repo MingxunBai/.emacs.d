@@ -79,12 +79,12 @@
 ;;; 移动当前行
 (defun not-whole-line ()
   (end-of-line)
-  (if (eobp) 'true))
+  (if (eobp) 't))
 
 (defun remember-pos ()
-  (set 'currpos (point))
+  (setq currpos (point))
   (beginning-of-line)
-  (set 'step (- currpos (point))))
+  (setq step (- currpos (point))))
 
 (defun custom-move-current-line (n)
   (interactive)
@@ -109,12 +109,13 @@
           (message "Beginning of buffer!")
           (forward-char step))
       (progn
-        (if (eq (not-whole-line) 'true)
+        (if (eq (not-whole-line) 't)
             (progn
               (newline)
               (forward-line -1)
               (custom-move-current-line -1))
-          (custom-move-current-line -1))))))
+          (custom-move-current-line -1))
+        (message "Move up current line.")))))
 
 ;;; 下移一行
 (defun custom-move-down-current-line ()
@@ -128,20 +129,20 @@
           (beginning-of-line)
           (forward-char step))
       (progn
-        (if (eq (not-whole-line) 'true)
-            (progn
-              (newline)
-              (forward-line)
-              (custom-move-current-line 1))
-          (custom-move-current-line 1))))))
+        (custom-move-current-line 1)
+        (message "Move down current line.")))))
 
 ;;; 粘贴
 (defun custom-yank ()
   (interactive)
-  (yank)
-  (indent-according-to-mode)
-  (forward-line -1)
-  (indent-according-to-mode))
+  (if (string= (substring (car kill-ring) -1) "
+")
+      (progn
+        (yank)
+        (indent-according-to-mode)
+        (forward-line -1)
+        (indent-according-to-mode))
+    (yank)))
 
 ;;; 显示主模式
 (defun custom-show-major-mode ()

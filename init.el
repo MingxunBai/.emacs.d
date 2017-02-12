@@ -59,6 +59,7 @@
 (defalias 'alr 'align-regexp)           ; 设置对齐别名
 
 (setq-default indent-tabs-mode nil      ; 使用空格缩进
+              tab-width 4               ; 默认缩进为 4
               cursor-type 'box)         ; 设置光标样式
 
 (setq inhibit-startup-message t         ; 关闭启动动画
@@ -96,7 +97,6 @@
       make-backup-files nil             ; 不生成备份文件
 
       c-basic-offset 4                  ; C 语言缩进为 4
-      default-tab-width 4               ; 默认缩进为 4
 
       max-lisp-eval-depth 10000         ; 设置函数嵌套深度
 
@@ -290,7 +290,6 @@
 
 ;; Multiple cursors
 (require 'multiple-cursors)
-(lazy-unset-key '("M-<down-mouse-1>"))
 
 ;; Origami mode
 (require 'origami)
