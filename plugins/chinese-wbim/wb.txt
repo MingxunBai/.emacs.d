@@ -50672,7 +50672,7 @@ tgfa 重载
 tgfb 重地
 tgfc 生动 策动
 tgfg 策士 稏
-tgfh 生趣 垂直 秉直
+tgfh 垂直 秉直
 tgfi 征求 和平过渡
 tgfj 竽
 tgfm 重击
