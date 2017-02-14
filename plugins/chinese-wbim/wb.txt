@@ -29100,7 +29100,7 @@ lfyj 罢课
 lfyl 转为
 lfym 黑市 罢市
 lfyn 默记 黑户
-lfyo 转变 墨迹 转弯
+lfyo 转弯 转变 墨迹
 lfyq 转义
 lfyt 默许 团旗 黑话
 lfyw 默认 黑夜 罢论
@@ -29247,7 +29247,7 @@ lgtg 国策 胃下垂
 lgth 办事处 车牌
 lgtk 囤积 车程
 lgtl 国务
-lgtm 辐射 国徽 车身
+lgtm 车身 辐射 国徽
 lgtt 圆珠笔
 lgtu 国税
 lgu 軯
