@@ -144,7 +144,8 @@
             (yank)
             (indent-according-to-mode)
             (forward-line -1)
-            (indent-according-to-mode))
+            (indent-according-to-mode)
+            (end-of-line))
         (yank)))))
 
 ;;; 显示主模式
