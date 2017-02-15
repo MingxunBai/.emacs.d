@@ -1,3 +1,4 @@
+
 ;;; lazy-key-bind.el --- lazy-set-key configuation
 
 ;; Copyright (C) 2016 MingxunBai
@@ -32,7 +33,7 @@
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-c r"        .   custom-resize-indentation)
                 ("<backtab>"    .   custom-resize-indentation--4)
-                ("C-M-y"        .   custom-yank)
+                ("C-y"          .   custom-yank)
 
                 ;; Emmet mode
                 ("C-M-["        .   emmet-prev-edit-point)

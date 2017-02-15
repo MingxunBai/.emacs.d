@@ -135,14 +135,17 @@
 ;;; 粘贴
 (defun custom-yank ()
   (interactive)
-  (if (string= (substring (car kill-ring) -1) "
+  (if (equal (car kill-ring) nil)
+      (yank)
+    (progn
+      (if (string= (substring (car kill-ring) -1) "
 ")
-      (progn
-        (yank)
-        (indent-according-to-mode)
-        (forward-line -1)
-        (indent-according-to-mode))
-    (yank)))
+          (progn
+            (yank)
+            (indent-according-to-mode)
+            (forward-line -1)
+            (indent-according-to-mode))
+        (yank)))))
 
 ;;; 显示主模式
 (defun custom-show-major-mode ()
