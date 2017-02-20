@@ -151,6 +151,13 @@
   (interactive)
   (message "%s" major-mode))
 
+;;; Project explorer mode
+(defun pe/copy-relative-path ()
+  (interactive)
+  (pe/copy-file-name-as-kill)
+  (other-window 1)
+  (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
+
 ;;; Org mode
 (defun custom-org-mode-hook ()
   (lazy-unset-key '("C-c C-k") org-mode-map)

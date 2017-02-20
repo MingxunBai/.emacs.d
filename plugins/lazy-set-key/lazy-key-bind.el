@@ -60,6 +60,9 @@
                 ("C-c o b"      .   origami-backward-fold-same-level)
                 ("C-c o r"      .   origami-reset)
 
+                ;; Project explorer mode
+                ("C-c c"        .   pe/copy-relative-path)
+
                 ;; Web mode
                 ("C-c C-v"      .   browse-url-of-file)
 
