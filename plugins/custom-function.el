@@ -82,9 +82,9 @@
   (if (eobp) 't))
 
 (defun remeber-cols ()
-  (setq currpos (point))
+  (setq cols (point))
   (beginning-of-line)
-  (setq step (- currpos (point))))
+  (setq step (- cols (point))))
 
 (defun custom-move-current-line (n)
   (interactive)
