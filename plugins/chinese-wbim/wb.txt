@@ -59352,7 +59352,7 @@ wcxd 公顷
 wcxj 公费
 wcxq 公约
 wcy 仅 仏 傌 僅
-wcyg 公证 公主
+wcyg 公主 公证
 wcyl 公亩
 wcyn 公房 颂词
 wcyr 公诉
