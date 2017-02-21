@@ -81,10 +81,10 @@
   (end-of-line)
   (if (eobp) 't))
 
-(defun remember-pos ()
-  (setq currpos (point))
+(defun remeber-cols ()
+  (setq cols (point))
   (beginning-of-line)
-  (setq step (- currpos (point))))
+  (setq step (- cols (point))))
 
 (defun custom-move-current-line (n)
   (interactive)
@@ -101,7 +101,7 @@
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
-  (remember-pos)
+  (remeber-cols)
   (progn
     (beginning-of-line)
     (if (bobp)
@@ -120,7 +120,7 @@
 ;;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
-  (remember-pos)
+  (remeber-cols)
   (progn
     (end-of-line)
     (if (eobp)
@@ -135,18 +135,16 @@
 ;;; 粘贴
 (defun custom-yank ()
   (interactive)
-  (if (equal (car kill-ring) nil)
-      (yank)
-    (progn
-      (if (string= (substring (car kill-ring) -1) "
-")
-          (progn
-            (yank)
-            (indent-according-to-mode)
-            (forward-line -1)
-            (indent-according-to-mode)
-            (end-of-line))
-        (yank)))))
+  (if (and (not (equal (car kill-ring) nil))
+           (string= (substring (car kill-ring) -1) "
+"))
+      (progn
+        (yank)
+        (indent-according-to-mode)
+        (forward-line -1)
+        (indent-according-to-mode)
+        (end-of-line))
+    (yank)))
 
 ;;; 显示主模式
 (defun custom-show-major-mode ()
