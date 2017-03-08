@@ -121,7 +121,13 @@
          (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
          (if (= (user-uid) 0) " # " " $ "))))
 
-(fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no
+(fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no, 使用 Enter 替代 y
+(defun y-or-n-p-with-return (orig-func &rest args)
+  (let ((query-replace-map (copy-keymap query-replace-map)))
+    (define-key query-replace-map (kbd "RET") 'act)
+    (apply orig-func args)))
+
+(advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
