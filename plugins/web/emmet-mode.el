@@ -305,8 +305,7 @@ For more information see `emmet-mode'."
                 (emmet-reposition-cursor expr))))))))
 
 (defvar emmet-mode-keymap
-  (let
-      ((map (make-sparse-keymap)))
+  (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-j") 'emmet-expand-line)
     ;; (define-key map (kbd "<C-return>") 'emmet-expand-line)
     ;; (define-key map (kbd "<C-M-right>") 'emmet-next-edit-point)

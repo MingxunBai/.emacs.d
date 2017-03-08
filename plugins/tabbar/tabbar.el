@@ -616,8 +616,8 @@ current cached copy."
 (defface tabbar-modified
   '((t
      :inherit tabbar-default
-     :box (:line-width 1 :color "white" :style released-button)
-     :foreground "green"
+     ;; :box (:line-width 1 :color "white" :style released-button)
+     :foreground "black"
      ))
   "Face used for unsaved tabs."
   :group 'tabbar)

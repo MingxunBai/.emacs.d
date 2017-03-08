@@ -1,4 +1,3 @@
-
 ;;; lazy-key-bind.el --- lazy-set-key configuation
 
 ;; Copyright (C) 2016 MingxunBai
@@ -22,7 +21,7 @@
                 ("\""           .   skeleton-pair-insert-maybe)
                 ("\'"           .   skeleton-pair-insert-maybe)
 
-                ;; Custom function
+                ;; Custom feature
                 ("C-x 3"        .   custom-new-right-window)
                 ("C-x 2"        .   custom-new-below-window)
                 ("C-o"          .   custom-down-newline)
@@ -35,17 +34,9 @@
                 ("<backtab>"    .   custom-resize-indentation--4)
                 ("C-y"          .   custom-yank)
 
-                ;; Emmet mode
-                ("C-M-["        .   emmet-prev-edit-point)
-                ("C-M-]"        .   emmet-next-edit-point)
-
                 ;; Multiple cursors
                 ("C-S-c C-S-c"  .   mc/edit-lines)
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)
-
-                ;; Org mode
-                ("C-c c e"      .   org-edit-src-code)
-                ("C-c c i"      .   org-insert-src-block)
 
                 ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
@@ -60,13 +51,9 @@
                 ;; Project explorer mode
                 ("<f1>"         .   project-explorer-toggle)
 
-
                 ;; Tab bar mode
-                ("C-9"          .   tabbar-forward)
-                ("C-0"          .   tabbar-backward)
-
-                ;; Web mode
-                ("C-c C-v"      .   browse-url-of-file)
+                ("C-9"          .   tabbar-backward)
+                ("C-0"          .   tabbar-forward)
 
                 ;; Winner mode
                 ("C-x 4 u"      .   winner-undo)

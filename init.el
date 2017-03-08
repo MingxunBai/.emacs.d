@@ -210,11 +210,9 @@
 (setq ac-auto-start nil
       ac-ignore-case nil
       ac-use-menu-map t)
-(define-key ac-mode-map "\M-/" 'auto-complete)
-(define-key ac-complete-mode-map "\M-/" 'ac-stop)
 
-;; Batch mode
-(require 'batch-mode)
+(define-key ac-mode-map (kbd "M-/") 'auto-complete)
+(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
 
 ;; Emacs lisp mode
 (defun enable-emacs-lisp-mode ()
@@ -226,7 +224,10 @@
 (defun enable-emmet-mode ()
   (interactive)
   (require 'emmet-mode)
-  (emmet-mode))
+  (emmet-mode)
+
+  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
+  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
 ;; GoLang
 (defun enable-go-mode ()
@@ -297,6 +298,11 @@
 
 ;; Project explorer
 (require 'project-explorer)
+(defun pe/copy-relative-path ()
+  (interactive)
+  (pe/copy-file-name-as-kill)
+  (other-window 1)
+  (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
 
 ;; SCSS mode
 (defun enable-scss-mode ()
@@ -313,6 +319,11 @@
 ;; Tab bar mode
 (require 'tabbar)
 (tabbar-mode)
+(defun my-tabbar-buffer-groups ()
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
+              ((eq major-mode 'dired-mode) "Emacs")
+              (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 ;; Vimrc mode
 (defun enable-vimrc-mode ()
@@ -326,8 +337,6 @@
   (require 'web-mode)
   (web-mode)
 
-  (enable-emmet-mode)
-
   (setq web-mode-markup-indent-offset             2
         web-mode-css-indent-offset                4
         web-mode-code-indent-offset               4
@@ -337,6 +346,8 @@
         web-mode-block-padding                    4
 
         web-mode-enable-current-element-highlight t)
+
+  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
 
   (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
 
@@ -354,10 +365,40 @@
 (require 'yasnippet)
 (yas-global-mode)
 
+(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  (when (featurep 'popup)
+    (popup-menu*
+     (mapcar
+      (lambda (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         :value choice))
+      choices)
+     :prompt prompt
+     :isearch t)))
+(defun yas-ido-expand ()
+  "Lets you select (and expand) a yasnippet key"
+  (interactive)
+  (let ((original-point (point)))
+    (while (and
+            (not (= (point) (point-min) ))
+            (not
+             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
+      (backward-word 1))
+    (let* ((init-word (point))
+           (word (buffer-substring init-word original-point))
+           (list (yas-active-keys)))
+      (goto-char original-point)
+      (let ((key (remove-if-not
+                  (lambda (s) (string-match (concat "^" word) s)) list)))
+        (if (= (length key) 1)
+            (setq key (pop key))
+          (setq key (ido-completing-read "key: " list nil nil word)))
+        (delete-char (- init-word original-point))
+        (insert key)
+        (yas-expand)))))
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
-
-;; 自定义功能
-(require 'custom-function)
 
 ;;-------------------------------------------------
 ;; 主模式
@@ -382,17 +423,192 @@
               auto-mode-alist))
 
 ;;-------------------------------------------------
+;; Custom feature
+;;-------------------------------------------------
+
+;;; 自定缩进
+(defun custom-resize-indentation (n)
+  (interactive "nEnter indentation size:")
+  (if (use-region-p)
+      (let (mark (mark))
+        (save-excursion
+          (save-match-data
+            (indent-rigidly
+             (region-beginning)
+             (region-end)
+             n)
+            (push-mark mark t t)
+            (setq deactivate-mark nil))))
+    (indent-rigidly
+     (line-beginning-position)
+     (line-end-position)
+     n)))
+
+(defun custom-resize-indentation--4 ()
+  (interactive)
+  (custom-resize-indentation -4))
+
+;;; 删除空白字符至上一行末尾
+(defun custom-delete-whitespace-to-upline ()
+  (interactive)
+  (progn
+    (delete-indentation)
+    (indent-according-to-mode)))
+
+;;; 向上新建一行
+(defun custom-up-newline ()
+  (interactive)
+  (progn
+    (beginning-of-line)
+    (newline-and-indent)
+    (previous-line)
+    (indent-according-to-mode)))
+
+;;; 向下新建一行
+(defun custom-down-newline ()
+  (interactive)
+  (progn
+    (end-of-line)
+    (newline-and-indent)))
+
+;;; 标签内新建一行
+(defun custom-middle-newline ()
+  (interactive)
+  (progn
+    (newline-and-indent)
+    (newline-and-indent)
+    (previous-line)
+    (indent-according-to-mode)))
+
+;; 在右侧新建一个窗口
+(defun custom-new-right-window ()
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+;; 在下方新建一个窗口
+(defun custom-new-below-window ()
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
+;;; 移动当前行
+(defun not-whole-line ()
+  (end-of-line)
+  (if (eobp) 't))
+
+(defun remeber-cols ()
+  (setq cols (point))
+  (beginning-of-line)
+  (setq step (- cols (point))))
+
+(defun custom-move-current-line (n)
+  (interactive)
+  (progn
+    (beginning-of-line)
+    (kill-whole-line)
+    (forward-line n)
+    (yank)
+    (forward-line -1)
+    (beginning-of-line)
+    (forward-char step)
+    (indent-according-to-mode)))
+
+;; 上移一行
+(defun custom-move-up-current-line ()
+  (interactive)
+  (remeber-cols)
+  (progn
+    (beginning-of-line)
+    (if (bobp)
+        (progn
+          (message "Beginning of buffer!")
+          (forward-char step))
+      (progn
+        (if (eq (not-whole-line) 't)
+            (progn
+              (newline)
+              (forward-line -1)
+              (custom-move-current-line -1))
+          (custom-move-current-line -1))
+        (message "Move up current line.")))))
+
+;;; 下移一行
+(defun custom-move-down-current-line ()
+  (interactive)
+  (remeber-cols)
+  (progn
+    (end-of-line)
+    (if (eobp)
+        (progn
+          (message "End of buffer!")
+          (beginning-of-line)
+          (forward-char step))
+      (progn
+        (custom-move-current-line 1)
+        (message "Move down current line.")))))
+
+;;; 粘贴
+(defun custom-yank ()
+  (interactive)
+  (if (and (not (equal (car kill-ring) nil))
+           (string= (substring (car kill-ring) -1) "
+"))
+      (progn
+        (yank)
+        (indent-according-to-mode)
+        (forward-line -1)
+        (indent-according-to-mode)
+        (end-of-line))
+    (yank)))
+
+;;-------------------------------------------------
 ;; Hook
 ;;-------------------------------------------------
 
-;; Start server
-(add-hook 'after-init-hook 'server-start)
-
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
+(defun custom-org-mode-hook ()
+  (org-indent-mode)
+  (lazy-unset-key '("C-c C-k") org-mode-map)
+  (setq org-startup-indented t)
+
+  ;; 生成 html 文件时代码高亮
+  (require 'htmlize)
+  (setq org-src-fontify-natively t)
+
+  (defun org-insert-src-block ()
+    (interactive
+     (let ((src-code-types
+            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++"
+              "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
+              "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
+              "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
+              "org" "perl" "ruby" "scheme" "sqlite" "html")))
+       (list (ido-completing-read "Source code type: " src-code-types))))
+    (progn
+      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+      (newline-and-indent)
+      (insert "#+END_SRC")
+      (previous-line 2)
+      (org-edit-src-code))
+    (local-set-key (kbd "C-c c e") 'org-edit-src-code)
+    (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
 
 ;; Python mode
 (add-hook 'python-mode-hook 'custom-python-mode-hook)
+(defun custom-python-mode-hook ()
+  (lazy-unset-key '("<backtab>") python-mode-map)
+
+  (require 'elpy)
+  (elpy-mode)
+
+  ;; (highlight-indent-guides-mode)
+
+  (require 'py-autopep8)
+  (py-autopep8-enable-on-save)
+
+  (setq python-shell-prompt-detect-enabled nil))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
@@ -401,6 +617,7 @@
 (add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'js2-mode-hook  'enable-emmet-mode)
 (add-hook 'json-mode-hook 'enable-emmet-mode)
+(add-hook 'web-mode-hook 'enable-emmet-mode)
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
