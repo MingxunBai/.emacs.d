@@ -381,6 +381,9 @@
 ;; Hook
 ;;-------------------------------------------------
 
+;; Start server
+(add-hook 'after-init-hook 'server-start)
+
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 
