@@ -570,27 +570,27 @@ current cached copy."
     ;; )
     (((class color grayscale) (background dark))
      :inherit variable-pitch
-     :height 0.8
+     :height 0.9
      :foreground "grey75"
      :background "gray50"
      )
     (((class mono) (background light))
      :inherit variable-pitch
-     :height 0.8
+     :height 0.9
      :foreground "black"
      :background "white"
      )
     (((class mono) (background dark))
      :inherit variable-pitch
-     :height 0.8
+     :height 0.9
      :foreground "white"
      :background "black"
      )
     (t
      :inherit variable-pitch
-     :height 0.8
+     :height 0.9
      :foreground "gray50"
-     :background "gray75"
+     :background "gray95"
      ))
   "Default face used in the tab bar."
   :group 'tabbar)
@@ -598,7 +598,7 @@ current cached copy."
 (defface tabbar-unselected
   '((t
      :inherit tabbar-default
-     :box (:line-width 1 :color "white" :style released-button)
+     ;; :box (:line-width 1 :color "white" :style released-button)
      ))
   "Face used for unselected tabs."
   :group 'tabbar)
@@ -606,8 +606,9 @@ current cached copy."
 (defface tabbar-selected
   '((t
      :inherit tabbar-default
-     :box (:line-width 1 :color "white" :style pressed-button)
+     ;; :box (:line-width 1 :color "white" :style pressed-button)
      :foreground "blue"
+     :background "#E8E8FF"
      ))
   "Face used for the selected tab."
   :group 'tabbar)
@@ -624,7 +625,7 @@ current cached copy."
 (defface tabbar-selected-modified
   '((t
      :inherit tabbar-default
-     :box (:line-width 1 :color "white" :style released-button)
+     ;; :box (:line-width 1 :color "white" :style released-button)
      :foreground "red"
      ))
   "Face used for unsaved and selected tabs."
@@ -632,7 +633,7 @@ current cached copy."
 
 (defface tabbar-highlight
   '((t
-     :underline t
+     :underline nil
      ))
   "Face used to highlight a tab during mouse-overs."
   :group 'tabbar)
@@ -640,6 +641,7 @@ current cached copy."
 (defface tabbar-separator
   '((t
      :inherit tabbar-default
+     :foreground "black"
      ))
   "Face used for separators between tabs."
   :group 'tabbar)
@@ -647,7 +649,7 @@ current cached copy."
 (defface tabbar-button
   '((t
      :inherit tabbar-default
-     :box (:line-width 1 :color "white" :style released-button)
+     ;; :box (:line-width 1 :color "white" :style released-button)
      ))
   "Face used for tab bar buttons."
   :group 'tabbar)
@@ -838,7 +840,7 @@ The value (\"\"), or (0) hide separators.")
 (defvar tabbar-separator-value nil
   "Value of the separator used between tabs.")
 
-(defcustom tabbar-separator (list 0.2)
+(defcustom tabbar-separator (list "  |  ")
   "Separator used between tabs.
 The variable `tabbar-separator-widget' gives details on this widget."
   :group 'tabbar
