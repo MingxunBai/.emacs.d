@@ -59,7 +59,6 @@
 
                 ;; Project explorer mode
                 ("<f1>"         .   project-explorer-toggle)
-                ("C-c c"        .   pe/copy-relative-path)
 
                 ;; Tab bar mode
                 ("C-9"          .   tabbar-forward)
@@ -77,5 +76,9 @@
 
                 ;; 五笔输入法
                 (";"            .   chinese-wbim-insert-ascii)))
+
+;; Project explorer mode
+(lazy-set-key '(("C-c c"        .   pe/copy-relative-path))
+              project-explorer-mode-map)
 
 (provide 'lazy-key-bind)
