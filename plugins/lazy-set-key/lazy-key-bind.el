@@ -36,8 +36,8 @@
                 ("C-y"          .   custom-yank)
 
                 ;; Emmet mode
-                ("C-M-["          .   emmet-prev-edit-point)
-                ("C-M-]"          .   emmet-next-edit-point)
+                ("C-M-["        .   emmet-prev-edit-point)
+                ("C-M-]"        .   emmet-next-edit-point)
 
                 ;; Multiple cursors
                 ("C-S-c C-S-c"  .   mc/edit-lines)
@@ -60,6 +60,7 @@
                 ;; Project explorer mode
                 ("<f1>"         .   project-explorer-toggle)
 
+
                 ;; Tab bar mode
                 ("C-9"          .   tabbar-forward)
                 ("C-0"          .   tabbar-backward)
@@ -76,9 +77,5 @@
 
                 ;; 五笔输入法
                 (";"            .   chinese-wbim-insert-ascii)))
-
-;; Project explorer mode
-(lazy-set-key '(("C-c c"        .   pe/copy-relative-path))
-              project-explorer-mode-map)
 
 (provide 'lazy-key-bind)
