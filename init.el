@@ -228,12 +228,6 @@
   (require 'emmet-mode)
   (emmet-mode))
 
-;; Git
-(defun my/git-status ()
-  (interactive)
-  (require 'magit)
-  (magit-status))
-
 ;; GoLang
 (defun enable-go-mode ()
   (interactive)
@@ -315,6 +309,16 @@
 (require 'smart-mode-line)
 (setq sml/no-confirm-load-theme t)
 (smart-mode-line-enable)
+
+;; Tab bar mode
+(require 'tabbar)
+(tabbar-mode)
+
+(defun my-tabbar-buffer-groups ()
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+              ((eq major-mode 'dired-mode) "emacs")
+              (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 ;; Vimrc mode
 (defun enable-vimrc-mode ()

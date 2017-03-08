@@ -36,15 +36,12 @@
                 ("C-y"          .   custom-yank)
 
                 ;; Emmet mode
-                ("C-M-["        .   emmet-prev-edit-point)
-                ("C-M-]"        .   emmet-next-edit-point)
+                ("C-M-["          .   emmet-prev-edit-point)
+                ("C-M-]"          .   emmet-next-edit-point)
 
                 ;; Multiple cursors
                 ("C-S-c C-S-c"  .   mc/edit-lines)
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)
-
-                ;; Project explorer
-                ("<f1>"         .   project-explorer-toggle)
 
                 ;; Org mode
                 ("C-c c e"      .   org-edit-src-code)
@@ -61,7 +58,12 @@
                 ("C-c o r"      .   origami-reset)
 
                 ;; Project explorer mode
+                ("<f1>"         .   project-explorer-toggle)
                 ("C-c c"        .   pe/copy-relative-path)
+
+                ;; Tab bar mode
+                ("C-9"          .   tabbar-forward)
+                ("C-0"          .   tabbar-backward)
 
                 ;; Web mode
                 ("C-c C-v"      .   browse-url-of-file)

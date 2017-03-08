@@ -160,6 +160,7 @@
 
 ;;; Org mode
 (defun custom-org-mode-hook ()
+  (org-indent-mode)
   (lazy-unset-key '("C-c C-k") org-mode-map)
   (setq org-startup-indented t)
 
