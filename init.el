@@ -408,7 +408,6 @@
       (append '(("/[^\\./]*\\'" .   conf-mode) ; File name has no dot
 
                 ("\\.bash"      .   sh-mode)
-                ("\\.bat\\'"    .   bat-mode)
                 ("\\.css\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.el\\'"     .   (lambda () (enable-emacs-lisp-mode)))
                 ("\\.go\\'"     .   (lambda () (enable-go-mode)))
