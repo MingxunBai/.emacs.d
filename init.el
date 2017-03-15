@@ -319,11 +319,6 @@
 ;; Tab bar mode
 (require 'tabbar)
 (tabbar-mode)
-(defun my-tabbar-buffer-groups ()
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
-              ((eq major-mode 'dired-mode) "Emacs")
-              (t "user"))))
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 ;; Vimrc mode
 (defun enable-vimrc-mode ()
