@@ -171,8 +171,8 @@
 
 (defface my-linum-hl
   `((t :inherit linum
-       ;; :background "#E8E8FF"
-       :foreground "#000000",(face-background 'hl-line nil t)))
+       :background "#3C3D37"
+       :foreground "#FFFFFF",(face-background 'hl-line nil t)))
   "Face for the current line number."
   :group 'linum)
 
@@ -193,7 +193,7 @@
 ;; Highlight line mode
 (set-face-attribute hl-line-face nil
                     ;; :underline t
-                    ;; :background "#E8E8FF")
+                    ;; :background "#E8E8FF"
                     )
 
 ;; Ido mode
@@ -240,7 +240,10 @@
 (defun enable-go-mode ()
   (interactive)
   (require 'go-mode-autoloads)
-  (go-mode))
+  (go-mode)
+
+  (add-hook 'after-save-hook (lambda ()
+                               (shell-command (concat "go fmt " (buffer-file-name))))))
 
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
