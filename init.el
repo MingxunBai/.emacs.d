@@ -8,7 +8,6 @@
 
 ;; 定义常量
 (defconst *WINDOWS* (eq system-type 'windows-nt))
-(defconst *PATH* (expand-file-name "plugins" user-emacs-directory))
 
 ;; 路径配置
 (defun add-subdirs-to-load-path (dir)
@@ -17,7 +16,9 @@
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
 
-(add-subdirs-to-load-path *PATH*)
+(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
+
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
 (setq default-directory
       (if *WINDOWS*
@@ -55,6 +56,14 @@
 ;;-------------------------------------------------
 ;; 显示 & 行为
 ;;-------------------------------------------------
+
+;; 设置主题
+(load-theme 'monokai t)
+
+;; 设置字体
+;; (set-default-font "Source Code Pro-12")
+(when *WINDOWS*
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 (defalias 'alr 'align-regexp)           ; 设置对齐别名
 
@@ -114,11 +123,11 @@
       (list (format "%s %%S: %%j " (system-name))
             '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
-      eshell-prompt-function            ; Eshell 提示符
-      (lambda ()
+      eshell-prompt-function            ;;
+      (lambda ()                        ; Eshell 提示符
         (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:background "#FFFFFF" :foreground "Blue"))
-         (propertize (eshell/pwd) 'face `(:background "#FFFFFF" :foreground "#888"))
+         (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:foreground "#A6E22E"))
+         (propertize (eshell/pwd) 'face `(:foreground "Pink"))
          (if (= (user-uid) 0) " # " " $ "))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no, 使用 Enter 替代 y
@@ -128,11 +137,6 @@
     (apply orig-func args)))
 
 (advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
-
-;; 设置字体
-;; (set-default-font "Source Code Pro-12")
-(when *WINDOWS*                         ; 设置中文字体为 "明兰黑"
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 ;; 自动匹配
 (setq skeleton-pair-alist
@@ -166,7 +170,9 @@
 (global-hl-line-mode)
 
 (defface my-linum-hl
-  `((t :inherit linum :background "#E8E8FF" :foreground "#000000",(face-background 'hl-line nil t)))
+  `((t :inherit linum
+       ;; :background "#E8E8FF"
+       :foreground "#000000",(face-background 'hl-line nil t)))
   "Face for the current line number."
   :group 'linum)
 
@@ -187,7 +193,8 @@
 ;; Highlight line mode
 (set-face-attribute hl-line-face nil
                     ;; :underline t
-                    :background "#E8E8FF")
+                    ;; :background "#E8E8FF")
+                    )
 
 ;; Ido mode
 (ido-mode)
@@ -313,12 +320,15 @@
 
 ;; Smart mode line
 (require 'smart-mode-line)
-(setq sml/no-confirm-load-theme t)
+(setq sml/no-confirm-load-theme t
+      sml/theme 'respectful)
 (smart-mode-line-enable)
 
 ;; Tab bar mode
 (require 'tabbar)
 (tabbar-mode)
+
+(setq tabbar-use-images nil)
 
 ;; Vimrc mode
 (defun enable-vimrc-mode ()
@@ -617,4 +627,18 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 最大化
-(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c3c0a3702e1d6c0373a0f6a557788dfd49ec9e66e753fb24493579859c8e95ab" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" default)))
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -607,8 +607,8 @@ current cached copy."
   '((t
      :inherit tabbar-default
      ;; :box (:line-width 1 :color "white" :style pressed-button)
-     :foreground "blue"
-     :background "#E8E8FF"
+     :foreground "#A6E22E"
+     ;; :background "#E8E8FF"
      ))
   "Face used for the selected tab."
   :group 'tabbar)
@@ -777,8 +777,8 @@ P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
 A disabled button image will be automatically build from it.")
 
 (defcustom tabbar-scroll-left-button
-  (cons (cons " <" tabbar-scroll-left-button-enabled-image)
-        (cons " =" nil))
+  (cons (cons " < " tabbar-scroll-left-button-enabled-image)
+        (cons " = " nil))
   "The scroll left button.
 The variable `tabbar-button-widget' gives details on this widget."
   :group 'tabbar
@@ -810,8 +810,8 @@ P2 13 13 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
 A disabled button image will be automatically build from it.")
 
 (defcustom tabbar-scroll-right-button
-  (cons (cons " >" tabbar-scroll-right-button-enabled-image)
-        (cons " =" nil))
+  (cons (cons " > " tabbar-scroll-right-button-enabled-image)
+        (cons " = " nil))
   "The scroll right button.
 The variable `tabbar-button-widget' gives details on this widget."
   :group 'tabbar
@@ -1657,8 +1657,8 @@ Returns non-nil if the new state is enabled.
   :group 'tabbar)
 
 (defcustom tabbar-buffer-home-button
-  (cons (cons "[+]" tabbar-home-button-enabled-image)
-        (cons "[-]" tabbar-home-button-disabled-image))
+  (cons (cons " + " tabbar-home-button-enabled-image)
+        (cons " - " tabbar-home-button-disabled-image))
   "The home button displayed when showing buffer tabs.
 The enabled button value is displayed when showing tabs for groups of
 buffers, and the disabled button value is displayed when showing

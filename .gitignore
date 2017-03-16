@@ -3,4 +3,4 @@ ac-comphist.dat
 auto-save-list/*
 eshell/[^a]*
 project-explorer-cache/*
-server/*
+server/server
