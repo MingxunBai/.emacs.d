@@ -210,16 +210,13 @@
 ;; Extension
 ;;-------------------------------------------------
 
-;; Auto complete mode
-(require 'auto-complete-config)
-(ac-config-default)
+;; Company mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
-(setq ac-auto-start nil
-      ac-ignore-case nil
-      ac-use-menu-map t)
-
-(define-key ac-mode-map (kbd "M-/") 'auto-complete)
-(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
+(require 'company-dict)
+(setq company-dict-dir (expand-file-name "dict" user-emacs-directory))
+(add-to-list 'company-backends 'company-dict)
 
 ;; Emacs lisp mode
 (defun enable-emacs-lisp-mode ()
@@ -266,9 +263,6 @@
   (require 'js-comint)
   (setq inferior-js-program-command "node")
   (setq inferior-js-program-arguments '("--interactive"))
-
-  (require 'js2-highlight-vars)
-  (js2-highlight-vars-mode)
 
   (local-set-key (kbd "C-c f")   'js-load-file-and-go)
   (local-set-key (kbd "C-c b")   'js-send-buffer)
