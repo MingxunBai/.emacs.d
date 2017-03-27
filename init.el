@@ -65,7 +65,8 @@
 (when *WINDOWS*
   (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
-(defalias 'alr 'align-regexp)           ; 设置对齐别名
+(defalias 'alr 'align-regexp)           ; 对齐别名
+(defalias 'cw  'compare-windows)        ; 比较别名
 
 (setq-default indent-tabs-mode nil      ; 使用空格缩进
               tab-width 4               ; 默认缩进为 4
