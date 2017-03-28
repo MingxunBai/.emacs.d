@@ -617,7 +617,7 @@ current cached copy."
   '((t
      :inherit tabbar-default
      ;; :box (:line-width 1 :color "white" :style released-button)
-     :foreground "black"
+     :foreground "#FD971F"
      ))
   "Face used for unsaved tabs."
   :group 'tabbar)
@@ -626,7 +626,7 @@ current cached copy."
   '((t
      :inherit tabbar-default
      ;; :box (:line-width 1 :color "white" :style released-button)
-     :foreground "red"
+     :foreground "white"
      ))
   "Face used for unsaved and selected tabs."
   :group 'tabbar)

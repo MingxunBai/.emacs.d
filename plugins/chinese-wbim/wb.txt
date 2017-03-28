@@ -43149,7 +43149,7 @@ rfsy 技术
 rft 拷
 rftf 挂靠
 rftg 持重
-rfth 挂牌 盾牌
+rfth 盾牌 挂牌
 rftj 搘
 rftm 持身
 rftn 拷
@@ -66654,6 +66654,7 @@ ymij 高温
 ymim 高尚
 ymin 高汤
 ymip 高深 调演
+ymiq 高光
 ymir 调派
 ymiv 高粱 高梁
 ymiw 高兴 高举
