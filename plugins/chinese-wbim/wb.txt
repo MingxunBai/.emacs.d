@@ -43892,7 +43892,7 @@ rkdi 损耗
 rke 捐
 rkeg 捐 捐助
 rkfc 扣去
-rkff 捐款
+rkff 扣款 捐款
 rkfg 损坏
 rkfm 捐献
 rkfn 操场
