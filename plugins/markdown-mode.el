@@ -884,7 +884,7 @@
 ;;   * Google's Open Source Programs Office for recognizing the project with
 ;;     a monetary contribution in June 2015.
 ;;   * Howard Melman <hmelman@gmail.com> for supporting GFM checkboxes
-;;     as buttons.
+;;     as buttons and several bug reports.
 ;;   * Danny McClanahan <danieldmcclanahan@gmail.com> for live preview
 ;;     mode, completion of GFM programming language names, improved
 ;;     font lock for fenced code blocks and metadata blocks, `cl-lib'
@@ -1277,7 +1277,7 @@ Group 2 matches only the label, without the surrounding markup.
 Group 3 matches the closing square bracket.")
 
 (defconst markdown-regex-header
-  "^\\(?:\\([^\r\n- ].*\\)\n\\(?:\\(=+\\)\\|\\(-+\\)\\)\\|\\(#+\\)[ \t]+\\(.*?\\)[ \t]*\\(#*\\)\\)$"
+  "^\\(?:\\([^\r\n\t -].*\\)\n\\(?:\\(=+\\)\\|\\(-+\\)\\)\\|\\(#+\\)[ \t]+\\(.*?\\)[ \t]*\\(#*\\)\\)$"
   "Regexp identifying Markdown headings.
 Group 1 matches the text of a setext heading.
 Group 2 matches the underline of a level-1 setext heading.
@@ -1287,7 +1287,7 @@ Group 5 matches the text, without surrounding whitespace, of an atx heading.
 Group 6 matches the closing hash marks of an atx heading.")
 
 (defconst markdown-regex-header-setext
-  "^\\([^\r\n- ].*\\)\n\\(=+\\|-+\\)$"
+  "^\\([^\r\n\t -].*\\)\n\\(=+\\|-+\\)$"
   "Regular expression for generic setext-style (underline) headers.")
 
 (defconst markdown-regex-header-atx
@@ -1442,7 +1442,7 @@ Groups 1 and 3 match opening and closing dollar signs.
 Group 3 matches the mathematical expression contained within.")
 
 (defconst markdown-regex-math-display
-  "^\\(\\\\\\[\\)\\(\\(?:.\\|\n\\)*\\)?\\(\\\\\\]\\)$"
+  "^\\(\\\\\\[\\)\\(\\(?:.\\|\n\\)*?\\)?\\(\\\\\\]\\)$"
   "Regular expression for itex \[..\] display mode expressions.
 Groups 1 and 3 match the opening and closing delimiters.
 Group 2 matches the mathematical expression contained within.")
@@ -1475,7 +1475,7 @@ or
   "Regular expression for matching Pandoc metadata.")
 
 (defconst markdown-regex-yaml-metadata-border
-  "\\(\\-\\{3\\}\\)$"
+  "\\(-\\{3\\}\\)$"
   "Regular expression for matching yaml metadata.")
 
 (defconst markdown-regex-yaml-pandoc-metadata-end-border
@@ -1633,7 +1633,8 @@ easier.")
   "Return regexp to find all \"start\" sections of fenced block constructs.
 Which construct is actually contained in the match must be found separately."
   (mapconcat
-   'identity
+   #'identity
+   ;; FIXME: Why `cl-mapcar' rather than `mapcar'?
    (cl-mapcar (lambda (entry) (markdown-maybe-funcall-regexp (caar entry)))
               markdown-fenced-block-pairs)
    "\\|"))
@@ -4107,18 +4108,18 @@ NIL is returned instead."
                        (>= (current-indentation) 4))))
         (forward-line -1))
       (when result
-        ; Advance if there is a next line that is either blank or indented.
-        ; (Need to check if we're on the last line, because
-        ; markdown-next-line-blank-p returns true for last line in buffer.)
+        ;; Advance if there is a next line that is either blank or indented.
+        ;; (Need to check if we're on the last line, because
+        ;; markdown-next-line-blank-p returns true for last line in buffer.)
         (while (and (/= (line-end-position) (point-max))
                     (or (markdown-next-line-blank-p)
                         (>= (markdown-next-line-indent) 4)))
           (forward-line))
-        ; Move back while the current line is blank.
+        ;; Move back while the current line is blank.
         (while (markdown-cur-line-blank-p)
           (forward-line -1))
-        ; Advance to capture this line and a single trailing newline (if there
-        ; is one).
+        ;; Advance to capture this line and a single trailing newline (if there
+        ;; is one).
         (forward-line)
         (append result (list (point)))))))
 
@@ -4298,14 +4299,16 @@ before the current point, then exdent the line one level.
 Otherwise, do normal delete by repeating
 `backward-delete-char-untabify' ARG times."
   (interactive "*p")
-  (let ((cur-pos (current-column))
-        (start-of-indention (save-excursion
-                              (back-to-indentation)
-                              (current-column)))
-        (positions (markdown-calc-indents)))
-    (if (and (> cur-pos 0) (= cur-pos start-of-indention))
-        (indent-line-to (markdown-exdent-find-next-position cur-pos positions))
-      (backward-delete-char-untabify arg))))
+  (if (use-region-p)
+      (backward-delete-char-untabify arg)
+    (let ((cur-pos (current-column))
+          (start-of-indention (save-excursion
+                                (back-to-indentation)
+                                (current-column)))
+          (positions (markdown-calc-indents)))
+      (if (and (> cur-pos 0) (= cur-pos start-of-indention))
+          (indent-line-to (markdown-exdent-find-next-position cur-pos positions))
+        (backward-delete-char-untabify arg)))))
 
 (defun markdown-find-leftmost-column (beg end)
   "Find the leftmost column in the region from BEG to END."
@@ -5880,7 +5883,8 @@ Standalone XHTML output is identified by an occurrence of
                                   'mime-charset))
           "iso-8859-1"))))
   (if (> (length markdown-css-paths) 0)
-      (insert (mapconcat 'markdown-stylesheet-link-string markdown-css-paths "\n")))
+      (insert (mapconcat #'markdown-stylesheet-link-string
+                         markdown-css-paths "\n")))
   (when (> (length markdown-xhtml-header-content) 0)
     (insert markdown-xhtml-header-content))
   (insert "\n</head>\n\n"
@@ -6474,9 +6478,9 @@ This is an exact copy of `line-number-at-pos' for use in emacs21."
     ;; Update font lock keywords with extensions
     (setq markdown-mode-font-lock-keywords
           (append
+           (markdown-mode-font-lock-keywords-math)
            markdown-mode-font-lock-keywords-basic
-           (markdown-mode-font-lock-keywords-wiki-links)
-           (markdown-mode-font-lock-keywords-math)))
+           (markdown-mode-font-lock-keywords-wiki-links)))
     ;; Update font lock defaults
     (setq font-lock-defaults
           '(markdown-mode-font-lock-keywords
@@ -6633,7 +6637,7 @@ BEG and END are the limits of scanned region."
 This can be toggled with `markdown-toggle-inline-images'
 or \\[markdown-toggle-inline-images]."
   (interactive)
-  (mapc 'delete-overlay markdown-inline-image-overlays)
+  (mapc #'delete-overlay markdown-inline-image-overlays)
   (setq markdown-inline-image-overlays nil))
 
 (defun markdown-display-inline-images ()
@@ -6723,9 +6727,9 @@ or \\[markdown-toggle-inline-images]."
        'markdown-end-of-defun)
   ;; Paragraph filling
   (set
-   ; Should match start of lines that start or separate paragraphs
+   ;; Should match start of lines that start or separate paragraphs
    (make-local-variable 'paragraph-start)
-       (mapconcat 'identity
+       (mapconcat #'identity
                   '(
                     "\f" ; starts with a literal line-feed
                     "[ \t\f]*$" ; space-only line
@@ -6736,14 +6740,14 @@ or \\[markdown-toggle-inline-images]."
                     )
                   "\\|"))
   (set
-   ; Should match lines that separate paragraphs without being
-   ; part of any paragraph:
+   ;; Should match lines that separate paragraphs without being
+   ;; part of any paragraph:
    (make-local-variable 'paragraph-separate)
-   (mapconcat 'identity
+   (mapconcat #'identity
               '("[ \t\f]*$" ; space-only line
-                ; The following is not ideal, but the Fill customization
-                ; options really only handle paragraph-starting prefixes,
-                ; not paragraph-ending suffixes:
+                ;; The following is not ideal, but the Fill customization
+                ;; options really only handle paragraph-starting prefixes,
+                ;; not paragraph-ending suffixes:
                 ".*  $" ; line ending in two spaces
                 "^#+"
                 "[ \t]*\\[\\^\\S-*\\]:[ \t]*$") ; just the start of a footnote def
