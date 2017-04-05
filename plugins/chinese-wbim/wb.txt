@@ -28881,7 +28881,7 @@ lfam 轒
 lfan 园艺 转世
 lfaq 园区
 lfat 围攻
-lfbb 转子 墨子 团子 园子 黑子
+lfbb 黑子 墨子
 lfbc 团聚
 lfbk 罢职
 lfbn 罢了
@@ -36656,7 +36656,7 @@ pfft 宗教
 pffu 守丧
 pffw 神魂颠倒
 pfgi 神志不清
-pfgk 完整 寒带 赛事 完事
+pfgk 完整 完事 寒带 赛事
 pfgm 塞责
 pfgq 寓教于乐
 pfgt 宗教政策
@@ -50904,7 +50904,7 @@ thal 籚
 tham 自贡 箎
 than 处世
 thap 自营 籧
-thaq 自艾 箎
+thaq 版区 箎
 thaw 簴
 thay 牌匾
 thb 郋
@@ -56374,7 +56374,7 @@ utsv 首要
 utsy 道术
 utt 產
 utta 首长
-uttf 道德 首先 疾行 道行 首选
+uttf 首先 首选 道德 道行
 uttg 产生 産 產
 uttj 剷
 uttp 单簧管
