@@ -70,9 +70,8 @@
 (defalias 'cw  'compare-windows)        ; 设置别名
 (defalias 'rs  'replace-string)         ;;
 
-(setq-default indent-tabs-mode nil      ; 使用空格缩进
-              tab-width 4               ; 默认缩进为 4
-              cursor-type 'box)         ; 设置光标样式
+(setq-default indent-tabs-mode nil      ;;
+              tab-width 4)              ; 默认缩进为 4 个空格
 
 (setq inhibit-startup-message t         ; 关闭启动动画
       initial-scratch-message nil       ; 移除草稿文本

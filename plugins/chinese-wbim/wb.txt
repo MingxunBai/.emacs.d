@@ -38372,7 +38372,7 @@ pwsg 穷酸
 pwsh 空想
 pwsi 空档
 pwsn 完全可以
-pwst 安全可靠 空格 
+pwst 空格 安全可靠 
 pwsu 穼 罙
 pwt 窗
 pwtb 社会科学院
