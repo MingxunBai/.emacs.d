@@ -47,11 +47,12 @@
 (prefer-coding-system 'utf-8)
 (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
-;; use gbk for cmd
+;; use gbk for Windows
 (when *WINDOWS*
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
-                 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
+                 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
+  (setq locale-coding-system 'gbk))     ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
 
 ;;-------------------------------------------------
 ;; 显示 & 行为
