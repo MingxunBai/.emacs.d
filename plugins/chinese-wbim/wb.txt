@@ -22432,7 +22432,7 @@ iqgd 浑然天成
 iqgg 渔 光环 漁
 iqgi 海角天涯 浑然不觉
 iqgj 澛
-iqgk 光束 光速
+iqgk 光速 光束
 iqgr 浩然正气
 iqgt 浑然不知
 iqgw 浑然一体
