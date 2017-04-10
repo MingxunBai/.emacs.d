@@ -1,4 +1,4 @@
-;; -*- coding:utf-8 -*-
+s;; -*- coding:utf-8 -*-
 [Comment]
 
 [Parameter]
@@ -62182,7 +62182,7 @@ wwgg 伦琴 佺
 wwgh 坐下 从政
 wwgi 俭 从不 倹 儉
 wwgj 偷 伦理 儈 偸
-wwgk 人事 从事 从速 俗事 佮 傖
+wwgk 从事 人事 从速 俗事 佮 傖
 wwgm 僋
 wwgn 欲与 仱
 wwgo 从来 从严

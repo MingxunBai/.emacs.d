@@ -471,9 +471,11 @@
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
                 ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
                 ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
+                ("\\.w?xml\\'"  .   (lambda () (enable-web-mode)))
                 ("\\.php\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
                 ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
+                ("\\.wxss\\'"   .   css-mode)
                 ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
               auto-mode-alist))
 
@@ -667,7 +669,6 @@
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
-(add-hook 'nxml-mode-hook 'enable-web-mode)
 
 (add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'js2-mode-hook  'enable-emmet-mode)
