@@ -217,7 +217,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (require 'company-dict)
-(setq company-dict-dir (expand-file-name "dict" user-emacs-directory))
+(setq company-idle-delay 0
+      company-dict-dir (expand-file-name "plugins/company/dict" user-emacs-directory))
 (add-to-list 'company-backends 'company-dict)
 
 ;; Emacs lisp mode
@@ -269,6 +270,12 @@
   (local-set-key (kbd "C-c f")   'js-load-file-and-go)
   (local-set-key (kbd "C-c b")   'js-send-buffer)
   (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
+
+;; JAVA IDE mode
+(defun enable-jde-mode ()
+  (interactive)
+  (require 'jdee)
+  (jdee-mode))
 
 ;; JSON mode
 (defun enable-json-mode ()
@@ -467,6 +474,7 @@
                 ("\\.css\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.el\\'"     .   (lambda () (enable-emacs-lisp-mode)))
                 ("\\.go\\'"     .   (lambda () (enable-go-mode)))
+                ("\\.java\\'"   .   (lambda () (enable-jde-mode)))
                 ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
                 ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
