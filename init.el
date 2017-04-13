@@ -7,7 +7,10 @@
       user-mail-address "mingxunbai@outlook.com")
 
 ;; 定义常量
+(defconst *NO-WINDOW*                   ; 针对终端进行一些样式调整
+  (eq window-system 'nil))
 (defconst *WINDOWS* (eq system-type 'windows-nt))
+(defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))
 
 ;; 路径配置
 (defun add-subdirs-to-load-path (dir)
@@ -16,7 +19,7 @@
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
 
-(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
+(add-subdirs-to-load-path *PLUGINS*)
 
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
@@ -59,7 +62,9 @@
 ;;-------------------------------------------------
 
 ;; 设置主题
-(load-theme 'monokai t)
+(if *NO-WINDOW*
+    (message "Terminal won't load theme.")
+  (load-theme 'monokai t))
 
 ;; 设置字体
 ;; (set-default-font "Source Code Pro-12")
@@ -157,8 +162,10 @@
 
 (display-time)                          ; 显示时间
 
-(scroll-bar-mode -1)                    ; 隐藏滚动条
-(tool-bar-mode -1)                      ; 隐藏工具栏
+(if *NO-WINDOW*
+    (message "Terminal won't hava scroll-bar and tool-bar.")
+  (scroll-bar-mode -1)                  ; 隐藏滚动条
+  (tool-bar-mode -1))                   ; 隐藏工具栏
 (menu-bar-mode -1)                      ; 隐藏菜单栏
 
 (show-paren-mode)                       ; 高亮匹配括号
@@ -193,10 +200,8 @@
 (ad-activate 'linum-update)
 
 ;; Highlight line mode
-(set-face-attribute hl-line-face nil
-                    ;; :underline t
-                    ;; :background "#E8E8FF"
-                    )
+(when *NO-WINDOW*
+  (set-face-attribute hl-line-face nil :background "#E8E8FF"))
 
 ;; Ido mode
 (ido-mode)
@@ -218,7 +223,7 @@
 
 (require 'company-dict)
 (setq company-idle-delay 0
-      company-dict-dir (expand-file-name "plugins/company/dict" user-emacs-directory))
+      company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
 
 ;; Emacs lisp mode
@@ -272,7 +277,7 @@
   (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
 
 ;; JAVA IDE mode
-(defun enable-jde-mode ()
+(defun enable-jdee-mode ()
   (interactive)
   (require 'jdee)
   (jdee-mode))
@@ -474,7 +479,7 @@
                 ("\\.css\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.el\\'"     .   (lambda () (enable-emacs-lisp-mode)))
                 ("\\.go\\'"     .   (lambda () (enable-go-mode)))
-                ("\\.java\\'"   .   (lambda () (enable-jde-mode)))
+                ("\\.java\\'"   .   (lambda () (enable-jdee-mode)))
                 ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
                 ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))

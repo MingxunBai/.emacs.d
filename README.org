@@ -64,7 +64,7 @@
 - 自定复制相对路径函数，快捷键 C-c c
 
 ** Tabbar-mode
-- buffer 栏，C-9 上一个buufer，C-0 下一个 buffer
+- buffer 栏，C-- 上一个buufer，C-= 下一个 buffer，M-- 上一个组，M-= 下一个组，C-M-= 显示所有的组
 
 ** Web-mode
 - 支持 web 相关所有模式

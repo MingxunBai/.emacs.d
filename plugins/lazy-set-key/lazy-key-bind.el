@@ -52,8 +52,11 @@
                 ("<f1>"         .   project-explorer-toggle)
 
                 ;; Tab bar mode
-                ("C-9"          .   tabbar-backward)
-                ("C-0"          .   tabbar-forward)
+                ("C-M-="        .   tabbar-press-home)
+                ("M--"          .   tabbar-backward-group)
+                ("M-="          .   tabbar-forward-group)
+                ("C--"          .   tabbar-backward)
+                ("C-="          .   tabbar-forward)
 
                 ;; Winner mode
                 ("C-x 4 u"      .   winner-undo)
