@@ -57,6 +57,7 @@
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
   (setq locale-coding-system 'gbk))     ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
 
+
 ;;-------------------------------------------------
 ;; 显示 & 行为
 ;;-------------------------------------------------
@@ -247,8 +248,11 @@
   (require 'go-mode-autoloads)
   (go-mode)
 
-  (add-hook 'after-save-hook (lambda ()
-                               (shell-command (concat "go fmt " (buffer-file-name))))))
+  (defun go-save-fmt ()
+    (interactive)
+    (shell-command (concat "go fmt " (buffer-file-name))))
+
+  (local-set-key (kbd "C-x f") 'go-save-fmt))
 
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
@@ -679,6 +683,24 @@
   (py-autopep8-enable-on-save)
 
   (setq python-shell-prompt-detect-enabled nil))
+
+;; Text mode
+(when *WINDOWS*
+  (add-hook 'text-mode-hook 'wb-dict-hook))
+
+(defun wb-dict-hook ()
+  (defun wb-save-push ()
+    (interactive)
+    (save-buffer)
+    (progn
+      (shell-command (concat
+                      (concat "cd %ToolsHome%/BingWuBiDict && cp -f '" (buffer-file-name))
+                      "' ."))
+      (shell-command (concat "git add " (buffer-name)))
+      (shell-command "git commit -m 'Updated'")
+      (shell-command "git push"))))
+
+  (local-set-key (kbd "C-x p") 'wb-save-push))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
