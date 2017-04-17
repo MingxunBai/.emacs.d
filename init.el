@@ -686,18 +686,15 @@
 
 ;; Text mode
 (when *WINDOWS*
-  (add-hook 'text-mode-hook 'wb-dict-hook))
+  (add-hook 'text-mode-hook 'wb-dict-sync-to-gitrepo))
 
-(defun wb-dict-hook ()
-  (defun wb-git-save ()
-    (interactive)
-    (save-buffer)
-    (progn
-      (shell-command (concat
-                      (concat "cd %ToolsHome%/BingWuBiDict && cp -f '" (buffer-file-name))
-                      "' ."))))
-
-  (local-set-key (kbd "C-x g") 'wb-git-save))
+(defun wb-dict-sync-to-gitrepo ()
+  (if (equal (buffer-name) "userdefinephrase.dat")
+      (add-hook 'after-save-hook (lambda ()
+                                   (if (equal (buffer-name) "userdefinephrase.dat")
+                                       (shell-command (concat
+                                                       (concat "cp -f '" (buffer-file-name))
+                                                       "' %ToolsHome%/BingWuBiDict/")))))))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
