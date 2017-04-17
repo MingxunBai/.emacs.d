@@ -689,18 +689,15 @@
   (add-hook 'text-mode-hook 'wb-dict-hook))
 
 (defun wb-dict-hook ()
-  (defun wb-save-push ()
+  (defun wb-git-save ()
     (interactive)
     (save-buffer)
     (progn
       (shell-command (concat
                       (concat "cd %ToolsHome%/BingWuBiDict && cp -f '" (buffer-file-name))
-                      "' ."))
-      (shell-command (concat "git add " (buffer-name)))
-      (shell-command "git commit -m 'Updated'")
-      (shell-command "git push")))
+                      "' ."))))
 
-(local-set-key (kbd "C-x p") 'wb-save-push))
+  (local-set-key (kbd "C-x g") 'wb-git-save))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
