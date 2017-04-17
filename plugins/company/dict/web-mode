@@ -737,7 +737,8 @@ smaller
 snow
 soft
 solid
-space
+space-around
+space-between
 spacing
 speak
 speak-header
