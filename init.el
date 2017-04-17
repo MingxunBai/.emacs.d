@@ -698,9 +698,9 @@
                       "' ."))
       (shell-command (concat "git add " (buffer-name)))
       (shell-command "git commit -m 'Updated'")
-      (shell-command "git push"))))
+      (shell-command "git push")))
 
-  (local-set-key (kbd "C-x p") 'wb-save-push))
+(local-set-key (kbd "C-x p") 'wb-save-push))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
