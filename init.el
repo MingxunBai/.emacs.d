@@ -686,15 +686,25 @@
 
 ;; Text mode
 (when *WINDOWS*
-  (add-hook 'text-mode-hook 'wb-dict-sync-to-gitrepo))
+  (add-hook 'text-mode-hook 'wb-dict-sync-init))
 
-(defun wb-dict-sync-to-gitrepo ()
+(defun wb-dict-sync-init ()
   (if (equal (buffer-name) "userdefinephrase.dat")
-      (add-hook 'after-save-hook (lambda ()
-                                   (if (equal (buffer-name) "userdefinephrase.dat")
-                                       (shell-command (concat
-                                                       (concat "cp -f '" (buffer-file-name))
-                                                       "' %ToolsHome%/BingWuBiDict/")))))))
+      (progn
+       (add-hook 'after-save-hook 'wb-dict-cp-to-gitrepo)
+       (add-hook 'kill-emacs-query-functions 'wb-dict-git-push)
+       (message "wb-dict initial success."))))
+
+(defun wb-dict-cp-to-gitrepo ()
+  (if (equal (buffer-name) "userdefinephrase.dat")
+      (shell-command (concat
+                      (concat "cp -f '" (buffer-file-name))
+                      "' %ToolsHome%/BingWuBiDict/"))))
+
+(defun wb-dict-git-push ()
+  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git add -A")
+  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git commit -m 'Update'")
+  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git push"))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
