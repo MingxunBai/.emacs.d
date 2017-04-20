@@ -31254,7 +31254,7 @@ mhna 幈
 mhnf 幄
 mhng 由
 mhnh 幃
-mhny 贝 贴心 貝
+mhny 贴心 贝 貝
 mho 幞
 mhod 贝类
 mhoy 幞
@@ -67045,7 +67045,7 @@ ynwo 鳸
 ynwt 记叙 赢余
 ynwv 记仇 记分
 ynww 盲人 盲从 词人 废人 扈从 房价
-ynwy 雇 诀 记住 记念 词令 妄念 訣 僱
+ynwy 记住 雇 诀 记念 词令 妄念 訣 僱
 ynxb 废弛
 ynxc 词缀
 ynxe 词组
