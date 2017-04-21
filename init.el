@@ -500,6 +500,31 @@
 ;; Custom feature
 ;;-------------------------------------------------
 
+;;; Git
+(defun find-git-repo (dir)
+  "Find base git directory"
+  (if (or (string= "/" dir)
+          (string= "c:/" dir)
+          (string= "d:/" dir)
+          (string= "e:/" dir)
+          (string= "f:/" dir))
+      (message "It's not a git repo.")
+    (if (file-exists-p (expand-file-name ".git/" dir))
+        dir
+      (find-git-repo (expand-file-name "../" dir)))))
+
+(defun git-push (root)
+    (shell-command (concat "cd " root " && git add -A"))
+    (shell-command (concat "cd " root " && git commit -m 'Update'"))
+    (shell-command (concat "cd " root " && git push")))
+
+(defun git-push-current-buffer ()
+  (interactive)
+  (let ((root (find-git-repo default-directory)))
+      (git-push root)))
+
+(local-set-key (kbd "C-x p") 'git-push-current-buffer)
+
 ;;; 自定缩进
 (defun custom-resize-indentation (n)
   (interactive "nEnter indentation size:")
@@ -686,25 +711,18 @@
 
 ;; Text mode
 (when *WINDOWS*
-  (add-hook 'text-mode-hook 'wb-dict-sync-init))
+  (add-hook 'text-mode-hook 'init-wb-dict-gitrepo))
 
-(defun wb-dict-sync-init ()
-  (if (equal (buffer-name) "userdefinephrase.dat")
-      (progn
-       (add-hook 'after-save-hook 'wb-dict-cp-to-gitrepo)
-       (add-hook 'kill-emacs-query-functions 'wb-dict-git-push)
-       (message "wb-dict initial success."))))
-
-(defun wb-dict-cp-to-gitrepo ()
-  (if (equal (buffer-name) "userdefinephrase.dat")
-      (shell-command (concat
-                      (concat "cp -f '" (buffer-file-name))
-                      "' %ToolsHome%/BingWuBiDict/"))))
-
-(defun wb-dict-git-push ()
-  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git add -A")
-  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git commit -m 'Update'")
-  (shell-command "cd %ToolsHome%/BingWuBiDict/ && git push"))
+(defun init-wb-dict-gitrepo ()
+  (add-hook 'kill-emacs-query-functions 'wb-dict-git-push)
+  (defun wb-dict-git-push ()
+    (interactive)
+    (if (equal (buffer-name) "userdefinephrase.dat")
+        (let* ((wb-dict-root (concat (getenv "ToolsHome") "\\BingWuBiDict")))
+          (progn
+            (shell-command (concat "cp -f '" (buffer-file-name) "' " wb-dict-root "'"))
+            (git-push wb-dict-root)))
+      (message "Exiting."))))
 
 ;; Web mode
 (add-hook 'html-mode-hook 'enable-web-mode)
