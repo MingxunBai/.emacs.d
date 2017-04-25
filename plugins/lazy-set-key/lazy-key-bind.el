@@ -34,6 +34,9 @@
                 ("<backtab>"    .   custom-resize-indentation--4)
                 ("C-y"          .   custom-yank)
 
+                ;; Git
+                ("C-x p"        .   git-push-current-buffer)
+
                 ;; Multiple cursors
                 ("C-S-c C-S-c"  .   mc/edit-lines)
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)

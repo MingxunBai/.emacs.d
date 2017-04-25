@@ -523,8 +523,6 @@
   (let ((root (find-git-repo default-directory)))
       (git-push root)))
 
-(local-set-key (kbd "C-x p") 'git-push-current-buffer)
-
 ;;; 自定缩进
 (defun custom-resize-indentation (n)
   (interactive "nEnter indentation size:")
@@ -708,6 +706,21 @@
   (py-autopep8-enable-on-save)
 
   (setq python-shell-prompt-detect-enabled nil))
+
+;; Shell mode
+(add-hook 'sh-mode-hook 'init-dos-to-unix)
+
+(defun init-dos-to-unix()
+  (add-hook 'kill-emacs-query-functions 'find-file-check-line-endings)
+  (defun dos-file-endings-p ()
+    (string-match "dos" (symbol-name buffer-file-coding-system)))
+  (defun find-file-check-line-endings ()
+    (if (dos-file-endings-p)
+        (progn
+          (set-buffer-file-coding-system 'undecided-unix)
+          (save-buffer)
+          (kill-emacs))
+      (message "It's a unix file."))))
 
 ;; Text mode
 (when *WINDOWS*
