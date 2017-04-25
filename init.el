@@ -74,6 +74,7 @@
 
 (defalias 'alr 'align-regexp)           ;;
 (defalias 'cw  'compare-windows)        ; 设置别名
+(defalias 'ff  'set-buffer-file-coding-system)
 (defalias 'rs  'replace-string)         ;;
 
 (setq-default indent-tabs-mode nil      ;;
