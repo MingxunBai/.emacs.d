@@ -243,6 +243,7 @@
   (setq emmet-self-closing-tag-style ""
         emmet-move-cursor-between-quotes t)
 
+  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
