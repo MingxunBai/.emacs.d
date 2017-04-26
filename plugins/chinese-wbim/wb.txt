@@ -8276,7 +8276,7 @@ dmmq 布网
 dmmu 原则同意
 dmn 矶 磯
 dmnk 面壁 碢
-dmnn 而已 布局 硙 磑
+dmnn 布局 而已 硙 磑
 dmnt 耐性 原则性
 dmny 耐心
 dmod 耐烦 面糊
@@ -15252,7 +15252,7 @@ gedp 表达
 gedt 青帮
 gedw 青春
 gedx 青龙
-gedy 表态 静态
+gedy 静态 表态
 gee 靜
 geeh 靜
 geey 静脉 一股脑
@@ -15358,7 +15358,7 @@ geu 表
 geud 静养
 geue 五脏六腑
 geuf 青壮
-geuj 表彰 表单 表意 表音 静音
+geuj 表单 静音 表彰
 geun 表决
 geuq 青瓷
 geus 表亲
@@ -21102,7 +21102,7 @@ ihoy 小米
 ihp 濬
 ihpb 小字
 ihpe 婆家 小家 小农
-ihpg 小富 小写
+ihpg 小写
 ihph 濬
 ihpt 小额
 ihpv 涉案
@@ -24116,7 +24116,7 @@ jctm 竖笛 紧身
 jctp 竖管
 jctq 坚称
 jcu 竖 竪 豎
-jcud 紧着 紧凑
+jcud 紧凑
 jcue 坚毅
 jcuf 竖 紧闭
 jcug 肾病
@@ -32199,6 +32199,7 @@ mwap 内蒙
 mwbb 内子
 mwbf 内陆
 mwbg 内耳
+mwbu 内联
 mwbw 内附
 mwcd 内参
 mwcn 嵡
@@ -34321,7 +34322,7 @@ ntyg 发证
 ntyi 以身试法 兦
 ntyl 改为
 ntyn 尾房
-ntyo 发迹 改变
+ntyo 改变 发迹
 ntyp 发亮
 ntys 改订 发麻
 ntyt 发放 发话 履行义务
@@ -38061,7 +38062,7 @@ puwc 衳 袊 襏
 puwd 袱
 puwe 被俘 袗
 puwf 袝 袵
-puwg 补全 实例 襳
+puwg 实例 补全 襳
 puwh 补修
 puwi 裣 补偿 襝
 puwj 衸 褕 襘
@@ -47089,7 +47090,7 @@ sfj 構
 sfja 橶
 sfje 标明
 sfjf 村里 榸 構 檊
-sfjg 标量 标题 枾
+sfjg 标题 标量 枾
 sfjh 瓢虫
 sfjn 飘
 sfk 桔
@@ -62757,7 +62758,7 @@ wytl 储备
 wytm 偏向 信筒
 wyto 今番 今秋 偽
 wytp 食管
-wytq 领衔 偏移 依稀
+wytq 偏移 领衔 依稀
 wytr 食物 信物 依循
 wyts 信箱 信条
 wytt 含笑

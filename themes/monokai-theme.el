@@ -169,6 +169,11 @@ Also affects 'linum-mode' background."
   :type 'string
   :group 'monokai)
 
+(defcustom cus-monokai-highlight "#66685D"
+  "Custom adaptive colors - highlight"
+  :type 'string
+  :group 'monokai)
+
 (defcustom monokai-highlight-alt "#3E3D31"
   "Adaptive colors - highlight"
   :type 'string
@@ -406,7 +411,7 @@ Also affects 'linum-mode' background."
 
    `(region
      ((,monokai-class (:inherit highlight
-                                :background ,monokai-highlight))
+                                :background ,cus-monokai-highlight))
       (,monokai-256-class  (:inherit highlight
                                      :background ,monokai-256-highlight))))
 

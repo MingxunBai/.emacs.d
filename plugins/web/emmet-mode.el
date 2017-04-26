@@ -172,7 +172,7 @@ and leaving the point in place."
   "Find the left bound of an emmet expr"
   (save-excursion (save-match-data
     (let ((char (char-before))
-          (in-style-attr (looking-back "style=[\"'][^\"']*"))
+          (in-style-attr (looking-back "style=[\"'][^\"']*" nil))
           (syn-tab (make-syntax-table)))
       (modify-syntax-entry ?\\ "\\")
       (while char
@@ -305,11 +305,12 @@ For more information see `emmet-mode'."
                 (emmet-reposition-cursor expr))))))))
 
 (defvar emmet-mode-keymap
-  (let ((map (make-sparse-keymap)))
+  (let
+      ((map (make-sparse-keymap)))
     (define-key map (kbd "C-j") 'emmet-expand-line)
-    ;; (define-key map (kbd "<C-return>") 'emmet-expand-line)
-    ;; (define-key map (kbd "<C-M-right>") 'emmet-next-edit-point)
-    ;; (define-key map (kbd "<C-M-left>") 'emmet-prev-edit-point)
+    (define-key map (kbd "<C-return>") 'emmet-expand-line)
+    (define-key map (kbd "<C-M-right>") 'emmet-next-edit-point)
+    (define-key map (kbd "<C-M-left>") 'emmet-prev-edit-point)
     (define-key map (kbd "C-c w") 'emmet-wrap-with-markup)
     map)
   "Keymap for emmet minor mode.")
@@ -342,7 +343,7 @@ This minor mode defines keys for quick access:
 Home page URL `http://www.emacswiki.org/emacs/Emmet'.
 
 See also `emmet-expand-line'."
-  :lighter " Emmet"
+  :lighter (" Emmet" (:eval (if emmet-preview-mode "[P]" "")))
   :keymap emmet-mode-keymap
   :after-hook (emmet-after-hook))
 
@@ -525,6 +526,34 @@ accept it or skip it."
         (goto-char here)
         (add-hook 'post-command-hook 'emmet-preview-post-command t t)))))
 
+(defun emmet-preview-online ()
+  "Display `emmet-preview' on the fly as the user types.
+
+To use this, add the function as a local hook:
+
+  (add-hook 'post-self-insert-hook 'emmet-preview-online t t)
+
+or enable `emmet-preview-mode'."
+  (ignore-errors
+    (let* ((expr (emmet-expr-on-line))
+           (text (nth 0 expr))
+           (beg (nth 1 expr))
+           (end (nth 2 expr)))
+      (let ((wap (word-at-point)))
+        (when (and (not (equal wap text))
+                   (emmet-transform text))
+          (emmet-preview beg end))))))
+
+(define-minor-mode emmet-preview-mode
+  "When enabled, automatically show `emmet-preview' as the user types.
+
+See `emmet-preview-online'."
+  :init-value nil
+  :group 'emmet
+  (if emmet-preview-mode
+      (add-hook 'post-self-insert-hook 'emmet-preview-online :append :local)
+    (remove-hook 'post-self-insert-hook 'emmet-preview-online :local)))
+
 (defvar emmet-preview-pending-abort nil)
 (make-variable-buffer-local 'emmet-preview-pending-abort)
 
@@ -626,21 +655,37 @@ accept it or skip it."
 (defun emmet-wrap-with-markup (wrap-with)
   "Wrap region with markup."
   (interactive "sExpression to wrap with: ")
-  (let* ((to-wrap (buffer-substring-no-properties (region-beginning) (region-end)))
-         (expr (concat wrap-with ">{!EMMET-TO-WRAP-REPLACEMENT!}"))
-         (markup (replace-regexp-in-string
-                  "!EMMET-TO-WRAP-REPLACEMENT!" to-wrap
-                  (emmet-transform expr)
-                  t t)))
-         (when markup
-           (delete-region (region-beginning) (region-end))
-           (insert markup)
-           (indent-region (region-beginning) (region-end))
-           (let ((end (region-end)))
-             (goto-char (region-beginning))
-             (unless (ignore-errors (progn (emmet-next-edit-point 1) t))
-               (goto-char end)))
-           )))
+  (let* ((multi (string-match "\\*$" wrap-with))
+         (txt (buffer-substring-no-properties (region-beginning) (region-end)))
+         (to-wrap (if multi
+                      (split-string txt "\n")
+                    (list txt)))
+         (initial-elements (replace-regexp-in-string "\\(.*\\(\\+\\|>\\)\\)?[^>*]+\\*?[[:digit:]]*$" "\\1" wrap-with t))
+         (terminal-element (replace-regexp-in-string "\\(.*>\\)?\\([^>*]+\\)\\(\\*[[:digit:]]+$\\)?\\*?$" "\\2" wrap-with t))
+         (multiplier-expr (replace-regexp-in-string "\\(.*>\\)?\\([^>*]+\\)\\(\\*[[:digit:]]+$\\)?\\*?$" "\\3" wrap-with t))
+         (expr (concat
+                initial-elements
+                (mapconcat (lambda (el) (concat terminal-element "{!!!" (secure-hash 'sha1 el) "!!!}" multiplier-expr))
+                           to-wrap
+                           "+")))
+         (markup
+          (reduce
+           (lambda (result text)
+             (replace-regexp-in-string
+              (concat "!!!" (secure-hash 'sha1 text) "!!!")
+              text
+              result t t))
+           to-wrap
+           :initial-value (emmet-transform expr))))
+    (when markup
+      (delete-region (region-beginning) (region-end))
+      (insert markup)
+      (indent-region (region-beginning) (region-end))
+      (let ((end (region-end)))
+        (goto-char (region-beginning))
+        (unless (ignore-errors (progn (emmet-next-edit-point 1) t))
+          (goto-char end)))
+      )))
 
 ;;;###autoload
 (defun emmet-next-edit-point (count)
@@ -655,7 +700,6 @@ accept it or skip it."
     (error "First edit point reached.")))
 
 (provide 'emmet-mode)
-
 ;; src/snippets.el
 ;; This file is generated from conf/snippets.json
 ;; Don't edit.
@@ -3967,7 +4011,7 @@ tbl))
   (emmet-join-string
    (mapcar
     #'(lambda (expr)
-        (let*
+        (let* 
 	    ((hash-map (if emmet-use-sass-syntax emmet-sass-snippets emmet-css-snippets))
 	     (basement
 	      (emmet-aif
