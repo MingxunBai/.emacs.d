@@ -45355,7 +45355,7 @@ rteq 挺胸
 rtes 插腰
 rtf 插 揷
 rtfb 郫
-rtfc 搬运 插翅 搬动 手动 托运 拖动
+rtfc 手动 搬运 插翅 搬动 托运 拖动
 rtfd 拖垮
 rtff 捶 搥
 rtfg 鹎 鵯
