@@ -519,14 +519,14 @@
       (find-git-repo (expand-file-name "../" dir)))))
 
 (defun git-push (root)
-    (shell-command (concat "cd " root " && git add -A"))
-    (shell-command (concat "cd " root " && git commit -m 'Update'"))
-    (shell-command (concat "cd " root " && git push")))
+  (shell-command (concat "cd " root " && git add -A"))
+  (shell-command (concat "cd " root " && git commit -m 'Update'"))
+  (shell-command (concat "cd " root " && git push")))
 
 (defun git-push-current-buffer ()
   (interactive)
   (let ((root (find-git-repo default-directory)))
-      (git-push root)))
+    (git-push root)))
 
 ;;; 自定缩进
 (defun custom-resize-indentation (n)
