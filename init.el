@@ -745,7 +745,7 @@
 (add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'js2-mode-hook  'enable-emmet-mode)
 (add-hook 'json-mode-hook 'enable-emmet-mode)
-(add-hook 'web-mode-hook 'enable-emmet-mode)
+(add-hook 'web-mode-hook  'enable-emmet-mode)
 
 ;; 保存前删除多余空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
