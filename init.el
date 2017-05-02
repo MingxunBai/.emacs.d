@@ -716,15 +716,12 @@
 (add-hook 'sh-mode-hook 'init-dos-to-unix)
 
 (defun init-dos-to-unix()
-  (add-hook 'kill-emacs-query-functions 'find-file-check-line-endings)
+  (add-hook 'before-save-hook 'dos-to-unix)
   (defun dos-file-endings-p ()
     (string-match "dos" (symbol-name buffer-file-coding-system)))
-  (defun find-file-check-line-endings ()
+  (defun dos-to-unix ()
     (if (dos-file-endings-p)
-        (progn
-          (set-buffer-file-coding-system 'undecided-unix)
-          (save-buffer)
-          (kill-emacs))
+        (set-buffer-file-coding-system 'undecided-unix)
       (message "It's a unix file."))))
 
 ;; Text mode
