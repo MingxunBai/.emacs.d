@@ -36367,6 +36367,7 @@ paww 密切合作
 paxh 宽绰
 paxw 宽纵
 paya 宽度
+paym 宽高
 payy 宽广
 pb 字
 pbab 字节
@@ -38404,7 +38405,7 @@ pwub 安全部队
 pwud 穿着 空头 军令状 竉
 pwue 空前
 pwui 空阔
-pwuj 窨 空间 究竟 社会问题
+pwuj 空间 究竟 窨 社会问题
 pwuk 宣传部 窘况
 pwul 安全装置
 pwun 竉
