@@ -12569,7 +12569,7 @@ fiw 塉
 fiwc 霗
 fiwe 塉
 fiwf 求值
-fiwg 救命 求全 示例 未便
+fiwg 示例 救命 求全 未便
 fiwj 求偶
 fiww 示众 救人 求人
 fiwy 求售
@@ -14806,7 +14806,7 @@ gapn 武官
 gapp 不甘寂寞
 gapr 不惑之年
 gapv 不落窠臼
-gapw 开窍 形容
+gapw 形容 开窍
 gapy 形神
 gaq 璥
 gaqa 弄错
@@ -44503,7 +44503,7 @@ rnyl 所为 所谓
 rnyq 指导方针
 rnys 拟订
 rnyt 气话 扬州
-rnyu 据说 所说
+rnyu 所说 据说
 rnyw 拟 氦
 rnyy 扬言 拟议 所言 撰文 択
 ro 搂 擞
@@ -51093,7 +51093,7 @@ thso 牌楼 鷍
 thsr 刮目相看
 thss 自焚
 thst 和睦相处
-thsu 臬 怎样
+thsu 怎样 臬
 thsw 自检
 thsy 自述 算术
 thta 处长 延长 片长
@@ -58915,7 +58915,7 @@ vyly 妫
 vymn 妔
 vyn 妨 忍
 vyna 媥
-vynn 建议书 妒忌
+vynn 妒忌 建议书
 vynp 女为悦己者容
 vynt 妒 建设性 妬
 vynu 忍
