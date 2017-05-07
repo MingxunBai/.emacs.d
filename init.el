@@ -377,6 +377,7 @@
 (defun init-scheme-mode ()
   (require 'cmuscheme)
 
+  (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
   (define-key scheme-mode-map (kbd "<f5>") 'scheme-send-last-sexp-split-window)
   (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window))
 
