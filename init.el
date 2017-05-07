@@ -374,14 +374,13 @@
   (scheme-split-window)
   (scheme-send-definition))
 
-(add-hook 'scheme-mode-hook (lambda ()
-                              (require 'scheme-here)
+(defun init-scheme-mode ()
+  (require 'cmuscheme)
 
-                              (require 'paredit)
-                              (paredit-mode)
+  (define-key scheme-mode-map (kbd "<f5>") 'scheme-send-last-sexp-split-window)
+  (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window))
 
-                              (define-key scheme-mode-map (kbd "<f5>") 'scheme-send-last-sexp-split-window)
-                              (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window)))
+(add-hook 'scheme-mode-hook 'init-scheme-mode)
 
 ;; SCSS mode
 (defun enable-scss-mode ()
