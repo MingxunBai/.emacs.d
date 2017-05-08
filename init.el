@@ -116,8 +116,6 @@
 
       c-basic-offset 4                  ; C 语言缩进为 4
 
-      max-lisp-eval-depth 10000         ; 设置函数嵌套深度
-
       linum-format 'my-linum-format     ;;
       column-number-mode                ; 显示行号列号
       line-number-mode                  ;;

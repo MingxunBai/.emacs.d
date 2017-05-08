@@ -1,0 +1,30 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables
+  (list
+    (semanticdb-table "HelloWorld.java"
+      :major-mode 'jdee-mode
+      :tags 
+        '( ("HelloWorld" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [55 68]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [31 149]))                  
+                :type "class")
+                nil [3 152]))          
+      :file "HelloWorld.java"
+      :pointmax 153
+      :fsize 160
+      :lastmodtime '(22789 42046 0 0)
+      :unmatched-syntax '((IDENTIFIER 1 . 2))))
+  :file "!drive_c!Users!MingxunBai!Documents!JAVA!workspace!HelloWorld!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
