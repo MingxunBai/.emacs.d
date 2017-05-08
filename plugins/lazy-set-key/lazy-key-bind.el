@@ -22,8 +22,9 @@
                 ("\'"           .   skeleton-pair-insert-maybe)
 
                 ;; Custom feature
-                ("C-x 3"        .   custom-new-right-window)
-                ("C-x 2"        .   custom-new-below-window)
+                ("C-x 2"        .   custom-split-window-below)
+                ("C-x 3"        .   custom-split-window-right)
+                ("C-x k"        .   custom-ido-kill-buffer)
                 ("C-o"          .   custom-down-newline)
                 ("M-o"          .   custom-up-newline)
                 ("<C-return>"   .   custom-middle-newline)

@@ -583,16 +583,36 @@
     (indent-according-to-mode)))
 
 ;; 在右侧新建一个窗口
-(defun custom-new-right-window ()
+(defun custom-split-window-right ()
   (interactive)
   (split-window-right)
   (other-window 1))
 
 ;; 在下方新建一个窗口
-(defun custom-new-below-window ()
+(defun custom-split-window-below ()
   (interactive)
   (split-window-below)
   (other-window 1))
+
+;; 删除 buffer
+(defun custom-ido-kill-buffer ()
+  (interactive)
+  (ido-kill-buffer)
+  (delete-window))
+
+;;; 粘贴
+(defun custom-yank ()
+  (interactive)
+  (if (and (not (equal (car kill-ring) nil))
+           (string= (substring (car kill-ring) -1) "
+"))
+      (progn
+        (yank)
+        (indent-according-to-mode)
+        (forward-line -1)
+        (indent-according-to-mode)
+        (end-of-line))
+    (yank)))
 
 ;;; 移动当前行
 (defun not-whole-line ()
@@ -649,20 +669,6 @@
       (progn
         (custom-move-current-line 1)
         (message "Move down current line.")))))
-
-;;; 粘贴
-(defun custom-yank ()
-  (interactive)
-  (if (and (not (equal (car kill-ring) nil))
-           (string= (substring (car kill-ring) -1) "
-"))
-      (progn
-        (yank)
-        (indent-according-to-mode)
-        (forward-line -1)
-        (indent-according-to-mode)
-        (end-of-line))
-    (yank)))
 
 ;;-------------------------------------------------
 ;; Hook
