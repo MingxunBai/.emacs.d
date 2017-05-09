@@ -46132,7 +46132,7 @@ rwvn 扮
 rwvo 失灵
 rwvr 掰
 rww 挫
-rwwa 抚今追昔
+rwwa 迭代 抚今追昔
 rwwd 抗倒伏
 rwwf 挫 失传 近似值
 rwwg 失合 推倒 推拿 擒拿 攕
