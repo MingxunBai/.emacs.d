@@ -737,7 +737,7 @@
     (string-match "dos" (symbol-name buffer-file-coding-system)))
   (defun dos-to-unix ()
     (if (dos-file-endings-p)
-        (set-buffer-file-coding-system 'undecided-unix)
+        (set-buffer-file-coding-system 'utf-8-unix)
       (message "It's a unix file."))))
 
 ;; Text mode
