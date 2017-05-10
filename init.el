@@ -507,6 +507,13 @@
 ;; Custom feature
 ;;-------------------------------------------------
 
+;; File coding system use utf-8-unix
+(add-hook 'before-save-hook 'custom-ff-utf-8-unix)
+(defun custom-ff-utf-8-unix ()
+  (if (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system)))
+      (set-buffer-file-coding-system 'utf-8-unix)
+    (message "It's a unix file.")))
+
 ;; Git
 (defun find-git-repo (dir)
   "Find base git directory"
@@ -727,18 +734,6 @@
   (py-autopep8-enable-on-save)
 
   (setq python-shell-prompt-detect-enabled nil))
-
-;; Shell mode
-(add-hook 'sh-mode-hook 'init-dos-to-unix)
-
-(defun init-dos-to-unix()
-  (add-hook 'before-save-hook 'dos-to-unix)
-  (defun dos-file-endings-p ()
-    (string-match "dos" (symbol-name buffer-file-coding-system)))
-  (defun dos-to-unix ()
-    (if (dos-file-endings-p)
-        (set-buffer-file-coding-system 'utf-8-unix)
-      (message "It's a unix file."))))
 
 ;; Text mode
 (when *WINDOWS*

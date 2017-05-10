@@ -50005,7 +50005,7 @@ tdtx 生态系统
 tdty 敌 短篇 第三季度
 tdu 矢 辞
 tduc 乱闯
-tdud 甜头 笼头 舌头
+tdud 舌头 甜头 笼头
 tduf 乔装 短装
 tdug 甜美
 tduh 辞 辭
