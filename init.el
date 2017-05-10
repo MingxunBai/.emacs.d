@@ -380,6 +380,9 @@
   (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window))
 
 (add-hook 'scheme-mode-hook 'init-scheme-mode)
+(add-hook 'inferior-scheme-mode-hook
+          (lambda ()
+            (define-key inferior-scheme-mode-map (kbd "C-c C-k") 'nil)))
 
 ;; SCSS mode
 (defun enable-scss-mode ()
