@@ -375,9 +375,10 @@
 (defun init-scheme-mode ()
   (require 'cmuscheme)
 
-  (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
-  (define-key scheme-mode-map (kbd "<f5>") 'scheme-send-last-sexp-split-window)
-  (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window))
+  (define-key scheme-mode-map (kbd "C-c C-k")    'nil)
+  (define-key scheme-mode-map (kbd "<S-return>") 'lisp-paren-return)
+  (define-key scheme-mode-map (kbd "<f5>")       'scheme-send-last-sexp-split-window)
+  (define-key scheme-mode-map (kbd "<f6>")       'scheme-send-definition-split-window))
 
 (add-hook 'scheme-mode-hook 'init-scheme-mode)
 (add-hook 'inferior-scheme-mode-hook
@@ -506,7 +507,7 @@
 ;; Custom feature
 ;;-------------------------------------------------
 
-;;; Git
+;; Git
 (defun find-git-repo (dir)
   "Find base git directory"
   (if (or (string= "/" dir)
@@ -529,7 +530,7 @@
   (let ((root (find-git-repo default-directory)))
     (git-push root)))
 
-;;; 自定缩进
+;; 自定缩进
 (defun custom-resize-indentation (n)
   (interactive "nEnter indentation size:")
   (if (use-region-p)
@@ -551,14 +552,14 @@
   (interactive)
   (custom-resize-indentation -4))
 
-;;; 删除空白字符至上一行末尾
+;; 删除空白字符至上一行末尾
 (defun custom-delete-whitespace-to-upline ()
   (interactive)
   (progn
     (delete-indentation)
     (indent-according-to-mode)))
 
-;;; 向上新建一行
+;; 向上新建一行
 (defun custom-up-newline ()
   (interactive)
   (progn
@@ -567,14 +568,14 @@
     (previous-line)
     (indent-according-to-mode)))
 
-;;; 向下新建一行
+;; 向下新建一行
 (defun custom-down-newline ()
   (interactive)
   (progn
     (end-of-line)
     (newline-and-indent)))
 
-;;; 标签内新建一行
+;; 标签内新建一行
 (defun custom-middle-newline ()
   (interactive)
   (progn
@@ -582,6 +583,14 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
+
+;; Lisp 括号换行
+(defun lisp-paren-return ()
+  (interactive)
+  (progn
+    (newline-and-indent)
+    (previous-line)
+    (end-of-line)))
 
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
@@ -601,7 +610,7 @@
   (ido-kill-buffer)
   (delete-window))
 
-;;; 粘贴
+;; 粘贴
 (defun custom-yank ()
   (interactive)
   (if (and (not (equal (car kill-ring) nil))
@@ -615,7 +624,7 @@
         (end-of-line))
     (yank)))
 
-;;; 移动当前行
+;; 移动当前行
 (defun not-whole-line ()
   (end-of-line)
   (if (eobp) 't))
@@ -656,7 +665,7 @@
           (custom-move-current-line -1))
         (message "Move up current line.")))))
 
-;;; 下移一行
+;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
   (remeber-cols)
