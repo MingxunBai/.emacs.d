@@ -145,15 +145,6 @@
 
 (advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
 
-;; 自动匹配
-(setq skeleton-pair-alist
-      '((?\" _ "\"" >)
-        (?\' _ "\'" >)
-        (?\( _ ")"  >)
-        (?\[ _ "]"  >)
-        (?\{ _ "}"  >))
-      skeleton-pair t)
-
 ;;-------------------------------------------------
 ;; Internal mode
 ;;-------------------------------------------------
@@ -226,11 +217,16 @@
       company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
 
+;; Dumb jump mode
+(require 'dumb-jump)
+(dumb-jump-mode)
+
 ;; Emacs lisp mode
 (defun enable-emacs-lisp-mode ()
   (emacs-lisp-mode)
   (setq skeleton-pair-alist
-        '((?\' "" >))))
+        '((?\' "" >)
+          (?\[ "" >))))
 
 ;; Emmet mode
 (defun enable-emmet-mode ()
@@ -321,7 +317,7 @@
 (require 'origami)
 (global-origami-mode)
 
-;; Paren-face mode
+;; Paren face mode
 (require 'paren-face)
 (global-paren-face-mode)
 
@@ -397,6 +393,10 @@
 (setq sml/no-confirm-load-theme t
       sml/theme 'respectful)
 (smart-mode-line-enable)
+
+;; Smart parens mode
+(require 'smartparens-config)
+(smartparens-global-mode)
 
 ;; Tab bar mode
 (require 'tabbar)
@@ -621,8 +621,8 @@
 (defun custom-yank ()
   (interactive)
   (if (and (not (equal (car kill-ring) nil))
-           (string= (substring (car kill-ring) -1) "
-"))
+           (string= "
+" (substring (car kill-ring) -1)))
       (progn
         (yank)
         (indent-according-to-mode)
@@ -642,13 +642,12 @@
   (setq step (- cols (point))))
 
 (defun custom-move-current-line (n)
-  (interactive)
   (progn
+    (kill-new "")
     (beginning-of-line)
     (kill-whole-line)
     (forward-line n)
-    (yank)
-    (forward-line -1)
+    (custom-yank)
     (beginning-of-line)
     (forward-char step)
     (indent-according-to-mode)))

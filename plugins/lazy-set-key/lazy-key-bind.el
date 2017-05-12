@@ -14,13 +14,6 @@
 (lazy-set-key '(("RET"          .   newline-and-indent)
                 ("C-c C-k"      .   kill-buffer-and-window)
 
-                ;; Auto complete pair
-                ("("            .   skeleton-pair-insert-maybe)
-                ("["            .   skeleton-pair-insert-maybe)
-                ("{"            .   skeleton-pair-insert-maybe)
-                ("\""           .   skeleton-pair-insert-maybe)
-                ("\'"           .   skeleton-pair-insert-maybe)
-
                 ;; Custom feature
                 ("C-x 2"        .   custom-split-window-below)
                 ("C-x 3"        .   custom-split-window-right)
@@ -34,6 +27,7 @@
                 ("C-c r"        .   custom-resize-indentation)
                 ("<backtab>"    .   custom-resize-indentation--4)
                 ("C-y"          .   custom-yank)
+
 
                 ;; Git
                 ("C-x p"        .   git-push-current-buffer)
