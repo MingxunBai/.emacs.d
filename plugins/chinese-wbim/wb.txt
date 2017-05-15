@@ -2411,7 +2411,7 @@ aqtu 菊科
 aqtv 区委
 aqu 艾 芕
 aqug 欧美
-aquj 敬意 区间
+aquj 区间 敬意
 aquq 获奖
 aquw 获准 获益
 aqv 匹 兂 旡
@@ -55948,7 +55948,7 @@ uqt 效 俲
 uqta 次长
 uqtf 交待 次等
 uqtg 净重 奖惩
-uqth 奖牌 盗版
+uqth 盗版 奖牌
 uqti 弊多利少
 uqtj 净利
 uqtl 资金积累
@@ -61944,7 +61944,7 @@ wvde 分有
 wvdf 侵夺
 wvdg 分厂
 wvdh 健在
-wvdm 颁 分布 颁布 頒
+wvdm 分布 颁 颁布 頒
 wvdn 分成
 wvdw 伊春
 wvdx 侵袭

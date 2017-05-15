@@ -2,6 +2,9 @@
 ac-comphist.dat
 auto-save-list/*
 eshell/[^a]*
+plugins/webkit/__pycache__/*
 project-explorer-cache/*
 semanticdb/
 server/server
+url/*
+webkit-history

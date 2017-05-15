@@ -430,6 +430,9 @@
 
   (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
 
+;; Webkit mode
+(require 'webkit)
+
 ;; Windows numbering
 (require 'window-numbering)
 (window-numbering-mode)
