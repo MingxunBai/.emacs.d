@@ -21395,7 +21395,7 @@ iius 消闲
 iiut 水产 水道
 iiuu 波澜壮阔
 iiuv 消瘦
-iiuw 水准 水冷
+iiuw 水冷 水准
 iiuy 沙门 水门
 iive 消退
 iivo 水灵
@@ -24738,7 +24738,7 @@ jhym 早市
 jhyo 畅谈
 jhyr 申诉
 jhyt 景颇族
-jhyu 申说
+jhyu 早说
 jhyw 申论
 jhyy 畅言
 ji 晃 晁
@@ -25167,7 +25167,7 @@ jnwx 电化
 jnwy 曜 电信 蚗 蠗
 jnx 昵
 jnxg 电线
-jnxj 电缆 电费
+jnxj 电费 电缆
 jnxn 昵 蚭
 jnxr 电弧
 jnxy 日以继夜
@@ -41336,7 +41336,7 @@ qsw 錸
 qswa 杀伐
 qswq 弑父
 qswt 杀伤
-qsww 杀价 杀人 錸
+qsww 杀人 杀价 錸
 qswx 多样化
 qswy 刹住
 qsxf 凶相毕露
@@ -49899,7 +49899,7 @@ tdkb 聟
 tdkc 敽
 tdkf 甜味 呑
 tdkg 知 辞呈 短号
-tdkh 适中 短路 知足 短跑
+tdkh 知足 短路 适中 短跑
 tdkj 智
 tdkk 甜品 适口 喬
 tdkl 辞别 勪
@@ -51095,7 +51095,7 @@ thss 自焚
 thst 和睦相处
 thsu 怎样 臬
 thsw 自检
-thsy 自述 算术
+thsy 算术 自述
 thta 处长 延长 片长
 thtc 自私 怎么
 thtd 自筹 自知
@@ -63453,7 +63453,7 @@ xguf 线装
 xgug 纯美
 xgui 母
 xguj 纯音
-xguq 纯净 绩效
+xguq 绩效 纯净
 xgus 母亲
 xguw 纯益
 xgv 經
@@ -67867,7 +67867,7 @@ ytt 族
 ytta 族长 旅长 庭长 谈笑自若 州长
 yttd 族 磿
 ytte 方向盘 旗舰
-yttf 放行 施行 旅行 旗竿 设身处地
+yttf 旅行 施行 放行 旗竿 设身处地
 yttg 旌 诞生 放生 设备管理
 ytth 广告牌
 ytti 毫微秒
