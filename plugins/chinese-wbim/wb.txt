@@ -62296,7 +62296,7 @@ wwst 人格 价格
 wwsu 做人要厚道
 wwte 从盘
 wwtf 人选 你追我赶 人造 坐等 坐待
-wwtg 人生 偷生 丛生 众生
+wwtg 人生 众生 偷生 丛生
 wwtk 人和 人种
 wwtl 集体积累 俗务
 wwtm 人身
