@@ -11259,7 +11259,7 @@ fatg 无期徒刑 载重
 fath 裁处
 fatk 栽种
 fatq 堪称
-faty 截稿 载入
+faty 载入 截稿
 faua 裁并
 fauc 截瘫
 faud 裁判 裁减
