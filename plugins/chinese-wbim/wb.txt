@@ -12244,7 +12244,7 @@ fhih 越小
 fhii 盐水
 fhik 趟
 fhin 走漏
-fhip 超常 直觉
+fhip 直觉 超常
 fhiq 老眼光 走光 趒
 fhit 越少 埗 赻
 fhiu 越洋
@@ -29539,7 +29539,7 @@ lkpn 加密
 lkpp 加之
 lkpt 贺客
 lkpw 架空
-lkpy 回礼 贺礼
+lkpy 贺礼 回礼
 lkq 軦
 lkqe 圆角
 lkqg 加印
@@ -41624,7 +41624,7 @@ qtuc 獇
 qtud 猜拳 狗头 多愁善感 猎头
 qtuf 獞
 qtug 犯病 多管闲事 猶
-qtuj 獐 儿童
+qtuj 儿童 獐
 qtuk 猛冲 名牌产品
 qtul 猛兽 獈
 qtun 猐
@@ -56158,7 +56158,7 @@ usrh 新 新年
 usrn 闲气
 usrp 新近 亲近
 usrq 新的
-usrt 亲手 尊卑 新手
+usrt 新手 亲手 尊卑
 usrv 亲热 新招
 uss 痳
 ussf 新村
