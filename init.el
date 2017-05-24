@@ -510,8 +510,12 @@
 ;; Custom feature
 ;;-------------------------------------------------
 
+;; Before save hook
+(defun custom-before-save-hook ()
+  (delete-trailing-whitespace)
+  (custom-ff-utf-8-unix))
+
 ;; File coding system use utf-8-unix
-(add-hook 'before-save-hook 'custom-ff-utf-8-unix)
 (defun custom-ff-utf-8-unix ()
   (if (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system)))
       (set-buffer-file-coding-system 'utf-8-unix)
@@ -693,6 +697,8 @@
 ;; Hook
 ;;-------------------------------------------------
 
+(add-hook 'before-save-hook 'custom-before-save-hook)
+
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 (defun custom-org-mode-hook ()
@@ -759,9 +765,6 @@
 (add-hook 'js2-mode-hook  'enable-emmet-mode)
 (add-hook 'json-mode-hook 'enable-emmet-mode)
 (add-hook 'web-mode-hook  'enable-emmet-mode)
-
-;; 保存前删除多余空格
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 最大化
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
