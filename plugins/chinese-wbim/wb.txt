@@ -23814,7 +23814,7 @@ iyt 洲 漩
 iytb 游 湤 遊 逰
 iytd 游憩
 iyte 渡船 游艇 游船
-iytf 浒 流行 游行 游街 滸
+iytf 流行 浒 游行 游街 滸
 iytg 注重
 iyth 洲 漩
 iytj 流利
@@ -48086,7 +48086,7 @@ smqn 枧 梘
 smqt 李凯尔特 机锋
 smqy 枫 \x836\xCB1 
 smrm 机制
-smsa 机械
+smsa 机柜 机械
 smsc 枫树
 smse 栅极
 smsf 机票
