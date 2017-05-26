@@ -627,16 +627,9 @@
 ;; 粘贴
 (defun custom-yank ()
   (interactive)
-  (if (and (not (equal (car kill-ring) nil))
-           (string= "
-" (substring (car kill-ring) -1)))
-      (progn
-        (yank)
-        (indent-according-to-mode)
-        (forward-line -1)
-        (indent-according-to-mode)
-        (end-of-line))
-    (yank)))
+  (let ((point-before (point)))
+    (yank)
+    (indent-region point-before (point))))
 
 ;; 移动当前行
 (defun not-whole-line ()
