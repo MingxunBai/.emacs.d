@@ -523,7 +523,7 @@
 ;; Git
 (defun find-git-repo (dir)
   "Find base git directory"
-  (if (or (string= "/" dir)
+  (if (or (string= "/"   dir)
           (string= "c:/" dir)
           (string= "d:/" dir)
           (string= "e:/" dir)
@@ -593,16 +593,18 @@
   (interactive)
   (if (eq major-mode 'scheme-mode)
       (custom-lisp-paren-return)
-    (if (or (and (string-equal "{" (string (char-before (point))))
-                 (string-equal "}" (string (char-after  (point)))))
-            (and (string-equal "[" (string (char-before (point))))
-                 (string-equal "]" (string (char-after  (point)))))
-            (and (string-equal "(" (string (char-before (point))))
-                 (string-equal ")" (string (char-after  (point)))))
-            (and (string-equal ">" (string (char-before (point))))
-                 (string-equal "<" (string (char-after  (point))))))
+    (if (or (custom-paren-match "{" "}")
+            (custom-paren-match "[" "]")
+            (custom-paren-match "(" ")")
+            (custom-paren-match ">" "<"))
         (custom-middle-newline)
       (newline-and-indent))))
+
+;; 匹配括号
+(defun custom-paren-match (bef end)
+  (if (and (string-equal bef (string (char-before (point))))
+           (string-equal end (string (char-after  (point)))))
+      't))
 
 ;; Lisp 括号换行
 (defun custom-lisp-paren-return ()
