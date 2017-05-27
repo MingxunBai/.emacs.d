@@ -11,21 +11,21 @@
 ;;; Code:
 (lazy-unset-key '("M-<down-mouse-1>"))
 
-(lazy-set-key '(("RET"          .   newline-and-indent)
-                ("C-c C-k"      .   kill-buffer-and-window)
+(lazy-set-key '(("C-c C-k"      .   kill-buffer-and-window)
 
                 ;; Custom feature
-                ("C-x 2"        .   custom-split-window-below)
-                ("C-x 3"        .   custom-split-window-right)
-                ("C-x k"        .   custom-ido-kill-buffer)
-                ("C-o"          .   custom-down-newline)
-                ("M-o"          .   custom-up-newline)
-                ("<C-return>"   .   custom-middle-newline)
-                ("M-["          .   custom-move-up-current-line)
-                ("M-]"          .   custom-move-down-current-line)
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
+                ("C-o"          .   custom-down-newline)
+                ("C-x k"        .   custom-ido-kill-buffer)
+                ("<C-return>"   .   custom-middle-newline)
+                ("M-]"          .   custom-move-down-current-line)
+                ("M-["          .   custom-move-up-current-line)
                 ("C-c r"        .   custom-resize-indentation)
                 ("<backtab>"    .   custom-resize-indentation--4)
+                ("RET"          .   custom-return)
+                ("C-x 2"        .   custom-split-window-below)
+                ("C-x 3"        .   custom-split-window-right)
+                ("M-o"          .   custom-up-newline)
                 ("C-y"          .   custom-yank)
 
 
@@ -33,8 +33,8 @@
                 ("C-x p"        .   git-push-current-buffer)
 
                 ;; Multiple cursors
-                ("C-S-c C-S-c"  .   mc/edit-lines)
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)
+                ("C-S-c C-S-c"  .   mc/edit-lines)
 
                 ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
@@ -51,14 +51,14 @@
 
                 ;; Tab bar mode
                 ("C-M-="        .   tabbar-press-home)
-                ("M--"          .   tabbar-backward-group)
-                ("M-="          .   tabbar-forward-group)
                 ("C--"          .   tabbar-backward)
+                ("M--"          .   tabbar-backward-group)
                 ("C-="          .   tabbar-forward)
+                ("M-="          .   tabbar-forward-group)
 
                 ;; Winner mode
-                ("C-x 4 u"      .   winner-undo)
                 ("C-x 4 r"      .   winner-redo)
+                ("C-x 4 u"      .   winner-undo)
 
                 ;; YASnippet mode
                 ("<C-tab>"      .   yas-ido-expand)

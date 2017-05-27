@@ -372,7 +372,6 @@
   (require 'cmuscheme)
 
   (define-key scheme-mode-map (kbd "C-c C-k")    'nil)
-  (define-key scheme-mode-map (kbd "<S-return>") 'lisp-paren-return)
   (define-key scheme-mode-map (kbd "<f5>")       'scheme-send-last-sexp-split-window)
   (define-key scheme-mode-map (kbd "<f6>")       'scheme-send-definition-split-window))
 
@@ -589,6 +588,27 @@
     (end-of-line)
     (newline-and-indent)))
 
+;; 换行
+(defun custom-return ()
+  (interactive)
+  (when (eq major-mode 'scheme-mode)
+    (custom-lisp-paren-return))
+  (if (or (and (string-equal "{" (string (char-before (point))))
+               (string-equal "}" (string (char-after  (point)))))
+          (and (string-equal "[" (string (char-before (point))))
+               (string-equal "]" (string (char-after  (point)))))
+          (and (string-equal "(" (string (char-before (point))))
+               (string-equal ")" (string (char-after  (point))))))
+      (custom-middle-newline)
+    (newline-and-indent)))
+
+;; Lisp 括号换行
+(defun custom-lisp-paren-return ()
+  (progn
+    (newline-and-indent)
+    (previous-line)
+    (end-of-line)))
+
 ;; 标签内新建一行
 (defun custom-middle-newline ()
   (interactive)
@@ -597,14 +617,6 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-
-;; Lisp 括号换行
-(defun lisp-paren-return ()
-  (interactive)
-  (progn
-    (newline-and-indent)
-    (previous-line)
-    (end-of-line)))
 
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
@@ -648,6 +660,7 @@
     (kill-whole-line)
     (forward-line n)
     (custom-yank)
+    (forward-line -1)
     (beginning-of-line)
     (forward-char step)
     (indent-according-to-mode)))
@@ -668,8 +681,7 @@
               (newline)
               (forward-line -1)
               (custom-move-current-line -1))
-          (custom-move-current-line -1))
-        (message "Move up current line.")))))
+          (custom-move-current-line -1))))))
 
 ;; 下移一行
 (defun custom-move-down-current-line ()
@@ -683,8 +695,7 @@
           (beginning-of-line)
           (forward-char step))
       (progn
-        (custom-move-current-line 1)
-        (message "Move down current line.")))))
+        (custom-move-current-line 1)))))
 
 ;;-------------------------------------------------
 ;; Hook
