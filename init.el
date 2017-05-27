@@ -598,7 +598,9 @@
           (and (string-equal "[" (string (char-before (point))))
                (string-equal "]" (string (char-after  (point)))))
           (and (string-equal "(" (string (char-before (point))))
-               (string-equal ")" (string (char-after  (point))))))
+               (string-equal ")" (string (char-after  (point)))))
+          (and (string-equal ">" (string (char-before (point))))
+               (string-equal "<" (string (char-after  (point))))))
       (custom-middle-newline)
     (newline-and-indent)))
 
