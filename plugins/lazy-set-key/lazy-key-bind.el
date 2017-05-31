@@ -17,6 +17,7 @@
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
                 ("C-x k"        .   custom-ido-kill-buffer)
+                ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
                 ("M-]"          .   custom-move-down-current-line)
                 ("M-["          .   custom-move-up-current-line)

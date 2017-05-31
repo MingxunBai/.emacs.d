@@ -3216,7 +3216,7 @@ awt 荼
 awtb 花季
 awte 茶盘
 awtf 荏 花毯 莋
-awtg 共生 苍生 花生
+awtg 花生 共生 苍生
 awth 共处
 awtj 花香 花篮
 awtk 共和
@@ -36625,7 +36625,7 @@ pey 冢
 peyf 家计 农庄
 peyn 农户
 peyq 家底
-peyt 家族 家庭
+peyt 家庭 家族
 peyu 冢 家谱
 peyx 家畜
 peyy 家访 神采奕奕 实用主义
@@ -42575,7 +42575,7 @@ rcde 掺
 rcdg 反感
 rcdh 捅破
 rcdl 撪
-rcdm 反面 反而
+rcdm 反而 反面
 rcdn 揉成
 rcdq 拉马克
 rce 捅
@@ -49993,7 +49993,7 @@ tdth 短处 筹算 短片
 tdti 长春科技大学
 tdtj 矫 甜香 智利 矯
 tdtk 短程 矯
-tdtl 筹备 徘徊
+tdtl 徘徊 筹备
 tdtm 短笛
 tdtn 憩 憇
 tdto 知悉 鴙 鴁 鴰
@@ -60031,7 +60031,7 @@ wgnh 剑眉
 wgnj 傲慢 侴 韽
 wgnk 合璧
 wgnm 貪 頷
-wgnn 佤 全局 僵局 僵尸 癸巳 全书 人事局
+wgnn 全局 僵局 僵尸 癸巳 全书 人事局 佤
 wgno 鳹
 wgnt 全球性 依赖性 合理性 代表性 敜
 wgnu 全屏
@@ -61271,7 +61271,7 @@ wqwo 佝偻
 wqwq 爷爷 爸爸 爹爹
 wqwu 你们
 wqwv 低分
-wqww 低价 低谷
+wqww 低谷 低价
 wqxe 父级 低级 低缓
 wqxg 父母
 wqxu 贫铀弹
@@ -67882,7 +67882,7 @@ yttu ← ↑ → ↓ ↖ ↗ ↘ ↙
 yttv 旋律
 ytty 放入
 ytu 旞
-ytud 放羊 放养 话头 妄自尊大 放送
+ytud 放着 放羊 放养 话头 妄自尊大 放送
 ytui 庝
 ytuj 话音 谢意
 ytum 言简意赅

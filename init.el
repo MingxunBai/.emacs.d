@@ -543,6 +543,16 @@
   (let ((root (find-git-repo default-directory)))
     (git-push root)))
 
+;; 全局缩进
+(defun custom-indent-buffer ()
+  (interactive)
+  (let ((line (count-lines 1 (point))))
+    (custom-remeber-cols)
+    (indent-region (point-min) (point-max))
+    (goto-line line)
+    (back-to-indentation)
+    (forward-char step)))
+
 ;; 自定缩进
 (defun custom-resize-indentation (n)
   (interactive "nEnter indentation size:")
@@ -593,17 +603,19 @@
   (interactive)
   (if (eq major-mode 'scheme-mode)
       (custom-lisp-paren-return)
-    (if (or (custom-paren-match "{" "}")
-            (custom-paren-match "[" "]")
-            (custom-paren-match "(" ")")
-            (custom-paren-match ">" "<"))
-        (custom-middle-newline)
-      (newline-and-indent))))
+    (if (eq major-mode 'emacs-lisp-mode)
+        (newline-and-indent)
+      (if (or (custom-paren-match "{" "}")
+              (custom-paren-match "[" "]")
+              (custom-paren-match "(" ")")
+              (custom-paren-match ">" "<"))
+          (custom-middle-newline)
+        (newline-and-indent)))))
 
 ;; 匹配括号
 (defun custom-paren-match (bef end)
-  (if (and (string-equal bef (string (char-before (point))))
-           (string-equal end (string (char-after  (point)))))
+  (if (and (string-equal bef (string (preceding-char)))
+           (string-equal end (string (following-char))))
       't))
 
 ;; Lisp 括号换行
@@ -648,15 +660,6 @@
     (indent-region point-before (point))))
 
 ;; 移动当前行
-(defun not-whole-line ()
-  (end-of-line)
-  (if (eobp) 't))
-
-(defun remeber-cols ()
-  (setq cols (point))
-  (beginning-of-line)
-  (setq step (- cols (point))))
-
 (defun custom-move-current-line (n)
   (progn
     (kill-new "")
@@ -665,22 +668,29 @@
     (forward-line n)
     (custom-yank)
     (forward-line -1)
-    (beginning-of-line)
+    (back-to-indentation)
     (forward-char step)
     (indent-according-to-mode)))
+
+(defun custom-remeber-cols ()
+  (let ((cols (point)))
+    (back-to-indentation)
+    (setq step (- cols (point)))))
 
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
-  (remeber-cols)
+  (custom-remeber-cols)
   (progn
     (beginning-of-line)
     (if (bobp)
         (progn
           (message "Beginning of buffer!")
+          (back-to-indentation)
           (forward-char step))
       (progn
-        (if (eq (not-whole-line) 't)
+        (end-of-line)
+        (if (eobp)
             (progn
               (newline)
               (forward-line -1)
@@ -690,16 +700,15 @@
 ;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
-  (remeber-cols)
+  (custom-remeber-cols)
   (progn
     (end-of-line)
     (if (eobp)
         (progn
           (message "End of buffer!")
-          (beginning-of-line)
+          (back-to-indentation)
           (forward-char step))
-      (progn
-        (custom-move-current-line 1)))))
+      (custom-move-current-line 1))))
 
 ;;-------------------------------------------------
 ;; Hook
