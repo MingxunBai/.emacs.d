@@ -54537,7 +54537,7 @@ ufjr 斗志昂扬
 ufjt 半晌
 ufjy 半影
 ufk 半 斗 閈 闬 闘 鬥 鬦 鬬
-ufkh 闺中 半路 闭路 闭嘴
+ufkh 半路 闭路 闭嘴 闺中
 ufkk 冷却器 闭口
 ufkm 总动员
 ufkp 闧
