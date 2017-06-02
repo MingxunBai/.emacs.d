@@ -516,7 +516,8 @@
 
 ;; File coding system use utf-8-unix
 (defun custom-ff-utf-8-unix ()
-  (if (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system)))
+  (if (and (not (eq major-mode 'bat-mode))
+           (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
       (set-buffer-file-coding-system 'utf-8-unix)
     (message "It's a unix file.")))
 
