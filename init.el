@@ -548,11 +548,42 @@
 (defun custom-indent-buffer ()
   (interactive)
   (let ((line (count-lines 1 (point))))
-    (custom-remeber-cols)
+    (custom-remeber-point-step)
     (indent-region (point-min) (point-max))
     (goto-line line)
     (back-to-indentation)
     (forward-char step)))
+
+;; 点击获取行号
+(defvar *linum-mdown-line* nil)
+(defun custom-line-at-click ()
+  (save-excursion
+	(let ((click-y (cdr (cdr (mouse-position))))
+		  (line-move-visual-store line-move-visual))
+	  (setq line-move-visual t)
+	  (goto-char (window-start))
+	  (next-line (1- click-y))
+	  (setq line-move-visual line-move-visual-store)
+	  (line-number-at-pos))))
+
+(defun custom-md-select-linum ()
+  (interactive)
+  (goto-line (custom-line-at-click))
+  (set-mark (point))
+  (setq *linum-mdown-line*
+		(line-number-at-pos)))
+
+(defun custom-mu-select-linum ()
+  (interactive)
+  (when *linum-mdown-line*
+	(let (mu-line)
+	  ;; (goto-line (custom-line-at-click))
+	  (setq mu-line (custom-line-at-click))
+	  (goto-line (max *linum-mdown-line* mu-line))
+	  (set-mark (line-end-position))
+	  (goto-line (min *linum-mdown-line* mu-line))
+	  (setq *linum-mdown*
+			nil))))
 
 ;; 自定缩进
 (defun custom-resize-indentation (n)
@@ -673,7 +704,7 @@
     (forward-char step)
     (indent-according-to-mode)))
 
-(defun custom-remeber-cols ()
+(defun custom-remeber-point-step ()
   (let ((cols (point)))
     (back-to-indentation)
     (setq step (- cols (point)))))
@@ -681,7 +712,7 @@
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
-  (custom-remeber-cols)
+  (custom-remeber-point-step)
   (progn
     (beginning-of-line)
     (if (bobp)
@@ -701,7 +732,7 @@
 ;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
-  (custom-remeber-cols)
+  (custom-remeber-point-step)
   (progn
     (end-of-line)
     (if (eobp)
