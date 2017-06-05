@@ -16,6 +16,7 @@
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
+                ("C-x p"        .   custom-git-push-current-buffer)
                 ("C-x k"        .   custom-ido-kill-buffer)
                 ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
@@ -31,10 +32,6 @@
                 ("C-x 3"        .   custom-split-window-right)
                 ("M-o"          .   custom-up-newline)
                 ("C-y"          .   custom-yank)
-
-
-                ;; Git
-                ("C-x p"        .   git-push-current-buffer)
 
                 ;; Multiple cursors
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)

@@ -539,7 +539,7 @@
   (shell-command (concat "cd " root " && git commit -m 'Update'"))
   (shell-command (concat "cd " root " && git push")))
 
-(defun git-push-current-buffer ()
+(defun custom-git-push-current-buffer ()
   (interactive)
   (let ((root (find-git-repo default-directory)))
     (git-push root)))
@@ -556,7 +556,7 @@
 
 ;; 点击获取行号
 (defvar *linum-mdown-line* nil)
-(defun custom-line-at-click ()
+(defun line-at-click ()
   (save-excursion
 	(let ((click-y (cdr (cdr (mouse-position))))
 		  (line-move-visual-store line-move-visual))
@@ -568,7 +568,7 @@
 
 (defun custom-md-select-linum ()
   (interactive)
-  (goto-line (custom-line-at-click))
+  (goto-line (line-at-click))
   (set-mark (point))
   (setq *linum-mdown-line*
 		(line-number-at-pos)))
@@ -577,8 +577,8 @@
   (interactive)
   (when *linum-mdown-line*
 	(let (mu-line)
-	  ;; (goto-line (custom-line-at-click))
-	  (setq mu-line (custom-line-at-click))
+	  ;; (goto-line (line-at-click))
+	  (setq mu-line (line-at-click))
 	  (goto-line (max *linum-mdown-line* mu-line))
 	  (set-mark (line-end-position))
 	  (goto-line (min *linum-mdown-line* mu-line))

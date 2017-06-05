@@ -26595,7 +26595,7 @@ kfrf 别无所求
 kfri 喷泉
 kfrn 喷气 吐气
 kfrt 吹鼓手 叶挺
-kfsg 吃老本 叶柄
+kfsg 吐槽 吃老本 叶柄
 kft 哮 嘟
 kftb 哮 嘟
 kfth 叶片
