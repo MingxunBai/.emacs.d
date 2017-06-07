@@ -74,6 +74,7 @@
 
 (defalias 'alr 'align-regexp)           ;;
 (defalias 'cw  'compare-windows)        ; 设置别名
+(defalias 'es  'custom-eshll)           ;
 (defalias 'ff  'set-buffer-file-coding-system)
 (defalias 'rs  'replace-string)         ;;
 
@@ -329,57 +330,6 @@
   (other-window 1)
   (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
 
-;; Scheme mode
-(setq scheme-program-name "scheme")
-
-(defun scheme-proc ()
-  "Return the current Scheme process, starting one if necessary."
-  (unless (and scheme-buffer
-               (get-buffer scheme-buffer)
-               (comint-check-proc scheme-buffer))
-    (save-window-excursion
-      (run-scheme scheme-program-name)))
-  (or (scheme-get-process)
-      (error "No current process. See variable `scheme-buffer'")))
-
-(defun scheme-split-window ()
-  (cond
-   ((= 1 (count-windows))
-    (delete-other-windows)
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window 1))
-   ((not (find "*scheme*"
-               (mapcar (lambda (w) (buffer-name (window-buffer w)))
-                       (window-list))
-               :test 'equal))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window -1))))
-
-(defun scheme-send-last-sexp-split-window ()
-  (interactive)
-  (scheme-split-window)
-  (scheme-send-last-sexp))
-
-(defun scheme-send-definition-split-window ()
-  (interactive)
-  (scheme-split-window)
-  (scheme-send-definition))
-
-(defun init-scheme-mode ()
-  (require 'cmuscheme)
-
-  (define-key scheme-mode-map (kbd "C-c C-k")    'nil)
-  (define-key scheme-mode-map (kbd "<f5>")       'scheme-send-last-sexp-split-window)
-  (define-key scheme-mode-map (kbd "<f6>")       'scheme-send-definition-split-window))
-
-(add-hook 'scheme-mode-hook 'init-scheme-mode)
-(add-hook 'inferior-scheme-mode-hook
-          (lambda ()
-            (define-key inferior-scheme-mode-map (kbd "C-c C-k") 'nil)))
-
 ;; SCSS mode
 (defun enable-scss-mode ()
   (require 'scss-mode)
@@ -513,6 +463,39 @@
 (defun custom-before-save-hook ()
   (delete-trailing-whitespace)
   (custom-ff-utf-8-unix))
+
+;; 重设进程
+(defun custom-proc (process command)
+  (unless (and (concat process "-buffer")
+               (get-buffer (concat process "-buffer"))
+               (comint-check-proc (concat process "-buffer")))
+    (save-window-excursion
+      (command)))
+  (or (concat process "-get-process")))
+
+;; 进程分离窗口
+(defun custom-split-window (mode)
+  (cond
+   ((= 1 (count-windows))
+    (delete-other-windows)
+    (split-window-vertically (floor (* 0.68 (window-height))))
+    (other-window 1)
+    (switch-to-buffer mode)
+    (other-window 1))
+   ((not (find mode
+               (mapcar (lambda (w) (buffer-name (window-buffer w)))
+                       (window-list))
+               :test 'equal))
+    (other-window 1)
+    (switch-to-buffer mode)
+    (other-window -1))))
+
+;; Eshell
+(defun eshell-proc ("eshell" "eshell-mode"))
+
+(defun custom-eshll ()                  ; 设置别名为 es
+  (interactive)
+  (custom-split-window "*eshell*"))
 
 ;; File coding system use utf-8-unix
 (defun custom-ff-utf-8-unix ()
@@ -791,6 +774,33 @@
   (py-autopep8-enable-on-save)
 
   (setq python-shell-prompt-detect-enabled nil))
+
+;; Scheme mode
+(setq scheme-program-name "scheme")
+
+(defun scheme-proc ("scheme" "run-scheme scheme-program-name"))
+
+(defun custom-scheme-send-last-sexp-split-window ()
+  (interactive)
+  (custom-split-window "*scheme*")
+  (scheme-send-last-sexp))
+
+(defun custom-scheme-send-definition-split-window ()
+  (interactive)
+  (custom-split-window "*scheme*")
+  (scheme-send-definition))
+
+(defun custom-init-scheme-mode ()
+  (require 'cmuscheme)
+
+  (define-key scheme-mode-map (kbd "C-c C-k")    'nil)
+  (define-key scheme-mode-map (kbd "<f5>")       'custom-scheme-send-last-sexp-split-window)
+  (define-key scheme-mode-map (kbd "<f6>")       'custom-scheme-send-definition-split-window))
+
+(add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
+(add-hook 'inferior-scheme-mode-hook
+          (lambda ()
+            (define-key inferior-scheme-mode-map (kbd "C-c C-k") 'nil)))
 
 ;; Text mode
 (when *WINDOWS*
