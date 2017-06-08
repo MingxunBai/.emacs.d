@@ -475,7 +475,7 @@
       (custom-move-current-line 1))))
 
 ;; 启用完整配置
-(defun custom-full ()
+(defun full ()
   (interactive)
   (require 'extensions))
 

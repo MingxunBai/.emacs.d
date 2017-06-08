@@ -11,12 +11,12 @@
 ;;; Code:
 (lazy-unset-key '("M-<down-mouse-1>"))
 
-(lazy-set-key '(("C-c C-k"      .   kill-buffer-and-window)
+(lazy-set-key '(("C-c f"        .   full)
+                ("C-c C-k"      .   kill-buffer-and-window)
 
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
-                ("C-c f"        .   custom-full)
                 ("C-x p"        .   custom-git-push-current-buffer)
                 ("C-x k"        .   custom-ido-kill-buffer)
                 ("C-M-\\"       .   custom-indent-buffer)
