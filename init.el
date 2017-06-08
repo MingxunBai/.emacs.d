@@ -7,7 +7,7 @@
       user-mail-address "mingxunbai@outlook.com")
 
 ;; 定义常量
-(defconst *NO-WINDOW*                   ; 针对终端进行一些样式调整
+(defconst *TERMINAL*                   ; 针对终端进行一些样式调整
   (eq window-system 'nil))
 (defconst *WINDOWS* (eq system-type 'windows-nt))
 (defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))
@@ -21,23 +21,10 @@
 
 (add-subdirs-to-load-path *PLUGINS*)
 
-(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
-
 (setq default-directory
       (if *WINDOWS*
           (format "C:/Users/%s/Documents" user-full-name)
         "~/Documents"))
-
-;; 配置五笔输入法
-(require 'chinese-wbim-extra)
-
-(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
-(setq chinese-wbim-use-tooltip nil)
-
-;; 启动五笔输入法
-(set-input-method 'chinese-wbim)
-(toggle-input-method)
 
 ;;-------------------------------------------------
 ;; 编码环境
@@ -62,21 +49,39 @@
 ;; 显示 & 行为
 ;;-------------------------------------------------
 
-;; 设置主题
-(if *NO-WINDOW*
-    (message "Terminal won't load theme.")
-  (load-theme 'monokai t))
-
-;; 设置字体
-;; (set-default-font "Source Code Pro-12")
-(when *WINDOWS*
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
-
-(defalias 'alr 'align-regexp)           ;;
-(defalias 'cw  'compare-windows)        ; 设置别名
-(defalias 'es  'custom-eshll)           ;
+;; Alias
+(defalias 'alr 'align-regexp)
+(defalias 'cw  'compare-windows)
+(defalias 'ev  'eval-buffer)
+(defalias 'es  'custom-eshll)
 (defalias 'ff  'set-buffer-file-coding-system)
-(defalias 'rs  'replace-string)         ;;
+(defalias 'rs  'replace-string)
+
+;; (set-default-font "Source Code Pro-12")
+;; 设置字体
+(when *WINDOWS*
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code"))
+
+  ;; 设置透明度
+  (set-frame-parameter (selected-frame) 'alpha '(95 . 70)))
+
+;; Themes
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
+(load-theme 'monokai t)
+
+(global-auto-revert-mode)               ; Auto revert
+
+(global-font-lock-mode)                 ; 语法高亮
+
+(global-linum-mode)                     ; 显示行号
+
+(ido-mode)
+(setq ido-save-directory-list-file nil
+      ido-enable-flex-matching t)       ; 模糊匹配
+
+(menu-bar-mode -1)                      ; 隐藏菜单栏
+
+(show-paren-mode)                       ; 高亮匹配括号
 
 (setq-default indent-tabs-mode nil      ;;
               tab-width 4)              ; 默认缩进为 4 个空格
@@ -117,7 +122,7 @@
 
       c-basic-offset 4                  ; C 语言缩进为 4
 
-      linum-format 'my-linum-format     ;;
+      linum-format " %4d |"             ;
       column-number-mode                ; 显示行号列号
       line-number-mode                  ;;
 
@@ -138,75 +143,54 @@
          (propertize (eshell/pwd) 'face `(:foreground "Pink"))
          (if (= (user-uid) 0) " # " " $ "))))
 
-(fset 'yes-or-no-p 'y-or-n-p)           ; 使用 y/n 替代 yes/no, 使用 Enter 替代 y
+(display-time)                          ; 显示时间
+
+(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes/no
+
+(advice-add 'y-or-n-p                   ; Enter 代替 y
+            :around #'y-or-n-p-with-return)
+
 (defun y-or-n-p-with-return (orig-func &rest args)
   (let ((query-replace-map (copy-keymap query-replace-map)))
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
 
-(advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
+(if (not *TERMINAL*)
+    (progn
+      ;; 格式化并高亮行号
+      (setq linum-format 'my-linum-format)
+
+      (require 'hl-line)
+
+      (defvar my-linum-current-line-number 0)
+
+      (defface my-linum-hl
+        `((t :inherit linum
+             :background "#3C3D37"
+             :foreground "#FFFFFF",(face-background 'hl-line nil t)))
+        "Face for the current line number."
+        :group 'linum)
+
+      (defun my-linum-format (line-number)
+        (propertize (format " %4d \u2502" line-number) 'face
+                    (if (eq line-number my-linum-current-line-number)
+                        'my-linum-hl
+                      'linum)))
+
+      (defadvice linum-update (around my-linum-update)
+        (let ((my-linum-current-line-number (line-number-at-pos)))
+          ad-do-it))
+
+      (ad-activate 'linum-update)
+
+      (global-hl-line-mode)
+
+      ;; 隐藏滚动条, 工具栏
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)))
 
 ;;-------------------------------------------------
-;; Internal mode
-;;-------------------------------------------------
-
-(global-auto-revert-mode)               ; Auto revert
-
-(display-time)                          ; 显示时间
-
-(if *NO-WINDOW*
-    (message "Terminal won't hava scroll-bar and tool-bar.")
-  (scroll-bar-mode -1)                  ; 隐藏滚动条
-  (tool-bar-mode -1))                   ; 隐藏工具栏
-(menu-bar-mode -1)                      ; 隐藏菜单栏
-
-(show-paren-mode)                       ; 高亮匹配括号
-
-(global-font-lock-mode)                 ; 语法高亮
-
-(global-linum-mode)                     ; 显示行号
-
-;; 格式化并高亮行号
-(require 'hl-line)
-(global-hl-line-mode)
-
-(defface my-linum-hl
-  `((t :inherit linum
-       :background "#3C3D37"
-       :foreground "#FFFFFF",(face-background 'hl-line nil t)))
-  "Face for the current line number."
-  :group 'linum)
-
-(defvar my-linum-current-line-number 0)
-
-(defun my-linum-format (line-number)
-  (propertize (format "| %3d " line-number) 'face
-              (if (eq line-number my-linum-current-line-number)
-                  'my-linum-hl
-                'linum)))
-
-(defadvice linum-update (around my-linum-update)
-  (let ((my-linum-current-line-number (line-number-at-pos)))
-    ad-do-it))
-
-(ad-activate 'linum-update)
-
-;; Highlight line mode
-(when *NO-WINDOW*
-  (set-face-attribute hl-line-face nil :background "#E8E8FF"))
-
-;; Ido mode
-(ido-mode)
-
-(setq ido-save-directory-list-file nil
-      ido-enable-flex-matching t)       ; 模糊匹配
-
-;; Winner mode
-(when (fboundp 'winner-mode)
-  (winner-mode))
-
-;;-------------------------------------------------
-;; Extension
+;; Extensions
 ;;-------------------------------------------------
 
 ;; Company mode
@@ -218,47 +202,6 @@
       company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
 
-;; Dumb jump mode
-(require 'dumb-jump)
-(dumb-jump-mode)
-
-;; Emacs lisp mode
-(defun enable-emacs-lisp-mode ()
-  (emacs-lisp-mode)
-  (setq skeleton-pair-alist
-        '((?\' "" >)
-          (?\[ "" >))))
-
-;; Emmet mode
-(defun enable-emmet-mode ()
-  (interactive)
-  (require 'emmet-mode)
-  (emmet-mode)
-
-  (setq emmet-self-closing-tag-style ""
-        emmet-move-cursor-between-quotes t)
-
-  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
-  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
-  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
-
-;; GoLang
-(defun enable-go-mode ()
-  (interactive)
-  (require 'go-mode-autoloads)
-  (go-mode)
-
-  (defun go-save-fmt ()
-    (interactive)
-    (shell-command (concat "go fmt " (buffer-file-name))))
-
-  (local-set-key (kbd "C-x f") 'go-save-fmt))
-
-;; Highlight indent guides
-(require 'highlight-indent-guides)
-
-(setq highlight-indent-guides-method 'character)
-
 ;; Highlight parentheses mode
 (require 'highlight-parentheses)
 (global-highlight-parentheses-mode)
@@ -266,76 +209,16 @@
 ;; History
 (require 'history)
 
-;; JavaScript IDE mode
-(defun enable-js2-mode ()
-  (interactive)
-  (require 'js2-mode)
-  (js2-mode)
-
-  (require 'js-comint)
-  (setq inferior-js-program-command "node")
-  (setq inferior-js-program-arguments '("--interactive"))
-
-  (local-set-key (kbd "C-c f")   'js-load-file-and-go)
-  (local-set-key (kbd "C-c b")   'js-send-buffer)
-  (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
-
-;; JAVA IDE mode
-(defun enable-jdee-mode ()
-  (interactive)
-  (require 'jdee)
-  (jdee-mode))
-
-;; JSON mode
-(defun enable-json-mode ()
-  (interactive)
-  (require 'json-mode)
-  (json-mode))
-
 ;; Lazy set key
 (require 'lazy-set-key)
 (require 'lazy-key-bind)
 
-;; Less css mode
-(defun enable-less-css-mode ()
-  (interactive)
-  (require 'less-css-mode)
-  (less-css-mode)
-
-  (setq less-css-compile-at-save t
-        less-css-output-directory "../css"))
-
-;; Markdown mode
-(defun enable-markdown-mode ()
-  (interactive)
-  (require 'markdown-mode)
-  (markdown-mode))
-
 ;; Multiple cursors
 (require 'multiple-cursors)
-
-;; Origami mode
-(require 'origami)
-(global-origami-mode)
 
 ;; Paren face mode
 (require 'paren-face)
 (global-paren-face-mode)
-
-;; Project explorer
-(require 'project-explorer)
-(defun pe/copy-relative-path ()
-  (interactive)
-  (pe/copy-file-name-as-kill)
-  (other-window 1)
-  (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
-
-;; SCSS mode
-(defun enable-scss-mode ()
-  (require 'scss-mode)
-  (scss-mode)
-
-  (setq scss-compile-at-save t))
 
 ;; Smart mode line
 (require 'smart-mode-line)
@@ -350,184 +233,49 @@
 ;; Tab bar mode
 (require 'tabbar)
 (tabbar-mode)
-
 (setq tabbar-use-images nil)
-
-;; Vimrc mode
-(defun enable-vimrc-mode ()
-  (interactive)
-  (require 'vimrc-mode)
-  (vimrc-mode))
-
-;; Web mode
-(defun enable-web-mode ()
-  (interactive)
-  (require 'web-mode)
-  (web-mode)
-
-  (setq web-mode-markup-indent-offset             2
-        web-mode-css-indent-offset                4
-        web-mode-code-indent-offset               4
-
-        web-mode-style-padding                    4
-        web-mode-script-padding                   4
-        web-mode-block-padding                    4
-
-        web-mode-enable-current-element-highlight t)
-
-  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
-
-  (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
-
-;; Webkit mode
-;; (require 'webkit)
 
 ;; Windows numbering
 (require 'window-numbering)
 (window-numbering-mode)
 
-;; Yaml mode
-(defun enable-yaml-mode ()
-  (interactive)
-  (require 'yaml-mode)
-  (yaml-mode))
-
-;; YASnippet
-(require 'yasnippet)
-(yas-global-mode)
-
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  (when (featurep 'popup)
-    (popup-menu*
-     (mapcar
-      (lambda (choice)
-        (popup-make-item
-         (or (and display-fn (funcall display-fn choice))
-             choice)
-         :value choice))
-      choices)
-     :prompt prompt
-     :isearch t)))
-(defun yas-ido-expand ()
-  "Lets you select (and expand) a yasnippet key"
-  (interactive)
-  (let ((original-point (point)))
-    (while (and
-            (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
-      (backward-word 1))
-    (let* ((init-word (point))
-           (word (buffer-substring init-word original-point))
-           (list (yas-active-keys)))
-      (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
-        (if (= (length key) 1)
-            (setq key (pop key))
-          (setq key (ido-completing-read "key: " list nil nil word)))
-        (delete-char (- init-word original-point))
-        (insert key)
-        (yas-expand)))))
-(setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+;; Winner mode
+(when (fboundp 'winner-mode)
+  (winner-mode))
 
 ;;-------------------------------------------------
-;; 主模式
+;; Major Mode
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
       (append '(("/[^\\./]*\\'" .   conf-mode) ; File name has no dot
-
-                ("\\.bash"      .   sh-mode)
-                ("\\.css\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.el\\'"     .   (lambda () (enable-emacs-lisp-mode)))
-                ("\\.go\\'"     .   (lambda () (enable-go-mode)))
-                ("\\.java\\'"   .   (lambda () (enable-jdee-mode)))
-                ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
-                ("\\.json\\'"   .   (lambda () (enable-json-mode)))
-                ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
-                ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
-                ("\\.w?xml\\'"  .   (lambda () (enable-web-mode)))
-                ("\\.php\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
-                ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
-                ("\\.wxss\\'"   .   css-mode)
-                ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
+                ("\\.bash"      .   sh-mode))
               auto-mode-alist))
 
 ;;-------------------------------------------------
-;; Custom feature
+;; Custom Feature
 ;;-------------------------------------------------
 
 ;; Before save hook
+(add-hook 'before-save-hook 'custom-before-save-hook)
 (defun custom-before-save-hook ()
   (delete-trailing-whitespace)
   (custom-ff-utf-8-unix))
 
-;; 重设进程
-(defun custom-proc (process command)
-  (unless (and (concat process "-buffer")
-               (get-buffer (concat process "-buffer"))
-               (comint-check-proc (concat process "-buffer")))
-    (save-window-excursion
-      (command)))
-  (or (concat process "-get-process")))
-
-;; 进程分离窗口
-(defun custom-split-window (mode)
-  (cond
-   ((= 1 (count-windows))
-    (delete-other-windows)
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    (other-window 1)
-    (switch-to-buffer mode)
-    (other-window 1))
-   ((not (find mode
-               (mapcar (lambda (w) (buffer-name (window-buffer w)))
-                       (window-list))
-               :test 'equal))
-    (other-window 1)
-    (switch-to-buffer mode)
-    (other-window -1))))
-
-;; Eshell
-(defun eshell-proc ("eshell" "eshell-mode"))
-
-(defun custom-eshll ()                  ; 设置别名为 es
-  (interactive)
-  (custom-split-window "*eshell*"))
-
-;; File coding system use utf-8-unix
 (defun custom-ff-utf-8-unix ()
   (if (and (not (eq major-mode 'bat-mode))
            (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
       (set-buffer-file-coding-system 'utf-8-unix)
     (message "It's a unix file.")))
 
-;; Git
-(defun find-git-repo (dir)
-  "Find base git directory"
-  (if (or (string= "/"   dir)
-          (string= "c:/" dir)
-          (string= "d:/" dir)
-          (string= "e:/" dir)
-          (string= "f:/" dir))
-      (message "It's not a git repo.")
-    (if (file-exists-p (expand-file-name ".git/" dir))
-        dir
-      (find-git-repo (expand-file-name "../" dir)))))
-
-(defun git-push (root)
-  (shell-command (concat "cd " root " && git add -A"))
-  (shell-command (concat "cd " root " && git commit -m 'Update'"))
-  (shell-command (concat "cd " root " && git push")))
-
-(defun custom-git-push-current-buffer ()
+;; Eshell
+(defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
-  (let ((root (find-git-repo default-directory)))
-    (git-push root)))
+  (split-window-vertically (floor (* 0.68 (window-height))))
+  (other-window 1)
+  (eshell))
 
-;; 全局缩进
+;; 缩进重排
 (defun custom-indent-buffer ()
   (interactive)
   (let ((line (count-lines 1 (point))))
@@ -536,37 +284,6 @@
     (goto-line line)
     (back-to-indentation)
     (forward-char step)))
-
-;; 点击获取行号
-(defvar *linum-mdown-line* nil)
-(defun line-at-click ()
-  (save-excursion
-	(let ((click-y (cdr (cdr (mouse-position))))
-		  (line-move-visual-store line-move-visual))
-	  (setq line-move-visual t)
-	  (goto-char (window-start))
-	  (next-line (1- click-y))
-	  (setq line-move-visual line-move-visual-store)
-	  (line-number-at-pos))))
-
-(defun custom-md-select-linum ()
-  (interactive)
-  (goto-line (line-at-click))
-  (set-mark (point))
-  (setq *linum-mdown-line*
-		(line-number-at-pos)))
-
-(defun custom-mu-select-linum ()
-  (interactive)
-  (when *linum-mdown-line*
-	(let (mu-line)
-	  ;; (goto-line (line-at-click))
-	  (setq mu-line (line-at-click))
-	  (goto-line (max *linum-mdown-line* mu-line))
-	  (set-mark (line-end-position))
-	  (goto-line (min *linum-mdown-line* mu-line))
-	  (setq *linum-mdown*
-			nil))))
 
 ;; 自定缩进
 (defun custom-resize-indentation (n)
@@ -597,6 +314,51 @@
     (delete-indentation)
     (indent-according-to-mode)))
 
+;; 行号点击, 拖拽功能
+(defvar *linum-mdown-line* nil)
+(defun line-at-click ()
+  (save-excursion
+	(let ((click-y (cdr (cdr (mouse-position))))
+		  (line-move-visual-store line-move-visual))
+	  (setq line-move-visual t)
+	  (goto-char (window-start))
+	  (next-line (1- click-y))
+	  (setq line-move-visual line-move-visual-store)
+	  (line-number-at-pos))))
+
+(defun custom-md-select-linum ()
+  (interactive)
+  (goto-line (line-at-click))
+  (set-mark (point))
+  (setq *linum-mdown-line*
+		(line-number-at-pos)))
+
+(defun custom-mu-select-linum ()
+  (interactive)
+  (when *linum-mdown-line*
+	(let (mu-line)
+	  ;; (goto-line (line-at-click))
+	  (setq mu-line (line-at-click))
+	  (goto-line (max *linum-mdown-line* mu-line))
+	  (set-mark (line-end-position))
+	  (goto-line (min *linum-mdown-line* mu-line))
+	  (setq *linum-mdown*
+			nil))))
+
+;; 换行
+(defun custom-return ()
+  (interactive)
+  (if (eq major-mode 'scheme-mode)
+      (custom-lisp-paren-return)
+    (if (eq major-mode 'emacs-lisp-mode)
+        (newline-and-indent)
+      (if (or (custom-paren-match "{" "}")
+              (custom-paren-match "[" "]")
+              (custom-paren-match "(" ")")
+              (custom-paren-match ">" "<"))
+          (custom-middle-newline)
+        (newline-and-indent)))))
+
 ;; 向上新建一行
 (defun custom-up-newline ()
   (interactive)
@@ -613,33 +375,6 @@
     (end-of-line)
     (newline-and-indent)))
 
-;; 换行
-(defun custom-return ()
-  (interactive)
-  (if (eq major-mode 'scheme-mode)
-      (custom-lisp-paren-return)
-    (if (eq major-mode 'emacs-lisp-mode)
-        (newline-and-indent)
-      (if (or (custom-paren-match "{" "}")
-              (custom-paren-match "[" "]")
-              (custom-paren-match "(" ")")
-              (custom-paren-match ">" "<"))
-          (custom-middle-newline)
-        (newline-and-indent)))))
-
-;; 匹配括号
-(defun custom-paren-match (bef end)
-  (if (and (string-equal bef (string (preceding-char)))
-           (string-equal end (string (following-char))))
-      't))
-
-;; Lisp 括号换行
-(defun custom-lisp-paren-return ()
-  (progn
-    (newline-and-indent)
-    (previous-line)
-    (end-of-line)))
-
 ;; 标签内新建一行
 (defun custom-middle-newline ()
   (interactive)
@@ -648,6 +383,19 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
+
+;; Lisp 括号换行
+(defun custom-lisp-paren-return ()
+  (progn
+    (newline-and-indent)
+    (previous-line)
+    (end-of-line)))
+
+;; 匹配括号
+(defun custom-paren-match (bef end)
+  (if (and (string-equal bef (string (preceding-char)))
+           (string-equal end (string (following-char))))
+      't))
 
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
@@ -725,105 +473,10 @@
           (forward-char step))
       (custom-move-current-line 1))))
 
-;;-------------------------------------------------
-;; Hook
-;;-------------------------------------------------
-
-(add-hook 'before-save-hook 'custom-before-save-hook)
-
-;; Org mode
-(add-hook 'org-mode-hook 'custom-org-mode-hook)
-(defun custom-org-mode-hook ()
-  (org-indent-mode)
-  (lazy-unset-key '("C-c C-k") org-mode-map)
-  (setq org-startup-indented t)
-
-  ;; 生成 html 文件时代码高亮
-  (require 'htmlize)
-  (setq org-src-fontify-natively t)
-
-  (defun org-insert-src-block ()
-    (interactive
-     (let ((src-code-types
-            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++"
-              "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
-              "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
-              "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
-              "org" "perl" "ruby" "scheme" "sqlite" "html")))
-       (list (ido-completing-read "Source code type: " src-code-types))))
-    (progn
-      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-      (newline-and-indent)
-      (insert "#+END_SRC")
-      (previous-line 2)
-      (org-edit-src-code))
-    (local-set-key (kbd "C-c c e") 'org-edit-src-code)
-    (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
-
-;; Python mode
-(add-hook 'python-mode-hook 'custom-python-mode-hook)
-(defun custom-python-mode-hook ()
-  (lazy-unset-key '("<backtab>") python-mode-map)
-
-  (require 'elpy)
-  (elpy-mode)
-
-  ;; (highlight-indent-guides-mode)
-
-  (require 'py-autopep8)
-  (py-autopep8-enable-on-save)
-
-  (setq python-shell-prompt-detect-enabled nil))
-
-;; Scheme mode
-(setq scheme-program-name "scheme")
-
-(defun scheme-proc ("scheme" "run-scheme scheme-program-name"))
-
-(defun custom-scheme-send-last-sexp-split-window ()
+;; 启用完整配置
+(defun custom-full ()
   (interactive)
-  (custom-split-window "*scheme*")
-  (scheme-send-last-sexp))
-
-(defun custom-scheme-send-definition-split-window ()
-  (interactive)
-  (custom-split-window "*scheme*")
-  (scheme-send-definition))
-
-(defun custom-init-scheme-mode ()
-  (require 'cmuscheme)
-
-  (define-key scheme-mode-map (kbd "C-c C-k")    'nil)
-  (define-key scheme-mode-map (kbd "<f5>")       'custom-scheme-send-last-sexp-split-window)
-  (define-key scheme-mode-map (kbd "<f6>")       'custom-scheme-send-definition-split-window))
-
-(add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
-(add-hook 'inferior-scheme-mode-hook
-          (lambda ()
-            (define-key inferior-scheme-mode-map (kbd "C-c C-k") 'nil)))
-
-;; Text mode
-(when *WINDOWS*
-  (add-hook 'text-mode-hook 'init-wb-dict-gitrepo))
-
-(defun init-wb-dict-gitrepo ()
-  (add-hook 'kill-emacs-query-functions 'wb-dict-git-push)
-  (defun wb-dict-git-push ()
-    (interactive)
-    (if (equal (buffer-name) "userdefinephrase.dat")
-        (let* ((wb-dict-root (concat (getenv "ToolsHome") "\\BingWuBiDict")))
-          (progn
-            (shell-command (concat "cp -f '" (buffer-file-name) "' " wb-dict-root "'"))
-            (git-push wb-dict-root)))
-      (message "Exiting."))))
-
-;; Web mode
-(add-hook 'html-mode-hook 'enable-web-mode)
-
-(add-hook 'css-mode-hook  'enable-emmet-mode)
-(add-hook 'js2-mode-hook  'enable-emmet-mode)
-(add-hook 'json-mode-hook 'enable-emmet-mode)
-(add-hook 'web-mode-hook  'enable-emmet-mode)
+  (require 'extensions))
 
 ;; 最大化
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))

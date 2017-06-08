@@ -29502,7 +29502,7 @@ lkkh 回路 回嘴 回跌
 lkkt 回响
 lkld 加固
 lklf 回转
-lklg 驾车 回国 回车
+lklg 回车 驾车 回国
 lklk 圆圆 回回
 lklt 加力
 lklu ○ 圆圈
@@ -45476,7 +45476,7 @@ rtrf 手持
 rtrg 拨乱反正
 rtrh 搬掉
 rtri 手抄
-rtrj 手提
+rtrj 拖拽 手提
 rtrn 招待所 手气
 rtrs 捶打
 rtrt 插手 挺括 皒
@@ -47465,7 +47465,7 @@ sgue 醸
 sguf 西装 顶天立地 酙
 sgug 酸辣
 sguh 枰 酷站 本站
-sguj 配音 本意 醉意
+sguj 本意 配音 醉意
 sguk 醅 本部 西部
 sgun 醷
 sguq 本次 西郊 相互竞争
@@ -50792,7 +50792,7 @@ tgqr 生铁
 tgqt 重犯 秤锤 生锈 生猪
 tgr 笺 椾 牋 箋
 tgrc 策反 重返
-tgrd 重振 重排
+tgrd 重排 重振
 tgrf 秉持 垂挂
 tgrg 重兵 征兵
 tgri 繁琐哲学
@@ -50957,7 +50957,7 @@ thgd 牍 牘
 thgf 牌 处于 牉 牔
 thgh 牗
 thgi 怎不
-thgj 自理 处理 牏
+thgj 处理 自理 牏
 thgk 处事 自带 牊
 thgl 版画
 thgm 自责 牘

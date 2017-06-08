@@ -4,7 +4,7 @@
 
 ;; Author: MingxunBai
 ;; Keywords: convenience
-;; Version: 1.0
+;; Version: 2.0
 
 ;; This is custom key bind use lazy-set-key.
 
@@ -16,6 +16,7 @@
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
+                ("C-c f"        .   custom-full)
                 ("C-x p"        .   custom-git-push-current-buffer)
                 ("C-x k"        .   custom-ido-kill-buffer)
                 ("C-M-\\"       .   custom-indent-buffer)
