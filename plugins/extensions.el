@@ -117,7 +117,7 @@
   (when *WINDOWS*
     (custom-set-variables '(markdown-command "markdown.pl")))
 
-  (lazy-unset-key '("C-c C-k") org-mode-map))
+  (lazy-unset-key '("C-c C-k") markdown-mode-map))
 
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
