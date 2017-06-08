@@ -99,7 +99,7 @@
   (json-mode))
 
 ;; Lazy set key
-(require 'lazy-key-bind)
+(require 'lazy-full-bind)
 
 ;; Less css mode
 (defun enable-less-css-mode ()
@@ -187,38 +187,24 @@
     (run-scheme scheme-program-name))
   (or ("scheme-get-process")))
 
-(defun scheme-send-last-sexp-split-window ()
+(defun custom-scheme-send-last-sexp-split-window ()
   (interactive)
-  (scheme-split-window)
+  (end-of-line)
+  (custom-split-window "*scheme*" 'switch-to-buffer)
   (scheme-send-last-sexp))
 
-(defun scheme-send-definition-split-window ()
+(defun custom-scheme-send-definition-split-window ()
   (interactive)
-  (scheme-split-window)
+  (end-of-line)
+  (custom-split-window "*scheme*" 'switch-to-buffer)
   (scheme-send-definition))
-
-(defun scheme-split-window ()
-  (cond
-   ((= 1 (count-windows))
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window 1))
-   ((not (find "*scheme*"
-               (mapcar (lambda (w) (buffer-name (window-buffer w)))
-                       (window-list))
-               :test 'equal))
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window -1))))
 
 (defun custom-init-scheme-mode ()
   (require 'cmuscheme)
 
   (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
-  (define-key scheme-mode-map (kbd "<f5>")    'scheme-send-last-sexp-split-window)
-  (define-key scheme-mode-map (kbd "<f6>")    'scheme-send-definition-split-window))
+  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-last-sexp-split-window)
+  (define-key scheme-mode-map (kbd "<f6>")    'custom-scheme-send-definition-split-window))
 
 ;; SCSS mode
 (defun enable-scss-mode ()

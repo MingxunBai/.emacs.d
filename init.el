@@ -212,7 +212,7 @@
 
 ;; Lazy set key
 (require 'lazy-set-key)
-(require 'lazy-key-bind)
+(require 'lazy-init-bind)
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -269,18 +269,26 @@
       (set-buffer-file-coding-system 'utf-8-unix)
     (message "It's a unix file.")))
 
-;; Eshell
-(defun custom-eshll ()                  ; 设置别名为 es
-  (interactive)
+;; Command 分离窗口运行
+(defun custom-split-window (mode command)
+  (delete-other-windows)
   (split-window-vertically (floor (* 0.68 (window-height))))
   (other-window 1)
-  (eshell))
+  (funcall command mode)
+  (other-window 1))
+
+(defun custom-eshll ()                  ; 设置别名为 es
+  (interactive)
+  (custom-split-window "*eshell*" 'eshell)
+  (other-window 1))
 
 ;; 缩进重排
 (defun custom-indent-buffer ()
   (interactive)
-  (let ((line (count-lines 1 (point))))
-    (custom-remeber-point-step)
+  (let ((line (if (bolp)
+                  (1+ (count-lines 1 (point)))
+                (count-lines 1 (point))))
+        (step (custom-remeber-point-step)))
     (indent-region (point-min) (point-max))
     (goto-line line)
     (back-to-indentation)
@@ -349,8 +357,9 @@
 ;; 换行
 (defun custom-return ()
   (interactive)
-  (if (eq major-mode 'scheme-mode)
-      (custom-lisp-paren-return)
+  (if (and (eq major-mode 'scheme-mode)
+           (string-equal ")" (string (following-char))))
+      (custom-scheme-paren-return)
     (if (eq major-mode 'emacs-lisp-mode)
         (newline-and-indent)
       (if (or (custom-paren-match "{" "}")
@@ -385,8 +394,8 @@
     (previous-line)
     (indent-according-to-mode)))
 
-;; Lisp 括号换行
-(defun custom-lisp-paren-return ()
+;; Scheme 括号换行
+(defun custom-scheme-paren-return ()
   (progn
     (newline-and-indent)
     (previous-line)
@@ -437,15 +446,17 @@
     (indent-according-to-mode)))
 
 (defun custom-remeber-point-step ()
-  (let ((cols (point)))
+  (let ((bef (point)))
     (back-to-indentation)
-    (setq step (- cols (point)))))
+    (let ((step (- bef (point))))
+      (if (< step 0)
+          0
+        step))))
 
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
-  (custom-remeber-point-step)
-  (progn
+  (let ((step (custom-remeber-point-step)))
     (beginning-of-line)
     (if (bobp)
         (progn
@@ -464,8 +475,7 @@
 ;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
-  (custom-remeber-point-step)
-  (progn
+  (let ((step (custom-remeber-point-step)))
     (end-of-line)
     (if (eobp)
         (progn
