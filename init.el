@@ -55,6 +55,7 @@
 (defalias 'ev  'eval-buffer)
 (defalias 'es  'custom-eshll)
 (defalias 'ff  'set-buffer-file-coding-system)
+(defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
 
 ;; (set-default-font "Source Code Pro-12")
