@@ -60,13 +60,13 @@ Markdown-mode
 
 Multiple-cursors
 --------------------
-- 多点编辑, 快捷键 <kbd>Alt + click</kbd>
+- <kbd>Alt + click</kbd> 多点编辑
 - <kbd>C-S-c C-S-c</kbd> 为选定区块的每一行开启多点编辑
 
 Org-mode
 --------------------
-- 添加代码高亮 - 快速插入代码块, 快捷键 <kbd>C-c c i</kbd>
-- 编辑代码块, 快捷键 <kbd>C-c c e</kbd>
+- <kbd>C-c c i</kbd> 插入代码块
+- <kbd>C-c c e</kbd> 编辑代码块
 
 Origami-mode
 --------------------
@@ -82,8 +82,8 @@ Origami-mode
 
 Project-explorer
 --------------------
-- 显示或隐藏项目树, 快捷键 <kbd>F1</kbd>
-- 自定复制相对路径函数, 快捷键 <kbd>C-c c</kbd>
+- <kbd>F1</kbd> 显示或隐藏项目树
+- <kbd>C-c c</kbd> 复制相对路径
 
 Tabbar-mode
 --------------------
@@ -105,5 +105,5 @@ Web-mode
 
 Winner-mode
 --------------------
-- 撤销窗口改变, 快捷键 <kbd>C-x 4 u</kbd>
-- 恢复窗口改变, 快捷键 <kbd>C-x 4 r</kbd>
+- <kbd>C-x 4 u</kbd> 撤销窗口改变
+- <kbd>C-x 4 r</kbd> 恢复窗口改变
