@@ -12,7 +12,7 @@ Extensions
 
 五笔输入法
 --------------------
-- 默认为英文状态, <kbd>C-\</kbd> 切换
+- 默认为英文状态, <kbd>C-\\</kbd> 切换
 - 可通过修改 `plugins/input-wbpy/wb.txt` 调整词序
 
 Elpy-mode
