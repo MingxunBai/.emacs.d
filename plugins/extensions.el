@@ -86,12 +86,6 @@
   (local-set-key (kbd "C-c b")   'js-send-buffer)
   (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
 
-;; Java IDE mode
-(defun enable-jdee-mode ()
-  (interactive)
-  (require 'jdee)
-  (jdee-mode))
-
 ;; JSON mode
 (defun enable-json-mode ()
   (interactive)
@@ -160,6 +154,8 @@
   (other-window 1)
   (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
 
+(define-key project-explorer-mode-map (kbd "C-c c") 'pe/copy-relative-path)
+
 ;; Python mode
 (add-hook 'python-mode-hook 'custom-python-mode-hook)
 (defun custom-python-mode-hook ()
@@ -187,24 +183,17 @@
     (run-scheme scheme-program-name))
   (or ("scheme-get-process")))
 
-(defun custom-scheme-send-last-sexp-split-window ()
-  (interactive)
-  (end-of-line)
-  (custom-split-window "*scheme*" 'switch-to-buffer)
-  (scheme-send-last-sexp))
-
 (defun custom-scheme-send-definition-split-window ()
   (interactive)
   (end-of-line)
-  (custom-split-window "*scheme*" 'switch-to-buffer)
+  (custom-split-window "*scheme*" 'switch-to-buffer "*scheme*")
   (scheme-send-definition))
 
 (defun custom-init-scheme-mode ()
   (require 'cmuscheme)
 
   (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
-  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-last-sexp-split-window)
-  (define-key scheme-mode-map (kbd "<f6>")    'custom-scheme-send-definition-split-window))
+  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition-split-window))
 
 ;; SCSS mode
 (defun enable-scss-mode ()
@@ -256,6 +245,10 @@
 
 (add-hook 'html-mode-hook 'enable-web-mode)
 
+;; Winner mode
+(when (fboundp 'winner-mode)
+  (winner-mode))
+
 ;; Yaml mode
 (defun enable-yaml-mode ()
   (interactive)
@@ -306,7 +299,6 @@
 (setq auto-mode-alist
       (append '(("\\.css\\'"    .   (lambda () (enable-web-mode)))
                 ("\\.go\\'"     .   (lambda () (enable-go-mode)))
-                ("\\.java\\'"   .   (lambda () (enable-jdee-mode)))
                 ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
                 ("\\.json\\'"   .   (lambda () (enable-json-mode)))
                 ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))

@@ -24,6 +24,10 @@
                 ;; Project explorer mode
                 ("<f1>"         .   project-explorer-toggle)
 
+                ;; Winner mode
+                ("C-x 4 r"      .   winner-redo)
+                ("C-x 4 u"      .   winner-undo)
+
                 ;; YASnippet mode
                 ("<C-tab>"      .   yas-ido-expand)
 

@@ -240,10 +240,6 @@
 (require 'window-numbering)
 (window-numbering-mode)
 
-;; Winner mode
-(when (fboundp 'winner-mode)
-  (winner-mode))
-
 ;;-------------------------------------------------
 ;; Major Mode
 ;;-------------------------------------------------
@@ -270,17 +266,27 @@
     (message "It's a unix file.")))
 
 ;; Command 分离窗口运行
-(defun custom-split-window (mode command)
+(defun custom-split-window (mode command &optional param)
   (delete-other-windows)
   (split-window-vertically (floor (* 0.68 (window-height))))
   (other-window 1)
-  (funcall command mode)
+  (funcall command param)
   (other-window 1))
 
+;; Lisp mode
+(define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
+(define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
+
+;; Eshell
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
+  (setq path (file-name-directory (buffer-file-name)))
+  (kill-new (concat "cd " path))
   (custom-split-window "*eshell*" 'eshell)
-  (other-window 1))
+  (other-window 1)
+  (let ((pwd (eshell/pwd)))
+    (if (not (string-equal pwd path))
+        (eshell/cd path))))
 
 ;; 缩进重排
 (defun custom-indent-buffer ()
@@ -357,17 +363,12 @@
 ;; 换行
 (defun custom-return ()
   (interactive)
-  (if (and (eq major-mode 'scheme-mode)
-           (string-equal ")" (string (following-char))))
-      (custom-scheme-paren-return)
-    (if (eq major-mode 'emacs-lisp-mode)
-        (newline-and-indent)
-      (if (or (custom-paren-match "{" "}")
-              (custom-paren-match "[" "]")
-              (custom-paren-match "(" ")")
-              (custom-paren-match ">" "<"))
-          (custom-middle-newline)
-        (newline-and-indent)))))
+  (if (or (custom-paren-match "{" "}")
+          (custom-paren-match "[" "]")
+          (custom-paren-match "(" ")")
+          (custom-paren-match ">" "<"))
+      (custom-middle-newline)
+    (newline-and-indent)))
 
 ;; 向上新建一行
 (defun custom-up-newline ()
@@ -385,7 +386,7 @@
     (end-of-line)
     (newline-and-indent)))
 
-;; 标签内新建一行
+;; 标号内新建一行
 (defun custom-middle-newline ()
   (interactive)
   (progn
@@ -393,13 +394,6 @@
     (newline-and-indent)
     (previous-line)
     (indent-according-to-mode)))
-
-;; Scheme 括号换行
-(defun custom-scheme-paren-return ()
-  (progn
-    (newline-and-indent)
-    (previous-line)
-    (end-of-line)))
 
 ;; 匹配括号
 (defun custom-paren-match (bef end)
@@ -418,12 +412,6 @@
   (interactive)
   (split-window-below)
   (other-window 1))
-
-;; 删除 buffer
-(defun custom-ido-kill-buffer ()
-  (interactive)
-  (ido-kill-buffer)
-  (delete-window))
 
 ;; 粘贴
 (defun custom-yank ()

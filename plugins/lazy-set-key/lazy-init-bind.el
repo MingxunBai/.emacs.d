@@ -17,7 +17,6 @@
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
-                ("C-x k"        .   custom-ido-kill-buffer)
                 ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
                 ("<left-margin> <down-mouse-1>" . custom-md-select-linum)
@@ -42,10 +41,6 @@
                 ("C--"          .   tabbar-backward)
                 ("M--"          .   tabbar-backward-group)
                 ("C-="          .   tabbar-forward)
-                ("M-="          .   tabbar-forward-group)
-
-                ;; Winner mode
-                ("C-x 4 r"      .   winner-redo)
-                ("C-x 4 u"      .   winner-undo)))
+                ("M-="          .   tabbar-forward-group)))
 
 (provide 'lazy-init-bind)

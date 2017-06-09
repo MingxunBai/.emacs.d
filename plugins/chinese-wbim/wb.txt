@@ -5504,9 +5504,9 @@ ceqe 通解
 ceqg 通铺
 ceqk 能够
 ceqn 熊包
-ceqt 勇猛 熊猫
+ceqt 熊猫 勇猛
 cerb 通报
-cern 通气 勇气
+cern 勇气 通气
 cert 能手
 cerx 能指
 cesf 通票
@@ -5599,7 +5599,7 @@ cfmt 对账
 cfmw 对内
 cfn 怼 懟
 cfna 圣殿
-cfnn 参考书 对局
+cfnn 对局 参考书
 cfnt 能动性
 cfnu 怼
 cfoo 圣火
@@ -20699,7 +20699,7 @@ ifsy 法术
 ift 渚
 iftb 涍
 ifte 潜艇
-iftf 清教徒 潜行 汗毛
+iftf 汗毛 潜行 清教徒
 ifth 汗臭
 iftj 渚
 iftm 污秽
@@ -23086,7 +23086,7 @@ ituj 泛音
 ituk 水利部
 itul 法律效力
 itup 消息闭塞
-ituq 少将 海盗
+ituq 海盗 少将
 itur 活瓣
 itus 省亲
 itut 小生产 海产

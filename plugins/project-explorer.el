@@ -1646,7 +1646,6 @@ Redraws the tree based on DATA. Will try to restore folds, if TYPE is
                 pe/mode-line-format))
 
   (es-define-keys project-explorer-mode-map
-    (kbd "C-c c") 'pe/copy-relative-path
     (kbd "+") 'pe/create-file
     (kbd "-") 'pe/delete-file
     (kbd "d") 'pe/delete-file
