@@ -123,7 +123,7 @@
 
       c-basic-offset 4                  ; C 语言缩进为 4
 
-      linum-format " %4d |"             ;
+      linum-format "%5d|"             ;
       column-number-mode                ; 显示行号列号
       line-number-mode                  ;;
 
@@ -173,7 +173,7 @@
         :group 'linum)
 
       (defun my-linum-format (line-number)
-        (propertize (format " %4d \u2502" line-number) 'face
+        (propertize (format "%5d\u2502" line-number) 'face
                     (if (eq line-number my-linum-current-line-number)
                         'my-linum-hl
                       'linum)))

@@ -59296,7 +59296,7 @@ wcoy 公粮
 wcpd 公害
 wcpe 公家
 wcpg 化验室
-wcpj 公审 公寓
+wcpj 公寓 公审
 wcpo 优柔寡断
 wcpv 公安 公案
 wcpy 公社
