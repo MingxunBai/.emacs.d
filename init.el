@@ -123,7 +123,7 @@
 
       c-basic-offset 4                  ; C 语言缩进为 4
 
-      linum-format "%5d|"             ;
+      linum-format "%5d|"               ;
       column-number-mode                ; 显示行号列号
       line-number-mode                  ;;
 

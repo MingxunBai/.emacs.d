@@ -37,6 +37,7 @@
 
 ;; Git
 (defun find-git-repo (dir)
+  (interactive)
   "Find base git directory"
   (if (or (string= "/"   dir)
           (string= "c:/" dir)
@@ -55,7 +56,7 @@
 
 (defun custom-git-push-current-buffer ()
   (interactive)
-  (let ((root (find-git-repo default-directory)))
+  (let ((root (find-git-repo (file-name-directory (buffer-file-name)))))
     (git-push root)))
 
 ;; GoLang
