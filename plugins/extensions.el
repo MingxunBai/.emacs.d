@@ -39,11 +39,7 @@
 (defun find-git-repo (dir)
   (interactive)
   "Find base git directory"
-  (if (or (string= "/"   dir)
-          (string= "c:/" dir)
-          (string= "d:/" dir)
-          (string= "e:/" dir)
-          (string= "f:/" dir))
+  (if (not (string-match "[a-z0-9_-]/" dir))
       (message "It's not a git repo.")
     (if (file-exists-p (expand-file-name ".git/" dir))
         dir
