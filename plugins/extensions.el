@@ -79,9 +79,7 @@
   (setq inferior-js-program-command "node")
   (setq inferior-js-program-arguments '("--interactive"))
 
-  (local-set-key (kbd "C-c f")   'js-load-file-and-go)
-  (local-set-key (kbd "C-c b")   'js-send-buffer)
-  (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go))
+  (define-key js2-mode-map (kbd "<f5>")   'js-send-buffer))
 
 ;; JSON mode
 (defun enable-json-mode ()
