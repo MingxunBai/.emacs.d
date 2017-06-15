@@ -278,6 +278,7 @@
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
 ;; Eshell
+(add-hook 'eshell-exit-hook 'delete-window)
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
   (if (not (condition-case nil
