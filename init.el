@@ -266,7 +266,7 @@
     (message "It's a unix file.")))
 
 ;; Command 分离窗口运行
-(defun custom-split-window (mode command &optional param)
+(defun custom-split-window (command &optional param)
   (delete-other-windows)
   (split-window-vertically (floor (* 0.68 (window-height))))
   (other-window 1)
@@ -280,13 +280,17 @@
 ;; Eshell
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
-  (setq path (file-name-directory (buffer-file-name)))
-  (kill-new (concat "cd " path))
-  (custom-split-window "*eshell*" 'eshell)
-  (other-window 1)
-  (let ((pwd (eshell/pwd)))
-    (if (not (string-equal pwd path))
-        (eshell/cd path))))
+  (if (not (condition-case nil
+               (setq path (file-name-directory (buffer-file-name)))
+             (error nil)))
+      (message "Eshell need a local file buffer!")
+    (progn
+      (kill-new (concat "cd " path))
+      (custom-split-window 'eshell)
+      (other-window 1)
+      (let ((pwd (eshell/pwd)))
+        (if (not (string-equal pwd path))
+            (eshell/cd path))))))
 
 ;; 缩进重排
 (defun custom-indent-buffer ()

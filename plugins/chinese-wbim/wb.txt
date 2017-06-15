@@ -45487,7 +45487,7 @@ rtry 插科打诨 所向披靡 兵役制度
 rtsa 手模
 rtsd 手杖
 rtsf 插枝
-rtsg 插槽 手柄
+rtsg 手柄 插槽
 rtsh 手相
 rtsl 后生可畏
 rtsm 播种机 手机
@@ -56241,6 +56241,7 @@ utck 疾驶
 utcm 道观 道德观
 utcw 道德观念
 utd 疾
+utdc 道友
 utdg 瘪三
 utdh 道破
 utdi 疾
@@ -68545,7 +68546,7 @@ yyfg 广博 方寸
 yyfi 访求
 yyfj 文翰
 yyfm 文献
-yyfn 广场 方块
+yyfn 方块 广场
 yyfq 广元
 yyft 方才 设计者 文教 文才 主义者
 yyfy 谆谆教诲

@@ -79,7 +79,16 @@
   (setq inferior-js-program-command "node")
   (setq inferior-js-program-arguments '("--interactive"))
 
-  (define-key js2-mode-map (kbd "<f5>")   'js-send-buffer))
+  (defun custom-js-send-buffer ()
+    (interactive)
+    (js-send-buffer)
+    (delete-other-windows)
+    (custom-split-window 'switch-to-buffer "*js*")
+    (other-window 1)
+    (end-of-buffer)
+    (other-window 1))
+
+  (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer))
 
 ;; JSON mode
 (defun enable-json-mode ()
@@ -178,17 +187,17 @@
     (run-scheme scheme-program-name))
   (or ("scheme-get-process")))
 
-(defun custom-scheme-send-definition-split-window ()
+(defun custom-scheme-send-definition ()
   (interactive)
   (end-of-line)
-  (custom-split-window "*scheme*" 'switch-to-buffer "*scheme*")
+  (custom-split-window 'switch-to-buffer "*scheme*")
   (scheme-send-definition))
 
 (defun custom-init-scheme-mode ()
   (require 'cmuscheme)
 
   (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
-  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition-split-window))
+  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition))
 
 ;; SCSS mode
 (defun enable-scss-mode ()
@@ -233,12 +242,12 @@
   (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
   (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192")
 
-  (add-hook 'css-mode-hook  'enable-emmet-mode)
-  (add-hook 'js2-mode-hook  'enable-emmet-mode)
-  (add-hook 'json-mode-hook 'enable-emmet-mode)
   (add-hook 'web-mode-hook  'enable-emmet-mode))
 
+(add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
+(add-hook 'js2-mode-hook  'enable-emmet-mode)
+(add-hook 'json-mode-hook 'enable-emmet-mode)
 
 ;; Winner mode
 (when (fboundp 'winner-mode)
@@ -304,5 +313,8 @@
                 ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
                 ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
               auto-mode-alist))
+
+;; Reload mode
+(set-auto-mode)
 
 (provide 'extensions)
