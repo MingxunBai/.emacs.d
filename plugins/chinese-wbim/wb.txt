@@ -20028,7 +20028,7 @@ iaia 浇灌 满满 渠灌 湛江 泄洪 洪涝
 iaic 江汉
 iaid 江湖
 iaig 满清
-iaii 洪水 江水 灌水 泔水
+iaii 灌水 江水 洪水 泔水
 iail 潆洄
 iain 泄漏
 iaip 汇演 满堂 法医学
@@ -27932,7 +27932,7 @@ kris 啤酒
 kriy 咮
 krke 蹑手蹑脚
 krkn 嗥叫
-krkr 呱呱
+krkr 听听 呱呱
 krl 嘸
 krlo 嘸
 krlt 听力
@@ -50614,6 +50614,7 @@ tfyn 造词 乖戾
 tfyo 行迹
 tfyr 告诉
 tfyt 行旅 德州 行话 先进设备 赞许
+tfyu 靠谱
 tfyw 午夜
 tfyx 造诣
 tfyy 各地方 行文 德文 造访
