@@ -200,11 +200,16 @@
 ;; Company mode
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-
 (require 'company-dict)
 (setq company-idle-delay 0
+      company-minimum-prefix-length 1
       company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
+
+;; Highlight indent guides
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-method 'character)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
 ;; Highlight parentheses mode
 (require 'highlight-parentheses)
@@ -430,16 +435,15 @@
 
 ;; 移动当前行
 (defun custom-move-current-line (n)
-  (progn
-    (kill-new "")
-    (beginning-of-line)
-    (kill-whole-line)
-    (forward-line n)
-    (custom-yank)
-    (forward-line -1)
-    (back-to-indentation)
-    (forward-char step)
-    (indent-according-to-mode)))
+  (kill-new "")
+  (beginning-of-line)
+  (kill-whole-line)
+  (forward-line n)
+  (yank)
+  (forward-line -1)
+  (back-to-indentation)
+  (forward-char step)
+  (indent-according-to-mode))
 
 (defun custom-remeber-point-step ()
   (let ((bef (point)))
@@ -449,36 +453,59 @@
           0
         step))))
 
+(defun custom-repos (msg)
+  (message msg)
+  (back-to-indentation)
+  (forward-char step))
+
+(defun custom-forward-line-end (n)
+  (forward-line n)
+  (end-of-line))
+
+(defun custom-bobp? ()
+  (beginning-of-line)
+  (if (bobp)
+      't
+    nil))
+
+(defun custom-eobp? (n)
+  (custom-forward-line-end n)
+  (let ((rst (eobp)))
+    (custom-forward-line-end (- 0 n))
+    rst))
+
+(defun custom-next-line-empty? ()
+  (forward-line 1)
+  (let ((rst (eq (point-at-bol) (point-at-eol))))
+    (forward-line -1)
+    rst))
+
 ;; 上移一行
 (defun custom-move-up-current-line ()
   (interactive)
   (let ((step (custom-remeber-point-step)))
-    (beginning-of-line)
-    (if (bobp)
-        (progn
-          (message "Beginning of buffer!")
-          (back-to-indentation)
-          (forward-char step))
-      (progn
-        (end-of-line)
-        (if (eobp)
-            (progn
-              (newline)
-              (forward-line -1)
-              (custom-move-current-line -1))
-          (custom-move-current-line -1))))))
+    (cond ((custom-bobp?)
+           (custom-repos "Beginning of buffer!"))
+          ((custom-eobp? 0)
+           (newline)
+           (forward-line -1)
+           (custom-move-current-line -1))
+          (t (custom-move-current-line -1)))))
 
 ;; 下移一行
 (defun custom-move-down-current-line ()
   (interactive)
   (let ((step (custom-remeber-point-step)))
-    (end-of-line)
-    (if (eobp)
-        (progn
-          (message "End of buffer!")
-          (back-to-indentation)
-          (forward-char step))
-      (custom-move-current-line 1))))
+    (cond ((custom-eobp? 0)
+           (custom-repos "End of buffer!"))
+          ((and (custom-next-line-empty?) (custom-eobp? 1))
+           (custom-repos "End of buffer!"))
+          ((and (not (custom-next-line-empty?)) (custom-eobp? 1))
+           (custom-forward-line-end 1)
+           (newline)
+           (forward-line -2)
+           (custom-move-current-line 1))
+          (t (custom-move-current-line 1)))))
 
 ;; 启用完整配置
 (defun full ()

@@ -8276,7 +8276,7 @@ dmmq 布网
 dmmu 原则同意
 dmn 矶 磯
 dmnk 面壁 碢
-dmnn 布局 而已 硙 磑
+dmnn 而已 布局 硙 磑
 dmnt 耐性 原则性
 dmny 耐心
 dmod 耐烦 面糊
@@ -11910,7 +11910,7 @@ ffty 填入 未老先衰
 ffu 寺 墙
 ffua 封冻
 ffud 墙头
-ffuf 封闭 封装
+ffuf 封装 封闭
 ffuj 土音 卦意
 ffuk 墙 老干部 墻 牆
 ffum 土鳖
@@ -12758,7 +12758,7 @@ fjym 南昌市 埋设
 fjyt 斡旋
 fjyx 坦率
 fjyy 塌方 进言 坦言
-fk 吉 露 喜
+fk 吉 喜 露
 fkaj 喜鹊
 fkap 露营
 fkaq 喜获
@@ -15989,7 +15989,7 @@ ghtd 政敌 正逢
 ghte 下船 下盘
 ghtf 下等 下午 下行 正告 正午 正待
 ghtg 下策 政策 下垂
-ghth 正牌 正版
+ghth 正版 正牌
 ghtj 焉得
 ghtk 下种 正和
 ghtl 政务
@@ -28544,7 +28544,7 @@ kyxy 呟 噰
 kyy 呅
 kyyj 另请高明
 kyym 唱高调
-l 国 因 回
+l 国 回 因
 la 轼 羁 異
 laa 轼
 laag 轼 軾
@@ -50695,7 +50695,7 @@ tggj 生理
 tggk 生事 重整 先天不足
 tggl 策画
 tggm 重现 重责
-tggo 生来 重来
+tggo 重来 生来
 tggq 生死 生殖 垂死
 tggt 特殊政策
 tggu 生平
@@ -51098,7 +51098,7 @@ thsu 怎样 臬
 thsw 自检
 thsy 算术 自述
 thta 处长 延长 片长
-thtc 自私 怎么
+thtc 怎么 自私
 thtd 自筹 自知
 thte 算盘
 thtf 自选 自行 自造 自赞
@@ -53674,7 +53674,7 @@ tyrh 往年
 tyrr 程序控制
 tyrt 入手
 tysc 自主权
-tysg 稿本 稿酬 笔记本
+tysg 笔记本 稿本 稿酬
 tysm 复读机
 tyss 入梦
 tyt 簇
@@ -55275,7 +55275,7 @@ ukit 冲洗 意味深长
 ukiv 问津
 ukiy 冲浪
 ukj 剖
-ukjg 总是 问题 冲量 总量
+ukjg 问题 总是 总量 冲量
 ukjh 剖
 ukjp 闭路电视
 ukjt 总监 总览
@@ -58915,7 +58915,7 @@ vyl 妫 媯 嬀
 vylg 嬗 君主国 妙语连珠
 vyly 妫
 vymn 妔
-vyn 妨 忍
+vyn 忍 妨
 vyna 媥
 vynn 妒忌 建议书
 vynp 女为悦己者容
@@ -59787,7 +59787,7 @@ wftc 什么
 wftd 舒适
 wftf 佛教徒 仁德
 wftg 儒生
-wftj 值得 舍得 舍利 偖
+wftj 舍得 值得 舍利 偖
 wftk 全过程 传种 父进程
 wftl 会务
 wftm 会徽 舍身
@@ -64366,7 +64366,7 @@ xtfw 纤夫 绵延起伏
 xtg 缍
 xtga 张开
 xtgd 终天
-xtgf 缍 终于 ≈ 红血球 綞 緟
+xtgf 终于 缍 ≈ 红血球 綞 緟
 xtgg 继往开来
 xtgh 乡下
 xtgj 纪律严明
@@ -67010,7 +67010,7 @@ yntf 词选
 yntg 良性循环 永生
 ynth 肇 词牌 讯息
 ynti 綮
-yntj 刻 记得 赢得 赢利 麝香 晵
+yntj 记得 刻 赢得 赢利 麝香 晵
 yntk 启程 啓 扄
 yntl 谧 劾 衁 謐
 yntm 颏 賌 頦

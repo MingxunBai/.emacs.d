@@ -18,7 +18,7 @@
 (set-input-method 'chinese-wbim)
 (toggle-input-method)
 
-;;; Extensions
+;;; Modes
 ;; Dumb jump mode
 (require 'dumb-jump)
 (dumb-jump-mode)
@@ -36,24 +36,24 @@
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
 ;; Git
-(defun find-git-repo (dir)
+(defun custom-find-git-repo (dir)
   (interactive)
   "Find base git directory"
   (if (not (string-match "[a-z0-9_-]/" dir))
       (message "It's not a git repo.")
     (if (file-exists-p (expand-file-name ".git/" dir))
         dir
-      (find-git-repo (expand-file-name "../" dir)))))
+      (custom-find-git-repo (expand-file-name "../" dir)))))
 
-(defun git-push (root)
+(defun custom-git-push (root)
   (shell-command (concat "cd " root " && git add -A"))
   (shell-command (concat "cd " root " && git commit -m 'Update'"))
   (shell-command (concat "cd " root " && git push")))
 
 (defun custom-git-push-current-buffer ()
   (interactive)
-  (let ((root (find-git-repo (file-name-directory (buffer-file-name)))))
-    (git-push root)))
+  (let ((root (custom-find-git-repo (file-name-directory (buffer-file-name)))))
+    (custom-git-push root)))
 
 ;; GoLang
 (defun enable-go-mode ()
@@ -66,16 +66,11 @@
 
   (local-set-key (kbd "C-x f") 'go-save-fmt))
 
-;; Highlight indent guides
-(require 'highlight-indent-guides)
-(setq highlight-indent-guides-method 'character)
-
 ;; JavaScript IDE mode
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
   (js2-mode)
-
   (setq js2-strict-missing-semi-warning nil)
 
   (require 'js-comint)
@@ -170,7 +165,6 @@
   (require 'py-autopep8)
   (py-autopep8-enable-on-save)
 
-  ;; (highlight-indent-guides-mode)
   (lazy-unset-key '("<backtab>") python-mode-map)
   (setq python-shell-prompt-detect-enabled nil))
 
