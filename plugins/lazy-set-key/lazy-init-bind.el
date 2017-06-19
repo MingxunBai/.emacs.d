@@ -19,9 +19,6 @@
                 ("C-o"          .   custom-down-newline)
                 ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
-                ("<left-margin> <down-mouse-1>" . custom-md-select-linum)
-                ("<left-margin> <drag-mouse-1>" . custom-mu-select-linum)
-                ("<left-margin> <mouse-1>"      . custom-mu-select-linum)
                 ("M-]"          .   custom-move-down-current-line)
                 ("M-["          .   custom-move-up-current-line)
                 ("C-c r"        .   custom-resize-indentation)
@@ -31,6 +28,7 @@
                 ("C-x 3"        .   custom-split-window-right)
                 ("M-o"          .   custom-up-newline)
                 ("C-y"          .   custom-yank)
+                ("<left-margin> <mouse-1>" . custom-go-to-click-line)
 
                 ;; Multiple cursors
                 ("M-<mouse-1>"  .   mc/add-cursor-on-click)

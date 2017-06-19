@@ -18,13 +18,14 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-
 (add-subdirs-to-load-path *PLUGINS*)
 
 (setq default-directory
       (if *WINDOWS*
           (format "C:/Users/%s/Documents" user-full-name)
         "~/Documents"))
+
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
 ;;-------------------------------------------------
 ;; 编码环境
@@ -66,37 +67,31 @@
   ;; 设置透明度
   (set-frame-parameter (selected-frame) 'alpha '(95 . 70)))
 
-;; Themes
-(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
-(load-theme 'monokai t)
-
 (global-auto-revert-mode)               ; Auto revert
-
-(global-font-lock-mode)                 ; 语法高亮
-
-(global-linum-mode)                     ; 显示行号
 
 (ido-mode)
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
 
-(menu-bar-mode -1)                      ; 隐藏菜单栏
+(global-linum-mode)                     ; 显示行号
 
 (show-paren-mode)                       ; 高亮匹配括号
 
+(menu-bar-mode -1)                      ; 隐藏菜单栏
+
 (setq-default indent-tabs-mode nil      ;;
-              tab-width 4)              ; 默认缩进为 4 个空格
+              c-basic-offset 4          ; 设置缩进为 4 个空格
+              tab-width 4               ;
+              major-mode 'conf-mode)    ;;
 
 (setq inhibit-startup-message t         ; 关闭启动动画
-      initial-scratch-message nil       ; 移除草稿文本
+      ;; initial-scratch-message nil       ; 移除草稿文本
 
       visible-bell t                    ;;
       ring-bell-function 'ignore        ; 关闭错误提示音
       save-abbrevs nil                  ;;
 
       mode-require-final-newline nil    ; 禁止在文件尾创建新行
-
-      default-major-mode 'text-mode     ; 设置默认主模式为 text-mode
 
       split-height-threshold nil        ;;
       split-width-threshold 0           ; 垂直分屏
@@ -121,21 +116,16 @@
       auto-save-default nil             ; 不生成临时文件
       make-backup-files nil             ; 不生成备份文件
 
-      c-basic-offset 4                  ; C 语言缩进为 4
-
-      linum-format "%5d|"               ;
+      linum-format "%3d|"               ;;
       column-number-mode                ; 显示行号列号
       line-number-mode                  ;;
 
-      show-paren-style 'parenthesis     ; 光标不会跳到另一个括号处
-
       display-time-day-and-date t       ;;
-      display-time-24hr-format t        ; 显示时间日期
+      display-time-24hr-format t        ; 时间格式
       display-time-default-load-average nil
 
-      frame-title-format                ; Title 显示完整路径
-      (list (format "%s %%S: %%j " (system-name))
-            '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+      frame-title-format                ;;
+      '("Emacs " emacs-version " : %b") ; Title 显示完整路径
 
       eshell-prompt-function            ;;
       (lambda ()                        ; Eshell 提示符
@@ -156,64 +146,47 @@
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
 
-(if (not *TERMINAL*)
-    (progn
-      ;; 格式化并高亮行号
-      (setq linum-format 'my-linum-format)
+(when (not *TERMINAL*)
+  ;; 格式化并高亮行号
+  (setq linum-format 'my-linum-format)
 
-      (require 'hl-line)
+  (require 'hl-line)
 
-      (defvar my-linum-current-line-number 0)
+  (defvar my-linum-current-line-number 0)
 
-      (defface my-linum-hl
-        `((t :inherit linum
-             :background "#3C3D37"
-             :foreground "#FFFFFF",(face-background 'hl-line nil t)))
-        "Face for the current line number."
-        :group 'linum)
+  (defface my-linum-hl
+    `((t :inherit linum
+         :background "#E8E8FF"
+         :foreground "#000000",(face-background 'hl-line nil t)))
+    "Face for the current line number."
+    :group 'linum)
 
-      (defun my-linum-format (line-number)
-        (propertize (format "%5d\u2502" line-number) 'face
-                    (if (eq line-number my-linum-current-line-number)
-                        'my-linum-hl
-                      'linum)))
+  (defun my-linum-format (line-number)
+    (propertize (format "%3d\u2502" line-number) 'face
+                (if (eq line-number my-linum-current-line-number)
+                    'my-linum-hl
+                  'linum)))
 
-      (defadvice linum-update (around my-linum-update)
-        (let ((my-linum-current-line-number (line-number-at-pos)))
-          ad-do-it))
+  (defadvice linum-update (around my-linum-update)
+    (let ((my-linum-current-line-number (line-number-at-pos)))
+      ad-do-it))
 
-      (ad-activate 'linum-update)
+  (ad-activate 'linum-update)
 
-      (global-hl-line-mode)
+  (global-hl-line-mode)
 
-      ;; 隐藏滚动条, 工具栏
-      (scroll-bar-mode -1)
-      (tool-bar-mode -1)))
+  ;; Highlight current line
+  (set-face-attribute hl-line-face nil
+                      ;; :underline t
+                      :background "#E8E8FF")
+
+  ;; 隐藏滚动条, 工具栏
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
 
 ;;-------------------------------------------------
 ;; Extensions
 ;;-------------------------------------------------
-
-;; AutoHotKey mode
-(require 'xahk-mode)
-
-;; Company mode
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(require 'company-dict)
-(setq company-idle-delay 0
-      company-minimum-prefix-length 1
-      company-dict-dir (concat *PLUGINS* "/company/dict"))
-(add-to-list 'company-backends 'company-dict)
-
-;; Highlight indent guides
-(require 'highlight-indent-guides)
-(setq highlight-indent-guides-method 'character)
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
-;; Highlight parentheses mode
-(require 'highlight-parentheses)
-(global-highlight-parentheses-mode)
 
 ;; History
 (require 'history)
@@ -221,32 +194,6 @@
 ;; Lazy set key
 (require 'lazy-set-key)
 (require 'lazy-init-bind)
-
-;; Multiple cursors
-(require 'multiple-cursors)
-
-;; Paren face mode
-(require 'paren-face)
-(global-paren-face-mode)
-
-;; Smart mode line
-(require 'smart-mode-line)
-(setq sml/no-confirm-load-theme t
-      sml/theme 'respectful)
-(smart-mode-line-enable)
-
-;; Smart parens mode
-(require 'smartparens-config)
-(smartparens-global-mode)
-
-;; Tab bar mode
-(require 'tabbar)
-(tabbar-mode)
-(setq tabbar-use-images nil)
-
-;; Windows numbering
-(require 'window-numbering)
-(window-numbering-mode)
 
 ;;-------------------------------------------------
 ;; Major Mode
@@ -286,7 +233,7 @@
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
 ;; Eshell
-(add-hook 'eshell-exit-hook '(lambda () (if (not (eq (count-windows) 1)) (delete-window))))
+(add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
   (if (not (condition-case nil
@@ -343,35 +290,16 @@
     (indent-according-to-mode)))
 
 ;; 行号点击, 拖拽功能
-(defvar *linum-mdown-line* nil)
-(defun line-at-click ()
+(defun custom-go-to-click-line ()
+  (interactive)
   (save-excursion
-	(let ((click-y (cdr (cdr (mouse-position))))
-		  (line-move-visual-store line-move-visual))
-	  (setq line-move-visual t)
-	  (goto-char (window-start))
-	  (next-line (1- click-y))
-	  (setq line-move-visual line-move-visual-store)
-	  (line-number-at-pos))))
-
-(defun custom-md-select-linum ()
-  (interactive)
-  (goto-line (line-at-click))
-  (set-mark (point))
-  (setq *linum-mdown-line*
-		(line-number-at-pos)))
-
-(defun custom-mu-select-linum ()
-  (interactive)
-  (when *linum-mdown-line*
-	(let (mu-line)
-	  ;; (goto-line (line-at-click))
-	  (setq mu-line (line-at-click))
-	  (goto-line (max *linum-mdown-line* mu-line))
-	  (set-mark (line-end-position))
-	  (goto-line (min *linum-mdown-line* mu-line))
-	  (setq *linum-mdown*
-			nil))))
+    (let ((click-y (cdr (cdr (mouse-position)))))
+      (goto-char (window-start))
+      (next-line (1- click-y))
+      (if (fboundp 'tabbar-mode)
+          (setq line (line-number-at-pos))
+        (setq line (1+ (line-number-at-pos))))))
+  (goto-line line))
 
 ;; 换行
 (defun custom-return ()
@@ -412,7 +340,8 @@
 (defun custom-paren-match (bef end)
   (if (and (string-equal bef (string (preceding-char)))
            (string-equal end (string (following-char))))
-      't))
+      't
+    nil))
 
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
@@ -511,6 +440,3 @@
 (defun full ()
   (interactive)
   (require 'extensions))
-
-;; 最大化
-(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))

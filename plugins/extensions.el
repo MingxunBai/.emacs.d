@@ -7,6 +7,13 @@
 ;; Version: 1.0
 
 ;;; Code:
+
+;; 最大化
+;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+;; Themes
+;; (load-theme 'monokai t)
+
 ;; 配置五笔输入法
 (require 'chinese-wbim-extra)
 
@@ -19,6 +26,19 @@
 (toggle-input-method)
 
 ;;; Modes
+
+;; AutoHotKey mode
+(require 'xahk-mode)
+
+;; Company mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(require 'company-dict)
+(setq company-idle-delay 0
+      company-minimum-prefix-length 1
+      company-dict-dir (concat *PLUGINS* "/company/dict"))
+(add-to-list 'company-backends 'company-dict)
+
 ;; Dumb jump mode
 (require 'dumb-jump)
 (dumb-jump-mode)
@@ -65,6 +85,15 @@
     (shell-command (concat "go fmt " (buffer-file-name))))
 
   (local-set-key (kbd "C-x f") 'go-save-fmt))
+
+;; Highlight indent guides
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-method 'character)
+;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+
+;; Highlight parentheses mode
+(require 'highlight-parentheses)
+(global-highlight-parentheses-mode)
 
 ;; JavaScript IDE mode
 (defun enable-js2-mode ()
@@ -114,6 +143,9 @@
 
   (lazy-unset-key '("C-c C-k") markdown-mode-map))
 
+;; Multiple cursors
+(require 'multiple-cursors)
+
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 (defun custom-org-mode-hook ()
@@ -146,6 +178,10 @@
 ;; Origami mode
 (require 'origami)
 (global-origami-mode)
+
+;; Paren face mode
+(require 'paren-face)
+(global-paren-face-mode)
 
 ;; Project explorer
 (require 'project-explorer)
@@ -201,20 +237,14 @@
   (scss-mode)
   (setq scss-compile-at-save t))
 
-;; Text mode
-(when *WINDOWS*
-  (add-hook 'text-mode-hook 'init-wb-dict-gitrepo))
+;; Smart parens mode
+(require 'smartparens-config)
+(smartparens-global-mode)
 
-(defun init-wb-dict-gitrepo ()
-  (add-hook 'kill-emacs-query-functions 'wb-dict-git-push)
-  (defun wb-dict-git-push ()
-    (interactive)
-    (if (equal (buffer-name) "userdefinephrase.dat")
-        (let* ((wb-dict-root (concat (getenv "ToolsHome") "\\BingWuBiDict")))
-          (progn
-            (shell-command (concat "cp -f '" (buffer-file-name) "' " wb-dict-root "'"))
-            (git-push wb-dict-root)))
-      (message "Exiting."))))
+;; Tab bar mode
+(require 'tabbar)
+(tabbar-mode)
+(setq tabbar-use-images nil)
 
 ;; Vimrc mode
 (defun enable-vimrc-mode ()
@@ -244,11 +274,15 @@
 (add-hook 'json-mode-hook 'enable-emmet-mode)
 (add-hook 'web-mode-hook  'enable-emmet-mode)
 
+;; Windows numbering mode
+(require 'window-numbering)
+(window-numbering-mode)
+
 ;; Winner mode
 (when (fboundp 'winner-mode)
   (winner-mode))
 
-;; Yaml mode
+;; YAML mode
 (defun enable-yaml-mode ()
   (interactive)
   (require 'yaml-mode)
