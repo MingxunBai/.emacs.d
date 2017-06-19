@@ -194,6 +194,9 @@
 ;; Extensions
 ;;-------------------------------------------------
 
+;; AutoHotKey mode
+(require 'xahk-mode)
+
 ;; Company mode
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -278,7 +281,7 @@
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
 ;; Eshell
-(add-hook 'eshell-exit-hook 'delete-window)
+(add-hook 'eshell-exit-hook '(lambda () (if (not (eq (count-windows) 1)) (delete-window))))
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
   (if (not (condition-case nil

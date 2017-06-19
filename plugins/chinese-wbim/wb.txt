@@ -11141,7 +11141,7 @@ eyxy 臃 胘
 eyyn 助记词
 eyyp 﨤
 eyyt 脏话
-f 地 都 却
+f 地 寸 雨
 fa 载 戴 栽
 faaa 二项式
 faad 考茨基
@@ -12012,7 +12012,7 @@ fgho 墕
 fghu 雫
 fghw 雨具
 fghx 干柴
-fghy 雨 寸 进一步说 圷
+fghy 寸 雨 进一步说 圷
 fgi 坏 壊 壞
 fgia 干渠
 fgig 坯
@@ -37801,7 +37801,7 @@ puaw 褀
 puax 补药
 puay 襔
 pub 祂
-pubb 褂子 裤子 袍子 袖子 裙子 褥子 袜子 被子 襵
+pubb 裤子 袜子 裙子 被子 袖子 襵 褂子 褥子
 pubf 实际
 pubm 袦
 pubn 衪 祂
@@ -42272,7 +42272,7 @@ qyyo 留恋
 qyyq 留底
 qyyt 留话
 qyyy 留言
-r 的 年 把
+r 的 白
 ra 找 摸
 raa 拭
 raaa 拈花惹草

@@ -75,6 +75,9 @@
   (interactive)
   (require 'js2-mode)
   (js2-mode)
+
+  (setq js2-strict-missing-semi-warning nil)
+
   (require 'js-comint)
   (setq inferior-js-program-command "node")
   (setq inferior-js-program-arguments '("--interactive"))
@@ -82,7 +85,6 @@
   (defun custom-js-send-buffer ()
     (interactive)
     (js-send-buffer)
-    (delete-other-windows)
     (custom-split-window 'switch-to-buffer "*js*")
     (other-window 1)
     (end-of-buffer)
