@@ -93,8 +93,8 @@
 
       mode-require-final-newline nil    ; 禁止在文件尾创建新行
 
-      split-height-threshold nil        ;;
-      split-width-threshold 0           ; 垂直分屏
+      ;; split-height-threshold nil        ;;
+      ;; split-width-threshold 0           ; 垂直分屏
 
       scroll-margin 3                   ;;
       scroll-conservatively 10000       ; 靠近屏幕边沿3行时就开始滚动
@@ -125,13 +125,13 @@
       display-time-default-load-average nil
 
       frame-title-format                ;;
-      '("Emacs " emacs-version " : %b") ; Title 显示完整路径
+      '("Emacs " emacs-version)         ; Title 显示完整路径
 
       eshell-prompt-function            ;;
       (lambda ()                        ; Eshell 提示符
         (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M] " (current-time)) 'face `(:foreground "#A6E22E"))
-         (propertize (eshell/pwd) 'face `(:foreground "Pink"))
+         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)) 'face `(:foreground "green"))
+         (propertize (eshell/pwd) 'face `(:foreground "blue"))
          (if (= (user-uid) 0) " # " " $ "))))
 
 (display-time)                          ; 显示时间
@@ -236,17 +236,17 @@
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
 (defun custom-eshll ()                  ; 设置别名为 es
   (interactive)
-  (if (not (condition-case nil
-               (setq path (file-name-directory (buffer-file-name)))
-             (error nil)))
-      (message "Eshell need a local file buffer!")
-    (progn
-      (kill-new (concat "cd " path))
-      (custom-split-window 'eshell)
-      (other-window 1)
-      (let ((pwd (eshell/pwd)))
-        (if (not (string-equal pwd path))
-            (eshell/cd path))))))
+  (if (condition-case nil
+          (setq path (file-name-directory (buffer-file-name)))
+        (error nil))
+      (progn
+        (kill-new (concat "cd " path))
+        (custom-split-window 'eshell)
+        (other-window 1)
+        (let ((pwd (eshell/pwd)))
+          (if (not (string-equal pwd path))
+              (eshell/cd path))))
+    (message "Eshell need a local file!")))
 
 ;; 缩进重排
 (defun custom-indent-buffer ()

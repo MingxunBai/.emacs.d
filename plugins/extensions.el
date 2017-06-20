@@ -32,7 +32,7 @@
 
 ;; Company mode
 (require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'prog-mode-hook 'company-mode)
 (require 'company-dict)
 (setq company-idle-delay 0
       company-minimum-prefix-length 1
@@ -55,6 +55,10 @@
   (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
   (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
 
+;; Evil nerd commenter
+(require 'evil-nerd-commenter)
+(evilnc-default-hotkeys)
+
 ;; Git
 (defun custom-find-git-repo (dir)
   (interactive)
@@ -72,8 +76,12 @@
 
 (defun custom-git-push-current-buffer ()
   (interactive)
-  (let ((root (custom-find-git-repo (file-name-directory (buffer-file-name)))))
-    (custom-git-push root)))
+  (if (condition-case nil
+          (setq file-path (file-name-directory (buffer-file-name)))
+        (error nil))
+      (let ((root (custom-find-git-repo file-path)))
+        (custom-git-push root))
+    (message "Git need a local file!")))
 
 ;; GoLang
 (defun enable-go-mode ()
@@ -240,6 +248,7 @@
 ;; Smart parens mode
 (require 'smartparens-config)
 (smartparens-global-mode)
+(add-hook 'eshell-mode-hook 'smartparens-mode)
 
 ;; Tab bar mode
 (require 'tabbar)
@@ -290,7 +299,8 @@
 
 ;; YASnippet
 (require 'yasnippet)
-(yas-global-mode)
+(add-hook 'js2-mode-hook 'yas-minor-mode)
+(add-hook 'web-mode-hook 'yas-minor-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)

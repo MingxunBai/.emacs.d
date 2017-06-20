@@ -1,4 +1,4 @@
 alias ll ls -l
 alias la ls -a
 alias epush git add -A; git commit -m "Update"; git push
-alias wb node ~/bingwb.js; cp ~/userdefinephrase.dat c:/Program\ Files\ \(x86\)/Microsoft\ Bing\ Pinyin/1.6.98.04/Shared/
+alias wb node ~/bingwb.js; cp ~/userdefinephrase.dat c:/Program\ Files\ \(x86\)/Microsoft\ Bing\ Pinyin/1.6.98.04/Shared/; rm ~/userdefinephrase.dat

@@ -25911,7 +25911,7 @@ jvsv 归根
 jvt 旫 虭
 jvtd 坚如磐石
 jvte 归舟 归航
-jvth 归咎 照片
+jvth 照片 归咎
 jvtk 归程
 jvtm 照射 归向
 jvtp 照管
@@ -28341,7 +28341,7 @@ kwkg 咿唔
 kwkj 吟唱
 kwkr 哗啦
 kwkt 吟哦
-kwkw 吩咐 哈哈 嗡嗡 唯唯
+kwkw 哈哈 吩咐 嗡嗡 唯唯
 kwky 吟咏
 kwld 只因 嗰
 kwlq 哈罗
@@ -43548,7 +43548,7 @@ rhrb 看报 年报
 rhrd 牛排
 rhrf 披挂
 rhrg 年后
-rhrh 年年 看看 扯掉
+rhrh 看看 年年 扯掉
 rhrl 看押
 rhrq 掉换 看的
 rhrs 扑打
@@ -44555,7 +44555,7 @@ rpdg 近古
 rpdh 擦破
 rpdk 搳
 rpdn 攇
-rpdy 探矿
+rpdy 挖矿 探矿
 rpee 按月
 rpem 控股
 rpen 拥军爱民
@@ -45490,7 +45490,7 @@ rtsf 插枝
 rtsg 手柄 插槽
 rtsh 手相
 rtsl 后生可畏
-rtsm 播种机 手机
+rtsm 手机
 rtsn 手札
 rtss 托梦
 rtsu 排行榜
@@ -47847,6 +47847,7 @@ skbc 可取
 skbg 楫
 skbh 可耻
 skbt 檝
+skc 可能
 skce 可能
 skck 查号台
 skcm 可观
@@ -50959,7 +50960,7 @@ thgf 牌 处于 牉 牔
 thgh 牗
 thgi 怎不
 thgj 处理 自理 牏
-thgk 处事 自带 牊
+thgk 自带 处事 牊
 thgl 版画
 thgm 自责 牘
 thgn 片 牎 牕
@@ -52569,7 +52570,7 @@ trnm 各持己见 各抒己见 各抒已见
 trnn 特快 委托书 我局
 trno 鵝 鵞
 trnr 科技情报
-trnt 我 特性 选择性 物性
+trnt 特性 我
 trny 我心
 trod 物类
 trog 牧业 物业
@@ -55801,7 +55802,7 @@ uqbc 盗取
 uqbf 交际
 uqbh 郊
 uqbm 交出
-uqce 效能 交通
+uqce 交通 效能
 uqcq 交欢
 uqcw 效验
 uqcy 交叉
@@ -60064,7 +60065,7 @@ wgqh 例外
 wgqi 伊瑟尔
 wgqj 例
 wgqk 命名 全名
-wgqn 使馆 领事馆 便饭 盒饭
+wgqn 盒饭 使馆 领事馆 便饭
 wgqq 合金
 wgqr 合理负担
 wgqt 傲 癸卯
@@ -61473,7 +61474,7 @@ wst 鵂
 wstd 休憩
 wstf 何等
 wstg 体重
-wsth 何处 售票处 休息
+wsth 休息 何处 售票处
 wstk 体积 何种
 wsto 鵂
 wstr 何物
