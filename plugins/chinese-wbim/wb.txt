@@ -9,37 +9,37 @@ other-files=wbpy.txt
 page-length=6
 
 [Punctuation]
-{ 『
-| ÷
-} 』
 ~ ～
 ` ・
 ! ！
+@ ◎
 # ＃
 $ ￥
 % ％
+^ ……
 & ※
+* ×
 ( （
 ) ）
-* ×
-+ ＋
-, ，
 - －
-. 。
-/ 、
+_ ──
++ ＋
+= ＝
+{ 『
+[ 【
+} 』
+] 】
+| ÷
 : ：
 ; ；
-< 《
-= ＝
-> 》
-? ？
-@ ◎
-[ 【
-] 】
-^ ……
-_ ──
 " “ ”
 ' ‘ ’
+< 《
+, ，
+> 》
+. 。
+? ？
+/ 、
 
 [Table]
 a 工 或 戈
@@ -5059,7 +5059,7 @@ byxu 防弹
 byyj 防腐剂
 byyw 防腐
 byyy 阴谋诡计
-c 以 又 能
+c 又 能
 ca 戏 劲
 caa 駴
 caaa 能工巧匠
@@ -26944,7 +26944,7 @@ khm 跺 跥
 khmd 中央
 khme 蹦 遗骸
 khmg 跚 贵贱
-khmh 跟帖
+khmh 路由 跟帖
 khmj 踹
 khmk 踻
 khmm 中山
@@ -40504,6 +40504,7 @@ qnlw 包办
 qnly 饠
 qnm 饥 飢
 qnma 乌贼
+qnmb 包邮
 qnme 馉 餶
 qnmk 餇
 qnmn 饥
@@ -57525,7 +57526,7 @@ veus 退亲
 veux 姐弟
 vev 娞
 vevc 奶妈
-veve 奶奶 姐姐
+veve 姐姐 奶奶
 vevf 姐妹
 vevg 娞 嫍
 vevq 退婚
