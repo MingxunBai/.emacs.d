@@ -11,6 +11,10 @@
 ;;; Code:
 (lazy-set-key '(("C-x p"        .   custom-git-push-current-buffer)
 
+                ;; Evil nerd commenter
+                ("C-M-;"        .   evilnc-comment-or-uncomment-lines)
+                ("C-c p"        .   evilnc-comment-or-uncomment-paragraphs)
+
                 ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
                 ("C-c o a"      .   origami-show-only-node)

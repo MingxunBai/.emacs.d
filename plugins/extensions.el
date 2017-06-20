@@ -57,7 +57,6 @@
 
 ;; Evil nerd commenter
 (require 'evil-nerd-commenter)
-(evilnc-default-hotkeys)
 
 ;; Git
 (defun custom-find-git-repo (dir)

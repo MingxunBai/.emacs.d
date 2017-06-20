@@ -116,9 +116,9 @@
       auto-save-default nil             ; 不生成临时文件
       make-backup-files nil             ; 不生成备份文件
 
+      column-number-mode                ;;
+      line-number-mode                  ; 显示行号列号
       linum-format "%3d|"               ;;
-      column-number-mode                ; 显示行号列号
-      line-number-mode                  ;;
 
       display-time-day-and-date t       ;;
       display-time-24hr-format t        ; 时间格式
