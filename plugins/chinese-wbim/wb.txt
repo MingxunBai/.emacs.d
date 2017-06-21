@@ -5211,7 +5211,7 @@ cbtd 预知 奦
 cbte 矟
 cbtf 预先 预告 预选 堥 鞪
 cbtg 鹜 鹬 鶩 鷸
-cbth 瞀 预算
+cbth 预算 瞀
 cbtj 蝥 蟊 劀 暓 矠
 cbtk 柔和 矞
 cbtl 预备 務
@@ -23468,7 +23468,7 @@ iweo 鶺
 iwet 沴
 iwf 举 挙 擧 舉
 iwfc 浍 举动 澮
-iwfh 举 兴起 兴趣
+iwfh 兴趣 兴起 举
 iwfi 漈
 iwfk 涻
 iwfm 淮南
@@ -28114,7 +28114,7 @@ ktpr 另行安排
 ktpw 踏入社会 吃穿
 ktpy 路透社
 ktqi 嚟
-ktqn 吃饱 吃饭
+ktqn 吃饭 吃饱
 ktqu 唯我独尊
 ktqy 足智多谋
 ktr 哦
@@ -42500,7 +42500,7 @@ rbov 报数 反函数
 rbpj 报审
 rbpv 报案
 rbpy 报社
-rbqa 摄氏
+rbqa 报错 摄氏
 rbqb 报怨
 rbqe 据了解
 rbqi 报销
@@ -54281,7 +54281,7 @@ udwj 羭
 udwk 装聋作哑
 udwn 瘱
 udwo 鴹
-udwq 减低 头像 养父
+udwq 头像 减低 养父
 udws 六面体 病原体
 udwt 养伤 头面人物
 udwv 关健 养分 羒
@@ -55526,7 +55526,7 @@ umjg 商量 端量
 umk 疝 閊
 umkd 瘑
 umkg 商号
-umkk 商品 端口
+umkk 端口 商品
 umlf 商团
 umlw 商界
 umm 瘿
@@ -57714,7 +57714,7 @@ vg 姨 嫩
 vga 妍 姸
 vgaa 嫩芽
 vgah 妍 娬
-vgbb 婊子
+vgbb 姨子 婊子
 vgc 姪
 vgcf 姪
 vgd 尪
