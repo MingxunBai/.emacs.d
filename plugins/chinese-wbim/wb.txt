@@ -3402,6 +3402,7 @@ aydc 蔚为大观
 aydg 虀
 aydi 芒硝
 aydn 蓭
+aydq 斯诺克
 aydr 荒原
 ayec 蘐
 ayf 藷
@@ -6736,7 +6737,7 @@ ddgx 夏威夷 左右开弓
 ddh 厦 廈
 ddhd 碶
 ddhh 套上 大卡
-ddhi 大步 大叔
+ddhi 大叔 大步
 ddhk 厌战 大战
 ddhq 套餐
 ddht 厦 磩
@@ -7460,7 +7461,7 @@ dgpw 研究
 dgq 矹
 dgqd 砰然
 dgqe 三角 感触
-dgqg 石印
+dgqg 咸鱼 石印
 dgqk 威名
 dgqn 矹
 dgqs 研钵 古刹
@@ -15886,7 +15887,7 @@ ghgi 一点一滴
 ghgj 正理 蝁
 ghgk 政事 正副 正事
 ghgn 正与 卐 惡
-ghgo 焉 下来 鵶
+ghgo 下来 焉 鵶
 ghgq 下列
 ghgr 琥珀
 ghgs 更上一层楼
@@ -15906,7 +15907,7 @@ ghic 政治 琡
 ghif 政法 玷污 正法
 ghii 下水
 ghim 逼上梁山 下滑
-ghip 下沉 政党 正常
+ghip 正常 下沉 政党
 ghir 正派
 ghis 下酒
 ghit 下海
@@ -18606,7 +18607,7 @@ haya 虚度
 hayd 虔诚
 hayi 虔
 haym 虚设
-hayn 虚词 虚妄
+hayn 虚妄 虚词
 hayy 虚文
 hb 眲
 hbaj 齰
@@ -22409,7 +22410,7 @@ iqdd 光大
 iqde 淆
 iqdf 逃奔
 iqdh 浠
-iqdm 光面 頫
+iqdm 泡面 頫
 iqdp 溜达
 iqdt 油然而生
 iqdy 澹
@@ -26954,7 +26955,7 @@ khms 跺
 khmu 遗赠
 khn 忠
 khna 遗民
-khnd 踞 遗憾 跃居
+khnd 遗憾 踞 跃居
 khne 蹍 蹘
 khnf 中层 中上层 中尉 蹡
 khnh 喡
@@ -34719,7 +34720,7 @@ nyet 心腹
 nyey 以及 心脏
 nyfa 民族地区 心裁
 nyfb 心地
-nyfc 惊动 心动
+nyfc 心动 惊动
 nyff 民主运动
 nyfg 尺寸
 nyfh 惊起
@@ -42685,7 +42686,7 @@ rctk 返程 揉和
 rctm 反射 反向
 rctr 把我
 rcty 掺入
-rcud 把关 反叛 抬头 反差 挨着
+rcud 反差 把关 反叛 抬头 挨着
 rcue 反剪
 rcuj 反间
 rcuk 反问 反冲
@@ -55723,7 +55724,7 @@ uoyl 资料库
 uoyn 普遍
 uoyq 养精畜锐
 uoyt 普米族
-up 帝 旁
+up 旁 帝
 upab 单字节
 upad 产褥期
 upce 旁通
@@ -56252,7 +56253,7 @@ utdk 痴 癡
 utdm 颜面 首页
 ute 产 颜 閁
 utec 瘢
-utel 头重脚轻
+utel U盘 头重脚轻
 utem 颜 顔 顏
 utep 疼爱 遃
 uter 彦 彥
@@ -62296,7 +62297,7 @@ wwsh 俭朴
 wwsm 人机
 wwso 人杰
 wwss 丛林
-wwst 人格 价格
+wwst 价格 人格
 wwsu 做人要厚道
 wwte 从盘
 wwtf 人选 你追我赶 人造 坐等 坐待
@@ -65116,6 +65117,7 @@ yagb 诺顿 鄺
 yage 谨表
 yagf 为期不远 譁
 yagg 诓 誆
+yagh 试下
 yagi 文艺表演
 yagk 诬赖
 yagl 放荡不羁
@@ -67009,7 +67011,7 @@ yntb 郂
 yntd 户籍
 ynte 房租 启航
 yntf 词选
-yntg 良性循环 永生
+yntg 永生 良性循环
 ynth 肇 词牌 讯息
 ynti 綮
 yntj 记得 刻 赢得 赢利 麝香 晵
@@ -67736,7 +67738,7 @@ ytfj 放进
 ytfk 诰 誥
 ytfm 讚
 ytfn 放声
-ytfp 庭 放过 高等教育出版社 誔
+ytfp 放过 庭 高等教育出版社 誔
 ytfq 诜 詵
 ytft 旅行者 施教
 ytfw 刻舟求剑
