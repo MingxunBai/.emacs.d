@@ -298,6 +298,7 @@
 
 ;; YASnippet
 (require 'yasnippet)
+(yas-reload-all)
 (add-hook 'js2-mode-hook 'yas-minor-mode)
 (add-hook 'web-mode-hook 'yas-minor-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))

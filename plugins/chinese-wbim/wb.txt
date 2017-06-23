@@ -17121,7 +17121,7 @@ gogx 恶毒
 gogy 璞
 gohk 恶战
 gohx 来此
-goi 来 灭 滅 釆
+goi 灭 滅 釆
 goia 来鸿
 goid 来源
 goif 来潮
@@ -43747,7 +43747,7 @@ rj 提 担
 rjaj 揭幕
 rjb 撮
 rjbb 担子 热电子
-rjbc 撮 提取
+rjbc 提取 撮
 rjbg 捍卫
 rjbm 提出
 rjby 提防
@@ -54208,7 +54208,7 @@ udqm 减负
 udqn 头饰
 udqo 鮝 鮺
 udqt 养猪
-udqv 着急 关键
+udqv 关键 着急
 udqy 羝 关岛 冹
 udr 拳 \x836\xCC1
 udrb 善报 送报
@@ -55164,7 +55164,7 @@ ujt 赣
 ujtf 单行 单选
 ujth 竟自 韸
 ujtk 章程 单程
-ujtm 赣 意向 单身 单向 贛
+ujtm 单身 赣 意向 单向 贛
 ujtn 戆 戇
 ujto 鶕 鷼
 ujtp 韼
@@ -59488,7 +59488,7 @@ wdss 做梦
 wdsu 休戚相关
 wdt 做
 wdte 优秀
-wdtf 俦 优等 优先 优待 倚靠 优选 儔
+wdtf 优先 俦 优等 优待 倚靠 优选 儔
 wdtg 优生 倚重
 wdth 估算 儮
 wdtr 伏特
@@ -65701,7 +65701,7 @@ yfiw 诗兴
 yfj 讲
 yfje 讲明 廟 謿
 yfjf 计时 講
-yfjg 计量 讲师
+yfjg 讲师 计量
 yfjh 讲 应声虫
 yfk 诘
 yfkb 认真吸取
