@@ -174,11 +174,13 @@
   (ad-activate 'linum-update)
 
   (global-hl-line-mode)
-
   ;; Highlight current line
   (set-face-attribute hl-line-face nil
                       ;; :underline t
                       :background "#E8E8FF")
+
+  ;; mode line
+  (set-face-background 'mode-line "#EDEDED")
 
   ;; 隐藏滚动条, 工具栏
   (scroll-bar-mode -1)

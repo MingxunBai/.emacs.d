@@ -16018,7 +16018,7 @@ ghwg 下颌 一步登天
 ghwh 政企
 ghwo 鴊
 ghwq 正像
-ghws 政体 下体 正体
+ghws 下体 正体 政体
 ghwt 下作 正途
 ghwu 正位 天上人间
 ghww 弄虚作假 下人 正人
@@ -16042,7 +16042,7 @@ ghyq 正义
 ghys 下床
 ghyt 下放
 ghyw 政论 政府 两点论
-ghyy 下文 正文 下方 正方
+ghyy 正文 正方 下方 下文
 gi 不 还 否
 giad 不菲 不期 不甚 不若
 giaf 不甘
@@ -22447,7 +22447,7 @@ iqhv 耀眼
 iqhw 渔具
 iqi 泺 濼
 iqia 沟渠 渔港
-iqic 光涌 汹涌 光泽
+iqic 汹涌 光泽
 iqid 淘汰 光源
 iqif 光洁
 iqig 泡沫
@@ -27041,7 +27041,7 @@ khtc 路径
 khtd 跃 躍
 khte 中盘
 khtf 踵 中等 中午 忠告 路德 跨行 跃迁 中选 跛行
-khtg 鹭 贵重 中策 鷺
+khtg 贵重 中策 鹭 鷺
 khth 贵处 路牌 跭 蹝 蹤
 khtj 跑得
 khtk 路 踟 路程 中程 中和 蹻
@@ -31731,7 +31731,7 @@ mqdc 网友
 mqde 崤
 mqdf 风压
 mqdk 骨鲠在喉
-mqdm 见面 网页
+mqdm 网页 见面
 mqdy 赡 嶦 贍
 mqee 岁月 风貌 风月
 mqeh 崅 嶰
@@ -40066,7 +40066,7 @@ qkae 名菜
 qkaf 名著
 qkat 名医
 qkaw 名茶
-qkbb 句子 锅子 兔子
+qkbb 兔子 句子 锅子
 qkbg 鍓
 qkbh 邭
 qkbk 免职
@@ -47262,7 +47262,7 @@ sgeq 酥脆
 sgey 醒脑
 sgf 酝 醖 醞
 sgfa 西域
-sgfb 酵 本地
+sgfb 本地 酵
 sgfc 酝 西去
 sgfd 西城
 sgff 本土 醻
@@ -68732,4 +68732,4 @@ yyyq 广义
 yyyt 广州
 yyyu 言说
 yyyw 认识论 言论 议论 文论 语言论
-yyyy 言 方言 谆谆 文言 言谈话语
+yyyy 方言 文言 言 谆谆 言谈话语
