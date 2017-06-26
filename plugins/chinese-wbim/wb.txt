@@ -13758,7 +13758,7 @@ fqy 圴
 fqya 远谋 无度
 fqyb 远离
 fqyc 无序
-fqyg 无证 无语
+fqyg 无语 无证
 fqyi 均应 朮
 fqyk 无误
 fqyl 无为 无谓 均为 塯 霤
@@ -15019,7 +15019,7 @@ gcuq 至交
 gcus 至亲 至尊
 gcuv 致歉
 gcuw 致冷
-gcwf 到会
+gcwf 到付
 gcwg 致命 致使
 gcwn 五马分尸
 gcwt 到任 互通信息 致伤 政通人和
@@ -15146,7 +15146,7 @@ gdnt 正确性 天性 珹
 gdnu 忝
 gdog 残砖断瓦
 gdov 天数
-gdpg 不确定
+gdpg 天宇 不确定
 gdpi 迗
 gdpj 现在完成时
 gdpk 天宫
@@ -17199,7 +17199,7 @@ gotu 严冬
 goty 来往 来稿
 goud 来头
 gouh 殚精竭虑
-gouj 来意 恶意
+gouj 恶意 来意
 gouk 事业部
 gout 恶疾
 gouw 事业单位 恶疮
@@ -34732,7 +34732,7 @@ nyfq 心坎 以远
 nyft 尽孝
 nyfu 民主协商 心境
 nyfy 民族教育
-nygc 以至 以致 迟到 尽到 尽致
+nygc 迟到 以至 尽到 尽致
 nygd 屡试不爽
 nyge 心静
 nygf 忙于

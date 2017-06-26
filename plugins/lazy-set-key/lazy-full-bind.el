@@ -13,7 +13,8 @@
 
                 ;; Evil nerd commenter
                 ("C-M-;"        .   evilnc-comment-or-uncomment-lines)
-                ("C-c p"        .   evilnc-comment-or-uncomment-paragraphs)
+                ("C-c c c"      .   evilnc-copy-and-comment-lines)
+                ("C-c c p"      .   evilnc-comment-or-uncomment-paragraphs)
 
                 ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
