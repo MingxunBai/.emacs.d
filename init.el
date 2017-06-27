@@ -62,10 +62,7 @@
 ;; (set-default-font "Source Code Pro-12")
 ;; 设置字体
 (when *WINDOWS*
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code"))
-
-  ;; 设置透明度
-  (set-frame-parameter (selected-frame) 'alpha '(95 . 70)))
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 (global-auto-revert-mode)               ; Auto revert
 
@@ -147,6 +144,9 @@
     (apply orig-func args)))
 
 (when (not *TERMINAL*)
+  ;; 设置透明度
+  (set-frame-parameter (selected-frame) 'alpha '(95 . 70))
+
   ;; 格式化并高亮行号
   (setq linum-format 'my-linum-format)
 

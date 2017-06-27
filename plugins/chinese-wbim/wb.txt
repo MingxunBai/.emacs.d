@@ -977,7 +977,7 @@ agjj 七日
 agjm 巧遇
 agjn 蕙
 agjq 莄
-agjs 荚果 苹果
+agjs 苹果
 agjt 七星
 agk 蔌
 agkg 菫
@@ -9943,7 +9943,7 @@ efa 膹
 efai 脑震荡
 efal 肝功
 efam 膹 豮 豶
-efbb 脖子 肚子
+efbb 肚子 脖子
 efc 肢
 efca 脖颈
 efcb 脚 腳
@@ -22714,7 +22714,7 @@ iryj 漂白剂
 iryo 激变
 iryt 激
 iryy 泝
-is 洒 酒
+is 渣 洒 酒
 isad 法西斯
 isae 酒菜
 isai 漂荡
@@ -22758,7 +22758,7 @@ isim 湮没 河沿
 isip 渣滓
 isiq 河沟
 isir 漂泊
-isis 淋淋 湘潭
+isis 渣渣 淋淋 湘潭
 isit 江西省 河洛
 isiw 沐浴 酒兴 淋浴
 isiy 河流 漂流 淋漓 汀洲
@@ -31742,7 +31742,7 @@ mqfb 见地
 mqfc 风云 刚去
 mqff 风土
 mqfg 风干 风雨
-mqfh 风趣 网址 刚直 刚走
+mqfh 网址 风趣 刚直 刚走
 mqfj 购进
 mqfl 风雷
 mqfn 风声
@@ -31763,7 +31763,7 @@ mqgq 刚烈
 mqgs 岁末
 mqgy 刚玉
 mqh 飓 颶
-mqhh 网卡 网上
+mqhh 网上 网卡
 mqhk 网点 飐 颭
 mqhv 网眼
 mqhw 飓 网龄
@@ -49180,7 +49180,7 @@ svw 楰
 svwg 要命
 svwr 要件
 svww 要价 要人
-svwy 要领 概念 楰
+svwy 概念 要领 楰
 svxj 要旨
 svxk 要强
 svxq 根绝
@@ -50407,9 +50407,9 @@ tfis 先河
 tfit 科索沃 行省 耰
 tfiv 行当
 tfiw 选举 赞誉
-tfj 竿 午
+tfj 午 竿
 tfjc 先贤
-tfjf 篝 午时 千里 簳
+tfjf 千里 午时 篝 簳
 tfjg 先是 等量 先师 选题
 tfjh 毛虫 壬申
 tfjj 千日
@@ -50507,7 +50507,7 @@ tfqq 千金 兟
 tfqt 先锋 行猎 稜
 tfqu 筠
 tfqv 告急
-tfrc 造反 选择
+tfrc 选择 造反
 tfrd 选拔 靠拢
 tfrg 先后 告捷 午后
 tfrh 丢掉 千年
@@ -50894,7 +50894,7 @@ tgye 征衣
 tgyf 生计 征讨 重装 重读 重整旗鼓
 tgyi 策应 生就
 tgym 重设 征调
-tgyn 生词 重启
+tgyn 重启 生词
 tgyo 生变
 tgyq 征询 垂询
 tgys 征订
@@ -59867,7 +59867,7 @@ wgaq 全区
 wgar 伊丽莎白
 wgau 八五期间
 wgb 伅
-wgbb 例子 凳子 鸽子 盒子 侄子
+wgbb 盒子 例子 凳子 侄子 鸽子
 wgbc 敛聚
 wgbf 登陆
 wgbi 便函
