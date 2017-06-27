@@ -438,6 +438,16 @@
            (custom-move-current-line 1))
           (t (custom-move-current-line 1)))))
 
+;; 复制当前行
+(defun custom-duplicate-line ()
+  (interactive)
+  (let ((step (custom-remeber-point-step)))
+    (kill-ring-save (point-at-bol) (point-at-eol))
+    (custom-down-newline)
+    (custom-yank)
+    (beginning-of-line)
+    (forward-char step)))
+
 ;; 启用完整配置
 (defun full ()
   (interactive)

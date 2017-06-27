@@ -5750,7 +5750,7 @@ cjxg ‖
 cjxx 騉
 cjyj 驱虫剂
 ck 台 驶
-ckaa 怠工 台式
+ckaa 台式 怠工
 ckb 邰
 ckbb 马嚼子 台子
 ckbh 邰
@@ -53466,7 +53466,7 @@ txgk 系带
 txgl 勄
 txgn 慜
 txgo 利比亚 赞比亚 鰵
-txgq 毓 系列 繁殖
+txgq 系列 繁殖 毓
 txgt 敏 自强不息
 txgu 每
 txgy 各级政府

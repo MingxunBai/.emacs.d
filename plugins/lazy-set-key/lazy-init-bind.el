@@ -17,6 +17,7 @@
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
+                ("C-c d"      .   custom-duplicate-line)
                 ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
                 ("M-]"          .   custom-move-down-current-line)
