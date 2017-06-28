@@ -1148,7 +1148,7 @@ ahnd 硻
 ahne 腎
 ahnf 堅 朢
 ahng 朢
-ahnh 臣 卧 臥 葦 薡
+ahnh 卧 臥 葦 薡
 ahni 緊
 ahnj 蜸
 ahnk 臨
@@ -1173,6 +1173,7 @@ ahqo 薒
 ahqy 萈
 ahrn 邪气
 ahry 熙攘
+ahsg 卧槽
 ahsj 卧榻
 ahsk 雅歌
 ahsv 牙根
@@ -8033,7 +8034,7 @@ djwx 百货
 djxk 百强
 djxo 礘
 djxq 厚纸
-djya 厚度 百度
+djya 百度 厚度
 djyb 鹌鹑
 djye 悲哀
 djyn 厚望
@@ -14684,7 +14685,7 @@ gabm 开出
 gabn 开了
 gabw 开除
 gabx 与世隔绝
-gace 弄通 开通
+gace 开通 弄通
 gack 邢台
 gad 琪
 gada 不劳而获
@@ -14764,7 +14765,7 @@ gajl 畱
 gajn 丣
 gajy 形影
 gak 开 瑾 幵
-gakg 瑾 型号 琙
+gakg 型号 瑾 琙
 gakh 开路
 gakk 开口 武器
 gaky 瓘
@@ -20614,7 +20615,7 @@ ifib 酒井法子 滇池
 ific 法治
 ifid 澎湖
 ifig 污渍
-ifii 潮水 尘沙 潜水 污水 汗水 汁水
+ifii 潜水 汗水 潮水 尘沙 污水 汁水
 ifij 潮湿 污浊
 ifim 潮汕
 ifin 潮汛 污泥
@@ -23006,7 +23007,7 @@ itmw 省内 海内
 itn 汔
 itnc 滬
 itnd 淚
-itnf 泄私愤 少尉
+itnf 少尉
 itng 波利尼西亚 省悟
 itnm 洗刷
 itnn 汔 洛书 水利局 港务局
@@ -24334,7 +24335,7 @@ jfd 里 裡 裏
 jfde 时髦
 jfdf 时辰
 jfdj 蠕 曘 蝡
-jfdm 时而 里面
+jfdm 里面 时而
 jfdo 黙
 jfdy 时态
 jff 蛙 圼
@@ -28445,6 +28446,7 @@ kxq 哟
 kxqu 吸引外资
 kxqy 哟 喲
 kxrs 嚛
+kxsg 哟西
 kxtv 中纪委
 kxuk 中组部
 kxws 叶绿体
@@ -31756,7 +31758,7 @@ mqgf 见于 网球
 mqgg 风琴
 mqgh 刚正
 mqgj 购销两旺
-mqgk 风速 网速
+mqgk 网速 风速
 mqgm 迥然不同
 mqgo 刚来
 mqgq 刚烈
@@ -32070,7 +32072,7 @@ mtvk 败絮
 mtvo 鵙
 mtw 嵷
 mtwd 败仗 几段
-mtwf 贬值 峰值 峰会
+mtwf 峰值 贬值 峰会
 mtwh 几个 嵷 嵸
 mtwn 几亿
 mtwq 贬低
@@ -39798,7 +39800,7 @@ qhjn 外电
 qhjo 外显
 qhjy 外景
 qhk 钻 鑽 亇
-qhkg 钻 外号 鉆
+qhkg 外号 鉆
 qhkk 外患
 qhkx 夞
 qhl 鏀
@@ -41226,7 +41228,7 @@ qrql 铁链
 qrqn 铁饼
 qrqr 匆匆 铁锨
 qrqs 铁钉
-qrqt 铁锈 铁锤
+qrqt 铁锹 铁锈 铁锤
 qrqw 锨 鍁
 qrr 鑕
 qrrj 兜揽
@@ -44204,7 +44206,7 @@ rmru 投掷
 rmrw 缺失
 rmry 抽搐
 rms 缽
-rmsf 投标 投票
+rmsf 投票 投标
 rmsg 缽
 rmsh 揣想
 rmsi 投档
@@ -48783,7 +48785,7 @@ ssyn 木刻
 ssyo 禁脔
 ssyt 梦话 机械设备
 ssyx 麓
-ssyy 本本主义 机械主义 梵文
+ssyy 禁言 本本主义 机械主义 梵文
 st 格 桥 梅
 sta 枨 棖
 staa 格式
@@ -51960,7 +51962,7 @@ tmwu 笍
 tmwv 身分 微分
 tmww 身份 身价
 tmwx 自由化 箆
-tmwy 笍
+tmwy 微信 笍
 tmxf 和风细雨
 tmxg 射线
 tmxl 微细
