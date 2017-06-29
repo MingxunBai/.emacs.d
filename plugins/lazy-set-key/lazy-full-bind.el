@@ -9,7 +9,7 @@
 ;; This is custom key bind use lazy-set-key.
 
 ;;; Code:
-(lazy-set-key '(("C-x p"        .   custom-git-push-current-buffer)
+(lazy-set-key '(("C-c p"        .   custom-git-push-current-buffer)
 
                 ;; Evil nerd commenter
                 ("C-M-;"        .   evilnc-comment-or-uncomment-lines)
@@ -30,8 +30,8 @@
                 ("<f1>"         .   project-explorer-toggle)
 
                 ;; Winner mode
-                ("C-x 4 r"      .   winner-redo)
-                ("C-x 4 u"      .   winner-undo)
+                ("C-c 4 r"      .   winner-redo)
+                ("C-c 4 u"      .   winner-undo)
 
                 ;; YASnippet mode
                 ("<C-tab>"      .   yas-ido-expand)

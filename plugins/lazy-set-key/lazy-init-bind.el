@@ -13,11 +13,13 @@
 
 (lazy-set-key '(("C-c f"        .   full)
                 ("C-c C-k"      .   kill-buffer-and-window)
+                ("C-x 2"        .   custom-split-window-below)
+                ("C-x 3"        .   custom-split-window-right)
 
                 ;; Custom feature
                 ("C-c k"        .   custom-delete-whitespace-to-upline)
                 ("C-o"          .   custom-down-newline)
-                ("C-c d"      .   custom-duplicate-line)
+                ("C-c d"        .   custom-duplicate-line)
                 ("C-M-\\"       .   custom-indent-buffer)
                 ("<C-return>"   .   custom-middle-newline)
                 ("M-]"          .   custom-move-down-current-line)
@@ -25,8 +27,6 @@
                 ("C-c r"        .   custom-resize-indentation)
                 ("<backtab>"    .   custom-resize-indentation--4)
                 ("RET"          .   custom-return)
-                ("C-x 2"        .   custom-split-window-below)
-                ("C-x 3"        .   custom-split-window-right)
                 ("M-o"          .   custom-up-newline)
                 ("C-y"          .   custom-yank)
                 ("<left-margin> <mouse-1>" . custom-go-to-click-line)

@@ -27334,7 +27334,7 @@ kkjo 鷤
 kkk 品
 kkkb 鄵
 kkkd 哭喊 碞
-kkkf 品 品味 口味 嘽
+kkkf 口味 品味 嘽
 kkkg 口号 哭号
 kkkh 口中
 kkki 口哨
@@ -28050,7 +28050,7 @@ ktfi 呼救
 ktfj 顺我者昌
 ktfk 哠
 ktfm 囋
-ktfn 响声 呼声 吃亏
+ktfn 吃亏 响声 呼声
 ktft 顺利进行
 ktfu 吹毛求疵
 ktfv 喢
@@ -32209,7 +32209,7 @@ mwcn 嵡
 mwdc 内码
 mwde 内有
 mwdg 肉感
-mwdh 内在 内存
+mwdh 内存 内在
 mwdi 内耗
 mwdm 内面
 mwea 内膜
@@ -38101,7 +38101,7 @@ puyl 裤 实为 褲
 puyn 实词
 puyo 初恋
 puyq 裗
-puyt 实施 实话
+puyt 实话 实施
 puyu 实说
 puyw 初诊
 puyx 袨
@@ -38688,7 +38688,7 @@ pysv 祸根
 pyt 祚
 pyta 社长
 pytd 祖籍 祝辞 神智 祅
-pyte 神秀 神舟 祣
+pyte 神舟 祣
 pytf 祚 祖先 祷告 赛义德 祍
 pyth 神算
 pytj 福利
@@ -48091,7 +48091,7 @@ smqn 枧 梘
 smqt 李凯尔特 机锋
 smqy 枫 \x836\xCB1 
 smrm 机制
-smsa 机柜 机械
+smsa 机械 机柜
 smsc 枫树
 smse 栅极
 smsf 机票
@@ -55797,7 +55797,7 @@ uqae 酱菜
 uqai 疧
 uqaj 阍 盗墓 痻 閽
 uqap 效劳
-uqaq 郊区 交警
+uqaq 交警 郊区
 uqav 疧
 uqay 疷
 uqb 郊
@@ -57470,7 +57470,7 @@ vedc 女朋友
 veem 退股
 vef 垦 墾
 vefc 媛 退却 退去
-veff 垦 退款
+veff 退款 垦
 vefh 退走
 vefi 恳求
 vefn 退场
@@ -65964,7 +65964,7 @@ ygsg 记事本
 ygsm 主机
 ygso 主楼
 ygsq 主桅
-ygsr 评析 主板
+ygsr 主板 评析
 ygss 高不可攀
 ygst 主格
 ygsu 谜一样
