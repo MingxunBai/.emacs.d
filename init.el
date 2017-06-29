@@ -7,7 +7,7 @@
       user-mail-address "mingxunbai@outlook.com")
 
 ;; 定义常量
-(defconst *TERMINAL*                   ; 针对终端进行一些样式调整
+(defconst *TERMINAL*                    ; 针对终端进行一些样式调整
   (eq window-system 'nil))
 (defconst *WINDOWS* (eq system-type 'windows-nt))
 (defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))

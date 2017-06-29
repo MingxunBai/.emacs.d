@@ -35,9 +35,11 @@
 (add-hook 'prog-mode-hook 'company-mode)
 (require 'company-dict)
 (setq company-idle-delay 0
-      company-minimum-prefix-length 1
+      company-minimum-prefix-length nil
       company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
+
+(define-key company-mode-map (kbd "M-/") 'company-complete)
 
 ;; Dumb jump mode
 (require 'dumb-jump)
@@ -158,7 +160,7 @@
   (when *WINDOWS*
     (custom-set-variables '(markdown-command "markdown.pl")))
 
-  (lazy-unset-key '("C-c C-k") markdown-mode-map))
+  (define-key markdown-mode-map (kbd "C-c C-k") nil))
 
 ;; Multiple cursors
 (require 'multiple-cursors)
@@ -171,7 +173,7 @@
   (require 'htmlize)
   (setq org-src-fontify-natively t)   ;  HTML 代码高亮
 
-  (lazy-unset-key '("C-c C-k") org-mode-map)
+  (define-key org-mode-map (kbd "C-c C-k") nil)
 
   (defun org-insert-src-block ()
     (interactive
@@ -218,7 +220,7 @@
   (require 'py-autopep8)
   (py-autopep8-enable-on-save)
 
-  (lazy-unset-key '("<backtab>") python-mode-map)
+  (define-key python-mode-map (kbd "<backtab>") nil)
   (setq python-shell-prompt-detect-enabled nil))
 
 ;; Scheme mode
