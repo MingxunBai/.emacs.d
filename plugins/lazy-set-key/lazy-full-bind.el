@@ -30,8 +30,8 @@
                 ("<f1>"         .   project-explorer-toggle)
 
                 ;; Winner mode
-                ("C-c 4 r"      .   winner-redo)
-                ("C-c 4 u"      .   winner-undo)
+                ("C-c w r"      .   winner-redo)
+                ("C-c w u"      .   winner-undo)
 
                 ;; YASnippet mode
                 ("<C-tab>"      .   yas-ido-expand)

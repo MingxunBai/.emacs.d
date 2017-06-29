@@ -78,8 +78,7 @@
 
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
-              tab-width 4               ;
-              major-mode 'conf-mode)    ;;
+              tab-width 4)              ;
 
 (setq inhibit-startup-message t         ; 关闭启动动画
       ;; initial-scratch-message nil       ; 移除草稿文本
@@ -115,14 +114,15 @@
 
       column-number-mode                ;;
       line-number-mode                  ; 显示行号列号
-      linum-format "%3d|"               ;;
+      linum-format " %2d|"              ;;
 
       display-time-day-and-date t       ;;
       display-time-24hr-format t        ; 时间格式
       display-time-default-load-average nil
 
       frame-title-format                ;;
-      '("Emacs " emacs-version)         ; Title 显示完整路径
+      '("Emacs " emacs-version " - "    ; Title 显示完整路径
+        (buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
       eshell-prompt-function            ;;
       (lambda ()                        ; Eshell 提示符
@@ -162,7 +162,7 @@
     :group 'linum)
 
   (defun my-linum-format (line-number)
-    (propertize (format "%3d\u2502" line-number) 'face
+    (propertize (format " %2d\u2502" line-number) 'face
                 (if (eq line-number my-linum-current-line-number)
                     'my-linum-hl
                   'linum)))
@@ -174,9 +174,8 @@
   (ad-activate 'linum-update)
 
   (global-hl-line-mode)
-  ;; Highlight current line
-  (set-face-attribute hl-line-face nil
-                      ;; :underline t
+
+  (set-face-attribute hl-line-face nil  ; 高亮当前行
                       :background "#E8E8FF")
 
   ;; mode line
@@ -202,8 +201,8 @@
 ;;-------------------------------------------------
 
 (setq auto-mode-alist
-      (append '(("/[^\\./]*\\'" .   conf-mode) ; File name has no dot
-                ("\\.bash"      .   sh-mode))
+      (append '(("/[^\\./]*\\'" . conf-mode) ; File name has no dot
+                ("\\.bash"      . sh-mode))
               auto-mode-alist))
 
 ;;-------------------------------------------------
@@ -217,10 +216,10 @@
   (custom-ff-utf-8-unix))
 
 (defun custom-ff-utf-8-unix ()
-  (if (and (not (eq major-mode 'bat-mode))
+  (if (and (and (not (eq major-mode 'bat-mode))
+                (not (eq major-mode 'java-mode)))
            (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
-      (set-buffer-file-coding-system 'utf-8-unix)
-    (message "It's a unix file.")))
+      (set-buffer-file-coding-system 'utf-8-unix)))
 
 ;; Command 分离窗口运行
 (defun custom-split-window (command &optional param)
@@ -242,13 +241,10 @@
           (setq path (file-name-directory (buffer-file-name)))
         (error nil))
       (progn
-        (kill-new (concat "cd " path))
         (custom-split-window 'eshell)
         (other-window 1)
-        (let ((pwd (eshell/pwd)))
-          (if (not (string-equal pwd path))
-              (eshell/cd path))))
-    (message "Eshell need a local file!")))
+        (eshell/cd path)))
+  (message "Eshell need a local file!"))
 
 ;; 缩进重排
 (defun custom-indent-buffer ()
@@ -303,16 +299,6 @@
         (setq line (1+ (line-number-at-pos))))))
   (goto-line line))
 
-;; 换行
-(defun custom-return ()
-  (interactive)
-  (if (or (custom-paren-match "{" "}")
-          (custom-paren-match "[" "]")
-          (custom-paren-match "(" ")")
-          (custom-paren-match ">" "<"))
-      (custom-middle-newline)
-    (newline-and-indent)))
-
 ;; 向上新建一行
 (defun custom-up-newline ()
   (interactive)
@@ -329,21 +315,56 @@
     (end-of-line)
     (newline-and-indent)))
 
-;; 标号内新建一行
-(defun custom-middle-newline ()
+;; 换行
+(defun custom-return ()
   (interactive)
-  (progn
-    (newline-and-indent)
-    (newline-and-indent)
-    (previous-line)
-    (indent-according-to-mode)))
+  (cond ((custom-is-in-paren?)
+         (custom-middle-newline))
+        ((custom-is-javadoc?)
+         (custom-javadoc-newline))
+        (t (newline-and-indent))))
 
-;; 匹配括号
+;; 匹配光标上下文
 (defun custom-paren-match (bef end)
   (if (and (string-equal bef (string (preceding-char)))
            (string-equal end (string (following-char))))
       't
     nil))
+
+(defun custom-is-in-paren? ()
+  (if (or (custom-paren-match "{" "}")
+          (custom-paren-match "[" "]")
+          (custom-paren-match "(" ")")
+          (custom-paren-match ">" "<"))
+      't
+    nil))
+
+(defun custom-is-javadoc? ()
+  (if (and (string-equal "*" (string (char-before)))
+           (string-equal "*" (string (char-before (- (point) 1))))
+           (string-equal "/" (string (char-before (- (point) 2))))
+           )
+      't
+    nil))
+
+;; 标点中新建一行
+(defun custom-middle-newline ()
+  (interactive)
+  (newline-and-indent)
+  (newline-and-indent)
+  (previous-line)
+  (indent-according-to-mode))
+
+;; javadoc
+(defun custom-javadoc-newline ()
+  (interactive)
+  (newline-and-indent)
+  (insert "*")
+  (indent-according-to-mode)
+  (newline-and-indent)
+  (insert "*/")
+  (indent-according-to-mode)
+  (previous-line))
 
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
@@ -445,7 +466,7 @@
     (kill-ring-save (point-at-bol) (point-at-eol))
     (custom-down-newline)
     (custom-yank)
-    (beginning-of-line)
+    (back-to-indentation)
     (forward-char step)))
 
 ;; 启用完整配置

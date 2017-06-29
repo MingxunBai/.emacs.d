@@ -102,6 +102,16 @@
 (require 'highlight-parentheses)
 (global-highlight-parentheses-mode)
 
+;; Java mode
+(add-hook 'java-mode-hook 'custom-java-mode-hook)
+(defun custom-java-mode-hook ()
+  (defun custom-java-run ()
+    (interactive)
+    (shell-command (concat "javac " (buffer-name)))
+    (shell-command (concat "java " (file-name-sans-extension (buffer-name)))))
+
+  (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
+
 ;; JavaScript IDE mode
 (defun enable-js2-mode ()
   (interactive)
@@ -287,8 +297,7 @@
 (window-numbering-mode)
 
 ;; Winner mode
-(when (fboundp 'winner-mode)
-  (winner-mode))
+(winner-mode)
 
 ;; YAML mode
 (defun enable-yaml-mode ()
@@ -299,8 +308,7 @@
 ;; YASnippet
 (require 'yasnippet)
 (yas-reload-all)
-(add-hook 'js2-mode-hook 'yas-minor-mode)
-(add-hook 'web-mode-hook 'yas-minor-mode)
+(add-hook 'prog-mode-hook 'yas-minor-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
@@ -340,17 +348,17 @@
 
 ;;; Major Mode
 (setq auto-mode-alist
-      (append '(("\\.css\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.go\\'"     .   (lambda () (enable-go-mode)))
-                ("\\.js\\'"     .   (lambda () (enable-js2-mode)))
-                ("\\.json\\'"   .   (lambda () (enable-json-mode)))
-                ("\\.less\\'"   .   (lambda () (enable-less-css-mode)))
-                ("\\.md\\'"     .   (lambda () (enable-markdown-mode)))
-                ("\\.w?xml\\'"  .   (lambda () (enable-web-mode)))
-                ("\\.php\\'"    .   (lambda () (enable-web-mode)))
-                ("\\.s[ac]ss"   .   (lambda () (enable-scss-mode)))
-                ("\\.vimrc\\'"  .   (lambda () (enable-vimrc-mode)))
-                ("\\.ya?ml\\'"  .   (lambda () (enable-yaml-mode))))
+      (append '(("\\.css\\'"   . (lambda () (enable-web-mode)))
+                ("\\.go\\'"    . (lambda () (enable-go-mode)))
+                ("\\.js\\'"    . (lambda () (enable-js2-mode)))
+                ("\\.json\\'"  . (lambda () (enable-json-mode)))
+                ("\\.less\\'"  . (lambda () (enable-less-css-mode)))
+                ("\\.md\\'"    . (lambda () (enable-markdown-mode)))
+                ("\\.w?xml\\'" . (lambda () (enable-web-mode)))
+                ("\\.php\\'"   . (lambda () (enable-web-mode)))
+                ("\\.s[ac]ss"  . (lambda () (enable-scss-mode)))
+                ("\\.vimrc\\'" . (lambda () (enable-vimrc-mode)))
+                ("\\.ya?ml\\'" . (lambda () (enable-yaml-mode))))
               auto-mode-alist))
 
 ;; Reload mode
