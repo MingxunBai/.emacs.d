@@ -4244,7 +4244,7 @@ bmds 出奇
 bmes 出彩
 bmet 聘用
 bmf 祟
-bmfc 出动 出去
+bmfc 出去 出动
 bmff 出土
 bmfg 聃 耼
 bmfh 出走
@@ -6936,7 +6936,7 @@ ddyn 套房 大户 大谬
 ddyo 大变
 ddyq 大义
 ddys 大麻
-ddyt 成套设备 套话 大话 大旗
+ddyt 大话 套话 大旗
 ddyu 大有文章
 ddyv 大唐 大庸
 ddyy 大方 大言
@@ -12541,7 +12541,7 @@ fist 教学相长
 fisu 霂
 fit 嫠
 fitb 孷
-fitd 求知 未知
+fitd 未知 求知
 fitf 求告 釐
 fitg 救生 求生
 fith 犛
@@ -30943,7 +30943,7 @@ mfkp 週
 mfky 雕 彫 琱 鵰
 mfl 贖
 mfld 赎罪
-mflf 周转 周围 财团
+mflf 周围 周转 财团
 mflk 赎回
 mflm 贖
 mflp 周边
@@ -34284,7 +34284,7 @@ ntub 忤逆
 ntud 发送 改善 改判 性状 性善
 ntuf 改装
 ntug 发病 性病
-ntuj 属意 发音
+ntuj 发音 属意
 ntuk 尾部 发问
 ntum 发疯 发端
 ntuq 发奖 必将 性交
@@ -65777,7 +65777,7 @@ yftp 庄稼
 yftr 读物
 yftv 计委
 yfty 读入 讲稿 诗篇
-yfuj 诗意 读音
+yfuj 读音 诗意
 yfuk 市场部 诘问
 yfuq 计次
 yfut 房地产 毫无关系

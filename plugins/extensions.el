@@ -110,17 +110,15 @@
   (defun custom-java-run ()
     (interactive)
     (save-buffer)
-    (if (condition-case nil
-            (setq file-path (file-name-directory (buffer-file-name)))
-          (error nil))
-        (let ((root (custom-find-dir file-path "src/")))
-          (if root
-              (let ((package (substring (file-relative-name file-path root) 4)))
-                (shell-command (concat "javac -d " root "/bin/ " (buffer-name)))
-                (shell-command (concat "cd " root "/bin/ && java " (replace-regexp-in-string "/" "." package) (file-name-sans-extension (buffer-name)))))
-            (progn
-              (shell-command (concat "javac " (buffer-name)))
-              (shell-command (concat "java " (file-name-sans-extension (buffer-name)))))))))
+    (setq file-path (file-name-directory (buffer-file-name)))
+    (let ((root (custom-find-dir file-path "src/")))
+      (if root
+          (let ((package (substring (file-relative-name file-path root) 4)))
+            (shell-command (concat "javac -d " root "/bin/ " (buffer-name)))
+            (shell-command (concat "cd " root "/bin/ && java " (replace-regexp-in-string "/" "." package) (file-name-sans-extension (buffer-name)))))
+        (progn
+          (shell-command (concat "javac " (buffer-name)))
+          (shell-command (concat "java " (file-name-sans-extension (buffer-name))))))))
 
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 
