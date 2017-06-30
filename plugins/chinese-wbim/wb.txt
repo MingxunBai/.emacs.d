@@ -7477,7 +7477,7 @@ dgru 硬拼
 dgrv 威势
 dgry 感抗
 dgsf 石材
-dgsh 有理想 感想 古朴
+dgsh 感想 古朴
 dgsq 石榴
 dgsr 古板 石板 石棉
 dgss 硬木
@@ -8340,7 +8340,7 @@ dmxg 布线
 dmxi 面纱
 dmxq 面纸
 dmy 矾 礬
-dmya 大幅度 面试
+dmya 面试 大幅度
 dmyb 面熟
 dmyd 面庞
 dmye 布衣
@@ -19074,7 +19074,7 @@ higk 频带
 hih 敊
 hihc 敊
 hihh 瞠目
-hihi 步步 叔叔 频频
+hihi 叔叔 频频 步步
 hihk 督战
 hiif 步法
 hijg 督师
@@ -22244,10 +22244,10 @@ ipn 涫
 ipnd 演剧
 ipne 澝
 ipnf 深层
-ipng 深情 觉悟 常情
+ipng 觉悟 深情 常情
 ipnh 浑蛋
 ipnm 滵 濵
-ipnn 涫 党羽
+ipnn 党羽 涫
 ipnr 深怕
 ipns 濘
 ipnt 党性 淧
@@ -22978,7 +22978,7 @@ itk 洛
 itkc 浩叹
 itkf 海味
 itkg 洛
-itkh 活跃 活路 海路
+itkh 活路 活跃 海路
 itkk 注射器 活口 海口
 itkm 海员
 itkt 少吃
@@ -28831,7 +28831,7 @@ ldvu 罪嫌
 ldw 辏
 ldwc 因公
 ldwd 辏 輳
-ldwr 软硬件
+ldwr 固件 软硬件
 ldws 固体 四面体
 ldwt 轃
 ldwv 恩仇
@@ -28931,7 +28931,7 @@ lfgk 转速
 lfgo 黑恶
 lfgq 围歼
 lfgt 黑麦
-lfh 轩 置 軒
+lfh 置 轩 軒
 lfhe 转瞬
 lfhf 置 寘
 lfhj 围桌
@@ -60540,7 +60540,7 @@ wkpv 保安
 wkq 侃
 wkqb 兌
 wkqg 保鲜
-wkqi 保尔 促销
+wkqi 促销
 wkqn 侃
 wkqq 众口铄金
 wkqs 保镖
@@ -62508,7 +62508,7 @@ wxxx 化缘
 wxyc 化育
 wxye 华裔
 wxyg 华语 货主
-wxyl 化为
+wxyl 华为
 wxyo 倾谈
 wxyr 倾诉
 wxyt 华诞
@@ -65069,7 +65069,7 @@ xyyf 统计 红衣主教
 xyys 编订
 xyyx 统率
 y 主 就
-ya 度 ° 试
+ya 试 度 °
 yaa 试
 yaad 遮藏
 yaaf 席勒 文艺工作者
@@ -65112,7 +65112,7 @@ yafc 启蒙运动 讛
 yafg 谋士 詌
 yafh 諽
 yafi 谋求
-yafp 度过
+yafp 试过 度过
 yafs 谋 謀
 yag 讧 訌
 yagb 诺顿 鄺
@@ -65932,6 +65932,7 @@ ygnf 主导
 ygnn 证书 瓬
 ygnx 毫不迟疑
 ygny 诉不尽
+ygod 主类
 ygog 主业
 ygon 评断
 ygou 语料
@@ -66036,7 +66037,7 @@ ygyr 鹿死谁手
 ygyt 说来话长 语族
 ygyu 评说
 ygyw 评论 市政府
-ygyy 语文 评议 语言 证言
+ygyy 语言 语文 评议 证言
 yh 让 店
 yha 谑
 yhad 讞

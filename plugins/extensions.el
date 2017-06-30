@@ -34,12 +34,14 @@
 (require 'company)
 (add-hook 'prog-mode-hook 'company-mode)
 (require 'company-dict)
-(setq company-idle-delay 0
-      company-minimum-prefix-length nil
+(setq company-auto-complete-chars nil
+      company-idle-delay nil
+      ;; company-minimum-prefix-length 1
       company-dict-dir (concat *PLUGINS* "/company/dict"))
 (add-to-list 'company-backends 'company-dict)
 
 (define-key company-mode-map (kbd "M-/") 'company-complete)
+(define-key company-active-map (kbd "M-/") 'company-abort)
 
 ;; Dumb jump mode
 (require 'dumb-jump)
@@ -61,14 +63,13 @@
 (require 'evil-nerd-commenter)
 
 ;; Git
-(defun custom-find-git-repo (dir)
+(defun custom-find-dir (dir reg)
   (interactive)
-  "Find base git directory"
   (if (not (string-match "[a-z0-9_-]/" dir))
-      (message "It's not a git repo.")
-    (if (file-exists-p (expand-file-name ".git/" dir))
+      nil
+    (if (file-exists-p (expand-file-name reg dir))
         dir
-      (custom-find-git-repo (expand-file-name "../" dir)))))
+      (custom-find-dir (expand-file-name "../" dir) reg))))
 
 (defun custom-git-push (root)
   (shell-command (concat "cd " root " && git add -A"))
@@ -80,7 +81,7 @@
   (if (condition-case nil
           (setq file-path (file-name-directory (buffer-file-name)))
         (error nil))
-      (let ((root (custom-find-git-repo file-path)))
+      (let ((root (custom-find-dir file-path ".git/")))
         (custom-git-push root))
     (message "Git need a local file!")))
 
@@ -98,7 +99,6 @@
 ;; Highlight indent guides
 (require 'highlight-indent-guides)
 (setq highlight-indent-guides-method 'character)
-;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
 ;; Highlight parentheses mode
 (require 'highlight-parentheses)
@@ -109,8 +109,18 @@
 (defun custom-java-mode-hook ()
   (defun custom-java-run ()
     (interactive)
-    (shell-command (concat "javac " (buffer-name)))
-    (shell-command (concat "java " (file-name-sans-extension (buffer-name)))))
+    (save-buffer)
+    (if (condition-case nil
+            (setq file-path (file-name-directory (buffer-file-name)))
+          (error nil))
+        (let ((root (custom-find-dir file-path "src/")))
+          (if root
+              (let ((package (substring (file-relative-name file-path root) 4)))
+                (shell-command (concat "javac -d " root "/bin/ " (buffer-name)))
+                (shell-command (concat "cd " root "/bin/ && java " (replace-regexp-in-string "/" "." package) (file-name-sans-extension (buffer-name)))))
+            (progn
+              (shell-command (concat "javac " (buffer-name)))
+              (shell-command (concat "java " (file-name-sans-extension (buffer-name)))))))))
 
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 
