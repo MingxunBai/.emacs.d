@@ -36921,7 +36921,7 @@ pgtq 宣称
 pgtr 宝物
 pgtv 定律
 pgtw 寡不敌众
-pgty 定稿 写稿 写入
+pgty 写入 定稿 写稿
 pgud 宣判
 pguf 定装
 pguj 定单 写意 定音
@@ -60127,7 +60127,7 @@ wgud 倒头 债券
 wguf 倒闭 便装 盒装
 wguh 伻
 wguj 合意
-wguk 人武部 全部 人事部
+wguk 全部 人事部
 wguq 合资
 wgus 全新
 wgut 便道

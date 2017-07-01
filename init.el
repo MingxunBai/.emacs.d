@@ -367,12 +367,6 @@
   (indent-according-to-mode)
   (previous-line))
 
-;; comment-newline
-(defun custom-comment-newline ()
-  (interactive)
-  (end-of-line)
-  (indent-new-comment-line))
-
 ;; 在右侧新建一个窗口
 (defun custom-split-window-right ()
   (interactive)

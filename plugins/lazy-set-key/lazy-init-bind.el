@@ -14,7 +14,6 @@
 (lazy-set-key '(("C-c f"   . full)
                 ("C-x 2"   . custom-split-window-below)
                 ("C-x 3"   . custom-split-window-right)
-                ("M-j"     . custom-comment-newline)
                 ("C-c C-k" . kill-buffer-and-window)
                 ("C-x C-x" . save-buffers-kill-emacs)
 
