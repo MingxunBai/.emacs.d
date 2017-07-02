@@ -8503,7 +8503,7 @@ dnwn 大快人心
 dnwq 成像
 dnwt 万余
 dnwu 成倍
-dnwv 万分 成分
+dnwv 成分 万分
 dnww 成人 万众 成份 万人 有心人
 dnwx 成佛 趸货
 dnwy 砄
@@ -11520,7 +11520,7 @@ fcqy 去留
 fcr 魂
 fcra 喜马拉雅 走马看花
 fcrc 魂
-fcre 动摇 支援
+fcre 支援 动摇
 fcrf 支持 劫持
 fcrh 去年 去掉
 fcri 支撑
@@ -12014,7 +12014,7 @@ fgho 墕
 fghu 雫
 fghw 雨具
 fghx 干柴
-fghy 寸 雨 进一步说 圷
+fghy 雨 寸 进一步说 圷
 fgi 坏 壊 壞
 fgia 干渠
 fgig 坯
@@ -12231,7 +12231,7 @@ fhgy 寸步不让 寸步不离
 fhh 赴
 fhhc 真皮
 fhhh 直上 赶上 走上 起止
-fhhi 赴 起步 走步 超频
+fhhi 超频 起步 赴
 fhhj 趠
 fhhk 起点 趈
 fhhl 盐卤
@@ -12885,7 +12885,7 @@ fkuf 鼙 壴 尌 鼞
 fkug 嘉靖 鼘 噽
 fkuh 瞽 鼘
 fkuj 蟚 鼜
-fkuk 喜 嘉 进口商品 嚭 囍 鼛
+fkuk 嘉 喜 进口商品 嚭 囍 鼛
 fkum 雪中送炭
 fkun 甏 壾 憙
 fkuo 熹 吉普
@@ -16738,6 +16738,7 @@ glpg 画室 璉
 glpu 两国之间
 glpy 琏 璉
 glrb 画报
+glrf 画质
 glrl 画押
 glsg 画本 不置可否
 glsr 画板
@@ -21812,7 +21813,7 @@ imgg 汎
 imgh 滑下
 imgi 尚不 游山玩水
 imgj 滍
-imgk 洞 没事
+imgk 没事 洞
 imgl 油画
 imgm 海峡两岸
 imgn 涄
@@ -22309,7 +22310,7 @@ ipth 深处 演算
 iptj 觉得 深得
 iptk 喾 沉积
 iptl 常务 常备 溶血 瀋
-iptm 深奥 浑身
+iptm 浑身 深奥
 ipto 深秋 鴬
 iptp 掌管
 iptq 沉稳
@@ -31042,6 +31043,7 @@ mgej 由表及里
 mgeq 同胞
 mgey 峬
 mgfd 同城
+mgfi 同求
 mgfn 同志
 mgfp 财政赤字
 mgga 赋形 同形
@@ -32142,7 +32144,7 @@ mup 崹
 mupb 同音字
 muph 崹
 mupy 赔礼 赠礼 嵭
-muqg 赔钱 赚钱
+muqg 赚钱 赔钱
 muqk 胊
 muqy 峧 賋
 mus 崷
@@ -36661,7 +36663,7 @@ pfft 宗教
 pffu 守丧
 pffw 神魂颠倒
 pfgi 神志不清
-pfgk 完整 完事 寒带 赛事
+pfgk 完事 完整 寒带 赛事
 pfgm 塞责
 pfgq 寓教于乐
 pfgt 宗教政策
@@ -38074,7 +38076,7 @@ puwk 裕 袷
 puwn 衿 补假
 puwq 实像 裞
 puwr 襷
-puws 褓 实体 裸体 襍
+puws 实体 裸体 褓 襍
 puwt 襒
 puwv 衯
 puww 实价 被人 襝
@@ -38305,7 +38307,7 @@ pwk 窜 竄
 pwkb 祸从口出
 pwkd 空喊
 pwkh 窜 空中
-pwkk 窗口 宣传品 容器
+pwkk 容器 窗口 宣传品
 pwkm 宣传员
 pwkr 窃听
 pwku 空谷足音
@@ -44384,7 +44386,7 @@ rnmh 扬帆
 rnmj 氙
 rnmq 所见
 rnmw 氝
-rnn 扎 癿 紥 紮
+rnn 所以 扎 癿 紥 紮
 rnnb 乬
 rnnf 气愤
 rnnj 蛗
@@ -48521,6 +48523,7 @@ sriy 株 株洲 楾
 srj 蜤
 srjf 晳
 srju 蜤
+srkg 板号
 srkh 株距
 srkk 模拟器
 srlf 歌舞团
@@ -49425,6 +49428,7 @@ syit 梳洗
 syiy 椋
 syjg 櫅
 syjn 核电
+syjo 核显
 syjs 核果
 syk 榱
 syke 榱 欀
@@ -50314,7 +50318,7 @@ teyx 舷 利用率
 teyy 彶
 tf 行 靠 等
 tfaa 等式
-tfad 行期 先期 选项
+tfad 选项
 tfaf 丢勒 先进工作者
 tfag 乖巧 籖
 tfaj 赞慕 行草
@@ -50528,7 +50532,7 @@ tfsg 选配 选本
 tfsi 自动检测
 tfsj 待查
 tfsk 赞歌
-tfsm 待机 先机
+tfsm 街机 待机 先机
 tfsp 靠枕
 tfsr 行板
 tfss 造林
@@ -50900,6 +50904,7 @@ tgyn 重启 生词
 tgyo 生变
 tgyq 征询 垂询
 tgys 征订
+tgyt 重谢
 tgyw 臭豆腐
 tgyx 繁殖率
 tgyy 征文 和平主义
@@ -52411,7 +52416,7 @@ tqth 犂 睝
 tqti 黎 自然科学
 tqtm 移向
 tqtn 笨鸟先飞
-tqto 黧 稀释 鯬 鵹 鵚
+tqto 稀释 黧 鯬 鵹 鵚
 tqtp 邌
 tqtq 錅
 tqts 各色各样 棃
@@ -53422,7 +53427,7 @@ twy 稚 穉
 twyb 稔熟
 twyc 彾 秢 笭 篗
 twye 篒
-twyg 稚 签证 身分证 身份证
+twyg 身份证 签证 稚
 twyh 迄今为止 籂 衑
 twyi 答应
 twyj 选修课
@@ -54278,7 +54283,7 @@ udwc 羚
 udwd 凑
 udwe 餋
 udwf 卷舒 差值 瘞
-udwg 差使 凑合 判例 送命
+udwg 凑合 差使 判例 送命
 udwh 送修
 udwj 羭
 udwk 装聋作哑
@@ -54601,7 +54606,7 @@ uftf 壮行
 uftg 卷土重来 半生
 uftj 瘏 闍 阇
 uftl 装备
-uftm 新动向 半身
+uftm 半身
 uftp 半规管
 ufts 装箱
 uftt 斗篷
@@ -62632,7 +62637,7 @@ wyiy 集注 倞
 wyj 侪 儕
 wyjd 今晨
 wyjf 邻里
-wyjg 今是 供应量 储量 会计师 食量 含量 儕
+wyjg 含量 储量 儕
 wyjh 侪 念曰 舆论监督 仿冒
 wyjj 今日
 wyjn 停电
@@ -66032,7 +66037,7 @@ ygyj 主课
 ygyl 评为 主谓
 ygym 语调
 ygyn 证词 主词 语词
-ygyq 主义 说到底 语义
+ygyq 语义 主义
 ygyr 鹿死谁手
 ygyt 说来话长 语族
 ygyu 评说
