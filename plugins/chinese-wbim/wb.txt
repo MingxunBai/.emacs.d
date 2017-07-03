@@ -6324,7 +6324,7 @@ cwtu 夋
 cwty 駼
 cwub 难闻
 cwud 验关 难关
-cwut 难产 难道
+cwut 难道 难产
 cwvo 鳮
 cwvp 逡巡
 cwvy 难忍
@@ -6340,7 +6340,7 @@ cwxy 难缠
 cwy 难 骓
 cwya 难度 观众席
 cwyc 駖
-cwyg 难 验证 骓 騅
+cwyg 验证 骓 騅
 cwyl 难为
 cwyn 难忘 騐
 cwyt 通俗读物
@@ -8889,7 +8889,7 @@ dsjg 碴
 dsjh 磹
 dsjm 奇遇
 dsjy 奇景
-dsk 厅 奇
+dsk 奇 厅
 dskc 攲 敧
 dskf 奇 竒
 dskg 砢
@@ -13979,7 +13979,7 @@ ftj 者
 ftjb 都
 ftjc 殾
 ftjf 者
-ftjg 都是 老是 考题 教师 老师 才是 未知量
+ftjg 都是 老师 老是 考题 教师 才是 未知量
 ftjh 老早
 ftjm 老帅
 ftjn 翥 乽
@@ -22239,7 +22239,7 @@ ipm 沉
 ipmj 赏赐 峃
 ipmm 深山
 ipmn 沉
-ipmq 觉 学风 党风 常见 覚 覺 斍
+ipmq 觉 常见 覺 覚 斍
 ipmw 党内
 ipn 涫
 ipnd 演剧
@@ -22273,8 +22273,8 @@ ipqa 涳
 ipqb 涴
 ipqc 深色
 ipqd 浑然 湥
-ipqe 溶解 觉解 α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω
-ipqg 鲎 赏钱 掌印 尝鲜 鸴 鱟 鷽
+ipqe 溶解 α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω
+ipqg 掌印 尝鲜 赏钱 鲎 鸴 鱟 鷽
 ipqh 党外
 ipqk 浑名 学名 滘
 ipqn 沈
@@ -27419,7 +27419,7 @@ kkut 呼吸道
 kkuu 吵吵闹闹
 kkuy 串门 哭闹
 kkvy 骂娘
-kkwa 口供 串供 口袋
+kkwa 口袋 口供 串供
 kkwf 口传
 kkwr 器件
 kkwu 品位
@@ -30837,7 +30837,7 @@ melk 骨架
 melv 髏
 mem 骰
 memc 骰
-meme 骷髅 骨骼 骨髓
+meme 骨骼 骨髓 骷髅
 memu 體
 memw 骨肉
 memy 骪
@@ -32492,7 +32492,7 @@ nag 惬 羾 愜
 naga 展开 异型 异形
 nagg 恇
 nagh 殿下 民政
-nagk 民事 懂事
+nagk 懂事 民事
 nagm 展现
 nagp 惶恐不安
 nagt 情节严重
@@ -34442,7 +34442,7 @@ nurl 飞舞 心慈手软
 nurn 习气 飞扬 屏气
 nurr 飞逝
 nusf 买票
-nusm 收音机 飞机
+nusm 飞机 收音机
 nusq 飞檐
 nut 飛
 nuta 飞升
@@ -36663,7 +36663,7 @@ pfft 宗教
 pffu 守丧
 pffw 神魂颠倒
 pfgi 神志不清
-pfgk 完事 完整 寒带 赛事
+pfgk 完整 完事 寒带 赛事
 pfgm 塞责
 pfgq 寓教于乐
 pfgt 宗教政策
@@ -38200,7 +38200,7 @@ pvyu 安详
 pvyv 安康
 pvyx 完好率
 pw 空 穿
-pwa 空 穿
+pwa 穿 空
 pwaa 窝工
 pwad 穷期 穷苦 窝藏
 pwaf 空
@@ -56158,7 +56158,7 @@ uspg 奠定
 uspn 亲密
 uspw 尊容 闲空
 usq 鹇 鷳 鷴 鷼
-usqg 鹇 新鲜 闲钱
+usqg 新鲜 闲钱 鹇
 usqk 闲逸
 usqn 美术馆
 usqt 闲逛
@@ -62100,7 +62100,7 @@ wvui 贫瘠
 wvuj 分章
 wvuk 分部
 wvuq 健将 颁奖
-wvut 岔道 贫道
+wvut 贫道 岔道
 wvuu 分立
 wvuy 分辩 分辨
 wvvc 伊始
@@ -67943,7 +67943,7 @@ ytyl 施为
 ytyn 谢词
 ytyo 诱变
 ytyq 旒
-ytyt 施放 谢谢 旖旎 旌旗
+ytyt 谢谢 施放 旖旎 旌旗
 ytyu 话说
 ytyw 施诊
 ytyx 高利率
@@ -67964,7 +67964,7 @@ yubm 说出
 yuce 说通 高效能
 yud 详
 yudf 敲门砖
-yudh 详 说破 詳
+yudh 说破 详 詳
 yudk 庠
 yudn 说成
 yudp 谙达
