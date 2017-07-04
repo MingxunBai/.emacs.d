@@ -561,7 +561,7 @@ adym 基调 甚高
 adyn 期望
 adyo 苦恋
 adyq 基底
-adyt 藏族 蒙古族 欺诈 期许 荗
+adyt 欺诈 期许 藏族 蒙古族 荗
 adyw 巨大变化 基座
 adyx 基础训练
 adyy 斯文 藏文 其文 其言 甚广 基础设施
@@ -6908,7 +6908,7 @@ ddwg 大使 面面俱到 大便 大全 大侠
 ddwh 大修
 ddwo 大伙
 ddwq 大爷
-ddwr 大伯 套件
+ddwr 套件 大伯
 ddws 大体
 ddwt 大作
 ddwu 厌倦
@@ -8213,7 +8213,7 @@ dmdf 硸
 dmdh 而在
 dmdi 大风大浪
 dmdj 而非 顨
-dmdm 面面 布面 页面
+dmdm 页面
 dmdn 而成
 dmdo 碳
 dmds 泰山压顶
@@ -12203,7 +12203,7 @@ fheu 超脱
 fhf 直 赶 矗
 fhfa 超载
 fhfb 坡地
-fhfc 超支 起动 走动 走去 走运
+fhfc 走动 超支 起动 走去 走运
 fhfd 盐城
 fhfg 越坏 真坏
 fhfh 矗 超越 赶赴 赶超 赶走 走走
@@ -14613,6 +14613,7 @@ fymq 教育网
 fyn 坊
 fyna 教育改革
 fynb 赱
+fync 无言以对
 fynn 教育局 协议书
 fynt 地方性
 fynw 垓
@@ -26475,6 +26476,7 @@ kegc 吸到
 kegg 咀
 kegn 瓹
 kegx 吸毒
+keif 吸尘
 keii 吸水
 keij 吸湿
 keiq 吸溜
@@ -27961,7 +27963,7 @@ krtm 听筒
 krtw 哄抬物价
 kru 啦
 krub 听闻
-krud 听差 听着
+krud 听着 听差
 kruf 唞
 krug 啦
 krwg 听便 听命
@@ -29248,7 +29250,7 @@ lgtd 国籍
 lgte 车船
 lgtf 车行
 lgtg 国策 胃下垂
-lgth 办事处 车牌
+lgth 车牌
 lgtk 囤积 车程
 lgtl 国务
 lgtm 车身 辐射 国徽
@@ -29471,7 +29473,7 @@ lkgd 回天
 lkge 回青
 lkgf 圆球
 lkgg 圆环
-lkgk 加速 圆融 圆整
+lkgk 回事 加速 圆融 圆整
 lkgo 回来
 lkgy 加班
 lkh 甽
@@ -31189,7 +31191,7 @@ mhas 幉
 mhat 幭
 mhav 贴切
 mhaw 贴花 帺
-mhbb 帽子 幌子 帖子 帐子
+mhbb 帖子 帽子 幌子 帐子
 mhc 帊
 mhce 幓
 mhcn 帊
@@ -38130,7 +38132,7 @@ pvge 安静
 pvgf 宝刀不老 安于
 pvgu 安平
 pvhh 安上
-pvhj 案桌
+pvhj 安卓 案桌
 pvhn 安眠
 pvht 安睡
 pvit 福建省
@@ -51045,7 +51047,7 @@ thnl 鼻翼
 thnn 自己 稳步发展 自已 臫
 thno 臭屎
 thnt 自发 篡改 长此以往
-thnu 息 自习
+thnu 自习
 thnw 自怜
 thnx 臭屁
 thny 延迟 自尽 处以 讆 讏
@@ -51858,7 +51860,7 @@ tmgr 委内瑞拉
 tmgs 微末
 tmgt 微 徽 徵 徴 黴 幑 鰴
 tmh 币 秈 幣 幤
-tmhh 向上 身上
+tmhh 身上 向上
 tmhi 射频
 tmhk 币
 tmhw 秧龄
@@ -54268,7 +54270,7 @@ uduk 善 状况 头部 譱
 udum 券商
 udun 判决
 uduq 送交
-udut 减产 头疼 敾
+udut 头疼 减产 敾
 uduw 歚
 uduy 关门 着凉 善辩
 udv 券
@@ -56257,7 +56259,7 @@ utdg 瘪三
 utdh 道破
 utdi 疾
 utdk 痴 癡
-utdm 颜面 首页
+utdm 首页 颜面
 ute 产 颜 閁
 utec 瘢
 utel U盘 头重脚轻
@@ -57278,6 +57280,7 @@ vbrh 好看
 vbrq 好的 她的
 vbrt 好手
 vbs 婀
+vbsh 好想
 vbsk 婀 好歌
 vbss 好梦
 vbsu 好样
@@ -67462,7 +67465,7 @@ yqvv 义女
 yqwf 谗佞
 yqwq 义父
 yqww 底价
-yqxg 义母 底线
+yqxg 底线 义母
 yqxl 底细
 yqy 廇
 yqyc 诡谲
