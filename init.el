@@ -248,11 +248,14 @@
   (message "Eshell need a local file!"))
 
 ;; 缩进重排
+(defun custom-remeber-line ()
+  (if (bolp)
+      (1+ (count-lines 1 (point)))
+    (count-lines 1 (point))))
+
 (defun custom-indent-buffer ()
   (interactive)
-  (let ((line (if (bolp)
-                  (1+ (count-lines 1 (point)))
-                (count-lines 1 (point))))
+  (let ((line (custom-remeber-line))
         (step (custom-remeber-point-step)))
     (indent-region (point-min) (point-max))
     (goto-line line)
