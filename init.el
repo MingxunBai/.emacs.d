@@ -197,6 +197,9 @@
 (require 'lazy-set-key)
 (require 'lazy-init-bind)
 
+;; Multiple cursors
+(require 'multiple-cursors)
+
 ;;-------------------------------------------------
 ;; Major Mode
 ;;-------------------------------------------------
@@ -477,3 +480,5 @@
 (defun full ()
   (interactive)
   (require 'extensions))
+
+(server-start)

@@ -15,6 +15,10 @@ Extensions
 - 默认为英文状态, <kbd>C-\\</kbd> 切换
 - 可通过修改 `plugins/input-wbpy/wb.txt` 调整词序
 
+Auto-Complete
+--------------------
+- <kbd>M-/</kbd> 触发 / 关闭代码补齐
+
 Elpy-mode
 --------------------
 - Python IDE mode

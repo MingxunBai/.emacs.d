@@ -10369,7 +10369,7 @@ eoq 膦
 eoqh 膦
 eoqy 受精卵
 eoy 脒
-ep 爱 受 逐
+ep 受 爱 逐
 epa 臗
 epaa 受戒
 epad 受苦
@@ -11408,7 +11408,7 @@ fcbl 霧
 fcbm 支出
 fcbn 动了 去了
 fcbt 雺 霚
-fcbw 支队 去除
+fcbw 去除 支队
 fcc 墋
 fcca 走马观花
 fccc 却又
@@ -12341,7 +12341,7 @@ fhrq 真的
 fhrr 直白 起誓
 fhrt 直播
 fhru 直接
-fhrv 真挚 趋势 趁势 趁热 走势
+fhrv 走势 趋势 趁势 趁热 真挚
 fhrw 走失 趃
 fhrx 直指
 fhsc 越权 越橘
@@ -15869,7 +15869,7 @@ ghfa 下载
 ghfb 下地
 ghfc 下去
 ghff 下款 政坛
-ghfg 下士 下雨
+ghfg 下雨 下士
 ghfh 正直 下坡
 ghfl 政协
 ghfm 正南
@@ -32910,6 +32910,7 @@ nfet 慎用
 nff 恃
 nffc 层云
 nffd 屠城
+nffl 迅雷
 nffn 怯场 屠场
 nffp 惊魂未定
 nffq 憢
@@ -33047,7 +33048,7 @@ ngcn 司马
 ngcw 刁难
 ngd 刁
 ngde 怀有 情有
-ngdg 怀古 情感 心不在焉
+ngdg 情感 怀古 心不在焉
 ngdm 情面
 ngdn 悿
 ngdr 情愿
@@ -43486,7 +43487,7 @@ rhgh 看下 爬下 年下 卸下 掉下 挊
 rhgk 年事
 rhgl 年画
 rhgm 卸责
-rhgo 年来 看来 扑灭
+rhgo 看来 扑灭
 rhgs 年末
 rhgu 扯平
 rhh 攫
@@ -46128,7 +46129,7 @@ rwud 失着 推头 摄像头
 rwuf 扮装
 rwuj 提货单 失意 摿
 rwuk 接合部 换代产品
-rwuq 失盗 失效
+rwuq 失效
 rwus 抢亲
 rwuu 手倒立
 rwuy 推门 扵
@@ -51599,7 +51600,7 @@ tkta 委员长
 tktf 各行 积德
 tkth 各处 入口处 各自
 tktj 各得
-tktk 种种 各种 筥
+tktk 各种 种种 筥
 tkto 鵅
 tktr 和我 自吹自擂
 tkts 各条
@@ -56603,6 +56604,7 @@ uve 痕
 uvei 痕
 uvep 兼爱
 uvf 妾
+uvfa 童叟无欺
 uvfh 冿
 uvfk 疩
 uvft 单刀直入
@@ -62124,7 +62126,7 @@ wvxg 分母
 wvxu 贫弱
 wvxw 颁给 分维
 wvy 仞
-wvyb 分离 分享
+wvyb 分享 分离
 wvyh 分店
 wvyl 分为
 wvym 分设
@@ -62606,7 +62608,7 @@ wygf 偏于 贪玩
 wygg 住
 wygh 住下 停下
 wygi 偏不
-wygk 领事 信赖 依赖 估计不足 领带
+wygk 依赖 信赖 领事 领带
 wygo 令严 体育事业
 wygq 焦裂
 wygr 念珠
@@ -65963,7 +65965,7 @@ ygqt 廒 主犯 謸
 ygqv 主键
 ygrf 主持 腐殖质
 ygrh 请看
-ygrn 语气 证据
+ygrn 证据 语气
 ygrq 话不投机半句多
 ygrs 主打
 ygrt 主播
@@ -68683,7 +68685,7 @@ yyt 詶
 yyta 议长
 yytd 文辞 言辞 夜郎自大
 yyte 方舟
-yytf 言行 文选 广告 文告
+yytf 广告 言行 文选 文告
 yytg 言重
 yyth 文牍 詶
 yytk 方程 议程 言和 议和

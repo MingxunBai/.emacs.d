@@ -30,18 +30,14 @@
 ;; AutoHotKey mode
 (require 'xahk-mode)
 
-;; Company mode
-(require 'company)
-(add-hook 'prog-mode-hook 'company-mode)
-(require 'company-dict)
-(setq company-auto-complete-chars nil
-      company-idle-delay nil
-      ;; company-minimum-prefix-length 1
-      company-dict-dir (concat *PLUGINS* "/company/dict"))
-(add-to-list 'company-backends 'company-dict)
+;; Auto Complete
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-auto-start nil
+      ac-use-menu-map t)
 
-(define-key company-mode-map (kbd "M-/") 'company-complete)
-(define-key company-active-map (kbd "M-/") 'company-abort)
+(define-key ac-mode-map (kbd "M-/") 'auto-complete)
+(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
 
 ;; Dumb jump mode
 (require 'dumb-jump)
@@ -72,7 +68,7 @@
       (custom-find-dir (expand-file-name "../" dir) reg))))
 
 (defun custom-git-push (root)
-  (shell-command (concat "cd " root " && git add -A"))
+  (shell-command (concat "cd " root " && git add ."))
   (shell-command (concat "cd " root " && git commit -m 'Update'"))
   (shell-command (concat "cd " root " && git push")))
 
@@ -176,9 +172,6 @@
     (custom-set-variables '(markdown-command "markdown.pl")))
 
   (define-key markdown-mode-map (kbd "C-c C-k") nil))
-
-;; Multiple cursors
-(require 'multiple-cursors)
 
 ;; Org mode
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
@@ -373,6 +366,7 @@
                 ("\\.md\\'"    . (lambda () (enable-markdown-mode)))
                 ("\\.w?xml\\'" . (lambda () (enable-web-mode)))
                 ("\\.php\\'"   . (lambda () (enable-web-mode)))
+                ("\\.yasnippet\\'" . snippet-mode)
                 ("\\.s[ac]ss"  . (lambda () (enable-scss-mode)))
                 ("\\.vimrc\\'" . (lambda () (enable-vimrc-mode)))
                 ("\\.ya?ml\\'" . (lambda () (enable-yaml-mode))))
