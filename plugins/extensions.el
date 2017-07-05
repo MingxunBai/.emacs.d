@@ -72,9 +72,9 @@
       (custom-find-dir (expand-file-name "../" dir) reg))))
 
 (defun custom-git-push (root)
-  (shell-command (concat "cd " root
-                         " && git add -A && cd " root
-                         " && git commit -m 'Update' && cd " root " && git push")))
+  (shell-command (concat "cd " root))
+  (shell-command (concat "git add -A && cd " root))
+  (shell-command (concat "git commit -m 'Update' && cd " root " && git push")))
 
 (defun custom-git-push-current-buffer ()
   (interactive)
