@@ -72,9 +72,9 @@
       (custom-find-dir (expand-file-name "../" dir) reg))))
 
 (defun custom-git-push (root)
-  (shell-command (concat "cd " root " && git add -A"))
-  (shell-command (concat "cd " root " && git commit -m 'Update'"))
-  (shell-command (concat "cd " root " && git push")))
+  (shell-command (concat "cd " root
+                         " && git add -A && cd " root
+                         " && git commit -m 'Update' && cd " root " && git push")))
 
 (defun custom-git-push-current-buffer ()
   (interactive)
@@ -113,22 +113,22 @@
     (custom-split-window 'shell)
     (other-window 1)
     (end-of-buffer)
-    (setq line (custom-remeber-line))
     (other-window 1)
     (setq file-path (file-name-directory (buffer-file-name)))
     (let ((root (custom-find-dir file-path "src/")))
       (if root
           (let ((package (file-relative-name file-path root)))
-            (process-send-string "shell" (concat "cd " root "\n"))
-            (process-send-string "shell" (concat "javac -d bin/ " package (buffer-name) "\n"))
-            (process-send-string "shell" (concat "java -cp bin/ " (replace-regexp-in-string "/" "." (substring package 4)) (file-name-sans-extension (buffer-name)) "\n")))
+            (process-send-string
+             "shell"
+             (concat "cd " root
+                     " && javac -d bin/ " package (buffer-name)
+                     " && java -cp bin/ " (replace-regexp-in-string "/" "." (substring package 4)) (file-name-sans-extension (buffer-name)) "\n")))
         (progn
-          (process-send-string "shell" (concat "cd " file-path "\n"))
-          (process-send-string "shell" (concat "javac " (buffer-name) "\n"))
-          (process-send-string "shell" (concat "java " (file-name-sans-extension (buffer-name)) "\n"))))
-      (other-window 1)
-      (goto-line line)
-      (other-window 1)))
+          (process-send-string
+           "shell"
+           (concat "cd " file-path
+                   " && javac " (buffer-name)
+                   " && java " (file-name-sans-extension (buffer-name)) "\n"))))))
 
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 
@@ -146,14 +146,7 @@
   (defun custom-js-send-buffer ()
     (interactive)
     (custom-split-window 'switch-to-buffer "*js*")
-    (other-window 1)
-    (end-of-buffer)
-    (setq line (custom-remeber-line))
-    (other-window 1)
-    (js-send-buffer)
-    (other-window 1)
-    (goto-line line)
-    (other-window 1))
+    (js-send-buffer))
 
   (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer))
 
