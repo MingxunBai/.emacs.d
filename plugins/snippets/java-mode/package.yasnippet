@@ -1,0 +1,4 @@
+# name: package
+# key: pk
+# --
+package `(concat (replace-regexp-in-string "/" "." (substring (file-relative-name (file-name-directory (buffer-file-name)) (custom-find-dir (file-name-directory (buffer-file-name)) "src/")) 4 -1)) ";")`

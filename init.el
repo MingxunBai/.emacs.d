@@ -228,6 +228,8 @@
 ;; Command 分离窗口运行
 (defun custom-split-window (command &optional param)
   (delete-other-windows)
+  (if (> (count-windows) 1)
+      (project-explorer-toggle))
   (split-window-vertically (floor (* 0.68 (window-height))))
   (other-window 1)
   (funcall command param)

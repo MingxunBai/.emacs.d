@@ -4577,7 +4577,7 @@ brph 孤寂
 brpl 孤军
 brq 隗
 brqc 隗 聭
-brqt 孤儿 孤独
+brqt 孤独 孤儿
 brqy 孤岛
 brsg 孤本 防护林带
 brss 防护林
@@ -8248,7 +8248,7 @@ dmia 布满
 dmid 春风满面
 dmin 大同小异
 dmis 非同小可 碘酒
-dmj 而
+dmj 而 厕
 dmjd 面 耎
 dmje 耏
 dmjf 耐
@@ -8293,8 +8293,8 @@ dmq 砚 硯
 dmqc 面色
 dmqh 而外
 dmqi 布尔
-dmqn 砚 面包
-dmqy 砜 耐久 碸
+dmqn 面包 砚
+dmqy 耐久 砜 碸
 dmre 面授
 dmrg 而后
 dmrn 厕所
@@ -8828,7 +8828,7 @@ drtc 厉兵秣马
 drtd 原籍
 drtf 碑 原先 原告
 drtg 原生
-drth 原处 原版
+drth 原版 原处
 drtr 原物
 drtt 大手笔
 drtv 原委
@@ -10460,6 +10460,7 @@ epq 腕
 epqb 腕
 epqh 舜
 epqn 脓包
+epqt 爱卿
 epr 膑 臏
 epre 受援
 eprf 爱抚
@@ -14075,7 +14076,7 @@ fttv 教委
 fttw 运算符
 ftty 考入
 ftu 垀
-ftud 教养 考卷 老头
+ftud 老头 教养 考卷
 ftug 老辣 老毛病 喜笑颜开 坏血病
 ftuh 南征北战 垀 雽
 ftuk 老总 土特产品
@@ -16051,7 +16052,7 @@ giaf 不甘
 giag 不巧
 giai 开源节流 不薄 不落
 giak 不惑
-giap 不劳 麦当劳
+giap 麦当劳
 giaq 不敬 不苟
 gias 璖
 giaw 不花 不恭 整党工作 正常工作
@@ -17449,7 +17450,7 @@ gqqn 敖包
 gqqr 歾
 gqqs 残杀
 gqqt 恶狠狠
-gqqy 列岛 残留
+gqqy 残留
 gqr 殊
 gqrg 残兵 列兵 死后
 gqrh 残年 死掉 歽
@@ -23142,7 +23143,7 @@ ityo 劣迹 滥竽充数 泛谈
 ityq 海底
 ityt 少许
 ityw 省府 泛论
-ityy 常务主席 活该
+ityy 活该
 iu 洋 滚 滴
 iua 洴
 iuaa 洋式
@@ -23824,7 +23825,7 @@ iyth 洲 漩
 iytj 流利
 iytk 流程 淤积
 iytl 流血 淤血
-iytm 流向 注射
+iytm 注射 流向
 iyto 注释 溈
 iytq 游移
 iytr 游牧
@@ -23876,7 +23877,7 @@ iyyq 澈底
 iyyt 流放 漂亮话
 iyyu 游说
 iyyy 流言 沙文主义
-j 是 日 最
+j 是 日 曰 最
 ja 虹 晓 暴
 jaa 暱
 jaak 暱
@@ -27044,11 +27045,11 @@ kht 路 踟
 khtc 路径
 khtd 跃 躍
 khte 中盘
-khtf 踵 中等 中午 忠告 路德 跨行 跃迁 中选 跛行
+khtf 中午 中等 忠告 踵
 khtg 贵重 中策 鹭 鷺
 khth 贵处 路牌 跭 蹝 蹤
 khtj 跑得
-khtk 路 踟 路程 中程 中和 蹻
+khtk 路程 中和 路 踟 蹻
 khtl 蹯
 khtm 躜 跻身 躦
 khtn 趷
@@ -29508,7 +29509,7 @@ lkkh 回路 回嘴 回跌
 lkkt 回响
 lkld 加固
 lklf 回转
-lklg 回车 驾车 回国
+lklg 回车 回国
 lklk 圆圆 回回
 lklt 加力
 lklu ○ 圆圈
@@ -31769,7 +31770,7 @@ mqgq 刚烈
 mqgs 岁末
 mqgy 刚玉
 mqh 飓 颶
-mqhh 网上 网卡
+mqhh 网卡 网上
 mqhk 网点 飐 颭
 mqhv 网眼
 mqhw 飓 网龄
@@ -33172,7 +33173,7 @@ ngud 怀着 情状
 ngug 尿毒症
 nguh 怦
 nguj 情意 发现问题
-nguk 民政部 情况
+nguk 情况
 ngum 情商
 ngut 悟道
 nguy 屋门
@@ -37788,7 +37789,7 @@ ptxj 福利费
 ptya 额度 客席
 ptyh 客店
 ptyl 被称为
-ptyn 客房 客户
+ptyn 客户 客房
 ptyw 客座
 ptyy 军委主席
 pu 实 初
@@ -41053,7 +41054,7 @@ qqmm 金山 多山
 qqmq 金刚 多见 多风 多岁
 qqn 钨 鎢
 qqnc 狐狸尾巴
-qqng 钨 多情 翗
+qqng 多情 钨 翗
 qqnh 多收
 qqnl 锱铢必较
 qqnn 急急忙忙 匆匆忙忙 鉋 铇
@@ -44508,7 +44509,7 @@ rnyc 扬弃 摒弃
 rnyf 抒情诗
 rnyg 反民主
 rnyk 所误
-rnyl 所为 所谓
+rnyl 所谓 所为
 rnyq 指导方针
 rnys 拟订
 rnyt 气话 扬州
@@ -45090,7 +45091,7 @@ rrrb 拍摄
 rrrc 招摇撞骗
 rrrf 皛 皨
 rrrg 抓捕
-rrrh 拆卸 拆掉 白扯
+rrrh 拆掉 拆卸 白扯
 rrrj 掱
 rrrk 折扣 打折扣
 rrrn 指挥所
@@ -45114,7 +45115,7 @@ rrsw 白桦 把握机会
 rrsy 拱手相让
 rrt 捭
 rrta 欣欣向荣
-rrtf 捭 拆迁 白毛
+rrtf 拆迁 捭 白毛
 rrtg 缺斤短两
 rrth 拆息 拍片 折算
 rrtm 折射
@@ -45122,7 +45123,7 @@ rrtn 拍手称快
 rrts 白条
 rrtt 反反复复
 rrtu 扬扬得意 招揽生意
-rrud 白卷 抓差 白送 手指头 白头 折头
+rrud 白送 手指头 白头 折头
 rruf 抓斗 折半
 rruk 指挥部
 rruq 白净
@@ -50943,7 +50944,7 @@ thdf 自夸 篡夺 怎奈
 thdg 自古 自上而下
 thdh 自在 处在
 thdi 纂
-thdm 片面 版面
+thdm 版面 片面
 thdn 自成
 thdr 自愿
 thdt 延寿 乘虚而入 穢
@@ -51114,7 +51115,7 @@ thta 处长 延长 片长
 thtc 怎么 自私
 thtd 自筹 自知
 thte 算盘
-thtf 自选 自行 自造 自赞
+thtf 自行 自选 自造 自赞
 thtg 自重
 thth 处处 鼻息 自咎
 thtj 彼得 自得 乍得
@@ -58576,7 +58577,7 @@ vtjj 九日
 vtjt 君临 群星
 vtk 群 君
 vtkb 郡
-vtkd 群 君 羣
+vtkd 君 群 羣
 vtke 裠
 vtkf 娇嗔
 vtkh 娇贵 帬
@@ -62663,7 +62664,7 @@ wykt 贪吃
 wykv 念叨
 wyl 伪 偽 僞
 wylf 集团 偏转
-wylg 邻国 停车 儃
+wylg 停车 儃
 wylt 领略 贪图
 wylu 领圈
 wylw 停办 体育界 舆论界
@@ -67865,7 +67866,7 @@ ytr 旂
 ytre 为我所用
 ytrf 高科技
 ytrg 义务兵 诱捕
-ytrh 放牛 旂
+ytrh 放掉 放牛 旂
 ytrk 诱拐
 ytrn 忘乎所以 计算所
 ytrt 旗手 放手 誐

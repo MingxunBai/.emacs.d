@@ -34,6 +34,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (setq ac-auto-start nil
+      ac-ignore-case nil
       ac-use-menu-map t)
 
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
@@ -117,7 +118,7 @@
             (process-send-string
              "shell"
              (concat "cd " root
-                     " && javac -d bin/ " package (buffer-name)
+                     " && javac -d bin/ " package "*.java"
                      " && java -cp bin/ " (replace-regexp-in-string "/" "." (substring package 4)) (file-name-sans-extension (buffer-name)) "\n")))
         (progn
           (process-send-string
@@ -333,6 +334,8 @@
       choices)
      :prompt prompt
      :isearch t)))
+(define-key popup-menu-keymap (kbd "M-n") 'popup-next)
+(define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
 
 (defun yas-ido-expand ()
   "Lets you select (and expand) a yasnippet key"
