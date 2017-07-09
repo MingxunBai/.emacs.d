@@ -7276,7 +7276,7 @@ dfts 压条
 dftt 唇笔
 dftx 硓
 dfu 夺
-dfud 磕头 奔头 砖头
+dfud 砖头 磕头 奔头
 dfuj 唇音
 dfuk 大声疾呼
 dful 悲喜交加
@@ -13667,7 +13667,7 @@ fqna 无异
 fqnb 雹
 fqnc 无怪
 fqnd 无忧
-fqng 坞 无情 塢
+fqng 无情 坞 塢
 fqnn 均已 无忌 垉
 fqnr 无愧
 fqnt 无性 无悔 二象性
@@ -31895,7 +31895,7 @@ mqyf 岁计 见诸
 mqyg 见证
 mqyk 见识
 mqyl 嵧
-mqyn 购房 风扇
+mqyn 风扇
 mqyo 网恋
 mqys 风靡
 mqyt 几句话
@@ -34762,7 +34762,7 @@ nyhk 惦 心战
 nyhv 心眼
 nyhx 以此
 nyhy 忭 忄
-nyi 尺 惊 乄 卪
+nyi 惊 尺 乄 卪
 nyid 惊涛
 nyie 心浮
 nyif 心潮
@@ -53453,7 +53453,7 @@ txbw 入乡随俗
 txck 每台
 txcw 繁难
 txd 龜
-txdg 第三 敏感
+txdg 敏感
 txdh 身经百战
 txdm 每页
 txdn 繁盛
@@ -64517,7 +64517,7 @@ xu 弱 弹
 xua 絣
 xuad 弱项
 xuah 絣
-xuaj 織
+xuaj 弹幕 織
 xuaq 缓冲区
 xuaw 红颜薄命
 xuax 弹药
@@ -66668,7 +66668,7 @@ ymhj 市 巿
 ymhk 设点
 ymhn 高卢
 ymhw 高龄
-ymif 设法 高潮 高洁
+ymif 高潮 设法 高洁
 ymig 高清
 ymih 高小
 ymii 高山流水
