@@ -6847,7 +6847,7 @@ ddrq 大抵 大的
 ddrr 大抓 大白
 ddrs 大打
 ddrt 大手 左右手
-ddrv 大势
+ddrv 大招 大势
 ddrx 大批
 ddry 大搞
 dds 碕
@@ -7714,7 +7714,7 @@ dhtk 夏种
 dhtm 存身
 dhtn 顾盼生情
 dhtt 顾虑重重
-dhtu 夏 在乎
+dhtu 在乎 夏
 dhtx 万紫千红
 dhty 存入
 dhu 狊
@@ -11144,7 +11144,7 @@ eyxy 臃 胘
 eyyn 助记词
 eyyp 﨤
 eyyt 脏话
-f 地 寸 雨
+f 地 土 寸 雨
 fa 载 戴 栽
 faaa 二项式
 faad 考茨基
@@ -11805,7 +11805,7 @@ fffq 堯 墝
 ffft 无声无息
 fffu 土坷垃
 fffw 土堆
-fffy 封 土壤
+fffy 土壕 封 土壤
 ffga 地老天荒
 ffge 填表
 ffgg 封一 支支吾吾
@@ -16494,7 +16494,7 @@ gkgd 整天 丗
 gkge 彧
 gkgg 整一 珵
 gkgh 带下 帯 羋
-gkgj 事理 整理 来路不明
+gkgj 整理 来路不明
 gkgk 整整 事事 束带 豌豆 豇豆 豆豉
 gkgn 正中下怀
 gkgo 带来
@@ -21034,7 +21034,7 @@ ihft 小考
 ihfu 举目无亲
 ihfv 小雪
 ihg 泪 沚 涙 淚
-ihga 小型
+ihga 波形 小型
 ihge 淑静
 ihgf 小于 ＜ 濒于
 ihgj 小惠
@@ -22197,7 +22197,7 @@ ipip 深沉 常常 沉淀 堂堂 沉沉 淙淙 深深 学堂
 ipiq 赏光
 ipir 学派 党派
 ipis 沉渣 深潭
-ipit 深省 深海 深渊
+ipit 深渊 深海
 ipiu 泶
 ipiv 渲染 沉浸
 ipiw 沉沦
@@ -33862,7 +33862,7 @@ nnwy 快 书信 快信
 nnx 怩
 nnxa 羽绒
 nnxc 已经
-nnxe 局级 司局级 乙级
+nnxe 乙级
 nnxn 怩
 nny 羽
 nnyd 书斋
@@ -33872,7 +33872,7 @@ nnyg 羽 书评
 nnyh 书店
 nnyi 习以为常
 nnyl 书库
-nnyn 书记 己亥 书房 快讯 乙亥
+nnyn 书房 己亥 乙亥
 nnyo 异性恋
 nnyp 书亭
 nnyw 书论
@@ -43525,7 +43525,7 @@ rhlg 牛车 卸车
 rhlw 年轮
 rhmh 瓜皮帽
 rhmm 爬山
-rhmq 年岁 看见 披风
+rhmq 看见 年岁 披风
 rhmw 牛肉 年内
 rhmy 揁
 rhna 看懂
@@ -45256,6 +45256,7 @@ rspb 打字
 rspg 手术室
 rspu 打褶
 rspw 技术密集 打穿
+rsqa 打错
 rsqc 打勾
 rsqf 打针
 rsqg 打印
@@ -47062,7 +47063,7 @@ sffc 飘动 飘去 橒
 sffg 桂 飘雨 枝干
 sffi 标示
 sffm 相去无几
-sffn 樗 标志
+sffn 标志 樗
 sffq 飘远 橈
 sffu 飘乎
 sffv 飘雪
@@ -47662,7 +47663,7 @@ shwd 想做
 shwf 相传 相会
 shwg 相命
 shwn 相似
-shwq 相像 想像
+shwq 想像
 shwu 相伴 相位
 shwy 相信 想念 相依 相仿 相邻 椇
 shxi 橴
@@ -50352,7 +50353,7 @@ tfdf 壬辰
 tfdg 千古 壬戌
 tfdj 先辈 千百 穤
 tfdm 垂直面 街面
-tfdn 造成 告成 赞成 千万
+tfdn 千万 造成 告成 赞成
 tfdq 千克
 tfdw 先秦 先声夺人
 tfdy 千丈 选矿
@@ -50761,7 +50762,7 @@ tgkw 簌
 tgky 稶
 tgl 熏 燻
 tgld 重罪
-tglf 重围 智囊团
+tglf 重置 重围 智囊团
 tgli 管理办法 徚
 tgll 甥 勳
 tglo 熏 勳
@@ -51111,7 +51112,7 @@ thst 和睦相处
 thsu 怎样 臬
 thsw 自检
 thsy 算术 自述
-thta 处长 延长 片长
+thta 延长 片长 处长
 thtc 怎么 自私
 thtd 自筹 自知
 thte 算盘
@@ -53004,7 +53005,7 @@ tuet 乘胜
 tuf 笠
 tufe 穣
 tuff 税款
-tufh 科 简直 秚
+tufh 简直 科 秚
 tufi 利益均沾
 tufl 科协
 tufn 德意志
@@ -55082,7 +55083,7 @@ ujgk 音速 音带
 ujgr 瘍
 ujgx 音素
 ujhc 痩
-ujhi 单步 音频
+ujhi 音频 单步
 ujhk 闪电战
 ujhm 童贞
 ujhq 覸
@@ -55158,7 +55159,7 @@ ujqu 韵 韻
 ujqv 单键 嬜
 ujqw 歆
 ujr 韹
-ujrf 单质 音质
+ujrf 音质
 ujrg 韹
 ujrh 童年
 ujri 单挑
@@ -68033,7 +68034,7 @@ yump 讁
 yumq 详见
 yuna 讳疾忌医
 yund 谪居
-yung 说情 详情
+yung 详情 说情
 yunn 说书
 yuny 详尽
 yuo 谱
