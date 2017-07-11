@@ -10954,7 +10954,7 @@ euxf 胶结
 euxj 膳费
 euyb 脱离
 euye 脱衣
-euyn 脱盲 腾讯
+euyn 腾讯 脱盲
 euyt 滕州 胶州
 euyu 臆说
 ev 妥 腿 舀
@@ -17976,7 +17976,7 @@ gurw 更新换代
 gusa 天道酬勤
 gusc 表决权 否决权
 gusg 平装本
-gusr 夹板 平板
+gusr 平板
 guta 副部长
 gutd 事关重大
 gutf 平行 平等 不道德
@@ -29891,7 +29891,7 @@ lpqy 边贸
 lprh 连年
 lprm 辖制
 lpru 连接
-lpsa 连横 边框
+lpsa 边框 连横
 lpsk 国家机器
 lpsl 连枷
 lpsp 国家机密
@@ -30967,7 +30967,7 @@ mfpg 财富 财宝
 mfpk 风声鹤唳
 mfpn 周密
 mfpt 周宪
-mfpy 财神 风云突变 周礼
+mfpy 赌神 周礼 财神 风云突变
 mfq 岏
 mfqc 财色
 mfqg 赌钱
@@ -34199,7 +34199,7 @@ ntky 属
 ntl 恤 卹 賉
 ntld 悔罪
 ntlf 发黑
-ntlg 恤 发车 属国
+ntlg 发车 恤
 ntlk 发回
 ntln 憁
 ntlq 发软
@@ -39821,6 +39821,7 @@ qhlq 错上加错
 qhlt 外力
 qhlw 外界 外轮
 qhm 鍞
+qhmq 外网
 qhmy 鍞
 qhn 鍏
 qhnf 外层
@@ -41391,7 +41392,7 @@ qtce 狗熊 犹能
 qtcg 犸 獁
 qtck 獝
 qtcn 名利双收
-qtcq 狁 狂欢
+qtcq 狂欢 狁
 qtcs 猱
 qtct 狻
 qtcw 犯难
@@ -42617,7 +42618,7 @@ rcig 反清
 rcii 反水
 rcip 反常 反党 拍巴掌
 rciq 反光
-rcir 摊派 反派 反对派
+rcir 反派 反对派 摊派
 rcis 把酒
 rcit 反省
 rciw 抬举
@@ -46499,7 +46500,7 @@ ryym 撤市 扬州市
 ryyn 反义词
 ryyr 撤诉
 ryyy 抗议 白话文 提高认识 折衷主义
-s 要 本 可
+s 要 木 本 可
 sa 械 横
 saa 械
 saaa 模式
@@ -59413,7 +59414,7 @@ wdfi 倷
 wdfm 伏击
 wdfn 侉 做声
 wdfp 做过
-wdg 估 仨 佦
+wdg 仨 佦
 wdga 休戚与共
 wdgb 华盛顿
 wdgc 做到
