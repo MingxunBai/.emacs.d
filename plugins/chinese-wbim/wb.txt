@@ -11805,7 +11805,7 @@ fffq 堯 墝
 ffft 无声无息
 fffu 土坷垃
 fffw 土堆
-fffy 土壕 封 土壤
+fffy 封 土壤
 ffga 地老天荒
 ffge 填表
 ffgg 封一 支支吾吾
@@ -12615,7 +12615,7 @@ fjbm 进出 刊出
 fjbn 进了
 fjbq 塌陷
 fjbt 乾隆
-fjbw 教师队伍 进阶
+fjbw 进阶
 fjby 堤防
 fjcf 朝圣
 fjck 塌台
@@ -14230,7 +14230,7 @@ fukm 裁判员
 ful 增 啬
 fulg 吉普车 趣闻轶事
 fulj 增 増
-fulk 啬 增加 嗇
+fulk 增加 啬 嗇
 fult 示意图
 fulu 过关斩将
 fulw 境界
@@ -67423,7 +67423,7 @@ yqn 庖
 yqna 诡异
 yqnc 诡怪
 yqne 袌
-yqnf 义愤 底层
+yqnf 底层
 yqnt 腐蚀性 永久性
 yqnv 庖
 yqo 廯
@@ -67765,7 +67765,7 @@ ytgc 放到
 ytge 课程表
 ytgf 諈 諥
 ytgg 言行不一
-ytgh 旆 放下 许下 施政 旗下
+ytgh 放下 许下 旗下 旆
 ytgm 廭
 ytgn 施与 旊
 ytgp 高处不胜寒
