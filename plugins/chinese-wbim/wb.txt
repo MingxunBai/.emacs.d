@@ -3205,7 +3205,7 @@ awrt 花托
 awrv 花招
 aws 茶 荷
 awsc 茶树 著作权
-awsg 东倒西歪 茶杯 花梗
+awsg 茶杯 东倒西歪 花梗
 awsh 共相 花椒
 awsk 荷
 awso 茶楼
@@ -14769,7 +14769,7 @@ gajy 形影
 gak 开 瑾 幵
 gakg 型号 瑾 琙
 gakh 开路
-gakk 开口 武器
+gakk 武器 开口
 gaky 瓘
 gald 开恩
 gale 开胃
@@ -28260,6 +28260,7 @@ kvfb 哪
 kvfj 嘯
 kvfn 啸声
 kvgg 哪一
+kvgo 哪来
 kvh 嗖
 kvhc 嗖
 kvhh 嘯
@@ -30045,7 +30046,7 @@ lrhq 覱
 lrip 轻描淡写
 lrit 力气活
 lrj 暂
-lrjf 暂 暂时 暫
+lrjf 暂时 暫
 lrk 蹔
 lrkg （ ） 圆括号
 lrkh 蹔
@@ -36584,7 +36585,7 @@ pend 家居
 penf 家丑
 penn 家书
 penr 神采飞扬
-pent 实用性 家属
+pent 家属
 peny 农忙
 peog 家业 农业
 peol 浌
@@ -47098,7 +47099,7 @@ sfir 飘泊
 sfis 飘洒
 sfiu 票 柰
 sfiw 歀
-sfiy 标 瓢 飘流 飘游 柡 梂
+sfiy 标注 瓢 飘流 飘游 柡 梂
 sfj 構
 sfja 橶
 sfje 标明
@@ -50889,7 +50890,7 @@ tgwt 重任 征途 管理体系 特殊任务 重伤
 tgwu 生死攸关 第一位
 tgwv 生分
 tgww 重价 生人
-tgwx 系列化 特殊化 生化
+tgwx 生化 系列化 特殊化
 tgwy 征集
 tgxb 第五纵队
 tgxc 管理经验
@@ -58668,7 +58669,7 @@ vtxw 娇纵
 vtxy 始乱终弃
 vty 姀
 vtya 灵敏度
-vtyg 君主
+vtyg 群主 君主
 vtyn 群氓
 vtyp 好自为之
 vtys 妖魔
@@ -59805,7 +59806,7 @@ wftc 什么
 wftd 舒适
 wftf 佛教徒 仁德
 wftg 儒生
-wftj 舍得 值得 舍利 偖
+wftj 值得 舍得 舍利 偖
 wftk 全过程 传种 父进程
 wftl 会务
 wftm 会徽 舍身
@@ -66437,7 +66438,7 @@ yknf 训导 误导
 ykng 衷情
 ykny 衷心 市中心
 ykov 识数
-ykpb 误字 识字
+ykpb 识字
 ykqe 误解
 ykqk 训勉
 ykqn 文史馆 詋
