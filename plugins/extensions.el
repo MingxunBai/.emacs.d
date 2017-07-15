@@ -321,6 +321,7 @@
 (yas-reload-all)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+(define-key yas-minor-mode-map (kbd "C-;") 'yas-expand)
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   (when (featurep 'popup)

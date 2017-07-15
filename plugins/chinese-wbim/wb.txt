@@ -45711,7 +45711,7 @@ rurn 摇头摆尾 摆阔气
 ruro 抖擞
 rurp 接近 拉近
 rurt 接手 拉手
-ruru 皎皎 拼接
+ruru 拼接
 rurw 拼抢
 rus 撙
 rusb 擲
@@ -59730,7 +59730,7 @@ wfl 舆
 wflk 传回
 wflm 传动轴 儥
 wflt 传略
-wflw 舆 传输 輿
+wflw 传输 舆 輿
 wfm 璺
 wfma 祭典
 wfmb 付邮
