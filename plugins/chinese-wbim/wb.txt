@@ -6878,7 +6878,7 @@ ddtu 大乘 春耕生产
 ddu 套
 ddub 大逆
 ddud 大关 大头
-dduf 大半 套装
+dduf 套装 大半
 ddug 大病
 ddui 镽
 dduj 套间 大意
@@ -52154,7 +52154,7 @@ tong 释怀
 tonh 秋收
 tonr 簖 籪
 tont 翻悔
-tonu 悉 愁
+tonu 愁
 tonx 悉尼
 tony 悉心 釈
 too 簩
