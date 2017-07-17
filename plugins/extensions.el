@@ -294,7 +294,7 @@
         web-mode-block-padding                    4
         web-mode-enable-current-element-highlight t)
 
-  (define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
+  (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file)
   (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
 
 (add-hook 'css-mode-hook  'enable-emmet-mode)

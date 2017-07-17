@@ -13718,7 +13718,7 @@ fqte 远航
 fqtf 均等 元稹 远行
 fqtg 远征
 fqth 远处 无处
-fqtk 过饱和 远程
+fqtk 远程
 fqto 靎
 fqtq 均衡
 fqtr 无物 无我
@@ -16951,7 +16951,7 @@ gmwk 瓗
 gmwm 两侧
 gmwn 一见倾心 琌
 gmwr 两件
-gmwt 现任 责任 刺伤
+gmwt 责任 现任 刺伤
 gmwu 两倍 两位
 gmww 两 两败俱伤 両 兩
 gmwx 现货
@@ -38760,7 +38760,7 @@ pyye 禳
 pyyf 祽
 pyyh 礼让 禅让
 pyyk 禞 禟
-pyyl 被评为 视为
+pyyl 视为
 pyym 福州市 祖庙 神庙
 pyyn 宀 祈望 礼记 祝词 神户 神启 禅房 祊
 pyyo 神迹
@@ -39263,7 +39263,7 @@ qeip 触觉
 qeiq 觥
 qeis 解酒
 qeit 觘
-qej 角 触
+qej 触
 qejg 钥匙 解题 觛
 qejn 触电
 qejy 触 觸
@@ -42532,7 +42532,7 @@ rbtf 报告 指出稹
 rbtg 摄生
 rbti 搎
 rbtj 报复
-rbtl 报务
+rbtl 报备 报务
 rbts 拙笨
 rbtu 报税
 rbtw 报答
@@ -66128,7 +66128,7 @@ yi 就 应
 yiaa 磨洋工
 yiad 就其
 yiae 望尘莫及
-yiai 就范 京东 高深莫测
+yiai 京东 就范 高深莫测
 yiaj 应募
 yiaq 旅游区
 yias 文学艺术
@@ -66830,7 +66830,7 @@ ynaa 雇工 启发式
 ynab 鹿茸
 ynad 刻苦 房基
 ynah 肈
-ynai 刻薄 房东 词藻
+ynai 房东 刻薄 词藻
 ynaj 刻划
 ynak 啔
 ynal 记功 启功
