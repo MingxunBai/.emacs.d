@@ -14,50 +14,31 @@
 ;; Themes
 ;; (load-theme 'monokai t)
 
-;; 配置五笔输入法
-(require 'chinese-wbim-extra)
+;;-------------------------------------------------
+;; Custom Feature
+;;-------------------------------------------------
 
-(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
-(setq chinese-wbim-use-tooltip nil)
+;; Before save hook
+(add-hook 'before-save-hook 'custom-before-save-hook)
+(defun custom-before-save-hook ()
+  (delete-trailing-whitespace)
+  (custom-ff-utf-8-unix))
 
-;; 启动五笔输入法
-(set-input-method 'chinese-wbim)
-(toggle-input-method)
+(defun custom-ff-utf-8-unix ()
+  (if (and (and (not (eq major-mode 'bat-mode))
+                (not (eq major-mode 'java-mode)))
+           (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
+      (set-buffer-file-coding-system 'utf-8-unix)))
 
-;;; Modes
-
-;; AutoHotKey mode
-(require 'xahk-mode)
-
-;; Auto Complete
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-auto-start nil
-      ac-ignore-case nil
-      ac-use-menu-map t)
-
-(define-key ac-mode-map (kbd "M-/") 'auto-complete)
-(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
-
-;; Dumb jump mode
-(require 'dumb-jump)
-(dumb-jump-mode)
-
-;; Emmet mode
-(defun enable-emmet-mode ()
-  (interactive)
-  (require 'emmet-mode)
-  (emmet-mode)
-  (setq emmet-self-closing-tag-style ""
-        emmet-move-cursor-between-quotes t)
-
-  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
-  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
-  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
-
-;; Evil nerd commenter
-(require 'evil-nerd-commenter)
+;; Command 分离窗口运行
+(defun custom-split-window (command &optional param)
+  (delete-other-windows)
+  (if (> (count-windows) 1)
+      (neotree-toggle))
+  (split-window-vertically (floor (* 0.68 (window-height))))
+  (other-window 1)
+  (funcall command param)
+  (other-window 1))
 
 ;; Git
 (defun custom-find-dir (dir reg)
@@ -82,26 +63,308 @@
         (custom-git-push root))
     (message "Git need a local file!")))
 
+;; 缩进重排
+(defun custom-remeber-line ()
+  (if (bolp)
+      (1+ (count-lines 1 (point)))
+    (count-lines 1 (point))))
+
+(defun custom-indent-buffer ()
+  (interactive)
+  (let ((line (custom-remeber-line))
+        (step (custom-remeber-point-step)))
+    (indent-region (point-min) (point-max))
+    (goto-line line)
+    (back-to-indentation)
+    (forward-char step)))
+
+;; 自定缩进
+(defun custom-resize-indentation (n)
+  (interactive "nEnter indentation size:")
+  (if (use-region-p)
+      (let (mark (mark))
+        (save-excursion
+          (save-match-data
+            (indent-rigidly
+             (region-beginning)
+             (region-end)
+             n)
+            (push-mark mark t t)
+            (setq deactivate-mark nil))))
+    (indent-rigidly
+     (line-beginning-position)
+     (line-end-position)
+     n)))
+
+(defun custom-resize-indentation--4 ()
+  (interactive)
+  (custom-resize-indentation -4))
+
+;; 删除空白字符至上一行末尾
+(defun custom-delete-whitespace-to-upline ()
+  (interactive)
+  (progn
+    (delete-indentation)
+    (indent-according-to-mode)))
+
+;; 行号点击
+(defun custom-go-to-click-line ()
+  (interactive)
+  (save-excursion
+    (let ((click-y (cdr (cdr (mouse-position)))))
+      (goto-char (window-start))
+      (next-line (1- click-y))
+      (if (fboundp 'tabbar-mode)
+          (setq line (line-number-at-pos))
+        (setq line (1+ (line-number-at-pos))))))
+  (goto-line line))
+
+;; 向上新建一行
+(defun custom-up-newline ()
+  (interactive)
+  (progn
+    (beginning-of-line)
+    (newline-and-indent)
+    (previous-line)
+    (indent-according-to-mode)))
+
+;; 向下新建一行
+(defun custom-down-newline ()
+  (interactive)
+  (progn
+    (end-of-line)
+    (newline-and-indent)))
+
+;; 换行
+(defun custom-return ()
+  (interactive)
+  (cond ((custom-is-in-paren?)
+         (custom-middle-newline))
+        ((custom-is-javadoc?)
+         (custom-javadoc-newline))
+        (t (newline-and-indent))))
+
+;; 匹配光标上下文
+(defun custom-paren-match (bef end)
+  (if (and (string-equal bef (string (preceding-char)))
+           (string-equal end (string (following-char))))
+      't
+    nil))
+
+(defun custom-is-in-paren? ()
+  (if (or (custom-paren-match "{" "}")
+          (custom-paren-match "[" "]")
+          (custom-paren-match "(" ")")
+          (custom-paren-match ">" "<"))
+      't
+    nil))
+
+(defun custom-is-javadoc? ()
+  (if (and (string-equal "*" (string (char-before)))
+           (string-equal "*" (string (char-before (- (point) 1))))
+           (string-equal "/" (string (char-before (- (point) 2))))
+           )
+      't
+    nil))
+
+;; 标点中新建一行
+(defun custom-middle-newline ()
+  (interactive)
+  (newline-and-indent)
+  (newline-and-indent)
+  (previous-line)
+  (indent-according-to-mode))
+
+;; Javadoc
+(defun custom-javadoc-newline ()
+  (interactive)
+  (newline-and-indent)
+  (insert "*")
+  (indent-according-to-mode)
+  (newline-and-indent)
+  (insert "*/")
+  (indent-according-to-mode)
+  (previous-line))
+
+;; 在右侧新建一个窗口
+(defun custom-split-window-right ()
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+;; 在下方新建一个窗口
+(defun custom-split-window-below ()
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
+;; 粘贴
+(defun custom-yank ()
+  (interactive)
+  (let ((point-before (point)))
+    (yank)
+    (indent-region point-before (point))))
+
+;; 移动当前行
+(defun custom-move-current-line (n)
+  (kill-new "")
+  (beginning-of-line)
+  (kill-whole-line)
+  (forward-line n)
+  (yank)
+  (forward-line -1)
+  (back-to-indentation)
+  (forward-char step)
+  (indent-according-to-mode))
+
+(defun custom-remeber-point-step ()
+  (let ((bef (point)))
+    (back-to-indentation)
+    (let ((step (- bef (point))))
+      (if (< step 0)
+          0
+        step))))
+
+(defun custom-repos (msg)
+  (message msg)
+  (back-to-indentation)
+  (forward-char step))
+
+(defun custom-forward-line-end (n)
+  (forward-line n)
+  (end-of-line))
+
+(defun custom-bobp? ()
+  (beginning-of-line)
+  (if (bobp)
+      't
+    nil))
+
+(defun custom-eobp? (n)
+  (custom-forward-line-end n)
+  (let ((rst (eobp)))
+    (custom-forward-line-end (- 0 n))
+    rst))
+
+(defun custom-next-line-empty? ()
+  (forward-line 1)
+  (let ((rst (eq (point-at-bol) (point-at-eol))))
+    (forward-line -1)
+    rst))
+
+;; 上移一行
+(defun custom-move-up-current-line ()
+  (interactive)
+  (let ((step (custom-remeber-point-step)))
+    (cond ((custom-bobp?)
+           (custom-repos "Beginning of buffer!"))
+          ((custom-eobp? 0)
+           (newline)
+           (forward-line -1)
+           (custom-move-current-line -1))
+          (t (custom-move-current-line -1)))))
+
+;; 下移一行
+(defun custom-move-down-current-line ()
+  (interactive)
+  (let ((step (custom-remeber-point-step)))
+    (cond ((custom-eobp? 0)
+           (custom-repos "End of buffer!"))
+          ((and (custom-next-line-empty?) (custom-eobp? 1))
+           (custom-repos "End of buffer!"))
+          ((and (not (custom-next-line-empty?)) (custom-eobp? 1))
+           (custom-forward-line-end 1)
+           (newline)
+           (forward-line -2)
+           (custom-move-current-line 1))
+          (t (custom-move-current-line 1)))))
+
+;; 复制当前行
+(defun custom-duplicate-line ()
+  (interactive)
+  (let ((step (custom-remeber-point-step)))
+    (kill-ring-save (point-at-bol) (point-at-eol))
+    (custom-down-newline)
+    (custom-yank)
+    (back-to-indentation)
+    (forward-char step)))
+
+;;-------------------------------------------------
+;; Extensions
+;;-------------------------------------------------
+
+;; Input method
+(require 'chinese-wbim-extra)
+(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+(setq chinese-wbim-use-tooltip nil)
+
+(set-input-method 'chinese-wbim)
+(toggle-input-method)
+
+;; AutoHotKey
+(defun enable-ahk-mode ()
+  (interactive)
+  (require 'xahk-mode)
+  (ahk-mode))
+
+;; Auto Complete
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-auto-start nil
+      ac-ignore-case nil
+      ac-use-menu-map t)
+
+(define-key ac-mode-map (kbd "M-/") 'auto-complete)
+(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
+
+;; Dumb Jump
+(require 'dumb-jump)
+(dumb-jump-mode)
+
+;; Emmet
+(defun enable-emmet-mode ()
+  (interactive)
+  (require 'emmet-mode)
+  (emmet-mode)
+  (setq emmet-self-closing-tag-style ""
+        emmet-move-cursor-between-quotes t)
+
+  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
+  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
+  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point))
+
+;; Eshell
+(add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
+(defun custom-eshll ()                  ; 设置别名为 es
+  (interactive)
+  (if (condition-case nil
+          (setq path (file-name-directory (buffer-file-name)))
+        (error nil))
+      (progn
+        (custom-split-window 'eshell)
+        (other-window 1)
+        (eshell/cd path)))
+  (message "Eshell need a local file!"))
+
+;; Evil Nerd Commenter
+(require 'evil-nerd-commenter)
+
 ;; GoLang
 (defun enable-go-mode ()
   (interactive)
   (require 'go-mode-autoloads)
   (go-mode)
-  (defun go-save-fmt ()
+  (defun custom-go-save-fmt ()
     (interactive)
     (shell-command (concat "go fmt " (buffer-file-name))))
 
-  (local-set-key (kbd "C-x f") 'go-save-fmt))
+  (define-key go-mode-map (kbd "C-c f") 'custom-go-save-fmt))
 
-;; Highlight indent guides
-(require 'highlight-indent-guides)
-(setq highlight-indent-guides-method 'character)
+;; History
+(require 'history)
 
-;; Highlight parentheses mode
-(require 'highlight-parentheses)
-(global-highlight-parentheses-mode)
-
-;; Java mode
+;; Java
 (add-hook 'java-mode-hook 'custom-java-mode-hook)
 (defun custom-java-mode-hook ()
   (defun custom-java-run ()
@@ -129,7 +392,7 @@
 
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 
-;; JavaScript IDE mode
+;; JavaScript IDE
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
@@ -147,16 +410,18 @@
 
   (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer))
 
-;; JSON mode
+;; JSON
 (defun enable-json-mode ()
   (interactive)
   (require 'json-mode)
   (json-mode))
 
-;; Lazy set key
+;; Lazy Set Key
+(require 'lazy-set-key)
+(require 'lazy-init-bind)
 (require 'lazy-full-bind)
 
-;; Less css mode
+;; Less
 (defun enable-less-css-mode ()
   (interactive)
   (require 'less-css-mode)
@@ -164,7 +429,11 @@
   (setq less-css-compile-at-save t
         less-css-output-directory "../css"))
 
-;; Markdown mode
+;; Lisp
+(define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
+(define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
+
+;; Markdown
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
@@ -174,7 +443,26 @@
 
   (define-key markdown-mode-map (kbd "C-c C-k") nil))
 
-;; Org mode
+;; Multiple Cursors
+(require 'multiple-cursors)
+
+;; NEROTree
+(require 'neotree)
+(setq neo-theme 'ascii)
+
+(defun custom-neotree-copy-relative-path ()
+  (interactive)
+  (neotree-copy-filepath-to-yank-ring)
+  (other-window 1)
+  (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
+
+(define-key neotree-mode-map (kbd "j") 'neotree-next-line)
+(define-key neotree-mode-map (kbd "k") 'neotree-previous-line)
+(define-key neotree-mode-map (kbd "]") 'neotree-select-next-sibling-node)
+(define-key neotree-mode-map (kbd "[") 'neotree-select-previous-sibling-node)
+(define-key neotree-mode-map (kbd "C-c c") 'custom-neotree-copy-relative-path)
+
+;; Org
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 (defun custom-org-mode-hook ()
   (org-indent-mode)
@@ -203,25 +491,13 @@
     (local-set-key (kbd "C-c c e") 'org-edit-src-code)
     (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
 
-;; Origami mode
-(require 'origami)
-(global-origami-mode)
-
-;; Paren face mode
-(require 'paren-face)
-(global-paren-face-mode)
-
-;; Project explorer
-(require 'project-explorer)
-(defun pe/copy-relative-path ()
+;; Origami
+(defun enable-origami ()
   (interactive)
-  (pe/copy-file-name-as-kill)
-  (other-window 1)
-  (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
+  (require 'origami)
+  (global-origami-mode))
 
-(define-key project-explorer-mode-map (kbd "C-c c") 'pe/copy-relative-path)
-
-;; Python mode
+;; Python
 (add-hook 'python-mode-hook 'custom-python-mode-hook)
 (defun custom-python-mode-hook ()
   (require 'elpy)
@@ -232,7 +508,7 @@
   (define-key python-mode-map (kbd "<backtab>") nil)
   (setq python-shell-prompt-detect-enabled nil))
 
-;; Scheme mode
+;; Scheme
 (setq scheme-program-name "scheme")
 (add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
 (add-hook 'inferior-scheme-mode-hook
@@ -259,29 +535,29 @@
   (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
   (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition))
 
-;; SCSS mode
+;; SCSS
 (defun enable-scss-mode ()
   (require 'scss-mode)
   (scss-mode)
   (setq scss-compile-at-save t))
 
-;; Smart parens mode
+;; Smart Parens
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
 
-;; Tab bar mode
+;; Tab Bar
 (require 'tabbar)
-(tabbar-mode)
 (setq tabbar-use-images nil)
+(tabbar-mode)
 
-;; Vimrc mode
+;; Vimrc
 (defun enable-vimrc-mode ()
   (interactive)
   (require 'vimrc-mode)
   (vimrc-mode))
 
-;; Web mode
+;; Web
 (defun enable-web-mode ()
   (interactive)
   (require 'web-mode)
@@ -297,20 +573,20 @@
   (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file)
   (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#F6F192"))
 
-(add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'html-mode-hook 'enable-web-mode)
+(add-hook 'css-mode-hook  'enable-emmet-mode)
 (add-hook 'js2-mode-hook  'enable-emmet-mode)
 (add-hook 'json-mode-hook 'enable-emmet-mode)
 (add-hook 'web-mode-hook  'enable-emmet-mode)
 
-;; Windows numbering mode
+;; Windows Numbering
 (require 'window-numbering)
 (window-numbering-mode)
 
-;; Winner mode
+;; Winner
 (winner-mode)
 
-;; YAML mode
+;; YAML
 (defun enable-yaml-mode ()
   (interactive)
   (require 'yaml-mode)
@@ -318,9 +594,10 @@
 
 ;; YASnippet
 (require 'yasnippet)
-(yas-reload-all)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
+(yas-reload-all)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+
 (define-key yas-minor-mode-map (kbd "C-;") 'yas-expand)
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
@@ -335,6 +612,7 @@
       choices)
      :prompt prompt
      :isearch t)))
+
 (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
 (define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
 
@@ -344,15 +622,13 @@
   (let ((original-point (point)))
     (while (and
             (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
+            (not (string-match "[[:space:]\n]" (char-to-string (char-before)))))
       (backward-word 1))
     (let* ((init-word (point))
            (word (buffer-substring init-word original-point))
            (list (yas-active-keys)))
       (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
+      (let ((key (remove-if-not (lambda (s) (string-match (concat "^" word) s)) list)))
         (if (= (length key) 1)
             (setq key (pop key))
           (setq key (ido-completing-read "key: " list nil nil word)))
@@ -362,7 +638,7 @@
 
 ;;; Major Mode
 (setq auto-mode-alist
-      (append '(("\\.css\\'"   . (lambda () (enable-web-mode)))
+      (append '(("\\.ahk\\'"   . (lambda () (enable-ahk-mode)))
                 ("\\.go\\'"    . (lambda () (enable-go-mode)))
                 ("\\.js\\'"    . (lambda () (enable-js2-mode)))
                 ("\\.json\\'"  . (lambda () (enable-json-mode)))
@@ -370,13 +646,9 @@
                 ("\\.md\\'"    . (lambda () (enable-markdown-mode)))
                 ("\\.w?xml\\'" . (lambda () (enable-web-mode)))
                 ("\\.php\\'"   . (lambda () (enable-web-mode)))
-                ("\\.yasnippet\\'" . snippet-mode)
                 ("\\.s[ac]ss"  . (lambda () (enable-scss-mode)))
                 ("\\.vimrc\\'" . (lambda () (enable-vimrc-mode)))
                 ("\\.ya?ml\\'" . (lambda () (enable-yaml-mode))))
               auto-mode-alist))
-
-;; Reload mode
-(set-auto-mode)
 
 (provide 'extensions)

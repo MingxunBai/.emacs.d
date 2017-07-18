@@ -16,6 +16,9 @@
                 ("C-c c c"      .   evilnc-copy-and-comment-lines)
                 ("C-c c p"      .   evilnc-comment-or-uncomment-paragraphs)
 
+                ;; NEROTree
+                ("<f1>"         .   neotree-toggle)
+
                 ;; Origami mode
                 ("<f2>"         .   origami-toggle-node)
                 ("C-c o a"      .   origami-show-only-node)
@@ -25,9 +28,6 @@
                 ("C-c o f"      .   origami-forward-fold-same-level)
                 ("C-c o b"      .   origami-backward-fold-same-level)
                 ("C-c o r"      .   origami-reset)
-
-                ;; Project explorer mode
-                ("<f1>"         .   project-explorer-toggle)
 
                 ;; Winner mode
                 ("C-c w r"      .   winner-redo)

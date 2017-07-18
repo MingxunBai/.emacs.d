@@ -11,8 +11,7 @@
 ;;; Code:
 (lazy-unset-key '("M-<down-mouse-1>"))
 
-(lazy-set-key '(("C-c f"   . full)
-                ("C-x 2"   . custom-split-window-below)
+(lazy-set-key '(("C-x 2"   . custom-split-window-below)
                 ("C-x 3"   . custom-split-window-right)
                 ("C-c C-k" . kill-buffer-and-window)
                 ("C-x C-x" . save-buffers-kill-emacs)
