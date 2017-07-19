@@ -34,12 +34,12 @@
 
 
 ;;; global variable
-(defcustom history-file "~/.emacs-history.el"
+(defcustom history-file "~/.emacs.d/.emacs-history.el"
   "User can define the history file."
   :type 'string
   :group 'history)
 
-(defcustom project-file "~/.emacs-projects.el"
+(defcustom project-file "~/.emacs.d/.emacs-projects.el"
   "User can define the project file."
   :type 'string
   :group 'history)

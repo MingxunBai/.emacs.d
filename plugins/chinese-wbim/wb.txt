@@ -3183,7 +3183,7 @@ awpw 苍穹 花容
 awpy 欺人之谈
 awqb 恭迎
 awqc 花色 茶色
-awqg 茶钱 花钱
+awqg 花钱
 awqi 花销
 awqk 共勉 花名
 awqn 荷包 茶馆
@@ -6747,7 +6747,7 @@ ddi 厌 厭
 ddia 套汇 大江 大漠
 ddic 大汉
 ddid 大湖
-ddif 大潮 大汗
+ddif 大法 大潮 大汗
 ddih 大小
 ddii 石灰水 大水 大大小小
 ddim 大氅
@@ -47467,7 +47467,7 @@ sgtn 酕
 sgto 醺
 sgtq 酰
 sgtr 本我
-sgtu 酶 本科
+sgtu 本科 酶
 sgtw 酬答
 sgty 酥
 sgu 枰
