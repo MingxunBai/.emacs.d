@@ -8,12 +8,6 @@
 
 ;;; Code:
 
-;; 最大化
-;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
-;; Themes
-;; (load-theme 'monokai t)
-
 ;;-------------------------------------------------
 ;; Custom Feature
 ;;-------------------------------------------------
@@ -416,11 +410,6 @@
   (require 'json-mode)
   (json-mode))
 
-;; Lazy Set Key
-(require 'lazy-set-key)
-(require 'lazy-init-bind)
-(require 'lazy-full-bind)
-
 ;; Less
 (defun enable-less-css-mode ()
   (interactive)
@@ -550,6 +539,10 @@
 (require 'tabbar)
 (setq tabbar-use-images nil)
 (tabbar-mode)
+
+;; Tramp
+(setq tramp-default-host "45.78.52.152#29135"
+      tramp-default-user "root")
 
 ;; Vimrc
 (defun enable-vimrc-mode ()

@@ -57,7 +57,6 @@
 (defalias 'ff  'set-buffer-file-coding-system)
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
-(defalias 'x   'save-buffers-kill-emacs)
 
 ;; (set-default-font "Source Code Pro-12")
 ;; 设置字体
@@ -190,11 +189,73 @@
                 ("\\.yasnippet\\'" . snippet-mode))
               auto-mode-alist))
 
+;; Key Binding
+(dolist (key-list
+         '(("C-x 2"   . custom-split-window-below)
+           ("C-x 3"   . custom-split-window-right)
+           ("C-c 4 r" . winner-redo)
+           ("C-c 4 u" . winner-undo)
+           ("C-x C-x" . save-buffers-kill-emacs)
+
+           ;; Custom feature
+           ("C-c k"      . custom-delete-whitespace-to-upline)
+           ("C-o"        . custom-down-newline)
+           ("C-c d"      . custom-duplicate-line)
+           ("C-c p"      . custom-git-push-current-buffer)
+           ("C-M-\\"     . custom-indent-buffer)
+           ("<C-return>" . custom-middle-newline)
+           ("M-]"        . custom-move-down-current-line)
+           ("M-["        . custom-move-up-current-line)
+           ("C-c r"      . custom-resize-indentation)
+           ("<backtab>"  . custom-resize-indentation--4)
+           ("RET"        . custom-return)
+           ("M-o"        . custom-up-newline)
+           ("C-y"        . custom-yank)
+           ("<left-margin> <mouse-1>" . custom-go-to-click-line)
+
+           ;; Evil nerd commenter
+           ("C-M-;"   . evilnc-comment-or-uncomment-lines)
+           ("C-c c c" . evilnc-copy-and-comment-lines)
+           ("C-c c p" . evilnc-comment-or-uncomment-paragraphs)
+
+           ;; Multiple cursors
+           ("M-<mouse-1>" . mc/add-cursor-on-click)
+           ("C-S-c C-S-c" . mc/edit-lines)
+
+           ;; NEROTree
+           ("<f1>" . neotree-toggle)
+
+           ;; Origami mode
+           ("<f2>"    . origami-toggle-node)
+           ("C-c o a" . origami-show-only-node)
+           ("C-c o o" . origami-open-node-recursively)
+           ("C-c o n" . origami-next-fold)
+           ("C-c o p" . origami-previous-fold)
+           ("C-c o f" . origami-forward-fold-same-level)
+           ("C-c o b" . origami-backward-fold-same-level)
+           ("C-c o r" . origami-reset)
+
+           ;; Tab bar mode
+           ("C-M-=" . tabbar-press-home)
+           ("C--"   . tabbar-backward)
+           ("M--"   . tabbar-backward-group)
+           ("C-="   . tabbar-forward)
+           ("M-="   . tabbar-forward-group)
+
+           ;; YASnippet mode
+           ("<C-tab>" . yas-ido-expand)
+
+           ;; 五笔输入法
+           (";" . chinese-wbim-insert-ascii)))
+  (global-set-key (kbd (car key-list)) (cdr key-list)))
+
 ;; 启用完整配置
 (defun full ()
   (interactive)
-  (server-start)
+  ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+  ;; (load-theme 'monokai t)
   (add-subdirs-to-load-path *PLUGINS*)
-  (require 'extensions))
+  (require 'extensions)
+  (server-start))
 
 (add-hook 'after-init-hook 'full)

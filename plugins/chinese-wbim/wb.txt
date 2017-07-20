@@ -46585,7 +46585,7 @@ sakk 樞
 sakm 柜员 櫃
 sakq 欟
 saky 權
-salk 横加 框架
+salk 框架
 salm 枢轴 横轴
 salp 西欧国家 櫣
 salt 框图 西雅图 櫗
