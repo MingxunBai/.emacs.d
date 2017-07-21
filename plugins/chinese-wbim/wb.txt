@@ -13713,7 +13713,7 @@ fqsm 无机
 fqt 夌
 fqta 坦然自若
 fqtc 无私
-fqtd 无敌 无知 顽敌
+fqtd 无知 无敌 顽敌
 fqte 远航
 fqtf 均等 元稹 远行
 fqtg 远征
@@ -14903,7 +14903,7 @@ gayu 与其说
 gayv 开朗 开郎
 gayw 两世为人
 gayx 开工率
-gayy 形式主义 开方
+gayy 开方
 gb 屯 顿
 gbbb 一阵子
 gbbh 瑘
@@ -15852,13 +15852,13 @@ ghbw 下坠
 ghc 玻
 ghce 焉能
 ghck 下台
-ghcn 下马 下巴
+ghcn 下巴
 ghcy 玻
 ghd 正
 ghdd 正大
 ghde 焉有
 ghdf 玷辱 下唇
-ghdg 下厂 下厨
+ghdg 下厨
 ghdh 正在
 ghdj 下辈
 ghdm 下面 正面 頙
@@ -18399,7 +18399,7 @@ gynh 一言九鼎
 gynk 玉璧 玉臂
 gynt 开放性 正义性
 gyog 再就业
-gyoy 平方米 玉米
+gyoy 玉米 平方米
 gype 理论家
 gypf 一席之地
 gypg 更衣室
@@ -20833,7 +20833,7 @@ igin 清汤
 igio 浅淡 清淡
 igiq 水至清则无鱼
 igis 清漆 添酒 清酒
-igit 常来常往 浅海 清洗 漱洗
+igit 清洗 常来常往 浅海 漱洗
 igiu 汪洋
 igiv 滞涩
 igiw 清澄
@@ -22451,7 +22451,7 @@ iqhv 耀眼
 iqhw 渔具
 iqi 泺 濼
 iqia 沟渠 渔港
-iqic 汹涌 光泽
+iqic 光泽 汹涌
 iqid 淘汰 光源
 iqif 光洁
 iqig 泡沫
@@ -25629,7 +25629,7 @@ jtjp 蝮蛇
 jtjq 昨晚
 jtjr 蜘蛛
 jtjs 蟍
-jtjt 蝮 星星
+jtjt 星星 蝮
 jtju 晦暗 蝌蚪
 jtjy 蟋蟀
 jtk 蝺
@@ -27403,7 +27403,7 @@ kktc 口径
 kktd 口舌
 kktf 品行 品德 骂街 串行
 kktg 器重
-kkth 患处 品牌 口臭
+kkth 品牌 口臭 患处
 kktj 哭得
 kktk 品种
 kktm 喇叭筒
@@ -39630,10 +39630,10 @@ qgq 鲍 鮑
 qgqb \x836\xCE7 
 qgqd 兔死狐悲
 qgqe 钝角
-qgqg 鲸鱼 鲤鱼 鲍鱼 鳗鱼 鱼鳔 鱼鳍 鱼鳞 鱿鱼 鲶鱼 鲈鱼 鳄鱼 匍匐
+qgqg 匍匐
 qgqi 印玺
 qgqj 印象
-qgqn 鲍 钱包 鱼饵
+qgqn 钱包 鲍 鱼饵
 qgqo 鱼鳞
 qgqq 鱼钩
 qgqt 鱼狗 鱼儿
@@ -39644,7 +39644,7 @@ qgrf 钙质
 qgrg 鳇 鲌 鮊
 qgri 鳈
 qgrk 鲘 鮜
-qgrm 负责制 鱼缸 印制
+qgrm 鱼缸 印制
 qgrq 金不换
 qgrt 鲜卑
 qgrv 铺垫
@@ -50355,7 +50355,7 @@ tfdf 壬辰
 tfdg 千古 壬戌
 tfdj 先辈 千百 穤
 tfdm 垂直面 街面
-tfdn 千万 造成 告成 赞成
+tfdn 造成 赞成 千万
 tfdq 千克
 tfdw 先秦 先声夺人
 tfdy 千丈 选矿
@@ -59206,7 +59206,7 @@ wbts 保险箱
 wbtu 保卫科
 wbtv 他律
 wbuc 创痛
-wbuj 他意 创意
+wbuj 创意
 wbuq 他将
 wbus 创新
 wbut 人际关系
@@ -60024,7 +60024,7 @@ wgky 剱 劒 劔
 wgl 僵 殭
 wglb 鄶
 wglf 代表团 倒转 倒置 合围 朇
-wglg 僵 全国 倒车 便车
+wglg 全国 倒车 便车 僵
 wglj 劊 會
 wglk 愈加
 wglo 鸙
@@ -66789,7 +66789,7 @@ ymud 调养
 ymug 高山病 调羹
 ymuj 调音 高音
 ymuk 设问
-ymum 高商 高端
+ymum 高端
 ymun 誷
 ymuq 市郊 高效
 ymus 高新
@@ -68376,9 +68376,9 @@ ywsv 谁要
 ywsy 论述
 ywt 夜 亱
 ywtc 为什么
-ywtd 谁知 论敌 认知
+ywtd 认知 谁知
 ywte 夜航 座舱
-ywtf 亡命徒 夜行 言传身教
+ywtf 夜行 言传身教
 ywth 论处
 ywti 放任自流 庩
 ywtj 认得
