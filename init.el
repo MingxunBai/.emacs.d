@@ -86,7 +86,7 @@
       ring-bell-function 'ignore        ; 关闭错误提示音
       save-abbrevs nil                  ;;
 
-      mode-require-final-newline nil    ; 禁止在文件尾创建新行
+      ;; mode-require-final-newline nil    ; 禁止在文件尾创建新行
 
       ;; split-height-threshold nil        ;;
       ;; split-width-threshold 0           ; 垂直分屏
