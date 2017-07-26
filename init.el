@@ -258,4 +258,4 @@
   (require 'extensions)
   (server-start))
 
-(add-hook 'after-init-hook 'full)
+(full)

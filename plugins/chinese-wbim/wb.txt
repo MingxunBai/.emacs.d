@@ -6739,7 +6739,7 @@ ddh 厦 廈
 ddhd 碶
 ddhh 套上 大卡
 ddhi 大叔 大步
-ddhk 厌战 大战
+ddhk 大战
 ddhq 套餐
 ddht 厦 磩
 ddhw 大龄 磌 厧
@@ -18476,7 +18476,7 @@ gyyt 一席话
 gyyu 斑斓
 gyyx 死亡率
 gyyy 不应该 天方夜谭 更应该
-h 上 点 此
+h 上 目 点 此
 ha 虎 瞒 虚
 haa 虐
 haag 虐
@@ -18926,7 +18926,7 @@ hhgk 卡带
 hhgo 上来
 hhgq 上列
 hhgy 上班
-hhh 止 目
+hhh 目
 hhhb 睁眼瞎子
 hhhc 上皮
 hhhf 目睹 歮 瞐
@@ -23745,7 +23745,7 @@ iyj 济 浏 濟
 iyje 注明 流明
 iyjf 满州里 済 瀍
 iyjg 流量 済 濟 湻
-iyjh 济 浏 流畅 瀏 嚠
+iyjh 流畅 瀏 嚠
 iyjj 液晶
 iyjt 流星 游览 浏览
 iyk 滖
@@ -23894,7 +23894,7 @@ jaea 虹膜
 jaes 虹彩
 jaf 蚶
 jafc 暴动
-jafg 蚶 暴雨 星期二
+jafg 暴雨 星期二
 jafh 畢
 jafi 晓示
 jafk 暴露 畢
@@ -26138,7 +26138,7 @@ jytr 景物
 jyty 电讯稿
 jyu 蠊 旻
 jyuh 暴戾恣睢 蠐
-jyuj 电话间 影音
+jyuj 影音
 jyuk 景况
 jyuo 蠊
 jyup 影帝
@@ -28141,7 +28141,7 @@ ktth 响鼻
 kttj 吃香
 kttk 贵重物品
 kttl 咯血
-ktu 呼 咚
+ktu 咚
 ktud 吃着
 ktuh 呼
 ktuq 川资
@@ -29623,6 +29623,7 @@ lkyb 圆熟
 lkye 袈
 lkyf 加诸
 lkyi 回应
+lkyj 加课
 lkyk 圖
 lkyl 回禀
 lkym 加高 架设
@@ -29631,7 +29632,7 @@ lkyt 回话 回族 加州 回旋 回放
 lkyw 因噎废食
 lkyy 回访 回廊 回文
 ll 男 田
-llaa 男工 男式
+llaa 男式 男工
 llb 男
 llbb 男子 轰轰隆隆
 llbu 田联
@@ -34151,7 +34152,7 @@ ntge 发表 恬静
 ntgf 属于 发球 羽毛球 以利于
 ntgg 性
 ntgh 改正 属下 以利再战
-ntgi 发还 心血来潮 憡
+ntgi 心血来潮 憡
 ntgj 性理
 ntgk 履带
 ntgl 慟
@@ -34315,7 +34316,7 @@ ntwo 鴓
 ntwr 发件
 ntwt 发作 改任
 ntwv 恤贫
-ntww 心得体会 发行人 性欲
+ntww 性价 心得体会 发行人 性欲
 ntwx 发货
 ntwy 发售 发信
 ntx 悔
@@ -34810,7 +34811,7 @@ nyng 心情 尽情 慵懒 心怀
 nynh 惊惧
 nyni 怺
 nynk 惊愕
-nynn 忙 尽快
+nynn 尽快
 nynr 惊惶
 nynt 惊悸 尽性 心悸 心性
 nynv 慷慨 恼恨
@@ -45250,7 +45251,7 @@ rslk 打架
 rsmf 技术骨干 打赌
 rsmt 打败
 rsnn 技术发展
-rsnt 技术改造 技术性 打发
+rsnt 打发
 rson 打断
 rsoo 打火
 rsou 打烂 打烊
@@ -46202,7 +46203,7 @@ rxem 括约肌
 rxeq 白细胞
 rxey 掾
 rxf 掼
-rxfi 批示 指示
+rxfi 指示 批示
 rxfm 掼 指南 摜
 rxft 指教 操纵者
 rxfw 后继无人
@@ -47387,7 +47388,7 @@ sgne 醑 醪
 sgnf 丁丑
 sgng 酌情 醒悟 翉
 sgnm 本届
-sgnn 配 朽 本书 丁巳
+sgnn 朽 本书 丁巳
 sgnt 本性 配发 酸性
 sgny 醉心 本心 酦
 sgo 醚
@@ -54554,7 +54555,7 @@ ufjp 闲云野鹤
 ufjr 斗志昂扬
 ufjt 半晌
 ufjy 半影
-ufk 半 斗 閈 闬 闘 鬥 鬦 鬬
+ufk 斗 閈 闬 闘 鬥 鬦 鬬
 ufkh 半路 闭路 闭嘴 闺中
 ufkk 冷却器 闭口
 ufkm 总动员
@@ -55527,7 +55528,7 @@ umic 鄨
 umid 獘
 umif 商法
 umig 鳖 龞 鱉 鼈
-umih 瞥 蹩 幣
+umih 蹩 幣 瞥
 umij 暼 蟞
 umin 憋 鼈
 umio 鱉 鷩
@@ -56008,7 +56009,7 @@ uqwt 秶
 uqwu 善解人意
 uqwv 姿
 uqwx 净化 交货 次货
-uqwy 次 将领 交集 将令 奖售 效仿
+uqwy 交集 将领 将令 奖售 效仿
 uqxe 次级
 uqxj 交费 资费
 uqxk 交织
@@ -62742,7 +62743,7 @@ wyqy 仪 停留
 wyra 釜底抽薪
 wyrd 偏振
 wyrf 住持
-wyrg 今后 售后
+wyrg 售后 今后
 wyrh 今年
 wyrj 保证质量 众望所归
 wyrk 领扣
@@ -65439,6 +65440,7 @@ ycpl 义勇军 充军
 ycpu 充实 充裕
 ycq 充
 ycqb 充
+ycqg 充钱
 ycqk 译名
 ycqn 充饥
 ycqt 弃儿 诈骗犯 育儿
