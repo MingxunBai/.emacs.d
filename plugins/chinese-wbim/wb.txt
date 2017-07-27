@@ -11391,7 +11391,7 @@ fbyg 地主
 fbym 地市
 fbyq 喜出望外
 fbyy 地方
-fc 支 去 云
+fc 去 支 云
 fcaa 动工
 fcad 劫匪
 fcai 动荡
@@ -11549,7 +11549,7 @@ fctr 动物
 fctt 动笔 运笔
 fctv 支委
 fcty 运往
-fcu 去 云 支
+fcu 云 支
 fcuc 去痛
 fcud 运送
 fcue 支前
@@ -18229,7 +18229,7 @@ gxfc 互动
 gxfi 纛
 gxfm 瑻
 gxfy 天经地义
-gxg 互 毒
+gxg 毒
 gxga 一丝不苟
 gxgb 不绝于耳
 gxgd 互
@@ -30076,7 +30076,7 @@ lrw 轶
 lrwa 暂借
 lrwe 固氮作用
 lrwj 黑白分明
-lrwy 轶 暂停 暂住 軼
+lrwy 暂停 暂住 軼 轶
 lrxe 暂缓
 lryp 轻描谈写
 ls 困 町
@@ -37298,6 +37298,7 @@ pnlf 官署 寍
 pnlh 寜
 pnll ●
 pnlo 鸋
+pnmq 官网
 pnls 寧
 pnlw 官办
 pnmu 賔
