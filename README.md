@@ -1,8 +1,7 @@
 Install
 ====================
 ```
-git clone https://github.com/MingxunBai/emacs.d
-cp -r emacs.d/ ~/.emacs.d
+git clone https://github.com/MingxunBai/.emacs.d
 ```
 
 **默认为基本配置, <kbd>C-c f</kbd> 加载完整配置**

@@ -161,7 +161,7 @@
     :group 'linum)
 
   (defun my-linum-format (line-number)
-    (propertize (format " %2d\u2502" line-number) 'face
+    (propertize (format " %2d " line-number) 'face
                 (if (eq line-number my-linum-current-line-number)
                     'my-linum-hl
                   'linum)))
