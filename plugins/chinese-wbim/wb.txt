@@ -19017,7 +19017,7 @@ hhu 卡 歨
 hhub 上瘾
 hhuc 止痛
 hhud 目送 上头
-hhue 上前 目前
+hhue 目前
 hhuf 上装
 hhug 上闩
 hhuk 上部
@@ -39296,6 +39296,7 @@ qeqb 觤
 qeqc 角色
 qeqd 解危 狐朋狗友
 qeqe 触角
+qeqi 解锁
 qeqm 角钢
 qeqn 解馋 解饿
 qeqr 角铁
@@ -39724,7 +39725,7 @@ qgxf 鱼贯
 qgxt 铺张
 qgxw 銕
 qgy 鲸 鯨
-qgya 鳊 印度 鯿
+qgya 印度 鳊 鯿
 qgyf 金融市场 钱庄
 qgyg 印证 外来语 鳣 鱣
 qgyh 鳙 鱅
@@ -53583,7 +53584,7 @@ tyb 篱
 tybb 稿子
 tybc 篱
 tybg 入耳 稕
-tybk 自谋出路
+tybk 入职 自谋出路
 tybn 入了
 tybo 自谋职业
 tybp 入院
@@ -63352,7 +63353,7 @@ xfwo 结伙 鴇
 xfwt 绫 结余 綾
 xfwu 结伴
 xfwv 结仇
-xfwy 结集 续集
+xfwy 续集
 xfxg 鸨母 纬线
 xfxj 续费
 xfxk 结绳
@@ -65085,7 +65086,7 @@ xyyf 统计 红衣主教
 xyys 编订
 xyyx 统率
 y 主 就
-ya 试 度 °
+ya 度 °
 yaa 试
 yaad 遮藏
 yaaf 席勒 文艺工作者
