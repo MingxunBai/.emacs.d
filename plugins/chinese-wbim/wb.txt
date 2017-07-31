@@ -30546,7 +30546,7 @@ made 農
 madg 内蒙古
 madi 山东大学
 madj 蠈
-madm 见世面
+madm 曲面
 madn 嵁
 madt 贼 典故 賊 贜 戝
 maej 贼胆
@@ -31297,7 +31297,7 @@ mht 帐 帳
 mhtb 幯
 mhte 帆船
 mhtf 帲
-mhth 贴息 贴牌
+mhth 贴片 贴牌
 mhti 帐簿
 mhtl 幡
 mhtm 贴身 帽徽 幅射
@@ -34263,7 +34263,7 @@ ntrr 发誓 发白
 ntru 发抖
 ntrv 发热
 ntrw 改扮
-ntsf 发飘 发票
+ntsf 发票
 ntsg 发酵 发酸
 ntsh 属相
 ntsm 发射机
