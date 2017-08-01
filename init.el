@@ -7,14 +7,12 @@
       user-mail-address "mingxunbai@outlook.com")
 
 ;; 定义常量
-(defconst *TERMINAL*                    ; 针对终端进行一些样式调整
+(defconst *TERMINAL*
   (eq window-system 'nil))
 (defconst *WINDOWS* (eq system-type 'windows-nt))
 (defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))
 
 ;; 路径配置
-
-;; Add load path recursive
 (defun add-subdirs-to-load-path (dir)
   "Recursive add directories to `load-path'."
   (let ((default-directory (file-name-as-directory dir)))
@@ -27,7 +25,7 @@
         "~/Documents"))
 
 ;;-------------------------------------------------
-;; 编码环境
+;; Encoding
 ;;-------------------------------------------------
 
 (setq current-language-environment "utf-8"
@@ -42,11 +40,28 @@
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
-  (setq locale-coding-system 'gbk))     ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
+  (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
+
+;;-------------------------------------------------
+;; Mode
+;;-------------------------------------------------
+
+(ido-mode)
+(setq ido-save-directory-list-file nil
+      ido-enable-flex-matching t)       ; 模糊匹配
+
+(global-auto-revert-mode)               ; Auto revert
+
+(global-linum-mode)                     ; 显示行号
+
+(show-paren-mode)                       ; 高亮匹配括号
+
+(winner-mode)                           ; 窗口控制
 
 
 ;;-------------------------------------------------
-;; 显示 & 行为
+;; Setting
 ;;-------------------------------------------------
 
 ;; Alias
@@ -58,38 +73,15 @@
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
 
-;; (set-default-font "Source Code Pro-12")
-;; 设置字体
-(when *WINDOWS*
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
-
-(global-auto-revert-mode)               ; Auto revert
-
-(ido-mode)
-(setq ido-save-directory-list-file nil
-      ido-enable-flex-matching t)       ; 模糊匹配
-
-(global-linum-mode)                     ; 显示行号
-
-(show-paren-mode)                       ; 高亮匹配括号
-
-(menu-bar-mode -1)                      ; 隐藏菜单栏
-
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
               tab-width 4)              ;
 
 (setq inhibit-startup-message t         ; 关闭启动动画
-      ;; initial-scratch-message nil       ; 移除草稿文本
 
       visible-bell t                    ;;
       ring-bell-function 'ignore        ; 关闭错误提示音
       save-abbrevs nil                  ;;
-
-      ;; mode-require-final-newline nil    ; 禁止在文件尾创建新行
-
-      ;; split-height-threshold nil        ;;
-      ;; split-width-threshold 0           ; 垂直分屏
 
       scroll-margin 3                   ;;
       scroll-conservatively 10000       ; 靠近屏幕边沿3行时就开始滚动
@@ -120,11 +112,11 @@
       display-time-default-load-average nil
 
       frame-title-format                ;;
-      '("Emacs " emacs-version " - "    ; Title 显示完整路径
+      '("Emacs " emacs-version " - "    ; Title Format
         (buffer-file-name "%f" (dired-directory dired-directory "%b")))
 
       eshell-prompt-function            ;;
-      (lambda ()                        ; Eshell 提示符
+      (lambda ()                        ; Eshell Prompt
         (concat
          (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)) 'face `(:foreground "green"))
          (propertize (eshell/pwd) 'face `(:foreground "blue"))
@@ -142,6 +134,7 @@
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
 
+(when *TERMINAL* (menu-bar-mode -1))
 (when (not *TERMINAL*)
   ;; 设置透明度
   (set-frame-parameter (selected-frame) 'alpha '(95 . 70))
@@ -182,72 +175,15 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
+;;-------------------------------------------------
 ;; Major Mode
+;;-------------------------------------------------
+
 (setq auto-mode-alist
       (append '(("/[^\\./]*\\'"    . conf-mode) ; File name has no dot
                 ("\\.bash"         . sh-mode)
                 ("\\.yasnippet\\'" . snippet-mode))
               auto-mode-alist))
-
-;; Key Binding
-(dolist (key-list
-         '(("C-x 2"   . custom-split-window-below)
-           ("C-x 3"   . custom-split-window-right)
-           ("C-c 4 r" . winner-redo)
-           ("C-c 4 u" . winner-undo)
-           ("C-x C-x" . save-buffers-kill-emacs)
-
-           ;; Custom feature
-           ("C-c k"      . custom-delete-whitespace-to-upline)
-           ("C-o"        . custom-down-newline)
-           ("C-c d"      . custom-duplicate-line)
-           ("C-c p"      . custom-git-push-current-buffer)
-           ("C-M-\\"     . custom-indent-buffer)
-           ("<C-return>" . custom-middle-newline)
-           ("M-]"        . custom-move-down-current-line)
-           ("M-["        . custom-move-up-current-line)
-           ("C-c r"      . custom-resize-indentation)
-           ("<backtab>"  . custom-resize-indentation--4)
-           ("RET"        . custom-return)
-           ("M-o"        . custom-up-newline)
-           ("C-y"        . custom-yank)
-           ("<left-margin> <mouse-1>" . custom-go-to-click-line)
-
-           ;; Evil nerd commenter
-           ("C-M-;"   . evilnc-comment-or-uncomment-lines)
-           ("C-c c c" . evilnc-copy-and-comment-lines)
-           ("C-c c p" . evilnc-comment-or-uncomment-paragraphs)
-
-           ;; Multiple cursors
-           ("M-<mouse-1>" . mc/add-cursor-on-click)
-           ("C-S-c C-S-c" . mc/edit-lines)
-
-           ;; NEROTree
-           ("<f1>" . neotree-toggle)
-
-           ;; Origami mode
-           ("<f2>"    . origami-toggle-node)
-           ("C-c o a" . origami-show-only-node)
-           ("C-c o o" . origami-open-node-recursively)
-           ("C-c o n" . origami-next-fold)
-           ("C-c o p" . origami-previous-fold)
-           ("C-c o f" . origami-forward-fold-same-level)
-           ("C-c o b" . origami-backward-fold-same-level)
-           ("C-c o r" . origami-reset)
-
-           ;; Tab bar mode
-           ("C-M-=" . tabbar-press-home)
-           ("C--"   . tabbar-backward)
-           ("M--"   . tabbar-backward-group)
-           ("C-="   . tabbar-forward)
-           ("M-="   . tabbar-forward-group)
-
-           ;; YASnippet mode
-           ("<C-tab>" . yas-ido-expand)
-
-           ;; 五笔输入法
-           (";" . chinese-wbim-insert-ascii)))
-  (global-set-key (kbd (car key-list)) (cdr key-list)))
 
 ;; 启用完整配置
 (defun full ()
