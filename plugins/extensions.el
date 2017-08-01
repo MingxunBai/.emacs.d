@@ -11,12 +11,12 @@
 ;;-------------------------------------------------
 ;; Key Binding
 ;;-------------------------------------------------
+
 (dolist (key-list
          '(("C-x 2"   . custom-split-window-below)
            ("C-x 3"   . custom-split-window-right)
            ("C-c 4 r" . winner-redo)
            ("C-c 4 u" . winner-undo)
-           ("C-x C-x" . save-buffers-kill-emacs)
 
            ;; Custom feature
            ("C-c k"      . custom-delete-whitespace-to-upline)
@@ -641,7 +641,7 @@
 (yas-global-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
-(define-key yas-keymap (kbd "C-;") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "C-;") 'yas-expand)
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   (when (featurep 'popup)

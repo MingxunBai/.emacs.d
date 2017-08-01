@@ -12,17 +12,12 @@
 (defconst *WINDOWS* (eq system-type 'windows-nt))
 (defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))
 
-;; 路径配置
+;; Recursive load path
 (defun add-subdirs-to-load-path (dir)
   "Recursive add directories to `load-path'."
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-
-(setq default-directory
-      (if *WINDOWS*
-          (format "C:/Users/%s/Documents" user-full-name)
-        "~/Documents"))
 
 ;;-------------------------------------------------
 ;; Encoding
@@ -33,7 +28,7 @@
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-;; (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
+(modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
 ;; use gbk for Windows
 (when *WINDOWS*

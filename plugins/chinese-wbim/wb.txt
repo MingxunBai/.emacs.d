@@ -15991,7 +15991,7 @@ ghsy 下述
 ght 政
 ghtd 政敌 正逢
 ghte 下船 下盘
-ghtf 下等 下午 下行 正告 正午 正待
+ghtf 下午 下行 下等 正告 正午 正待
 ghtg 下策 政策 下垂
 ghth 正版 正牌
 ghtj 焉得
@@ -24500,7 +24500,7 @@ jggt 暴殄天物
 jgh 是 韪
 jghc 虾皮
 jghf 昰
-jghh 韪 题目 韙 蝆
+jghh 题目 韪 韙 蝆
 jghi 师叔
 jghm 题 題
 jghn 鼂
