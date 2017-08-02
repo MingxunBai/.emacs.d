@@ -8377,7 +8377,7 @@ dndg 万古 戊戌
 dndh 盛夏
 dndk 百发百中
 dndl 万历
-dndn 万万 尴尬
+dndn 尴尬 万万
 dndt 臧 万寿 感慨万千
 dndw 克己奉公
 dndx 成龙
@@ -9438,6 +9438,7 @@ dxgd \x836\xCF9 
 dxgg 龙王
 dxgi 三纲五常
 dxgp 寿终正寝
+dxgr 龙珠
 dxgu 砪
 dxhr 唇红齿白
 dxhv 龙眼
@@ -16636,7 +16637,7 @@ gkum 事端 頭
 gkun 速决 毭
 gkuo 豏
 gkup 逗
-gkuq 速效 融资 豆浆
+gkuq 融资 速效 豆浆
 gkur 豆瓣
 gkut 武器装备
 gkux 表兄弟 速递
@@ -29275,7 +29276,7 @@ lgvt 国君
 lgwd 辅佐 国优
 lgwf 国会 默不作声
 lgwg 国债
-lgwh 辅修 国企
+lgwh 国企 辅修
 lgwn 力不从心
 lgws 国体 车体
 lgwt 四平八稳 畏途
@@ -33865,6 +33866,7 @@ nnx 怩
 nnxa 羽绒
 nnxc 已经
 nnxe 乙级
+nnxg 快线
 nnxn 怩
 nny 羽
 nnyd 书斋
@@ -47576,6 +47578,7 @@ shfc 相去 想去
 shfg 相干 相士
 shfh 想起 朴直
 shfn 相声
+shfp 想过
 shg 相 杫
 shga 相形 想开
 shgc 想到

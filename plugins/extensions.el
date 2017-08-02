@@ -539,10 +539,8 @@
     (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
 
 ;; Origami
-(defun enable-origami ()
-  (interactive)
-  (require 'origami)
-  (global-origami-mode))
+(require 'origami)
+(global-origami-mode)
 
 ;; Python
 (add-hook 'python-mode-hook 'custom-python-mode-hook)
