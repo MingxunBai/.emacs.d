@@ -194,7 +194,9 @@
 ;; 换行
 (defun custom-return ()
   (interactive)
-  (cond ((custom-is-in-paren?)
+  (cond ((or (bobp) (eobp))
+         (newline-and-indent))
+        ((custom-is-in-paren?)
          (custom-middle-newline))
         ((custom-is-javadoc?)
          (custom-javadoc-newline))

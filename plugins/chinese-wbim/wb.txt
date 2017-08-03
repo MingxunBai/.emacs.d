@@ -23083,7 +23083,7 @@ ittw 常务委员会
 ittx 浩繁
 itty 法律行为 法律知识
 itu 溗
-itud 海关 活着 洗头
+itud 活着 海关 洗头
 ituf 少壮 小生产者
 itug 流行病 泛美
 ituh 泘
@@ -26931,7 +26931,7 @@ khk 中 躁
 khkd 忠顺
 khkf 中叶
 khkg 呫
-khkh 跟踪 践踏 踊跃 踌躇 足足 跳跃 跳踉 踽踽 蹉跎 蹂躏 蹒跚 蹊跷 踟躇 踯躅 踀
+khkh 跳跃 踀
 khkk 路口
 khkm 蹪
 khkn 遗嘱
@@ -38633,7 +38633,7 @@ pyli 实施办法
 pylk 祝贺
 pyln 神思 禗 禤
 pyls 祵
-pylt 视力 视图 空话连篇 禝
+pylt 视图 视力 空话连篇 禝
 pylw 视界 视为畏途 禩
 pym 视 視
 pyma 神曲
@@ -65430,7 +65430,7 @@ yciy 译注 旀
 ycjn 充电
 yck 诒
 ycke 袬
-yckg 诒 序号 № 詒
+yckg 序号 诒 № 詒
 yckh 充足
 yckm 译员
 yclf 弃置
