@@ -424,25 +424,28 @@
   (defun custom-java-run ()
     (interactive)
     (save-buffer)
-    (custom-split-window 'shell)
-    (other-window 1)
-    (end-of-buffer)
-    (other-window 1)
     (setq file-path (file-name-directory (buffer-file-name)))
     (let ((root (custom-find-dir file-path "src/")))
       (if root
           (let ((package (file-relative-name file-path root)))
-            (process-send-string
-             "shell"
-             (concat "cd " root
-                     " && javac -d bin/ " package "*.java"
-                     " && java -cp bin/ " (replace-regexp-in-string "/" "." (substring package 4)) (file-name-sans-extension (buffer-name)) "\n")))
+            (setq cmd
+                  (concat "cd " root
+                          " && javac -d bin/ " package "*.java"
+                          " && java -cp bin/ " (replace-regexp-in-string "/" "." (substring package 4)) (file-name-sans-extension (buffer-name)) "\n")))
         (progn
-          (process-send-string
-           "shell"
-           (concat "cd " file-path
-                   " && javac " (buffer-name)
-                   " && java " (file-name-sans-extension (buffer-name)) "\n"))))))
+          (setq cmd
+                (concat "cd " file-path
+                        " && javac " (buffer-name)
+                        " && java " (file-name-sans-extension (buffer-name)) "\n")))))
+    (custom-split-window 'shell)
+    (other-window 1)
+    (end-of-buffer)
+    (let ((line (custom-remeber-line)))
+      (other-window 1)
+      (process-send-string "shell" cmd)
+      (other-window 1)
+      (goto-line line)
+      (other-window 1)))
 
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 

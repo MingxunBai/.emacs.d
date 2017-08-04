@@ -19723,7 +19723,7 @@ hvnh 眼眉
 hvno 眼屎
 hvpa 卢那察尔斯基
 hvpw 眼帘 眼窝
-hvpy 眼福 眼神
+hvpy 眼神
 hvq 睨
 hvqc 眼色
 hvqe 眼角
