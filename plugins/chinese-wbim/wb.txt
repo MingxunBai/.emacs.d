@@ -3682,7 +3682,7 @@ bcwg 聚合 聚敛
 bcwk 取保
 bcwt 陖
 bcww 聚众
-bcwy 取信 聚集 聚焦
+bcwy 聚焦 聚集
 bcxc 取经
 bcxu 取缔
 bcy 取
@@ -21075,7 +21075,7 @@ ihjh 淖
 ihjt 濒临
 ihk 沾
 ihkf 小叶
-ihkg 沾 小号
+ihkg 小号
 ihkh 涉足 小路
 ihkk 小品 混频器
 ihkn 惉
@@ -40140,7 +40140,7 @@ qkiy 名流
 qkjg 名师
 qkk 铝 鋁
 qkkf 够味
-qkkg 铝 句号 。 名号 鋁
+qkkg 名号 句号 铝 鋁
 qkkh 名贵 句中 鋛
 qkkk 逸品 名品
 qkkn 锷 名叫 鍔
@@ -47394,7 +47394,7 @@ sgng 酌情 醒悟 翉
 sgnm 本届
 sgnn 朽 本书 丁巳
 sgnt 本性 配发 酸性
-sgny 醉心 本心 酦
+sgny 本心 酦
 sgo 醚
 sgod 本类
 sgog 桠 本业 椏
