@@ -13686,7 +13686,7 @@ fqpt 远客
 fqpu 无补
 fqpv 远
 fqpw 无穷
-fqpy 无礼 无视 远视 远祖
+fqpy 无视 无礼 远视 远祖
 fqqa 声名狼藉
 fqqb 无怨 元凶
 fqqi 远销

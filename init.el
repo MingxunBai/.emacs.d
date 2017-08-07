@@ -39,6 +39,16 @@
   (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 ;;-------------------------------------------------
+;; Major Mode
+;;-------------------------------------------------
+
+(setq auto-mode-alist
+      (append '(("/[^\\./]*\\'"    . conf-mode) ; File name has no dot
+                ("\\.bash"         . sh-mode)
+                ("\\.yasnippet\\'" . snippet-mode))
+              auto-mode-alist))
+
+;;-------------------------------------------------
 ;; Mode
 ;;-------------------------------------------------
 
@@ -53,7 +63,6 @@
 (show-paren-mode)                       ; 高亮匹配括号
 
 (winner-mode)                           ; 窗口控制
-
 
 ;;-------------------------------------------------
 ;; Setting
@@ -170,17 +179,7 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
-;;-------------------------------------------------
-;; Major Mode
-;;-------------------------------------------------
-
-(setq auto-mode-alist
-      (append '(("/[^\\./]*\\'"    . conf-mode) ; File name has no dot
-                ("\\.bash"         . sh-mode)
-                ("\\.yasnippet\\'" . snippet-mode))
-              auto-mode-alist))
-
-;; 启用完整配置
+;;; 启用完整配置
 (defun full ()
   (interactive)
   ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
