@@ -8826,13 +8826,13 @@ drsw 百年树人
 drt 碑
 drtc 厉兵秣马
 drtd 原籍
-drtf 碑 原先 原告
+drtf 原先 碑
 drtg 原生
 drth 原版 原处
 drtr 原物
 drtt 大手笔
 drtv 原委
-drty 威迫利诱 原稿
+drty 原稿 威迫利诱
 drud 原状 原判
 druf 原装
 druj 愿意 原意
@@ -8846,7 +8846,7 @@ drwq 硬质合金
 drwr 原件
 drwt 原作
 drwu 原位
-drww 成年人 原价 原人
+drww 原价
 drwy 镻
 dry 礉
 dryg 原主
@@ -8855,7 +8855,7 @@ dryn 愿望 碑刻
 dryq 原义
 dryt 有的放矢 礉
 dryx 胡搅蛮缠
-dryy 原谅 碑文 原文 大后方
+dryy 原文 原谅
 ds 厅 奇
 dsal 奇功
 dsap 大本营
