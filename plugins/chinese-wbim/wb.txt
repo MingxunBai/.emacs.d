@@ -5061,7 +5061,7 @@ byxu 防弹
 byyj 防腐剂
 byyw 防腐
 byyy 阴谋诡计
-c 又 能
+c 双 又 能
 ca 戏 劲
 caa 駴
 caaa 能工巧匠
@@ -11392,7 +11392,7 @@ fbyg 地主
 fbym 地市
 fbyq 喜出望外
 fbyy 地方
-fc 去 支 云
+fc 支 去 云
 fcaa 动工
 fcad 劫匪
 fcai 动荡
@@ -11550,7 +11550,7 @@ fctr 动物
 fctt 动笔 运笔
 fctv 支委
 fcty 运往
-fcu 云 支
+fcu 去 云 支
 fcuc 去痛
 fcud 运送
 fcue 支前
@@ -26877,23 +26877,23 @@ khgj 蹧
 khgk 踎 蹻
 khgl 踾
 khgm 贵 貴 蹟
-khgo 跑来 中来 中亚 跟来
+khgo 跑来 中亚
 khgp 遗 遣 遺
 khgq 忠烈 躎
 khgs 别具一格
 khgt 践
 khgu 踏平
 khgw 跠
-khgx 遗毒 中毒 躧
+khgx 中毒 躧
 khgy 中班 跟班
 khh 趾
 khhc 跛 踧 躩
 khhe 中肯 躆
 khhg 趾
-khhh 中止 路上 跟上 踏上
-khhi 跑步 跨步 踏步 中频 踄
+khhh 路上 中止
+khhi 跑步 踄
 khhj 踔
-khhk 蹲点 中点 跕
+khhk 蹲点 跕
 khhm 忠贞 瞶
 khhq 中餐
 khhx 跐
@@ -26902,8 +26902,8 @@ khi 跳
 khic 踧
 khie 踃 蹐
 khif 蹚
-khih 跋涉 中波 中小
-khii 踩水 跳水
+khih 跋涉
+khii 跳水 踩水
 khij 踏
 khim 嚬
 khin 遗漏
@@ -30297,7 +30297,6 @@ luxu 较弱
 luyl 较为
 luym 较高
 lv 轨 囡
-lvbw 男女队
 lvd 囡
 lvf 婁
 lvfi 男女老少
@@ -30350,13 +30349,12 @@ lwfd 囶
 lwfy 軵
 lwg 输
 lwga 圇 輪
-lwgc 軨
+lwgc 轮到 軨
 lwgg 辁 四分五裂 輇
 lwgj 输 办理 輸
 lwgk 办事
 lwgn 軡
 lwgt 四舍五入
-lwgw 四个现代化
 lwgy 轮班 办班
 lwhj 办公桌
 lwi 办 囚
@@ -30369,7 +30367,6 @@ lwj 界
 lwjh 畍
 lwjj 界
 lwjn 输电
-lwjr 四个坚持
 lwkj 轮唱
 lwld 办罪
 lwlf 轮转
@@ -31773,7 +31770,7 @@ mqgq 刚烈
 mqgs 岁末
 mqgy 刚玉
 mqh 飓 颶
-mqhh 网卡 网上
+mqhh 网上 网卡
 mqhk 网点 飐 颭
 mqhv 网眼
 mqhw 飓 网龄
