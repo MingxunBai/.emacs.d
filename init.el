@@ -35,7 +35,8 @@
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
-  (setq locale-coding-system 'gbk)) ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
+  (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
 
 ;;-------------------------------------------------
 ;; Major Mode
@@ -75,9 +76,6 @@
 (defalias 'ff  'set-buffer-file-coding-system)
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
-
-;; Fonts
-(set-fontset-font t 'han (font-spec :family "Minglan_Code"))
 
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
