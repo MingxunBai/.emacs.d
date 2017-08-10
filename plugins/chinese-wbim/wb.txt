@@ -14274,7 +14274,7 @@ futd 丧乱
 futf 霍兰德 增选
 futg 增生 丧生
 futm 丧身
-fuud 增减 培养
+fuud 培养 增减
 fuug 真善美
 fuuk 境况 喜冲冲
 fuuq 增效
@@ -16004,7 +16004,7 @@ ghtt 下笔 夒
 ghtv 政委
 ghty 政
 ghud 下头
-ghuj 一瞬间 正音
+ghuj 下单 一瞬间 正音
 ghuk 下部
 ghuq 下次
 ghut 正道
@@ -24801,7 +24801,7 @@ jjfh 日趋 晘
 jjfi 日晒雨淋
 jjfj 日刊 日进
 jjfk 曝露 昌吉
-jjfn 日场 日志
+jjfn 日志
 jjfq 日均 日元
 jjft 愚昧无知
 jjg 蛳 昍 蚎 螄
@@ -28982,7 +28982,7 @@ lfm 罱
 lfmf 罱
 lfmh 转帐 围巾 转帖
 lfmm 转岗
-lfmq 围网 团购
+lfmq 团购
 lfmt 转账
 lfmu 转赠 貫
 lfn 转 転 轉
@@ -29039,6 +29039,7 @@ lfrp 因地制宜
 lfrq 转换 置换
 lfrr 转折 黑白 围城打援
 lfrt 转播 转手 罢手 黑手
+lfru 转接
 lfsa 围棋
 lfsd 转椅 置顶
 lfsf 围标
@@ -33349,7 +33350,7 @@ nhrl 收押
 nhrn 收据
 nhrr 蛋白
 nhrv 收执
-nhrw 疏失 收拾
+nhrw 收拾 疏失
 nhrx 眉批
 nhsh 遐想
 nhsi 眉梢
@@ -33361,7 +33362,7 @@ nhtj 收复
 nhto 收悉 鶥
 nhts 收条
 nhtu 收税
-nhty 收 收入 \x836\xCA4 
+nhty 收入 收  \x836\xCA4
 nhud 收养 眉头
 nhuj 收音
 nhuq 收效
@@ -34810,7 +34811,7 @@ nyng 心情 尽情 慵懒 心怀
 nynh 惊惧
 nyni 怺
 nynk 惊愕
-nynn 尽快
+nynn 尽快 忙
 nynr 惊惶
 nynt 惊悸 尽性 心悸 心性
 nynv 慷慨 恼恨
@@ -50057,7 +50058,7 @@ tdwt 短途 自成体系
 tdwv 矫健
 tdww 敌人 乱伦 知人 筴
 tdwx 片面化 私有化
-tdwy 雉 敌伪 筹集 辞令 甜食 短信
+tdwy 短信 雉 筹集
 tdx 笼 籠
 tdxb 笼
 tdxe 筹组
@@ -59080,7 +59081,7 @@ wapw 借宿
 wapy 供神
 waqb 停薪留职
 waqe 僃
-waqg 分工负责 借钱
+waqg 借钱 分工负责
 waqh 僀
 waqi 供销 代销
 waqj 僭
@@ -59707,7 +59708,7 @@ wfil 畲
 wfip 会演 会堂 儒学
 wfir 促进派
 wfis 祭酒
-wfiu 祭 佘
+wfiu 佘 祭
 wfiv 传染
 wfiy 俅 佅
 wfj 仐 癷 傋
@@ -61699,7 +61700,7 @@ wtpg 叙写 偷香窃玉
 wtpi 途
 wtpl 俄军
 wtpr 众矢之的
-wtpt 作客 余额
+wtpt 余额 作客
 wtpu 余裕
 wtpv 作案
 wtpw 凭空 信息社会
@@ -62589,7 +62590,7 @@ wyeb 隽 信服 雋
 wyeg 邻县
 wyek 体育用品
 wyep 领受 令爱 偏爱
-wyet 食用 信用 停用
+wyet 信用 停用
 wyev 停妥
 wyey 依 念及 偯
 wyf 储 隼 詧
