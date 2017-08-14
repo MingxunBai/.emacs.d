@@ -5061,7 +5061,7 @@ byxu 防弹
 byyj 防腐剂
 byyw 防腐
 byyy 阴谋诡计
-c 双 又 能
+c 以 又 能
 ca 戏 劲
 caa 駴
 caaa 能工巧匠
@@ -16030,7 +16030,7 @@ ghwy 下集 下令 政令
 ghx 玼
 ghxc 正经
 ghxe 下级
-ghxg 政绩 下线
+ghxg 下线 政绩
 ghxm 政纲
 ghxn 政纪 玼
 ghxt 下乡
@@ -17987,7 +17987,7 @@ gutj 平复
 gutk 平和 表音符号
 gutm 平躺
 gutn 整装待发
-gutq 平稳 平衡
+gutq 平衡 平稳
 guts 至关重要
 guty 夹入
 guud 夹着 平头
@@ -54115,10 +54115,10 @@ udhc 头皮 羊皮
 udhd 瘈
 udhf 着 眷 睠
 udhg 善睐
-udhh 关卡 头目 关上 送上 头上 韏
+udhh 头上 韏
 udhk 差点 善战
 udhn 瘛 头颅
-udhv 着眼 养眼
+udhv 养眼
 udhw 羊齿 瘨 闐
 udi 头  頭
 udib 差池
@@ -65157,7 +65157,7 @@ yaiq 遮光
 yait 广东省
 yaj 谟
 yajd 谟 庴 謨
-yajg 度量 试题 充其量 諎
+yajg 试题 度量 諎
 yajj 度日 廖若晨星
 yajl 诺曼
 yajm 试映
