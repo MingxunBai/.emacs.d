@@ -343,7 +343,7 @@ This minor mode defines keys for quick access:
 Home page URL `http://www.emacswiki.org/emacs/Emmet'.
 
 See also `emmet-expand-line'."
-  :lighter (" Emmet" (:eval (if emmet-preview-mode "[P]" "")))
+  :lighter " Emmet"
   :keymap emmet-mode-keymap
   :after-hook (emmet-after-hook))
 
@@ -525,34 +525,6 @@ accept it or skip it."
         (add-hook 'before-change-functions 'emmet-preview-before-change t t)
         (goto-char here)
         (add-hook 'post-command-hook 'emmet-preview-post-command t t)))))
-
-(defun emmet-preview-online ()
-  "Display `emmet-preview' on the fly as the user types.
-
-To use this, add the function as a local hook:
-
-  (add-hook 'post-self-insert-hook 'emmet-preview-online t t)
-
-or enable `emmet-preview-mode'."
-  (ignore-errors
-    (let* ((expr (emmet-expr-on-line))
-           (text (nth 0 expr))
-           (beg (nth 1 expr))
-           (end (nth 2 expr)))
-      (let ((wap (word-at-point)))
-        (when (and (not (equal wap text))
-                   (emmet-transform text))
-          (emmet-preview beg end))))))
-
-(define-minor-mode emmet-preview-mode
-  "When enabled, automatically show `emmet-preview' as the user types.
-
-See `emmet-preview-online'."
-  :init-value nil
-  :group 'emmet
-  (if emmet-preview-mode
-      (add-hook 'post-self-insert-hook 'emmet-preview-online :append :local)
-    (remove-hook 'post-self-insert-hook 'emmet-preview-online :local)))
 
 (defvar emmet-preview-pending-abort nil)
 (make-variable-buffer-local 'emmet-preview-pending-abort)
@@ -1300,7 +1272,7 @@ tbl) tbl)
 (puthash "det" "details" tbl)
 (puthash "dl+" "dl>dt+dd" tbl)
 (puthash "dlg" "dialog" tbl)
-(puthash "doc" "html>(head>meta[charset=UTF-8]+title{Document})+body" tbl)
+(puthash "doc" "html>(head>meta[charset=UTF-8]+title{MingxunBai})+body" tbl)
 (puthash "doc4" "html>(head>meta[http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"]+title{Document})" tbl)
 (puthash "emb" "embed" tbl)
 (puthash "fig" "figure" tbl)
@@ -1313,7 +1285,7 @@ tbl) tbl)
 (puthash "hdr" "header" tbl)
 (puthash "html:4s" "!!!4s+doc4[lang=en]" tbl)
 (puthash "html:4t" "!!!4t+doc4[lang=en]" tbl)
-(puthash "html:5" "!!!+doc[lang=en]" tbl)
+(puthash "html:5" "!!!+doc" tbl)
 (puthash "html:xml" "html[xmlns=http://www.w3.org/1999/xhtml]" tbl)
 (puthash "html:xs" "!!!xs+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=en]" tbl)
 (puthash "html:xt" "!!!xt+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=en]" tbl)
@@ -1386,7 +1358,7 @@ tbl) tbl)
 (puthash "ul+" "ul>li" tbl)
 tbl) tbl)
 (puthash "snippets" (let ((tbl (make-hash-table :test 'equal)))
-(puthash "!!!" "<!doctype html>" tbl)
+(puthash "!!!" "<!DOCTYPE html>" tbl)
 (puthash "!!!4s" "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">" tbl)
 (puthash "!!!4t" "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">" tbl)
 (puthash "!!!xs" "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">" tbl)
@@ -2696,9 +2668,6 @@ tbl) tbl)
 tbl) tbl)
 (puthash "label" (let ((tbl (make-hash-table :test 'equal)))
 (puthash "block" nil tbl)
-(puthash "defaultAttr" (let ((tbl (make-hash-table :test 'equal)))
-(puthash "for" "" tbl)
-tbl) tbl)
 (puthash "selfClosing" nil tbl)
 tbl) tbl)
 (puthash "legend" (let ((tbl (make-hash-table :test 'equal)))
