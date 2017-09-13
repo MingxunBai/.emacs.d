@@ -319,6 +319,10 @@
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 (define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
 
+;; Dired
+(define-key dired-mode-map (kbd "j") 'dired-next-line)
+(define-key dired-mode-map (kbd "k") 'dired-previous-line)
+
 ;; Emmet
 (defun enable-emmet-mode ()
   (interactive)
