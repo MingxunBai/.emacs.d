@@ -24,13 +24,13 @@
     (if (and (and (not (eq major-mode 'bat-mode))
                   (not (eq major-mode 'java-mode)))
              (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
-    (set-buffer-file-coding-system 'utf-8-unix)))
+        (set-buffer-file-coding-system 'utf-8-unix)))
 
   ;; Command 分离窗口运行
   (defun custom-split-window (command &optional param)
     (delete-other-windows)
     (if (> (count-windows) 1)
-    (neotree-toggle))
+        (neotree-toggle))
     (split-window-vertically (floor (* 0.68 (window-height))))
     (other-window 1)
     (funcall command param)
@@ -40,10 +40,10 @@
   (defun custom-find-dir (dir reg)
     (interactive)
     (if (not (string-match "[a-z0-9_-]/" dir))
-    nil
-  (if (file-exists-p (expand-file-name reg dir))
-    dir
-  (custom-find-dir (expand-file-name "../" dir) reg))))
+        nil
+      (if (file-exists-p (expand-file-name reg dir))
+          dir
+        (custom-find-dir (expand-file-name "../" dir) reg))))
 
   (defun custom-git-push (root)
     (shell-command (concat "cd " root " && git add ."))
@@ -53,17 +53,17 @@
   (defun custom-git-push-current-buffer ()
     (interactive)
     (if (condition-case nil
-    (setq file-path (file-name-directory (buffer-file-name)))
-  (error nil))
-    (let ((root (custom-find-dir file-path ".git/")))
+            (setq file-path (file-name-directory (buffer-file-name)))
+          (error nil))
+        (let ((root (custom-find-dir file-path ".git/")))
           (custom-git-push root))
       (message "Git need a local file!")))
 
   ;; 缩进重排
   (defun custom-remeber-line ()
     (if (bolp)
-    (1+ (count-lines 1 (point)))
-  (count-lines 1 (point))))
+        (1+ (count-lines 1 (point)))
+      (count-lines 1 (point))))
 
   (defun custom-indent-buffer ()
     (interactive)
@@ -78,10 +78,10 @@
   (defun custom-resize-indentation (n)
     (interactive "nEnter indentation size:")
     (if (use-region-p)
-    (let (mark (mark))
+        (let (mark (mark))
           (save-excursion
-  (save-match-data
-  (indent-rigidly
+            (save-match-data
+              (indent-rigidly
                (region-beginning)
                (region-end)
                n)
@@ -100,36 +100,36 @@
   (defun custom-delete-whitespace-to-upline ()
     (interactive)
     (progn
-  (delete-indentation)
-  (indent-according-to-mode)))
+      (delete-indentation)
+      (indent-according-to-mode)))
 
   ;; 行号点击
   (defun custom-go-to-click-line ()
     (interactive)
     (save-excursion
-  (let ((click-y (cdr (cdr (mouse-position)))))
+      (let ((click-y (cdr (cdr (mouse-position)))))
         (goto-char (window-start))
         (next-line (1- click-y))
         (if (fboundp 'tabbar-mode)
-    (setq line (line-number-at-pos))
-  (setq line (1+ (line-number-at-pos))))))
+            (setq line (line-number-at-pos))
+          (setq line (1+ (line-number-at-pos))))))
     (goto-line line))
 
   ;; 向上新建一行
   (defun custom-up-newline ()
     (interactive)
     (progn
-  (beginning-of-line)
-  (newline-and-indent)
-  (previous-line)
-  (indent-according-to-mode)))
+      (beginning-of-line)
+      (newline-and-indent)
+      (previous-line)
+      (indent-according-to-mode)))
 
   ;; 向下新建一行
   (defun custom-down-newline ()
     (interactive)
     (progn
-  (end-of-line)
-  (newline-and-indent)))
+      (end-of-line)
+      (newline-and-indent)))
 
   ;; 换行
   (defun custom-return ()
@@ -146,24 +146,24 @@
   (defun custom-paren-match (bef end)
     (if (and (string-equal bef (string (preceding-char)))
              (string-equal end (string (following-char))))
-    't
-  nil))
+        't
+      nil))
 
   (defun custom-is-in-paren? ()
     (if (or (custom-paren-match "{" "}")
             (custom-paren-match "[" "]")
             (custom-paren-match "(" ")")
             (custom-paren-match ">" "<"))
-    't
-  nil))
+        't
+      nil))
 
   (defun custom-is-javadoc? ()
     (if (and (string-equal "*" (string (char-before)))
              (string-equal "*" (string (char-before (- (point) 1))))
              (string-equal "/" (string (char-before (- (point) 2))))
              )
-    't
-  nil))
+        't
+      nil))
 
   ;; 标点中新建一行
   (defun custom-middle-newline ()
@@ -220,8 +220,8 @@
       (back-to-indentation)
       (let ((step (- bef (point))))
         (if (< step 0)
-    0
-  step))))
+            0
+          step))))
 
   (defun custom-repos (msg)
     (message msg)
@@ -235,8 +235,8 @@
   (defun custom-bobp? ()
     (beginning-of-line)
     (if (bobp)
-    't
-  nil))
+        't
+      nil))
 
   (defun custom-eobp? (n)
     (custom-forward-line-end n)
