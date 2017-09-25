@@ -7923,7 +7923,7 @@ djdh 悲戚
 djdi 胡里胡涂
 djdj 蜚 剕 皕
 djdl 辈 輩
-djdn 悲 翡 百万 靟
+djdn 百万 悲 翡 靟
 djds 棐
 djdv 婓
 djdy 斐 百态 百丈
@@ -15042,7 +15042,7 @@ gcyq 到底
 gcyt 珞巴族 致谢
 gcyy 到访
 gd 天 吞 蚕
-gdaa 天工 表达式
+gdaa 表达式 天工
 gdad 青春期
 gdaf 麦克斯韦 更有甚者
 gdag 天葬
@@ -15933,7 +15933,7 @@ ghlv 正轨
 ghlw 下界 政界
 ghmf 下周
 ghmg 下贱 下同
-ghmj 与此同时 颪
+ghmj 正则 与此同时 颪
 ghmm 下山 下岗 正册
 ghmq 政见 下风
 ghmt 下账
@@ -23748,7 +23748,7 @@ iyjf 满州里 済 瀍
 iyjg 流量 済 濟 湻
 iyjh 流畅 瀏 嚠
 iyjj 液晶
-iyjt 流星 游览 浏览
+iyjt 浏览 流星 游览
 iyk 滖
 iyke 洋为中用 滖 瀼
 iykk 渡口
@@ -25770,6 +25770,7 @@ jult 晕头转向
 jum 螪
 juma 蜷曲
 jumk 螪
+jumq 暗网
 junt 时间性 时效性
 jup 螃
 jupd 暗害
@@ -49995,7 +49996,7 @@ tds 徛
 tdsb 第三梯队
 tdsc 矮树 私有权
 tdsf 赞成票
-tdsg 甜酸
+tdsg 适配 甜酸
 tdsj 稽查
 tdsk 徛
 tdsm 敌机
@@ -55879,7 +55880,7 @@ uqic 门外汉
 uqid 资源
 uqif 效法 盗汗
 uqih 交涉
-uqii 冰镇汽水
+uqii 净水
 uqim 酱油
 uqio 交淡
 uqip 奖赏 资深
