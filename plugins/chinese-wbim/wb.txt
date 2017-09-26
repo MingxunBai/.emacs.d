@@ -8795,6 +8795,7 @@ drkh 原路
 drkj 原唱
 drld 原因 原罪
 drle 成年累月
+drlt 原图
 drm 厒
 drmh 原由 碑帖
 drmj 原则
@@ -9945,7 +9946,7 @@ efa 膹
 efai 脑震荡
 efal 肝功
 efam 膹 豮 豶
-efbb 肚子 脖子
+efbb 脖子 肚子
 efc 肢
 efca 脖颈
 efcb 脚 腳
@@ -10370,7 +10371,7 @@ eoq 膦
 eoqh 膦
 eoqy 受精卵
 eoy 脒
-ep 受 爱 逐
+ep 爱 受 逐
 epa 臗
 epaa 受戒
 epad 受苦
@@ -11579,6 +11580,7 @@ fcxf 鼁
 fcxg 云母 支线
 fcxj 运费
 fcxu 动弹
+fcxw 运维
 fcyi 支应
 fcyl 无能为力
 fcyn 动词
@@ -13055,6 +13057,7 @@ fmps 南宁 南宋
 fmpw 击穿
 fmpy 献礼
 fmqh 境内外
+fmqs 击杀
 fmqv 击键
 fmrc 南瓜
 fmrf 献技
@@ -13217,7 +13220,7 @@ fnpu 真心实意
 fnpv 专案 迃
 fnpw 亏空 卖空
 fnqc 声色
-fnqg 朝发夕至
+fnqg 块钱 朝发夕至
 fnqh 场外
 fnqi 声乐
 fnqk 专名 声名
@@ -14016,7 +14019,7 @@ ftn 圪
 ftnc 都怪 才怪
 ftnf 教导
 ftng 才情 彭德怀
-ftnn 圪 教科书 教书 专利局
+ftnn 教书 圪 专利局
 ftno 塢
 ftnp 趋利避害
 ftns 直升飞机
@@ -26514,7 +26517,7 @@ keum 厼
 kev 哸
 kevg 哸
 kewo 鵑
-kewy 啄食 吸住 吸食
+kewy 吸住 吸食 啄食
 kexd 嗘
 kexh 吸引
 kexm 吸纳
@@ -29168,7 +29171,7 @@ lgh 罡
 lghc 车皮
 lghd 囸
 lghf 罡
-lghh 加速卡 車
+lghh 车上 加速卡 車
 lghn 图瓦卢
 lgi 罘
 lgif 国法
@@ -29478,7 +29481,7 @@ lkgd 回天
 lkge 回青
 lkgf 圆球
 lkgg 圆环
-lkgk 回事 加速 圆融 圆整
+lkgk 加速 回事 圆融 圆整
 lkgo 回来
 lkgy 加班
 lkh 甽
@@ -32822,6 +32825,7 @@ ndqd 居然
 ndqq 居多 情有独钟 慡
 ndqu 翇
 ndqy 居留
+ndra 尼古拉斯
 ndrn 居所
 ndru 尼古拉
 ndsd 情有可原
@@ -34331,7 +34335,7 @@ nty 改 攺
 ntyc 发育 发
 ntyf 必读
 ntyg 发证
-ntyi 以身试法 兦
+ntyi 必应 以身试法 兦
 ntyl 改为
 ntyn 尾房
 ntyo 改变 发迹
@@ -39932,6 +39936,7 @@ qimy 锁 销赃 鎖
 qin 铴 鐋
 qing 鱼水情
 qinr 铴
+qinu 锁屏
 qiog 乐业
 qios 镁光灯
 qip 迩 邇
@@ -42734,7 +42739,7 @@ rcy 瓜 払
 rcya 反诬
 rcyf 反诘
 rcyg 反证
-rcyi 瓜 反应
+rcyi 反应
 rcyj 搔 瓥 掻
 rcym 反讽 抬高
 rcyn 瓟
@@ -45529,7 +45534,7 @@ rttt 手笔
 rttu 所得税
 rttw 护身符
 rtty 插入 手稿 拖入
-rtud 播送 插头 手头
+rtud 手头 插头 播送
 rtuf 斤斗
 rtug 挑毛病 白血病
 rtuh 接待站
@@ -45612,7 +45617,7 @@ ruej 揃
 ruep 接受
 rues 拦腰
 ruey 挨门逐户
-ruf 拦 抖 攔
+ruf 抖 拦 攔
 rufa 拦截
 rufb 接地 白兰地
 rufc 抖动 拉动 拉去
@@ -52594,7 +52599,7 @@ trnr 科技情报
 trnt 特性 我
 trny 我心
 trod 物类
-trog 牧业 物业
+trog 物业 牧业
 trou 物料
 trp 牸
 trpb 牸
@@ -55183,7 +55188,7 @@ ujt 赣
 ujtf 单行 单选
 ujth 竟自 韸
 ujtk 章程 单程
-ujtm 单身 赣 意向 单向 贛
+ujtm 单身 意向 单向 赣 贛
 ujtn 戆 戇
 ujto 鶕 鷼
 ujtp 韼
@@ -61100,6 +61105,7 @@ wpro 餼
 wprw 傧 传宗接代
 wpry 保密制度
 wps 佇
+wpsc 全家桶
 wpsg 餷
 wpsh 傧相 佇 飣
 wpsi 全军覆没
@@ -66928,7 +66934,7 @@ ynjb 鄜 麛
 ynjc 麚
 ynjd 麌
 ynje 朚 麎
-ynjf 麝 遍野 塵 麡
+ynjf 房里 麝 遍野 塵 麡
 ynjg 麈 麆 麠
 ynjh 麟 词曰 麡
 ynji 麖
@@ -67074,6 +67080,7 @@ ynwl 齐心合力
 ynwm 顧
 ynwo 鳸
 ynwt 记叙 赢余
+ynwu 盲僧
 ynwv 记仇 记分
 ynww 盲人 盲从 词人 废人 扈从 房价
 ynwy 记住 雇 诀 记念 词令 妄念 訣 僱
@@ -68345,7 +68352,7 @@ ywou 腐烂
 ywpb 认字
 ywpe 谁家
 ywpg 认定
-ywpi 庸俗社会学 夜宵
+ywpi 夜宵
 ywpj 谈何容易 夜宴
 ywpk 文化宫
 ywpl 雇佣军
