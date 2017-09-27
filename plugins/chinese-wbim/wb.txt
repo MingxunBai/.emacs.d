@@ -6779,7 +6779,7 @@ ddkw 大哗
 ddl 厣 厴
 ddld 大罪
 ddlf 大园
-ddlg 大国 套车 大车
+ddlg 飙车
 ddlk 厣 大驾
 ddlo 黡 黶
 ddlp 大连
@@ -10939,6 +10939,7 @@ eutm 脱身
 euty 脱稿
 euud 胶卷 胶着
 euug 臆病
+euuj 脱单
 euut 脱产
 euvn 胖妞
 euvo 膁
@@ -25677,7 +25678,7 @@ jtre 蜂拥
 jtrl 监押
 jtrm 监制
 jtrn 晦气
-jtrp 临近 监控
+jtrp 监控
 jtrt 蛾
 jtry 监护
 jtsf 监票
@@ -27038,7 +27039,7 @@ khs 跴
 khsa 中枢
 khse 蹦极
 khsf 路标 中标 跳票
-khsg 中西 跳槽 跴 蹅
+khsg 跳槽 跴 蹅
 khsi 中档
 khsk 足可 跒
 khsn 蹮
@@ -29042,7 +29043,7 @@ lfrm 转制
 lfrp 因地制宜
 lfrq 转换 置换
 lfrr 转折 黑白 围城打援
-lfrt 转播 转手 罢手 黑手
+lfrt 转手 罢手 转播 黑手
 lfru 转接
 lfsa 围棋
 lfsd 转椅 置顶
@@ -51366,7 +51367,7 @@ tjfp 利索
 tjfq 复元
 tjg 得 笪
 tjgc 得到
-tjgf 得 笪 篮球 利于
+tjgf 得 篮球 利于 笪
 tjgh 筛 徥 篩
 tjgk 香囊
 tjgm 复现
@@ -52972,7 +52973,7 @@ ttxg 龝
 ttxm 笑纳
 ttxy 竹编
 tty 秝
-ttya 筵席 笔试 自我调节
+ttya 笔试 筵席 自我调节
 ttyc 笔译
 ttyg 各自为政 笑语 造物主
 ttyj 歃血为盟
@@ -54277,7 +54278,7 @@ udu 关 善
 udub 鄯 叛逆
 uduc 头痛
 udud 关头 拳头 羚羊 豢养 羊头 羴
-uduf 关闭 减半 着装
+uduf 着装 关闭 减半
 udug 养病 羊羔
 udui 療
 uduj 善意 着意
@@ -58584,6 +58585,7 @@ vtia 九江
 vtih 娇小 群小
 vtiy 九洲
 vtj 娳
+vtjf 群里
 vtjg 建筑师
 vtjh 娳 娿
 vtjj 九日
@@ -58766,7 +58768,7 @@ vvaa 女工
 vvab 妇女节
 vvaq 女警
 vvaw 女巫
-vvbb 女子 嫂子
+vvbb 嫂子
 vvbf 妇孺
 vvbu 妇联
 vvbw 女队
@@ -59748,6 +59750,7 @@ wfmd 伟岸
 wfme 臖
 wfmg 会同 舋
 wfmh 付帐
+wfmm 佘山
 wfmo 爨 爂
 wfmq 会见 会风
 wfmt 付账
@@ -60680,7 +60683,7 @@ wmah 侧卧
 wmaj 仙草
 wmau 僼
 wmaw 倎
-wmbb 人贩子 仙子
+wmbb 仙子
 wmbg 侧耳
 wmc 癹
 wmcu 癹
@@ -61227,7 +61230,7 @@ wqit 低劣
 wqiy 你
 wqj 像
 wqje 像
-wqjg 你是 像是 含金量 侚
+wqjg 含金量 侚
 wqjj 刓
 wqju 停留时间
 wqk 佝
@@ -62745,7 +62748,7 @@ wyqj 集市贸易
 wyql 供应链
 wyqn 体育馆 公文包
 wyqo 体育锻炼 燞
-wyqq 贪多 保证金
+wyqq 含金 贪多 保证金
 wyqr 集锦
 wyqt 偏锋 偏狭 儍
 wyqv 焦急
@@ -66259,11 +66262,11 @@ yiuq 就将 应将 京郊
 yivk 就如 应召
 yivt 京九
 yiwf 应付 就会
-yiwg 就使 夜深人静
+yiwg 夜深人静
 yiwo 鶁
 yiwq 就像
 yiwt 就任 文学作品
-yiwu 就伴 就位
+yiwu 就位
 yiww 就坐 应从
 yiwx 京华
 yixf 就绪
