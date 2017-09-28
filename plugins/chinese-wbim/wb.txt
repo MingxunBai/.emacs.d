@@ -347,6 +347,7 @@ adcw 苦难 勘验
 adcy 欺骗
 add 弎 藞
 addb 基础
+addc 基友
 addd 藞
 adde 若有
 addf 欺压
@@ -13476,7 +13477,7 @@ fppd 丧家之犬
 fppf 老祖宗
 fppr 填补空白
 fppt 过客
-fppu 赤 赤裸裸
+fppu 赤裸裸
 fppw 过窄
 fpq 堔
 fpqa 过错
@@ -13985,7 +13986,7 @@ ftj 者
 ftjb 都
 ftjc 殾
 ftjf 者
-ftjg 都是 老师 老是 考题 教师 才是 未知量
+ftjg 老师 都是 老是 考题 教师 才是 未知量
 ftjh 老早
 ftjm 老帅
 ftjn 翥 乽
@@ -15997,7 +15998,7 @@ ght 政
 ghtd 政敌 正逢
 ghte 下船 下盘
 ghtf 下午 下行 下等 正告 正午 正待
-ghtg 下策 政策 下垂
+ghtg 政策 下垂 下策
 ghth 正版 正牌
 ghtj 焉得
 ghtk 下种 正和
@@ -19272,7 +19273,7 @@ hkqe 点解
 hkqg 点钱
 hkqi 点钞
 hkqk 点名 点钟
-hkqn 眖
+hkqn 点饭 眖
 hkqs 眼中钉
 hkqt 战犯
 hkqv 战争
@@ -29248,7 +29249,7 @@ lgrv 车垫
 lgsa 车模
 lgsd 车顶
 lgse 车棚
-lgsf 国标 车票
+lgsf 车票 国标
 lgsk 国歌
 lgss 办事机构
 lgst 国格
@@ -33372,6 +33373,7 @@ nhty 收入 收  \x836\xCA4
 nhud 收养 眉头
 nhuj 收音
 nhuq 收效
+nhut 蛋疼
 nhuw 收益
 nhvh 舝
 nhvi 收录
@@ -34810,14 +34812,14 @@ nymk 翯
 nymn 忼
 nyms 民族风格
 nymw 以内
-nyn 忙 心
+nyn 心 忙
 nyna 心慌 惊慌 惊异 民主改革 惼
 nynd 悷
 nyng 心情 尽情 慵懒 心怀
 nynh 惊惧
 nyni 怺
 nynk 惊愕
-nynn 尽快 忙
+nynn 忙 尽快
 nynr 惊惶
 nynt 惊悸 尽性 心悸 心性
 nynv 慷慨 恼恨
@@ -43611,7 +43613,7 @@ rhwb 牛仔 看他
 rhwc 年仅
 rhwd 看做
 rhwf 牛舍 年会
-rhwn 看似
+rhwn 年假 看似
 rhwq 看你
 rhwt 看作 卸任
 rhwv 年分
@@ -44903,6 +44905,7 @@ rqtk 搀和
 rqtl 换血
 rqtm 拘役
 rqto 欣悉
+rqtp 撸管
 rqtr 抵御
 rqtu 换乘
 rqub 欣闻
@@ -54764,7 +54767,7 @@ ugku 痘
 ugkw 瘶
 ugl 盖 蓋 葢
 ugld 病因
-uglf 盖
+uglf 美团 盖
 uglg 美国
 ugli 阑 闌
 uglk 美加 头一回
@@ -55344,7 +55347,7 @@ ukpt 总额
 ukpv 问案 问安
 ukpw 冲突
 ukq 况 竞 況
-ukqb 竞 兑 兗 兌 競 竸
+ukqb 兑 竞 兗 兌 競 竸
 ukqe 剖解
 ukqg 冲印
 ukqi 交响乐
