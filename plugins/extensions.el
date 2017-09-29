@@ -158,10 +158,7 @@
       nil))
 
   (defun custom-is-javadoc? ()
-    (if (and (string-equal "*" (string (char-before)))
-             (string-equal "*" (string (char-before (- (point) 1))))
-             (string-equal "/" (string (char-before (- (point) 2))))
-             )
+    (if (equal 0 (string-match "/\\*+" (thing-at-point 'line t)))
         't
       nil))
 
@@ -178,11 +175,10 @@
     (interactive)
     (newline-and-indent)
     (insert "*")
-    (indent-according-to-mode)
     (newline-and-indent)
     (insert "*/")
-    (indent-according-to-mode)
-    (previous-line))
+    (previous-line)
+    (custom-indent-buffer))
 
   ;; 在右侧新建一个窗口
   (defun custom-split-window-right ()

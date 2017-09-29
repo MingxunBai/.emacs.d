@@ -862,7 +862,7 @@ aftd 甘甜 甛
 aftf 鞭毛 鞞
 aftg 鞭策
 afth 某处
-aftj 著 蓍 鞒 英吉利 藿香 鞽
+aftj 著 藿香 蓍 鞒 英吉利 鞽
 aftk 某种 鞽
 aftm 鞠躬
 afto 鞦 鴇
@@ -9157,6 +9157,7 @@ dupt 成交额
 dupu 盛况空前
 dupy 磅
 duqf 磁针 大头针
+duql 磁链
 duqm 辜负
 duqr 磁铁
 dure 古道热肠
@@ -35601,6 +35602,7 @@ onkj 断喝
 onkk 断口
 onlt 爆发力
 onmd 断崖
+onmq 断网
 onn 焗
 onnf 断层
 onnk 焗
@@ -46142,7 +46144,7 @@ rwtw 抢答
 rwtx 操作系统
 rwty 推入 捈
 rwu 摿
-rwud 失着 推头 摄像头
+rwud 推送 摄像头
 rwuf 扮装
 rwuj 提货单 失意 摿
 rwuk 接合部 换代产品
@@ -51822,7 +51824,7 @@ tmal 秧苗
 tman 身世
 tmaq 区
 tmb 秃 禿
-tmbb 秃子 身子 筒子 笛子
+tmbb 身子 秃子 筒子 笛子
 tmbj 向阳 向隅
 tmbm 射出
 tmc 役
@@ -52176,6 +52178,7 @@ toog 乱糟糟
 tool 簩
 toov 悉数
 tooy 秋粮
+topu 秋裤
 topv 翻案
 topw 愁容
 toqc 秋色
@@ -54335,7 +54338,7 @@ udyb 叛离
 udyc 养育
 udye 羪 飬 養
 udyf 誊
-udyg 状语 羶
+udyg 差评 状语 羶
 udyj 养 凑齐 養
 udyl 判为
 udyn 判词
@@ -55390,7 +55393,7 @@ ukud 意味着 问卷
 ukuf 总装
 ukug 癌症
 ukuh 总站
-ukuk 总部 冲冲
+ukuk 问问 总部 冲冲
 ukuq 兑奖
 ukur 商品交换
 ukut 部首 问道 总产
@@ -58940,7 +58943,7 @@ vyg 娮
 vygf 丒
 vygg 妵
 vygh 忍下
-vyi 刃 丸 刄
+vyi 丸 刃 刄
 vyip 群言堂
 vyiy 婛
 vyk 孃
@@ -59313,7 +59316,7 @@ wckg 公吨 佁
 wckh 公路 仅足
 wckw 仅只
 wclf 公园 公署 公转
-wclg 公国 公车
+wclg 公车
 wcll 俊男
 wclw 公办
 wcmt 俊峰
