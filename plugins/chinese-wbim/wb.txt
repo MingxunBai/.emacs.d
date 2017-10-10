@@ -265,6 +265,7 @@ abv 匜
 abvi 节录
 abw 蔭
 abwc 蔭
+abwn 节假
 abwt 节余 蒢
 abww 节俭
 abwy 节食
@@ -2408,6 +2409,7 @@ aqtm 警笛
 aqtn 莸 苯鸟先飞 蕕
 aqto 荻 获悉 获释 鴄 鴎 鴱
 aqtq 敬称
+aqtr 艾特
 aqts 节外生枝
 aqtu 菊科
 aqtv 区委
@@ -6952,7 +6954,7 @@ deap 有劳
 deaw 髸 鬗
 deay 鬗
 deb 郁 欝 鬰 鬱
-debb 大肚子 胡子 髢
+debb 胡子 大肚子 髢
 debf 髶
 debh 郁
 debn 有了
@@ -7532,7 +7534,7 @@ dgws 硬体
 dgwt 万事俱备 感伤 三八
 dgwu 三倍 三位
 dgwv 三分
-dgww 古人 感人
+dgww 感人 古人
 dgwx 感化 石化 硬化
 dgwy 威信 古今 感念
 dgx 碡
@@ -9948,7 +9950,7 @@ efa 膹
 efai 脑震荡
 efal 肝功
 efam 膹 豮 豶
-efbb 脖子 肚子
+efbb 肚子 脖子
 efc 肢
 efca 脖颈
 efcb 脚 腳
@@ -14736,7 +14738,7 @@ gagh 璍
 gagj 下落不明
 gagk 刑事
 gago 开来
-gagq 开列 弄死
+gagq 开裂 弄死
 gagr 青黄不接
 gags 一草一木
 gagw 夹七夹八
@@ -29295,7 +29297,7 @@ lgxp 畏缩
 lgy 国
 lgya 加速度 国度
 lgyd 国庆
-lgyg 国语
+lgyg 车主 国语
 lgyi 国
 lgyl 国库 车库
 lgym 车市
@@ -45249,7 +45251,7 @@ rsim 打滑 打油
 rsiu 打滚
 rsj 揸
 rsjc 打紧
-rsjf 返朴归真
+rsjf 打野 返朴归真
 rsjg 揸 打量
 rsjh 撢
 rskg 打嗝 抲
@@ -45366,7 +45368,7 @@ rtd 括
 rtdb 挺身而出
 rtdd 手套
 rtdf 揭竿而起 扬长而去
-rtdg 括 手感 扑鼻而来 制造厂
+rtdg 手感 括 扑鼻而来 制造厂
 rtdh 捀
 rtdj 挢 撟
 rtdk 撟
@@ -50283,7 +50285,7 @@ tetw 盘符
 tety 透入 微服私访 舧
 teu 艏 秂
 teua 艖
-teud 船头
+teud 透着 船头
 teuf 艟 筋斗
 teug 秀美 笑逐颜开
 teuh 艏
@@ -51810,7 +51812,7 @@ tlye 血衣
 tlyg 务请 粤语
 tlyj 备课 备齐
 tlyl 血库
-tlyn 特困户 备忘
+tlyn 备忘 特困户
 tlyo 血迹
 tlyt 血族
 tm 向 身 射
@@ -54284,7 +54286,7 @@ udu 关 善
 udub 鄯 叛逆
 uduc 头痛
 udud 关头 拳头 羚羊 豢养 羊头 羴
-uduf 着装 关闭 减半
+uduf 关闭 着装 减半
 udug 养病 羊羔
 udui 療
 uduj 善意 着意
@@ -56807,6 +56809,7 @@ uwuw 冷冷 闪闪
 uwux 将信将疑 冷凝 半信半疑
 uwuy 冷门 阀门
 uwva 冷媒
+uwve 闪退
 uwvn 竕
 uwvo 鴗
 uwvt 竕
@@ -56860,6 +56863,7 @@ uxdm 北面 背面
 uxdn 凝成
 uxe 背
 uxeb 鄁
+uxed 剃须
 uxef 背
 uxep 慈爱
 uxeq 癌细胞
@@ -60355,7 +60359,7 @@ wie 俏
 wieg 俏
 wiem 贪污受贿
 wieo 鶺
-wifi 倘未
+wifi WiFi 倘未
 wige 体温表
 wigg 人浮于事
 wigi 倘不 偿还 含混不清
@@ -62968,6 +62972,7 @@ xapb 练字
 xapl 红军
 xapu 经营之道
 xaqc 红色
+xaqh 红外
 xaqn 红包 繱
 xarg 练兵
 xark 练操

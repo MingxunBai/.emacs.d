@@ -158,7 +158,7 @@
       nil))
 
   (defun custom-is-javadoc? ()
-    (if (equal 0 (string-match "/\\*+" (thing-at-point 'line t)))
+    (if (equal 0 (string-match "\s*/\\*+" (thing-at-point 'line t)))
         't
       nil))
 
