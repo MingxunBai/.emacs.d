@@ -3590,6 +3590,7 @@ bbkf 子叶
 bbkh 子路
 bbkm 子嗣
 bbmh 聉
+bbmq 子网
 bbn 阤
 bbna 子民
 bbnf 孜孜以求
@@ -9961,7 +9962,7 @@ efdm 頱
 efej 肝胆
 efen 肚肠 肝肠
 efet 膨胀
-efey 肝脏
+efey 肚脐 肝脏
 eff 膮
 effg 胿
 effq 膮
@@ -19009,6 +19010,7 @@ hhrq 目的 上的
 hhrt 上手
 hhru 卡拉
 hhsf 目标
+hhsg 卡槽
 hhsm 上机
 hhso 上楼
 hhsu 上校 上榜
@@ -45108,6 +45110,7 @@ rrr 白
 rrra 白描 白搭
 rrrb 拍摄
 rrrc 招摇撞骗
+rrrd 热插拔
 rrrf 皛 皨
 rrrg 抓捕
 rrrh 拆掉 拆卸 白扯
