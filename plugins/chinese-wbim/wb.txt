@@ -25180,7 +25180,7 @@ jnwt 归心似箭
 jnwu 电位
 jnww 电价
 jnwx 电化
-jnwy 曜 电信 蚗 蠗
+jnwy 电信 曜 蚗 蠗
 jnx 昵
 jnxg 电线
 jnxj 电费 电缆
@@ -44452,7 +44452,7 @@ rnrg 摺
 rnrh 所
 rnrj 扭捏
 rnrm 所缺
-rnrn 氢气 气氛 氯气 氤氲 氧气 乺
+rnrn 气氛 氢气 氯气 氤氲 氧气 乺
 rnrq 气的
 rnrr 气魄 白蛋白
 rnrs 扭打 拨打
@@ -45645,7 +45645,7 @@ rufu 接境
 rufw 接替 拉夫
 rufy 接壤
 rug 拉 捫
-ruga 抖开 拉开 撇开
+ruga 拉开 抖开 撇开
 rugc 接到
 ruge 攁
 rugg 撋
@@ -51113,7 +51113,7 @@ thrd 延拓 自拔
 thrf 自持
 thrg 息兵
 thrh 延年 往上爬
-thrj 延揽
+thrj 自提 延揽
 thrm 自制
 thrn 处所 臭气 臭氧
 thrp 自控
@@ -56287,7 +56287,7 @@ utdh 道破
 utdi 疾
 utdk 痴 癡
 utdm 首页 颜面
-ute 产 颜 閁
+ute 颜 閁
 utec 瘢
 utel U盘 头重脚轻
 utem 颜 顔 顏
@@ -66865,7 +66865,7 @@ ynak 啔
 ynal 记功 启功
 ynan 永世
 ynap 启蒙
-ynaq 扇区 盲区
+ynaq 盲区 扇区
 ynaw 永葆
 ynb 邙
 ynbb 房子 扇子
@@ -67868,7 +67868,7 @@ ytnn 讫 房管局 訖 謆
 ytno 為 鴋 鴍
 ytnt 诱发 施属 放射性 语重心长
 ytnu 放飞
-ytnx 旎 放屁
+ytnx 放屁 旎
 ytny 放心 计算尺
 yto 譒
 ytod 族类
