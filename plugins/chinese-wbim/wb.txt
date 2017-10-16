@@ -4838,6 +4838,7 @@ bvf 隉
 bvfg 隉
 bvfq 隐姓埋名
 bvgf 限于
+bvgk 限速
 bvh 孻
 bvhh 限止
 bvhl 孻
@@ -8688,7 +8689,7 @@ dqlv 勊
 dqly 顾名思义
 dqmq 克尔凯郭尔
 dqn 砲
-dqnn 克己 爽快 砲
+dqnn 爽快 克己 砲
 dqnt 耐久性 非金属
 dqnx 有错必纠
 dqog 确凿
@@ -12095,7 +12096,7 @@ fgrh 十年 二年
 fgrn 士气
 fgrq 坏的 替死鬼
 fgrr 干白
-fgrt 露一手 二手
+fgrt 二手
 fgrw 救死扶伤
 fgsd 干枯
 fgse 二极
@@ -12389,7 +12390,7 @@ fhuk 韧皮部 直冲 趦
 fhul 走兽
 fhuq 越将
 fhut 超产 走道
-fhuu 矗立 起立 直立
+fhuu 起立 直立 矗立
 fhuw 趑
 fhv 超
 fhvb 越好 真好
@@ -36848,7 +36849,7 @@ pggh 写下 定下
 pggj 定理
 pggm 富丽
 pggn 宁死不屈
-pggr 军事素质
+pggr 宝珠 军事素质
 pggy 窗玻璃 宝玉
 pgh 定
 pghg 定睛
@@ -43618,7 +43619,7 @@ rhwa 年代
 rhwb 牛仔 看他
 rhwc 年仅
 rhwd 看做
-rhwf 牛舍 年会
+rhwf 年付 年会
 rhwn 年假 看似
 rhwq 看你
 rhwt 看作 卸任
@@ -45504,7 +45505,7 @@ rtr 皒
 rtra 播撒
 rtrb 播报
 rtrc 拖把
-rtrd 挺拔
+rtrd 插排 挺拔
 rtrf 手持
 rtrg 拨乱反正
 rtrh 搬掉
@@ -51141,7 +51142,7 @@ thtd 自筹 自知
 thte 算盘
 thtf 自行 自选 自造 自赞
 thtg 自重
-thth 处处 鼻息 自咎
+thth 片片 处处 鼻息 自咎
 thtj 彼得 自得 乍得
 thtl 自备
 thtm 自身
@@ -58610,7 +58611,7 @@ vtke 裠
 vtkf 娇嗔
 vtkh 娇贵 帬
 vtkl 姓别
-vtkm 頵
+vtkm 娇喘 頵
 vtko 焄 鵘
 vtkq 覠
 vtl 媲
@@ -59796,7 +59797,7 @@ wfqc 斅
 wfqd 佳肴 礐
 wfqe 觷
 wfqf 壆 觷
-wfqg 付钱 付印 值钱
+wfqg 值钱 付钱 付印
 wfqi 传销 澩
 wfqk 佳句 嚳
 wfqm 嶨
