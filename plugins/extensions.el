@@ -138,8 +138,10 @@
            (newline-and-indent))
           ((custom-is-in-paren?)
            (custom-middle-newline))
-          ((custom-is-javadoc?)
-           (custom-javadoc-newline))
+          ((custom-is-javadoc-begin?)
+           (custom-javadoc-begin-newline))
+          ((custom-is-javadoc-mid?)
+           (custom-javadoc-mid-newline))
           (t (newline-and-indent))))
 
   ;; 匹配光标上下文
@@ -157,8 +159,13 @@
         't
       nil))
 
-  (defun custom-is-javadoc? ()
+  (defun custom-is-javadoc-begin? ()
     (if (equal 0 (string-match "\s*/\\*+" (thing-at-point 'line t)))
+        't
+      nil))
+
+  (defun custom-is-javadoc-mid? ()
+    (if (equal 0 (string-match "\s*\\*+" (thing-at-point 'line t)))
         't
       nil))
 
@@ -171,13 +178,19 @@
     (indent-according-to-mode))
 
   ;; Javadoc
-  (defun custom-javadoc-newline ()
+  (defun custom-javadoc-begin-newline ()
     (interactive)
     (newline-and-indent)
     (insert "*")
     (newline-and-indent)
     (insert "*/")
     (previous-line)
+    (custom-indent-buffer))
+
+  (defun custom-javadoc-mid-newline ()
+    (interactive)
+    (newline-and-indent)
+    (insert "*")
     (custom-indent-buffer))
 
   ;; 在右侧新建一个窗口

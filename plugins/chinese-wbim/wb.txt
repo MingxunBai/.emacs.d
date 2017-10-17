@@ -4318,7 +4318,7 @@ bmtd 出笼
 bmte 出租 出航
 bmtf 出行
 bmtg 出生 出征
-bmth 出版 出息 出处 出自
+bmth 出牌 出版 出息 出处 出自
 bmtl 出血
 bmtm 出身
 bmtu 出乎
@@ -14484,7 +14484,7 @@ fwsi 才华横溢
 fwst 规格
 fwt 鳺
 fwtc 干什么
-fwtd 零乱 规矩 霍乱
+fwtd 规矩 零乱 霍乱
 fwtg 进修生
 fwtk 堆积 规程
 fwtm 替身
@@ -43560,7 +43560,7 @@ rhoo 扑火
 rhou 年糕
 rhov 年数
 rhpe 看家
-rhpf 看守
+rhpf 看完
 rhpj 年审
 rhpn 看官
 rhpt 看客
@@ -51110,7 +51110,7 @@ thqs 自杀
 thqt 笛卡儿 片儿
 thqu 辞旧迎新
 thra 自找
-thrd 延拓 自拔
+thrd 自拔
 thrf 自持
 thrg 息兵
 thrh 延年 往上爬
