@@ -13220,7 +13220,7 @@ fnny 专心 违心
 fnog 专业
 fnon 专断
 fnpd 专宠
-fnpe 专家
+fnpe 卖家 专家
 fnpg 起居室
 fnpt 违宪
 fnpu 真心实意
@@ -15974,6 +15974,7 @@ ghpy 正视
 ghq 璨
 ghqb 正凶
 ghqc 正色
+ghqe 正解
 ghqg 下铺
 ghqi 玻尔
 ghqj 下旬 正象
@@ -28272,6 +28273,7 @@ kvf 哪
 kvfb 哪
 kvfj 嘯
 kvfn 啸声
+kvgd 哪天
 kvgg 哪一
 kvgo 哪来
 kvh 嗖
@@ -38046,7 +38048,7 @@ put 袄
 puta 审判长
 putb 袘
 putd 袄 襖
-putf 衽 实行 初等 被告 补选 初选 褈
+putf 实行 初等 被告 补选 初选 衽 褈
 putg 初生
 puth 初版 实处 袶 裄 裫 褷
 puti 袮
@@ -44399,7 +44401,7 @@ rnkw 打情骂俏
 rnl 氤
 rnld 氤
 rnle 推心置腹
-rnlf 扭转 氛围
+rnlf 氛围 扭转
 rnll 气田 氳
 rnln 掉以轻心
 rnls 所困
