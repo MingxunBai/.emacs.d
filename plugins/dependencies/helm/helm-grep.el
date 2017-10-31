@@ -205,7 +205,7 @@ Possible value are:
    "Find File" 'helm-grep-action
    "Find file other frame" 'helm-grep-other-frame
    "Save results in grep buffer" 'helm-grep-save-results
-   "Find file other window" 'helm-grep-other-window)
+   "Find file other window (C-u vertically)" 'helm-grep-other-window)
   "Actions for helm grep."
   :group 'helm-grep
   :type '(alist :key-type string :value-type function))
@@ -267,7 +267,7 @@ You probably don't need to use this unless you know what you are doing."
   :group 'helm-grep-faces)
 
 (defface helm-grep-cmd-line
-    '((t (:inherit diff-added)))
+    '((t (:inherit font-lock-type-face)))
   "Face used to highlight grep command line when no results."
   :group 'helm-grep-faces)
 
@@ -420,6 +420,18 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
                       (or (and norm-com norm-com-ack-p)
                           (and rec-com rec-com-ack-p)))))))
 
+(defun helm-grep--pipe-command-for-grep-command (smartcase pipe-switches &optional grep-cmd)
+  (pcase (or grep-cmd (helm-grep-command))
+    ;; Use grep for GNU regexp based tools.
+    ((or "grep" "zgrep" "git-grep")
+     (format "grep --color=always%s %s"
+             (if smartcase " -i" "")
+             pipe-switches))
+    ;; Use ack-grep for PCRE based tools.
+    ;; Sometimes ack-grep cmd is ack only.
+    ((and (pred (string-match-p "ack")) ack)
+     (format "%s --smart-case --color %s" ack pipe-switches))))
+
 (defun helm-grep--prepare-cmd-line (only-files &optional include zgrep)
   (let* ((default-directory (or helm-ff-default-directory
                                 (helm-default-directory)
@@ -463,16 +475,7 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
          (pipe-switches (mapconcat 'identity helm-grep-pipe-cmd-switches " "))
          (pipes
           (helm-aif (cdr patterns)
-              (cl-loop with pipcom = (pcase (helm-grep-command)
-                                       ;; Use grep for GNU regexp based tools.
-                                       ((or "grep" "zgrep" "git-grep")
-                                        (format "grep --color=always%s %s"
-                                                 (if smartcase " -i" "")
-                                                 pipe-switches))
-                                       ;; Use ack-grep for PCRE based tools.
-                                       ;; Sometimes ack-grep cmd is ack only.
-                                       ((and (pred (string-match-p "ack")) ack)
-                                        (format "%s --smart-case --color %s" ack pipe-switches)))
+              (cl-loop with pipcom = (helm-grep--pipe-command-for-grep-command smartcase pipe-switches)
                        for p in it concat
                        (format " | %s %s" pipcom (shell-quote-argument p)))
             "")))
@@ -549,6 +552,7 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
                               proc-name
                               (helm-get-candidate-number)
                               (- (float-time) start-time))
+                    (helm-maybe-show-help-echo)
                     (with-helm-window
                       (setq mode-line-format
                             `(" " mode-line-buffer-identification " "
@@ -581,10 +585,11 @@ It is intended to use as a let-bound variable, DON'T set this globaly.")
 ;;; Actions
 ;;
 ;;
-(defun helm-grep-action (candidate &optional where mark)
+(defun helm-grep-action (candidate &optional where)
   "Define a default action for `helm-do-grep-1' on CANDIDATE.
 WHERE can be one of other-window, other-frame."
   (let* ((split        (helm-grep-split-line candidate))
+         (split-pat    (helm-mm-split-pattern helm-input))
          (lineno       (string-to-number (nth 1 split)))
          (loc-fname        (or (with-current-buffer
                                    (if (eq major-mode 'helm-grep-mode)
@@ -600,7 +605,8 @@ WHERE can be one of other-window, other-frame."
          (fname        (if tramp-host
                            (concat tramp-prefix loc-fname) loc-fname)))
     (cl-case where
-      (other-window (find-file-other-window fname))
+      (other-window (helm-window-show-buffers
+                     (list (find-file-noselect fname)) t))
       (other-frame  (find-file-other-frame fname))
       (grep         (helm-grep-save-results-1))
       (pdf          (if helm-pdfgrep-default-read-command
@@ -609,9 +615,16 @@ WHERE can be one of other-window, other-frame."
       (t            (find-file fname)))
     (unless (or (eq where 'grep) (eq where 'pdf))
       (helm-goto-line lineno))
-    (when mark
-      (set-marker (mark-marker) (point))
-      (push-mark (point) 'nomsg))
+    ;; Move point to the nearest matching regexp from bol.
+    (cl-loop for reg in split-pat
+             when (save-excursion
+                    (condition-case _err
+                        (if helm-migemo-mode
+                            (helm-mm-migemo-forward reg (point-at-eol) t)
+                          (re-search-forward reg (point-at-eol) t))
+                      (invalid-regexp nil)))
+             collect (match-beginning 0) into pos-ls
+             finally (when pos-ls (goto-char (apply #'min pos-ls))))
     ;; Save history
     (unless (or helm-in-persistent-action
                 (eq major-mode 'helm-grep-mode)
@@ -628,9 +641,7 @@ WHERE can be one of other-window, other-frame."
 (defun helm-grep-persistent-action (candidate)
   "Persistent action for `helm-do-grep-1'.
 With a prefix arg record CANDIDATE in `mark-ring'."
-  (if current-prefix-arg
-      (helm-grep-action candidate nil 'mark)
-    (helm-grep-action candidate))
+  (helm-grep-action candidate)
   (helm-highlight-current-line))
 
 (defun helm-grep-other-window (candidate)
@@ -949,6 +960,7 @@ These extensions will be added to command line with --include arg of grep."
 
 (defun helm-grep-get-file-extensions (files)
   "Try to return a list of file extensions to pass to '--include' arg of grep."
+  (require 'helm-adaptive)
   (let* ((all-exts (helm-grep-guess-extensions
                     (mapcar 'expand-file-name files)))
          (extensions (helm-comp-read "Search Only in: " all-exts
@@ -968,6 +980,12 @@ These extensions will be added to command line with --include arg of grep."
 ;;; Set up source
 ;;
 ;;
+(defvar helm-grep-before-init-hook nil
+  "Hook that runs before initialization of the helm buffer.")
+
+(defvar helm-grep-after-init-hook nil
+  "Hook that runs after initialization of the helm buffer.")
+
 (defclass helm-grep-class (helm-source-async)
   ((candidates-process :initform 'helm-grep-collect-candidates)
    (filter-one-by-one :initform 'helm-grep-filter-one-by-one)
@@ -991,6 +1009,8 @@ These extensions will be added to command line with --include arg of grep."
    (persistent-action :initform 'helm-grep-persistent-action)
    (persistent-help :initform "Jump to line (`C-u' Record in mark ring)")
    (requires-pattern :initform 2)
+   (before-init-hook :initform 'helm-grep-before-init-hook)
+   (after-init-hook :initform 'helm-grep-after-init-hook)
    (group :initform 'helm-grep)))
 
 (defvar helm-source-grep nil)
@@ -1352,14 +1372,14 @@ and the third for directory.
 
 You can use safely \"--color\" (used by default) with AG RG and PT.
 
-For ripgrep you have to use a workaround as it is not supporting emacs dumb
-terminal to output colors properly here is the command line to use:
+For ripgrep here is the command line to use:
 
-    TERM=eterm-color rg --color=always --smart-case --no-heading --line-number %s %s %s
+    rg --color=always --smart-case --no-heading --line-number %s %s %s
 
-NOTE: With rg compiled from master you don't need anymore to set environment
-TERM=eterm-color in your command to output colors.
-See issue https://github.com/BurntSushi/ripgrep/issues/182.
+NOTE: Old versions of ripgrep was not supporting colors in emacs and a
+workaround had to be used (i.e prefixing command line with
+\"TERM=eterm-color\"), this is no more needed.
+See issue <https://github.com/BurntSushi/ripgrep/issues/182> for more infos.
 
 You must use an output format that fit with helm grep, that is:
 
@@ -1406,7 +1426,7 @@ if available with current AG version."
          (pipe-cmd (pcase (helm-grep--ag-command)
                      ((and com (or "ag" "pt"))
                       (format "%s -S --color%s" com (concat " " pipe-switches)))
-                     (`"rg" (format "TERM=eterm-color rg -N -S --color=always%s"
+                     (`"rg" (format "rg -N -S --color=always%s"
                                     (concat " " pipe-switches)))))
          (cmd (format helm-grep-ag-command
                       (mapconcat 'identity type " ")
@@ -1461,6 +1481,7 @@ if available with current AG version."
                               proc-name
                               (helm-get-candidate-number)
                               (- (float-time) start-time))
+                  (helm-maybe-show-help-echo)
                   (with-helm-window
                     (setq mode-line-format
                           `(" " mode-line-buffer-identification " "
@@ -1524,6 +1545,7 @@ if available with current AG version."
 (defun helm-grep-ag (directory with-types)
   "Start grep AG in DIRECTORY.
 When WITH-TYPES is non-nil provide completion on AG types."
+  (require 'helm-adaptive)
   (helm-grep-ag-1 directory
                   (helm-aif (and with-types
                                  (helm-grep-ag-get-types))

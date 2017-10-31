@@ -7,10 +7,9 @@
       user-mail-address "mingxunbai@outlook.com")
 
 ;; 定义常量
-(defconst *TERMINAL*
-  (eq window-system 'nil))
-(defconst *WINDOWS* (eq system-type 'windows-nt))
-(defconst *PLUGINS* (expand-file-name "plugins" user-emacs-directory))
+(defconst *TERMINAL* (eq window-system 'nil))
+(defconst *WINDOWS*  (eq system-type 'windows-nt))
+(defconst *PLUGINS*  (expand-file-name "plugins" user-emacs-directory))
 
 ;; Recursive load path
 (defun add-subdirs-to-load-path (dir)
@@ -18,6 +17,14 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
+(add-subdirs-to-load-path *PLUGINS*)
+
+;; ELPA
+(setq package-archives
+      '(("gnu"       . "https://elpa.gnu.org/packages/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")
+        ("melpa"     . "https://melpa.org/packages/")
+        ("popkit"    . "http://elpa.popkit.org/packages/")))
 
 ;;-------------------------------------------------
 ;; Encoding
@@ -79,7 +86,7 @@
 
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
-              tab-width 4)              ;
+              tab-width 4)              ;;
 
 (setq inhibit-startup-message t         ; 关闭启动动画
 
@@ -111,10 +118,6 @@
       line-number-mode                  ; 显示行号列号
       linum-format " %2d|"              ;;
 
-      display-time-day-and-date t       ;;
-      display-time-24hr-format t        ; 时间格式
-      display-time-default-load-average nil
-
       frame-title-format                ;;
       '("Emacs " emacs-version " - "    ; Title Format
         (buffer-file-name "%f" (dired-directory dired-directory "%b")))
@@ -125,8 +128,6 @@
          (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)) 'face `(:foreground "green"))
          (propertize (eshell/pwd) 'face `(:foreground "blue"))
          (if (= (user-uid) 0) " # " " $ "))))
-
-(display-time)                          ; 显示时间
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes/no
 
@@ -140,7 +141,6 @@
 
 (when *TERMINAL* (menu-bar-mode -1))
 (when (not *TERMINAL*)
-  ;; 设置透明度
   (set-frame-parameter (selected-frame) 'alpha '(95 . 70))
 
   ;; 格式化并高亮行号
@@ -179,13 +179,8 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
-;;; 启用完整配置
-(defun full ()
-  (interactive)
-  ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
-  ;; (load-theme 'monokai t)
-  (add-subdirs-to-load-path *PLUGINS*)
-  (require 'extensions)
-  (server-start))
-
-(full)
+;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+;; (load-theme 'monokai t)
+(require 'extensions)
+(require 'server)
+(unless (server-running-p) (server-start))

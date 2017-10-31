@@ -373,6 +373,9 @@
 
   (define-key go-mode-map (kbd "C-c f") 'custom-go-save-fmt))
 
+;; Helm
+(require 'helm-config)
+
 ;; History
 (require 'history)
 
@@ -671,6 +674,9 @@
            ("C-M-;"   . evilnc-comment-or-uncomment-lines)
            ("C-c c c" . evilnc-copy-and-comment-lines)
            ("C-c c p" . evilnc-comment-or-uncomment-paragraphs)
+
+           ;; Helm
+           ("C-c c b" . helm-buffers-list)
 
            ;; Multiple cursors
            ("M-<down-mouse-1>" . nil)

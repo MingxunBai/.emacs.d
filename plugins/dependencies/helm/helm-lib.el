@@ -24,7 +24,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'dired)
+(eval-when-compile (require 'wdired))
 
 (declare-function helm-get-sources "helm.el")
 (declare-function helm-marked-candidates "helm.el")
@@ -34,8 +34,6 @@
 (declare-function org-open-at-point "org.el")
 (declare-function org-content "org.el")
 (defvar helm-current-position)
-
-(eval-when-compile (require 'wdired))
 (defvar wdired-old-marks)
 
 ;;; User vars.
@@ -229,6 +227,38 @@ When only `add-text-properties' is available APPEND is ignored."
 	  file
 	(and file (> (length file) 0)
              (expand-file-name file (dired-current-directory)))))))
+
+;;; Override `push-mark'
+;;
+;; Fix duplicates in `mark-ring' and `global-mark-ring' and update
+;; buffers in `global-mark-ring' to recentest mark.
+(defun helm--advice-push-mark (&optional location nomsg activate)
+  (unless (null (mark t))
+    (let ((marker (copy-marker (mark-marker))))
+      (setq mark-ring (cons marker (delete marker mark-ring))))
+    (when (> (length mark-ring) mark-ring-max)
+      ;; Move marker to nowhere.
+      (set-marker (car (nthcdr mark-ring-max mark-ring)) nil)
+      (setcdr (nthcdr (1- mark-ring-max) mark-ring) nil)))
+  (set-marker (mark-marker) (or location (point)) (current-buffer))
+  ;; Now push the mark on the global mark ring.
+  (setq global-mark-ring (cons (copy-marker (mark-marker))
+                               ;; Avoid having multiple entries
+                               ;; for same buffer in `global-mark-ring'.
+                               (cl-loop with mb = (current-buffer)
+                                        for m in global-mark-ring
+                                        for nmb = (marker-buffer m)
+                                        unless (eq mb nmb)
+                                        collect m)))
+  (when (> (length global-mark-ring) global-mark-ring-max)
+    (set-marker (car (nthcdr global-mark-ring-max global-mark-ring)) nil)
+    (setcdr (nthcdr (1- global-mark-ring-max) global-mark-ring) nil))
+  (or nomsg executing-kbd-macro (> (minibuffer-depth) 0)
+      (message "Mark set"))
+  (when (or activate (not transient-mark-mode))
+    (set-mark (mark t)))
+  nil)
+(advice-add 'push-mark :override #'helm--advice-push-mark)
 
 ;;; Macros helper.
 ;;
@@ -274,6 +304,23 @@ and not `exit-minibuffer' or other unwanted functions."
 
 ;;; Iterators
 ;;
+(cl-defmacro helm-position (item seq &key test all)
+  "A simple and faster replacement of CL `position'.
+
+Returns ITEM first occurence position found in SEQ.
+When SEQ is a string, ITEM have to be specified as a char.
+Argument TEST when unspecified default to `eq'.
+When argument ALL is non--nil return a list of all ITEM positions
+found in SEQ."
+  (let ((key (if (stringp seq) 'across 'in)))
+    `(cl-loop with deftest = 'eq
+              for c ,key ,seq
+              for index from 0
+              when (funcall (or ,test deftest) c ,item)
+              if ,all collect index into ls
+              else return index
+              finally return ls)))
+
 (defun helm-iter-list (seq)
   "Return an iterator object from SEQ."
   (let ((lis seq))
@@ -334,6 +381,7 @@ In each clause of CLAUSES, the result of the car of clause
 is stored in a temporary variable called `it' and usable in the cdr
 of this same clause.  Each `it' variable is independent of its clause.
 The usage is the same as `cond'."
+  (declare (debug cond))
   (unless (null clauses)
     (helm-with-gensyms (sym)
       (let ((clause1 (car clauses)))
@@ -346,6 +394,7 @@ The usage is the same as `cond'."
 
 (defmacro helm-aand (&rest conditions)
   "Anaphoric version of `and'."
+  (declare (debug (&rest form)))
   (cond ((null conditions) t)
         ((null (cdr conditions)) (car conditions))
         (t `(helm-aif ,(car conditions)
@@ -525,26 +574,15 @@ Otherwise make a list with one element."
       obj
     (list obj)))
 
-(cl-defmacro helm-position (item seq &key (test 'eq) all)
-  "A simple and faster replacement of CL `position'.
-Return position of first occurence of ITEM found in SEQ.
-Argument SEQ can be a string, in this case ITEM have to be a char.
-Argument ALL, if non--nil specify to return a list of positions of
-all ITEM found in SEQ."
-  (let ((key (if (stringp seq) 'across 'in)))
-    `(cl-loop for c ,key ,seq
-           for index from 0
-           when (funcall ,test c ,item)
-           if ,all collect index into ls
-           else return index
-           finally return ls)))
-
 (cl-defun helm-fast-remove-dups (seq &key (test 'eq))
   "Remove duplicates elements in list SEQ.
+
 This is same as `remove-duplicates' but with memoisation.
 It is much faster, especially in large lists.
 A test function can be provided with TEST argument key.
-Default is `eq'."
+Default is `eq'.
+NOTE: Comparison of special elisp objects fails in hash-tables (bug in
+gethash) so using this on e.g. markers will fail."
   (cl-loop with cont = (make-hash-table :test test)
         for elm in seq
         unless (gethash elm cont)
@@ -736,6 +774,51 @@ Add spaces at end if needed to reach WIDTH when STR is shorter than WIDTH."
   "Current line string without properties."
   (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
 
+(defun helm--replace-regexp-in-buffer-string (regexp rep str &optional fixedcase literal subexp start)
+  "Replace REGEXP by REP in string STR.
+
+Same as `replace-regexp-in-string' but handle properly REP as
+function with SUBEXP specified.
+
+e.g
+
+    (helm--replace-regexp-in-buffer-string \"e\\\\(m\\\\)acs\" 'upcase \"emacs\" t nil 1)
+    => \"eMacs\"
+
+    (replace-regexp-in-string \"e\\\\(m\\\\)acs\" 'upcase \"emacs\" t nil 1)
+    => \"eEMACSacs\"
+
+Also START argument behave as expected unlike
+`replace-regexp-in-string'.
+
+e.g
+
+    (helm--replace-regexp-in-buffer-string \"f\" \"r\" \"foofoo\" t nil nil 3)
+    => \"fooroo\"
+
+    (replace-regexp-in-string \"f\" \"r\" \"foofoo\" t nil nil 3)
+    => \"roo\"
+
+Unlike `replace-regexp-in-string' this function is buffer-based
+implemented i.e replacement is computed inside a temp buffer, so
+REGEXP should be used differently than with
+`replace-regexp-in-string'.
+
+NOTE: This function is used internally for
+`helm-ff-query-replace-on-filenames' and builded for this.
+You should use `replace-regexp-in-string' instead unless the behavior
+of this function is really needed."
+  (with-temp-buffer
+    (insert str)
+    (goto-char (or start (point-min)))
+    (while (re-search-forward regexp nil t)
+      (replace-match (cond ((and (functionp rep) subexp)
+                            (funcall rep (match-string subexp)))
+                           ((functionp rep)
+                            (funcall rep str))
+                           (t rep))
+                     fixedcase literal nil subexp))
+    (buffer-string)))
 
 ;;; Symbols routines
 ;;
@@ -895,6 +978,31 @@ Useful in dired buffers when there is inserted subdirs."
    (if (eq major-mode 'dired-mode)
        (dired-current-directory)
        default-directory)))
+
+(defun helm-shadow-boring-files (files)
+  "Files matching `helm-boring-file-regexp' will be
+displayed with the `file-name-shadow' face if available."
+  (helm-shadow-entries files helm-boring-file-regexp-list))
+
+(defun helm-skip-boring-files (files)
+  "Files matching `helm-boring-file-regexp' will be skipped."
+  (helm-skip-entries files helm-boring-file-regexp-list))
+
+(defun helm-skip-current-file (files)
+  "Current file will be skipped."
+  (remove (buffer-file-name helm-current-buffer) files))
+
+(defun helm-w32-pathname-transformer (args)
+  "Change undesirable features of windows pathnames to ones more acceptable to
+other candidate transformers."
+  (if (eq system-type 'windows-nt)
+      (helm-transform-mapcar
+       (lambda (x)
+         (replace-regexp-in-string
+          "/cygdrive/\\(.\\)" "\\1:"
+          (replace-regexp-in-string "\\\\" "/" x)))
+       args)
+    args))
 
 (defun helm-w32-prepare-filename (file)
   "Convert filename FILE to something usable by external w32 executables."
@@ -1067,6 +1175,8 @@ That is what completion commands operate on."
                  (buffer-string)))
              (funcall fwd-fn arg)
              (concat
+              ;; Allow yankink beyond eol allow inserting e.g long
+              ;; urls in mail buffers.
               helm-pattern (replace-regexp-in-string
                             "\\`\n" ""
                             (buffer-substring-no-properties

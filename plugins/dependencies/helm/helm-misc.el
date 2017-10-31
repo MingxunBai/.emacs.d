@@ -44,13 +44,6 @@
   :group 'helm-misc
   :type '(alist :key-type string :value-type function))
 
-(defcustom helm-mini-default-sources '(helm-source-buffers-list
-                                       helm-source-recentf
-                                       helm-source-buffer-not-found)
-  "Default sources list used in `helm-mini'."
-  :group 'helm-misc
-  :type '(repeat (choice symbol)))
-
 (defface helm-time-zone-current
     '((t (:foreground "green")))
   "Face used to colorize current time in `helm-world-time'."
@@ -120,6 +113,7 @@
 
 (defvar helm-source-time-world
   (helm-build-in-buffer-source "Time World List"
+    :init (lambda () (require 'time))
     :data (lambda ()
             (with-temp-buffer
               (display-time-world-display display-time-world-list)

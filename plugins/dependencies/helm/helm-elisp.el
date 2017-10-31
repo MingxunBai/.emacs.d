@@ -25,7 +25,6 @@
 (require 'helm-info)
 (require 'helm-eval)
 (require 'helm-files)
-(require 'advice)
 
 (declare-function 'helm-describe-function "helm-lib")
 (declare-function 'helm-describe-variable "helm-lib")
@@ -190,7 +189,7 @@ If `helm-turn-on-show-completion' is nil just do nothing."
          (helm-split-window-default-side
           (if (eq helm-split-window-default-side 'same)
               'below helm-split-window-default-side))
-         helm-split-window-in-side-p
+         helm-split-window-inside-p
          helm-reuse-last-window-split-state)
      (helm-set-local-variable
       'helm-display-function
@@ -698,6 +697,7 @@ i.e the `symbol-name' of any existing symbol."
 ;;
 (defvar helm-source-advice
   (helm-build-sync-source "Function Advice"
+    :init (lambda () (require 'advice))
     :candidates 'helm-advice-candidates
     :action (helm-make-actions "Toggle Enable/Disable" 'helm-advice-toggle)
     :persistent-action 'helm-advice-persistent-action

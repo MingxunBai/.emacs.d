@@ -4725,7 +4725,7 @@ btwo 糱
 btwq 降低
 btws 櫱
 btwu 辥
-btww 联系人 降价 承租人 陌生人 卫生保健
+btww 降价 联系人 陌生人
 btwx 陌生化 耶和华
 btx 孫
 btxe 降级
@@ -13529,6 +13529,7 @@ fpvu 吉祥如意
 fpw 塎
 fpwa 埪
 fpwd 堗
+fpwf 过会
 fpwg 索命 埃塞俄比亚
 fpwi 索偿
 fpwk 塎
@@ -13917,7 +13918,7 @@ ftal 走向世界 霉菌
 ftan 才艺 圫
 ftaq 孝敬 教区 老区
 ftb 孝
-ftbb 才子 教子 老子 孝子
+ftbb 老子 才子 孝子
 ftbc 考取
 ftbf 孝
 ftbi 老孙
@@ -21283,7 +21284,7 @@ iigs 沧海一粟
 iigu 水平
 iigx 消毒 滔滔不绝
 iihv 沙眼
-iii 水 淼
+iii 淼
 iiia 沙漠 水涝 水渠
 iiib 游泳池 水池
 iiic 流浪汉 沙滩
@@ -29067,7 +29068,7 @@ lft 团 団 團 糰
 lfta 团长
 lftd 转矩
 lfte 团 转租 转盘
-lftf 转告 转行
+lftf 转行 转告
 lftg 转生
 lftj 署 墨香
 lftl 置备
@@ -41099,7 +41100,7 @@ qqpy 多礼
 qqq 鑫
 qqqc 金色
 qqqf 鑫
-qqqg 金钱 钓鱼 金鱼
+qqqg 钓鱼 金钱 金鱼
 qqqk 金钟 夠
 qqqn 钓饵
 qqqp 狰狞
@@ -45959,7 +45960,7 @@ rvtu 热乎
 rvud 势头 执着
 rvug 热病 热辣
 rvuj 执意
-rvum 殷商 招商
+rvum 招商 殷商
 rvuq 势将
 rvus 招亲
 rvux 垫背
@@ -55421,7 +55422,7 @@ ukwr 部件
 ukws 总体
 ukwu 部位 总吨位
 ukwv 部分 部颁 总分
-ukww 意中人 总价 竞价
+ukww 总价 竞价
 ukwx 商品化
 ukwy 道听途说
 ukxe 部级
