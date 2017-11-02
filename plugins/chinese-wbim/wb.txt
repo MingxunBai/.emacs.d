@@ -67848,7 +67848,7 @@ ytl 諀
 ytlc 廆
 ytld 谢罪 诱因
 ytle 褢
-ytlf 放置 旋转 旅行团 庭园 諀
+ytlf 旋转 放置 旅行团 庭园 諀
 ytlg 计程车
 ytlj 螷 蠯
 ytlk 施加 旋回

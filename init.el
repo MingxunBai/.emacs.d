@@ -67,6 +67,9 @@
 
 (global-linum-mode)                     ; 显示行号
 
+(recentf-mode)                          ; 历史记录
+(setq recentf-save-file (recentf-expand-file-name "~/.recentf"))
+
 (show-paren-mode)                       ; 高亮匹配括号
 
 (winner-mode)                           ; 窗口控制
@@ -81,6 +84,9 @@
 (defalias 'ev  'eval-buffer)
 (defalias 'es  'custom-eshll)
 (defalias 'ff  'set-buffer-file-coding-system)
+(defalias 'ha  'helm-apropos)
+(defalias 'hb  'helm-buffers-list)
+(defalias 'hr  'helm-recentf)
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
 
@@ -182,5 +188,4 @@
 ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 ;; (load-theme 'monokai t)
 (require 'extensions)
-(require 'server)
-(unless (server-running-p) (server-start))
+;(server-start)

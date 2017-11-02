@@ -376,9 +376,6 @@
 ;; Helm
 (require 'helm-config)
 
-;; History
-(require 'history)
-
 ;; Java
 (add-hook 'java-mode-hook 'custom-java-mode-hook)
 (defun custom-java-mode-hook ()
