@@ -240,10 +240,6 @@ See `helm-locate-with-db' and `helm-locate'."
             (windows-nt "es %s %s")
             (t "locate %s %s")))))
 
-(defun helm-locate-initial-setup ()
-  (require 'helm-for-files)
-  (helm-locate-set-command))
-
 (defvar helm-file-name-history nil)
 (defun helm-locate-with-db (&optional db initial-input default)
   "Run locate -d DB.
@@ -348,7 +344,7 @@ Sort is done on basename of CANDIDATES."
   (helm-fuzzy-matching-default-sort-fn-1 candidates nil t))
 
 (defclass helm-locate-source (helm-source-async helm-type-file)
-  ((init :initform 'helm-locate-initial-setup)
+  ((init :initform 'helm-locate-set-command)
    (candidates-process :initform 'helm-locate-init)
    (requires-pattern :initform 3)
    (history :initform 'helm-file-name-history)

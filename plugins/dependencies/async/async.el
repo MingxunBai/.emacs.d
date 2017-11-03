@@ -231,12 +231,6 @@ working directory."
         (set (make-local-variable 'async-callback-for-process) t))
       proc)))
 
-(defvar async-quiet-switch "-Q"
-  "The Emacs parameter to use to call emacs without config.
-Can be one of \"-Q\" or \"-q\".
-Default is \"-Q\" but it is sometimes useful to use \"-q\" to have a
-enhanced config or some more variables loaded.")
-
 ;;;###autoload
 (defun async-start (start-func &optional finish-func)
   "Execute START-FUNC (often a lambda) in a subordinate Emacs process.
@@ -294,7 +288,7 @@ returns nil.  It can still be useful, however, as an argument to
                     (expand-file-name invocation-name
                                       invocation-directory))
            finish-func
-           async-quiet-switch "-l"
+           "-Q" "-l"
            ;; Using `locate-library' ensure we use the right file
            ;; when the .elc have been deleted.
            (locate-library "async")

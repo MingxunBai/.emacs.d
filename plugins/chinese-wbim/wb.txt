@@ -23716,7 +23716,7 @@ iyeu 溜肩膀
 iyfa 流域
 iyfc 流动 游动 游魂
 iyff 泳坛
-iyfh 深谋远虑 梁启超 游走
+iyfh 游走 深谋远虑
 iyfj 流进
 iyfk 流露
 iyfm 济南 游击
@@ -23729,7 +23729,7 @@ iygf 流于 游玩
 iygg 注
 iygh 流下
 iygi 浪迹天涯
-iygk 济事 流速
+iygk 流速
 iygn 乼
 iygx 流毒
 iygy 混为一谈 氺
@@ -62539,7 +62539,7 @@ wxwm 倾侧
 wxwo 分级分类
 wxwp 华佗
 wxwq 佛像 佛爷
-wxwt 华侨 化作 倾斜
+wxwt 倾斜
 wxwv 倾盆
 wxww 华人 介绍人
 wxwy 介绍信
@@ -68777,7 +68777,7 @@ yyyj 方剂
 yyyl 文库 误认为
 yyym 广州市
 yyyn 文盲 言词
-yyyo 言谈 访谈
+yyyo 访谈 言谈
 yyyp 变废为宝 文豪 语言文字
 yyyq 广义
 yyyt 广州

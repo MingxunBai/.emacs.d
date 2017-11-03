@@ -320,19 +320,11 @@
 
 ;; Auto Complete
 (require 'auto-complete-config)
+(require 'ac-helm)
 (ac-config-default)
 (setq ac-auto-start nil
       ac-ignore-case nil
       ac-use-menu-map t)
-
-(define-key ac-mode-map (kbd "M-/") 'auto-complete)
-(define-key ac-complete-mode-map (kbd "M-/") 'ac-stop)
-
-;; Dired
-(add-hook 'dired-load-hook
-          '(lambda ()
-             (define-key dired-mode-map (kbd "j") 'dired-next-line)
-             (define-key dired-mode-map (kbd "k") 'dired-previous-line)))
 
 ;; Emmet
 (defun enable-emmet-mode ()
@@ -356,8 +348,10 @@
       (progn
         (custom-split-window 'eshell)
         (other-window 1)
-        (eshell/cd path)))
-  (message "Eshell need a local file!"))
+        (eshell/cd path))
+    (progn
+      (custom-split-window 'eshell)
+      (other-window 1))))
 
 ;; Evil Nerd Commenter
 (require 'evil-nerd-commenter)
@@ -560,7 +554,14 @@
 (setq tabbar-use-images nil)
 (tabbar-mode)
 
+(defun my-tabbar-buffer-groups ()
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
+              ((eq major-mode 'dired-mode) "Dir")
+              (t "File"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+
 ;; Tramp
+(require 'helm-tramp)
 (setq tramp-default-host "45.78.52.152#29135"
       tramp-default-user "root")
 
@@ -651,6 +652,9 @@
            ("C-c 4 r" . winner-redo)
            ("C-c 4 u" . winner-undo)
 
+           ;; Auto complete with helm
+           ("M-/" . ac-complete-with-helm)
+
            ;; Custom Feature
            ("C-c k"      . custom-delete-whitespace-to-upline)
            ("C-o"        . custom-down-newline)
@@ -674,6 +678,8 @@
 
            ;; Helm
            ("C-c c b" . helm-buffers-list)
+           ("C-x C-f" . helm-find-files)
+           ("M-x"     . helm-M-x)
 
            ;; Multiple cursors
            ("M-<down-mouse-1>" . nil)

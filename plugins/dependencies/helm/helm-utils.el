@@ -20,7 +20,8 @@
 (require 'cl-lib)
 (require 'helm)
 (require 'helm-help)
-(eval-when-compile (require 'dired))
+(require 'compile) ; Fixme: Is this needed?
+(require 'dired)
 
 (declare-function helm-find-files-1 "helm-files.el" (fname &optional preselect))
 (declare-function popup-tip "ext:popup")
@@ -63,7 +64,7 @@ It is a float, usually 1024.0 but could be 1000.0 on some systems."
   :type 'integer)
 
 (defcustom helm-sources-using-help-echo-popup '("Moccur" "Imenu in all buffers"
-                                                "Ack-Grep" "AG" "RG" "Gid" "Git-Grep")
+                                                "Ack-Grep" "AG" "Gid" "Git-Grep")
   "Show the buffer name or the filename in a popup at selection."
   :group 'helm-utils
   :type '(repeat (choice string)))
@@ -107,7 +108,7 @@ In this case last position is added to the register
     ("&yen"     . 165)  ;; ¥
     ("&brvbar;" . 166)  ;; ¦
     ("&sect;"   . 167)  ;; §
-    ("&uml;"    . 32)   ;; SPC
+    ("&uml;"    . 32)   ;; SPC 
     ("&copy;"   . 169)  ;; ©
     ("&ordf;"   . 97)   ;; a
     ("&laquo;"  . 171)  ;; «
@@ -121,7 +122,7 @@ In this case last position is added to the register
     ("&micro;"  . 956)  ;; μ
     ("&para;"   . 182)  ;; ¶
     ("&middot;" . 183)  ;; ·
-    ("&cedil;"  . 32)   ;; SPC
+    ("&cedil;"  . 32)   ;; SPC 
     ("&sup1;"   . 49)   ;; 1
     ("&ordm;"   . 111)  ;; o
     ("&raquo;"  . 187)  ;; »
@@ -217,183 +218,36 @@ In this case last position is added to the register
 ;;; Utils functions
 ;;
 ;;
-(defcustom helm-window-prefer-horizontal-split nil
-  "Maybe switch to other window vertically when non nil.
-
-Possible values are t, nil and `decide'.
-
-When t switch vertically.
-When nil switch horizontally.
-When `decide' try to guess if it is possible to switch vertically
-according to the setting of `split-width-threshold' and the size of
-the window from where splitting is done.
-
-Note that when using `decide' and `split-width-threshold' is nil, the
-behavior is the same that with a nil value."
-  :group 'helm-utils
-  :type '(choice
-           (const :tag "Split window vertically" t)
-           (const :tag "Split window horizontally" nil)
-           (symbol :tag "Guess how to split window" 'decide)))
-
-(defcustom helm-window-show-buffers-function #'helm-window-default-split-fn
-  "The default function to use when opening several buffers at once.
-It is typically used to rearrange windows."
-  :group 'helm-utils
-  :type '(choice
-          (function :tag "Split windows vertically or horizontally"
-                    helm-window-default-split-fn)
-          (function :tag "Split in alternate windows"
-                    helm-window-alternate-split-fn)
-          (function :tag "Split windows in mosaic"
-                    helm-window-mosaic-fn)))
-
-(defun helm-window-show-buffers (buffers &optional other-window)
-  "Show BUFFERS.
-
+(defun helm-switch-to-buffers (buffer-or-name &optional other-window)
+  "Switch to buffer BUFFER-OR-NAME.
 If more than one buffer marked switch to these buffers in separate windows.
-If OTHER-WINDOW is non-nil, keep current buffer and switch to others buffers
-in separate windows.
-If a prefix arg is given split windows vertically."
-  (let ((initial-ow-fn (if (cdr (window-list))
-                           #'switch-to-buffer-other-window
-                         #'helm-window-other-window)))
-    (if (cdr buffers)
-        (funcall helm-window-show-buffers-function buffers
-                 (and other-window initial-ow-fn))
+If OTHER-WINDOW is specified keep current-buffer and switch to others buffers
+in separate windows."
+  (let* ((mkds (helm-marked-candidates))
+         (size (/ (window-height) (length mkds))))
+    (or (<= window-min-height size)
+        (error "Too many buffers to visit simultaneously."))
+    (helm-aif (cdr mkds)
+        (progn
+          (if other-window
+              (switch-to-buffer-other-window (car mkds))
+            (switch-to-buffer (car mkds)))
+          (save-selected-window
+            (cl-loop for b in it
+                  do (progn
+                       (select-window (split-window))
+                       (switch-to-buffer b)))))
       (if other-window
-          (funcall initial-ow-fn (car buffers))
-        (switch-to-buffer (car buffers))))))
+          (switch-to-buffer-other-window buffer-or-name)
+        (switch-to-buffer buffer-or-name)))))
 
-(defun helm-window-default-split-fn (candidates &optional other-window-fn)
-  "Split windows in one direction and balance them.
-
-Direction can be controlled via `helm-window-prefer-horizontal-split'.
-If a prefix arg is given split windows the other direction.
-This function is suitable for `helm-window-show-buffers-function'."
-  (if other-window-fn
-      (funcall other-window-fn (car candidates))
-    (switch-to-buffer (car candidates)))
-  (save-selected-window
-    (cl-loop with nosplit
-             for b in (cdr candidates)
-             when nosplit return
-             (message "Too many buffers to visit simultaneously")
-             do (condition-case _err
-                    (helm-window-other-window b 'balance)
-                  (error (setq nosplit t) nil)))))
-
-(defun helm-window-alternate-split-fn (candidates &optional other-window-fn)
-  "Split windows horizontally and vertically in alternate fashion.
-
-Direction can be controlled via `helm-window-prefer-horizontal-split'.
-If a prefix arg is given split windows the other direction.
-This function is suitable for `helm-window-show-buffers-function'."
-  (if other-window-fn
-      (funcall other-window-fn (car candidates))
-    (switch-to-buffer (car candidates)))
-  (let (right-side)
-    (save-selected-window
-      (cl-loop with nosplit
-               for b in (cdr candidates)
-               when nosplit return
-               (message "Too many buffers to visit simultaneously")
-               do (condition-case _err
-                      (let ((helm-current-prefix-arg right-side))
-                        (helm-window-other-window b)
-                        (setq right-side (not right-side)))
-                    (error (setq nosplit t) nil))))))
-
-(defun helm-window-mosaic-fn (candidates &optional other-window-fn)
-  "Make an as-square-as-possible window mosaic of the CANDIDATES buffers.
-
-If rectangular, the long side is in the direction given by
-`helm-window-prefer-horizontal-split': if non-nil, it is horizontal, vertical
-otherwise.
-If OTHER-WINDOW-FN is non-nil, current windows are included in the mosaic.
-This function is suitable for `helm-window-show-buffers-function'."
-  (when other-window-fn
-    (setq candidates (append (mapcar 'window-buffer (window-list)) candidates)))
-  (delete-other-windows)
-  (let* ((helm-window-prefer-horizontal-split
-          (if (eq helm-window-prefer-horizontal-split 'decide)
-              (and (numberp split-width-threshold)
-                   (>= (window-width (selected-window))
-                       split-width-threshold))
-            helm-window-prefer-horizontal-split))
-         mosaic-length-tile-count
-         mosaic-width-tile-count
-         mosaic-length-tile-size
-         mosaic-width-tile-size
-         next-window)
-    ;; If 4 tiles, make 2x2 mosaic.
-    ;; If 5-6 tiles, make 2x3 mosaic with direction depending on `helm-window-prefer-horizontal-split'.
-    ;; If 7-9 tiles, make 3x3 mosaic.  And so on.
-    (setq mosaic-length-tile-count (ceiling (sqrt (length candidates))))
-    (setq mosaic-width-tile-count
-          (if (<= (length candidates) (* mosaic-length-tile-count (1- mosaic-length-tile-count)))
-              (1- mosaic-length-tile-count)
-            mosaic-length-tile-count))
-    ;; We lower-bound the tile size, otherwise the function would
-    ;; fail during the first inner split.
-    ;; There is consequently no need to check for errors when
-    ;; splitting.
-    (let ((frame-mosaic-length-direction-size (frame-height))
-          (frame-mosaic-width-direction-size (frame-width))
-          (window-mosaic-length-direction-min-size window-min-height)
-          (window-mosaic-width-direction-min-size window-min-width))
-      (if helm-window-prefer-horizontal-split
-          (setq frame-mosaic-length-direction-size (frame-width)
-                frame-mosaic-width-direction-size (frame-height)
-                window-mosaic-length-direction-min-size window-min-width
-                window-mosaic-width-direction-min-size window-min-height))
-      (setq mosaic-length-tile-size (max
-                                     (/ frame-mosaic-length-direction-size mosaic-length-tile-count)
-                                     window-mosaic-length-direction-min-size)
-            mosaic-width-tile-size (max
-                                    (/ frame-mosaic-width-direction-size mosaic-width-tile-count)
-                                    window-mosaic-width-direction-min-size))
-      ;; Shorten `candidates' to `max-tiles' elements.
-      (let ((max-tiles (* (/ frame-mosaic-length-direction-size mosaic-length-tile-size)
-                          (/ frame-mosaic-width-direction-size mosaic-width-tile-size))))
-        (when (> (length candidates) max-tiles)
-          (message "Too many buffers to visit simultaneously")
-          (setcdr (nthcdr (- max-tiles 1) candidates) nil))))
-    ;; Make the mosaic.
-    (while candidates
-      (when (> (length candidates) mosaic-length-tile-count)
-        (setq next-window (split-window nil
-                                        mosaic-width-tile-size
-                                        (not helm-window-prefer-horizontal-split))))
-      (switch-to-buffer (pop candidates))
-      (dotimes (_ (min (1- mosaic-length-tile-count) (length candidates)))
-        (select-window (split-window nil
-                                     mosaic-length-tile-size
-                                     helm-window-prefer-horizontal-split))
-        (switch-to-buffer (pop candidates)))
-      (when next-window
-        (select-window next-window)))))
-
-(defun helm-window-other-window (buffer-or-name &optional balance)
-  "Switch to BUFFER-OR-NAME in other window.
-Direction can be controlled via `helm-window-prefer-horizontal-split'.
-If a prefix arg is given split windows the other direction.
-When argument BALANCE is provided `balance-windows'."
-  (let* ((helm-window-prefer-horizontal-split
-          (if (eq helm-window-prefer-horizontal-split 'decide)
-              (and (numberp split-width-threshold)
-                   (>= (window-width (selected-window))
-                       split-width-threshold))
-            helm-window-prefer-horizontal-split))
-         (right-side (if helm-window-prefer-horizontal-split
-                         (not helm-current-prefix-arg)
-                       helm-current-prefix-arg)))
-    (select-window (split-window nil nil right-side))
-    (and balance (balance-windows))
-    (switch-to-buffer buffer-or-name)))
+(defun helm-switch-to-buffers-other-window (buffer-or-name)
+  "switch to buffer BUFFER-OR-NAME in other window.
+See `helm-switch-to-buffers' for switching to marked buffers."
+  (helm-switch-to-buffers buffer-or-name t))
 
 (cl-defun helm-current-buffer-narrowed-p (&optional
-                                          (buffer helm-current-buffer))
+                                            (buffer helm-current-buffer))
   "Check if BUFFER is narrowed.
 Default is `helm-current-buffer'."
   (with-current-buffer buffer
@@ -577,6 +431,15 @@ that is sorting is done against real value of candidate."
            (< (length str1) (length str2)))
           (t (> sc1 sc2)))))
 
+(defun helm-ff-get-host-from-tramp-invalid-fname (fname)
+  "Extract hostname from an incomplete tramp file name.
+Return nil on valid file name remote or not."
+  (let* ((str (helm-basename fname))
+         (split (split-string str ":" t))
+         (meth (car (member (car split)
+                            (helm-ff-get-tramp-methods))))) 
+    (when meth (car (last split)))))
+
 (cl-defun helm-file-human-size (size &optional (kbsize helm-default-kbsize))
   "Return a string showing SIZE of a file in human readable form.
 SIZE can be an integer or a float depending it's value.
@@ -698,13 +561,6 @@ If STRING is non--nil return instead a space separated string."
             (mapconcat 'identity (list type user group other) " ")
           (list :mode-type type :user user :group group :other other))))
 
-(defun helm-format-columns-of-files (files)
-  "Same as `dired-format-columns-of-files'.
-Inlined here for compatibility."
-  (let ((beg (point)))
-    (completion--insert-strings files)
-    (put-text-property beg (point) 'mouse-face nil)))
-
 (defmacro with-helm-display-marked-candidates (buffer-or-name candidates &rest body)
   (declare (indent 0) (debug t))
   (helm-with-gensyms (buffer window)
@@ -713,11 +569,11 @@ Inlined here for compatibility."
             (helm-split-window-default-side
              (if (eq helm-split-window-default-side 'same)
                  'below helm-split-window-default-side))
-            helm-split-window-inside-p
+            helm-split-window-in-side-p
             helm-reuse-last-window-split-state
             ,window)
        (with-current-buffer ,buffer
-         (helm-format-columns-of-files ,candidates))
+         (dired-format-columns-of-files ,candidates))
        (unwind-protect
             (with-selected-window
                 (setq ,window (temp-buffer-window-show
@@ -849,12 +705,11 @@ Assume regexp is a pcre based regexp."
     (cancel-timer helm--show-help-echo-timer)
     (setq helm--show-help-echo-timer nil)))
 
-(defun helm-maybe-show-help-echo ()
+(defun helm-show-help-echo ()
   (when helm--show-help-echo-timer
     (cancel-timer helm--show-help-echo-timer)
     (setq helm--show-help-echo-timer nil))
   (when (and helm-alive-p
-             helm-popup-tip-mode
              (member (assoc-default 'name (helm-get-current-source))
                      helm-sources-using-help-echo-popup))
     (setq helm--show-help-echo-timer
@@ -877,10 +732,12 @@ Assume regexp is a pcre based regexp."
   (require 'popup)
   (if helm-popup-tip-mode
       (progn
-        (add-hook 'helm-move-selection-after-hook 'helm-maybe-show-help-echo)
+        (add-hook 'helm-after-update-hook 'helm-show-help-echo) ; Needed for async sources.
+        (add-hook 'helm-move-selection-after-hook 'helm-show-help-echo)
         (add-hook 'helm-cleanup-hook 'helm-cancel-help-echo-timer))
-    (remove-hook 'helm-move-selection-after-hook 'helm-maybe-show-help-echo)
-    (remove-hook 'helm-cleanup-hook 'helm-cancel-help-echo-timer)))
+      (remove-hook 'helm-after-update-hook 'helm-show-help-echo)
+      (remove-hook 'helm-move-selection-after-hook 'helm-show-help-echo)
+      (remove-hook 'helm-cleanup-hook 'helm-cancel-help-echo-timer)))
 
 (defun helm-open-file-with-default-tool (file)
   "Open FILE with the default tool on this platform."

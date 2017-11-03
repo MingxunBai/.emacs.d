@@ -3,6 +3,13 @@
 ;;-------------------------------------------------
 
 ;; 设置个人信息
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq user-full-name "MingxunBai"
       user-mail-address "mingxunbai@outlook.com")
 
@@ -21,10 +28,12 @@
 
 ;; ELPA
 (setq package-archives
-      '(("gnu"       . "https://elpa.gnu.org/packages/")
+      '(("popkit"    . "http://elpa.popkit.org/packages/")
+        ("gnu"       . "https://elpa.gnu.org/packages/")
         ("marmalade" . "https://marmalade-repo.org/packages/")
-        ("melpa"     . "https://melpa.org/packages/")
-        ("popkit"    . "http://elpa.popkit.org/packages/")))
+        ;; ("melpa"     . "https://melpa.org/packages/")
+        ))
+
 
 ;;-------------------------------------------------
 ;; Encoding
@@ -37,13 +46,20 @@
 (prefer-coding-system 'utf-8)
 (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
-;; use gbk for Windows
 (when *WINDOWS*
+  ;; use gbk for Windows
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
   (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
-  (set-fontset-font t 'han (font-spec :family "Minglan_Code")))
+
+  ;; Font
+  (set-fontset-font t 'han (font-spec :family "Minglan_Code"))
+
+  ;; GC
+  (setq gc-cons-threshold (* 512 1024 1024)
+        gc-cons-percentage 0.5)
+  (run-with-idle-timer 5 t #'garbage-collect))
 
 ;;-------------------------------------------------
 ;; Major Mode
@@ -188,4 +204,16 @@
 ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 ;; (load-theme 'monokai t)
 (require 'extensions)
-;(server-start)
+(server-start)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (helm helm-ebdb))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
