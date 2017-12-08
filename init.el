@@ -4,7 +4,7 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-(add-subdirs-to-load-path *PLUGINS*)
+(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
 
 ;; ELPA
 (package-initialize)

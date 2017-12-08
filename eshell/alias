@@ -1,4 +1,4 @@
-alias epush git add -A; git commit -m "Update"; git push
+alias epush git add . -f; git commit -m "Update"; git push
 alias ll ls -l
 alias la ls -a
 alias wb node misc/convertDict.js; cp ~/userdefinephrase.dat c:/Program\ Files\ \(x86\)/Microsoft\ Bing\ Pinyin/1.6.98.04/Shared/; rm ~/userdefinephrase.dat
