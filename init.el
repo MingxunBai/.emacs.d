@@ -3,13 +3,6 @@
 ;;-------------------------------------------------
 
 ;; 设置个人信息
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq user-full-name "MingxunBai"
       user-mail-address "mingxunbai@outlook.com")
 
@@ -27,13 +20,24 @@
 (add-subdirs-to-load-path *PLUGINS*)
 
 ;; ELPA
+(package-initialize)
+(require 'package)
 (setq package-archives
-      '(("popkit"    . "http://elpa.popkit.org/packages/")
-        ("gnu"       . "https://elpa.gnu.org/packages/")
-        ("marmalade" . "https://marmalade-repo.org/packages/")
-        ;; ("melpa"     . "https://melpa.org/packages/")
+      '(
+        ("gnu"       . "http://elpa.emacs-china.org/gnu/")
+        ("marmalade" . "http://elpa.emacs-china.org/marmalade/")
+        ("melpa"     . "http://elpa.emacs-china.org/melpa/")
+        ("org"       . "http://elpa.emacs-china.org/org/")
         ))
 
+(defun require-package (package &optional min-version no-refresh)
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
 
 ;;-------------------------------------------------
 ;; Encoding
@@ -204,4 +208,3 @@
 ;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 ;; (load-theme 'monokai t)
 (require 'extensions)
-(server-start)

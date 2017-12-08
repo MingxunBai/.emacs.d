@@ -313,20 +313,25 @@
 (toggle-input-method)
 
 ;; AutoHotKey
+(require-package 'xahk-mode)
 (defun enable-ahk-mode ()
   (interactive)
   (require 'xahk-mode)
   (ahk-mode))
 
 ;; Auto Complete
+(require-package 'auto-complete)
+(require-package 'ac-helm)
 (require 'auto-complete-config)
 (require 'ac-helm)
 (ac-config-default)
 (setq ac-auto-start nil
       ac-ignore-case nil
       ac-use-menu-map t)
+(add-to-list 'ac-dictionary-directories (expand-file-name "plugins/dict" user-emacs-directory))
 
 ;; Emmet
+(require-package 'emmet-mode)
 (defun enable-emmet-mode ()
   (interactive)
   (require 'emmet-mode)
@@ -354,9 +359,11 @@
       (other-window 1))))
 
 ;; Evil Nerd Commenter
+(require-package 'evil-nerd-commenter)
 (require 'evil-nerd-commenter)
 
 ;; GoLang
+(require-package 'go)
 (defun enable-go-mode ()
   (interactive)
   (require 'go-mode-autoloads)
@@ -368,6 +375,7 @@
   (define-key go-mode-map (kbd "C-c f") 'custom-go-save-fmt))
 
 ;; Helm
+(require-package 'helm)
 (require 'helm-config)
 
 ;; Java
@@ -402,6 +410,7 @@
   (define-key java-mode-map (kbd "<f5>") 'custom-java-run))
 
 ;; JavaScript IDE
+(require-package 'js2-mode)
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
@@ -417,15 +426,24 @@
     (custom-split-window 'switch-to-buffer "*js*")
     (js-send-buffer))
 
-  (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer))
+  (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer)
+  (add-hook 'js2-mode-hook 'enable-js-format-mode("standard")))
+
+;; JavaScript Format
+(require-package 'js-format)
+(defun enable-js-format-mode (method)
+  (require 'js-format)
+  (js-format-setup method))
 
 ;; JSON
+(require-package 'json)
 (defun enable-json-mode ()
   (interactive)
   (require 'json-mode)
   (json-mode))
 
 ;; Less
+(require-package 'less-css-mode)
 (defun enable-less-css-mode ()
   (interactive)
   (require 'less-css-mode)
@@ -438,6 +456,7 @@
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
 ;; Markdown
+(require-package 'markdown-mode)
 (defun enable-markdown-mode ()
   (interactive)
   (require 'markdown-mode)
@@ -448,10 +467,11 @@
   (define-key markdown-mode-map (kbd "C-c C-k") nil))
 
 ;; Multiple Cursors
+(require-package 'multiple-cursors)
 (require 'multiple-cursors)
-()
 
 ;; NEROTree
+(require-package 'neotree)
 (require 'neotree)
 (setq neo-theme 'ascii)
 
@@ -468,6 +488,7 @@
 (define-key neotree-mode-map (kbd "C-c c") 'custom-neotree-copy-relative-path)
 
 ;; Org
+(require-package 'htmlize)
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 (defun custom-org-mode-hook ()
   (org-indent-mode)
@@ -497,10 +518,13 @@
     (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
 
 ;; Origami
+(require-package 'origami)
 (require 'origami)
 (global-origami-mode)
 
 ;; Python
+(require-package 'elpy)
+(require-package 'py-autopep8)
 (add-hook 'python-mode-hook 'custom-python-mode-hook)
 (defun custom-python-mode-hook ()
   (require 'elpy)
@@ -539,12 +563,14 @@
   (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition))
 
 ;; SCSS
+(require-package 'scss-mode)
 (defun enable-scss-mode ()
   (require 'scss-mode)
   (scss-mode)
   (setq scss-compile-at-save t))
 
 ;; Smart Parens
+(require-package 'smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
@@ -561,17 +587,18 @@
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 ;; Tramp
-(require 'helm-tramp)
 (setq tramp-default-host "45.78.52.152#29135"
       tramp-default-user "root")
 
 ;; Vimrc
+(require-package 'vimrc-mode)
 (defun enable-vimrc-mode ()
   (interactive)
   (require 'vimrc-mode)
   (vimrc-mode))
 
 ;; Web
+(require-package 'web-mode)
 (defun enable-web-mode ()
   (interactive)
   (require 'web-mode)
@@ -594,13 +621,17 @@
 (add-hook 'web-mode-hook  'enable-emmet-mode)
 
 ;; YAML
+(require-package 'yaml-mode)
 (defun enable-yaml-mode ()
   (interactive)
   (require 'yaml-mode)
   (yaml-mode))
 
 ;; YASnippet
+(require-package 'yasnippet)
+(require-package 'popup)
 (require 'yasnippet)
+(setq yas-snippet-dirs (expand-file-name "plugins/snippets" user-emacs-directory))
 (yas-global-mode)
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 

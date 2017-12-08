@@ -1,1 +1,0 @@
-(define-package "helm" "20170714.1503"   "Helm is an Emacs incremental and narrowing framework"   '((emacs "24.4")     (async "1.9.2")     (popup "0.5.3")     (helm-core "20170714.1503"))   :url "https://emacs-helm.github.io/helm/")
