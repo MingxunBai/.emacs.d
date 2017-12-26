@@ -570,6 +570,7 @@
 
 ;; JavaScript IDE
 (require-package 'js2-mode)
+(require-package 'js-comint)
 (defun enable-js2-mode ()
   (interactive)
   (require 'js2-mode)
@@ -585,14 +586,7 @@
     (custom-split-window 'switch-to-buffer "*js*")
     (js-send-buffer))
 
-  (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer)
-  (add-hook 'js2-mode-hook 'enable-js-format-mode("standard")))
-
-;; JavaScript Format
-(require-package 'js-format)
-(defun enable-js-format-mode (method)
-  (require 'js-format)
-  (js-format-setup method))
+  (define-key js2-mode-map (kbd "<f5>") 'custom-js-send-buffer))
 
 ;; JSON
 (require-package 'json)
@@ -868,7 +862,7 @@
 
            ;; Helm
            ("C-c c b" . helm-buffers-list)
-           ("C-x C-f" . helm-find-files)
+           ("C-c c f" . helm-find-files)
            ("M-x"     . helm-M-x)
 
            ;; Multiple cursors
