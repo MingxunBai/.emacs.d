@@ -30,7 +30,7 @@
 (defalias 'rs  'replace-string)
 
 ;; Custeom Variables
-;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;; Encoding
 (setq current-language-environment "utf-8"
