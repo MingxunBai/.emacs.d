@@ -66784,6 +66784,7 @@ ymqi 诺贝尔
 ymqj 旗帜鲜明
 ymqk 敲钟
 ymqn 刻骨铭心
+ymqr 高铁
 ymqu 诺贝尔奖
 ymqy 讽
 ymrh 敲掉 这几年
@@ -67070,7 +67071,7 @@ yntl 谧 劾 衁 謐
 yntm 颏 賌 頦
 ynto 鳸
 yntq 妄称
-yntr 忘我 废物
+yntr 废物 忘我
 ynts 词条 棨
 yntw 亥 欬
 ynty 废 读书笔记 廃 廢
