@@ -1,7 +1,7 @@
 Install
 ====================
 ```
-git clone https://github.com/MingxunBai/.emacs.d
+git clone https://github.com/MingxunBai/.emacs.d ~
 ```
 
 Extensions
@@ -10,7 +10,7 @@ Extensions
 五笔输入法
 --------------------
 - 默认为英文状态, <kbd>C-\\</kbd> 切换
-- 可通过修改 `plugins/chinese-wbim/wb.txt` 调整词序
+- 可通过修改 `plugins/chinese-wbim/wb.txt` 调整词库
 
 Auto-Complete
 --------------------
@@ -51,11 +51,11 @@ JS2-mode
 Markdown-mode
 --------------------
 - markdown 语法支持
-- `markdown-command`
+- markdown-command
   + Windows
     1. 下载 [markdown.el](http://daringfireball.net/projects/markdown/) 至 bin 文件夹中(需要安装 perl)
     2. 设置路径: `(custom-set-variables '(markdown-command "markdown.pl"))`
-  + Linux 自行安装 markdown
+  + Linux 安装 markdown 即可
 - <kbd>C-c C-c l</kbd> 生成 HTML 文本
 - <kbd>C-c C-c m</kbd> 在其它窗口预览 HTML 源代码
 
