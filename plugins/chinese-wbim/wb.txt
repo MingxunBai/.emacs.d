@@ -16660,7 +16660,7 @@ gkvj 剚
 gkwa 逼供
 gkwd 整段
 gkwf 融会
-gkwg 事例 融合 逼使 整合
+gkwg 整合 融合
 gkwh 整个 整修
 gkwl 不遗余力
 gkwn 事假
@@ -22243,7 +22243,7 @@ ipkw 沉吟
 ipky 瓽
 ipl 浑
 iplb 労
-iplf 党团 沉默 学园
+iplf 沉默 学园 党团
 iplh 浑 渾
 iplk 浑圆
 ipln 沉思 深思
@@ -23885,7 +23885,7 @@ iyyb 游离 流离
 iyyf 光度计 湿度计 温度计
 iyyg 氵
 iyym 沪市
-iyyn 流亡 流氓 游记
+iyyn 流氓 游记 流亡
 iyyo 流变 浪迹
 iyyq 澈底
 iyyt 流放 漂亮话
@@ -23950,7 +23950,7 @@ jalb 昮
 jalh 星期四
 jalj 蠴
 jaln 昮
-jalt 蠛 暴力
+jalt 暴力 蠛
 jam 蟥
 jamd 暎 蝧
 jamq 暴风
@@ -37923,7 +37923,7 @@ puiy 补注
 puj 宰
 puja 空间电荷
 pujc 襊
-pujf 衬里 初时 实时 裡 襅
+pujf 实时 初时 裡 襅
 pujg 袒 实是 裫 衵
 pujh 褆 襅
 puji 襮
@@ -38435,7 +38435,7 @@ pwub 安全部队
 pwud 穿着 空头 军令状 竉
 pwue 空前
 pwui 空阔
-pwuj 空间 究竟 窨 社会问题
+pwuj 究竟 空间 窨 社会问题
 pwuk 宣传部 窘况
 pwul 安全装置
 pwun 竉
@@ -38636,7 +38636,7 @@ pykd 祦
 pykf 禪
 pykh 祌
 pykj 视唱
-pykk 礼品 祸患 神品
+pykk 神品 礼品 祸患
 pykm 社员
 pykq 祝
 pykr 视听
@@ -49561,7 +49561,7 @@ taca 长驱
 tacb 长矛
 tad 箕
 tadc 簸
-tadd 篚 长大
+tadd 长大 篚
 tadf 簊
 tadg 长石
 tadh 长存
@@ -56421,7 +56421,7 @@ utsv 首要
 utsy 道术
 utt 產
 utta 首长
-uttf 首先 首选 道德 道行
+uttf 道德 首先 首选 道行
 uttg 产生 産 產
 uttj 剷
 uttp 单簧管

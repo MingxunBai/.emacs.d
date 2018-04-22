@@ -67,6 +67,8 @@
 (recentf-mode)                          ; 历史记录
 (setq recentf-save-file (recentf-expand-file-name "~/.recentf"))
 
+(server-mode)
+
 (show-paren-mode)                       ; 高亮匹配括号
 
 (winner-mode)                           ; 窗口控制
