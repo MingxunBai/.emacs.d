@@ -65,6 +65,17 @@
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
+;; Markdown
+(require-package 'markdown-mode)
+(defun enable-markdown-mode ()
+  (interactive)
+  (require 'markdown-mode)
+  (markdown-mode)
+  (when *WINDOWS*
+    (custom-set-variables '(markdown-command "markdown.pl")))
+
+  (define-key markdown-mode-map (kbd "C-c C-k") nil))
+
 ;; Multiple Cursors
 (require-package 'multiple-cursors)
 (require 'multiple-cursors)

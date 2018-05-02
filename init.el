@@ -65,9 +65,7 @@
 
 ;; Major Mode
 (setq auto-mode-alist
-      (append '(
-                ;; ("/[^\\./]*\\'" . conf-mode) ; File name has no dot
-                ("\\.bash"   . sh-mode)
+      (append '(("\\.bash"   . sh-mode)
                 ("\\.ahk\\'" . (lambda () (enable-ahk-mode)))
                 ("\\.md\\'"  . (lambda () (enable-markdown-mode))))
               auto-mode-alist))
@@ -132,17 +130,3 @@
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (smartparens origami htmlize neotree multiple-cursors helm evil-nerd-commenter auto-complete))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
