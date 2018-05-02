@@ -1,5 +1,4 @@
 *
-init.el
 !eshell/alias
-!plugins/
+!plugins
 !README.md

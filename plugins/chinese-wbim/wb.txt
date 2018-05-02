@@ -27062,7 +27062,7 @@ khtd 跃 躍
 khte 中盘
 khtf 中午 中等 忠告 踵
 khtg 贵重 中策 鹭 鷺
-khth 贵处 路牌 跭 蹝 蹤
+khth 路牌 贵处 跭 蹝 蹤
 khtj 跑得
 khtk 路程 中和 路 踟 蹻
 khtl 蹯
@@ -45098,7 +45098,7 @@ rrpp 扎扎实实
 rrpv 拍案
 rrpw 拆穿 白鹤
 rrq 掀
-rrqc 魄 白色
+rrqc 白色 魄
 rrqe 拆解
 rrqf 銴
 rrqk 白兔
@@ -50695,7 +50695,7 @@ tgdc 条形码 重码
 tgdd 重大 生厌
 tgdf 生辰 重压 筓
 tgdg 生硬
-tgdh 自下而上 生存
+tgdh 生存 自下而上
 tgdm 重于泰山
 tgdn 生成
 tgdp 秤砣
@@ -53963,7 +53963,7 @@ ubyx 产出率
 uc 冯 痛
 uca 痉 痙
 ucaa 竣工
-ucad 痉 痛苦
+ucad 痛苦 痉
 ucah 交通工具
 ucai 闯荡
 ucak 閞
