@@ -1,4 +1,4 @@
 alias epush git add . -f; git commit -m "Update"; git push
 alias ll ls -l
 alias la ls -a
-alias wb cp wb.txt xx; node misc/convertDict.js
+alias node misc/convertDict.js
