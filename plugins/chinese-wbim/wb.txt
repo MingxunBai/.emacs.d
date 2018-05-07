@@ -50644,7 +50644,7 @@ tfxt 告终 乖张
 tfxx 等比 德比
 tfxy 毛纺 选编
 tfya 告诫
-tfyc 德育 丢弃
+tfyc 丢弃
 tfye 造谣 毛衣
 tfyf 毛诗 选读
 tfyg 德语 赞语
@@ -50666,7 +50666,7 @@ tgab 熏蒸 郵
 tgae 生菜
 tgaf 垂 行政区域
 tgai 垂范 垂落 乗
-tgaj 笄 策划 垂暮 重划 剰 筭
+tgaj 策划 垂暮 笄 剰 筭
 tgam 生恐
 tgan 甀
 tgaq 行政区
@@ -68463,7 +68463,7 @@ ywxn 论 讹 訛 譌
 ywy 认 谁
 ywyc 詅 謢 﨎
 ywyf 论诗
-ywyg 谁 论证 论语 认证 谶语 誰
+ywyg 谁 认证 论语 谶语 誰
 ywyk 认识 誝 謒
 ywyl 认为
 ywym 论调 夜市
