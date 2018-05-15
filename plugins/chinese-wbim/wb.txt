@@ -54695,7 +54695,7 @@ ugal 病菌 癅
 ugam 姜黄
 ugan 盖世
 ugau 盖茨
-ugbb 癞子 痞子 盖子
+ugbb 盖子 癞子 痞子
 ugbp 病院
 ugby 冷不防
 ugce 决不能 并不能
@@ -68266,7 +68266,7 @@ yvyh 譅
 yvyn 朗讯 認
 yvyv 朗朗
 yvyy 良方 朗文 訒 訙 讱
-yw 认 谁
+yw 认
 ywaa 夜工
 ywab 文化节
 ywaf 论著
@@ -68461,10 +68461,10 @@ ywxc 廢
 ywxf 谶纬
 ywxm 府绸
 ywxn 论 讹 訛 譌
-ywy 认 谁
+ywy 谁
 ywyc 詅 謢 﨎
 ywyf 论诗
-ywyg 谁 认证 论语 谶语 誰
+ywyg 认证 论语 谶语 谁 誰
 ywyk 认识 誝 謒
 ywyl 认为
 ywym 论调 夜市

@@ -1,4 +1,4 @@
-(dolist (key-list
+(dolist (key-map
          '(("C-c 4 r" . winner-redo)
            ("C-c 4 u" . winner-undo)
 
@@ -43,6 +43,6 @@
            ("C-c o a" . origami-show-only-node)
            ("C-c o r" . origami-reset)))
 
-  (global-set-key (kbd (car key-list)) (cdr key-list)))
+  (global-set-key (kbd (car key-map)) (cdr key-map)))
 
 (provide 'init-keymap)

@@ -10,8 +10,6 @@
 
 (scroll-bar-mode -1)                    ; 隐藏滚动条
 
-(server-mode)                           ; 后台模式
-
 (show-paren-mode)                       ; 高亮匹配括号
 
 (tool-bar-mode -1)                      ; 隐藏工具栏
