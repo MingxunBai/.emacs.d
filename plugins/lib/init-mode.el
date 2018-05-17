@@ -35,8 +35,8 @@
       ac-ignore-case nil
       ac-use-menu-map t)
 
-(define-key ac-mode-map (kbd "M-;") 'auto-complete)
-(define-key ac-completing-map (kbd "M-;") 'ac-stop)
+(define-key ac-mode-map (kbd "M-/") 'auto-complete)
+(define-key ac-completing-map (kbd "M-/") 'ac-stop)
 
 ;; Eshell
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))

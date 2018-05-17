@@ -9952,7 +9952,7 @@ efa 膹
 efai 脑震荡
 efal 肝功
 efam 膹 豮 豶
-efbb 肚子 脖子
+efbb 脖子 肚子
 efc 肢
 efca 脖颈
 efcb 脚 腳
@@ -46840,7 +46840,7 @@ sdap 枯荣
 sdat 枯萎 配套工程
 sday 櫔
 sdb 枙
-sdbb 楔子 榛子 要面子 椅子
+sdbb 椅子 楔子 榛子
 sdbi 杰克逊
 sdbm 攀龙附凤
 sdbn 枙
@@ -50554,7 +50554,7 @@ tfrn 赞扬
 tfrp 靠近
 tfrr 自动控制 告白 先哲 第二把手
 tfrt 选手 徒手 千斤 先手 靠手
-tfrv 造势 靠垫
+tfrv 靠垫 造势
 tfrw 丢失
 tfrx 待批
 tfsb 行李

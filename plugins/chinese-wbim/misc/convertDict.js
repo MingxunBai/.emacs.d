@@ -21,6 +21,6 @@ fs.readFile("wb.txt", function(err, data){
 
     fs.writeFile("C:/Program Files (x86)/Microsoft Bing Pinyin/1.6.98.04/Shared/userdefinephrase.dat", newLines.join(""), function(err){
         if(err) console.log(err)
-        console.log("Write success!");
+        else console.log("Write success!");
     })
 })
