@@ -25608,7 +25608,7 @@ jtga 戥 星形
 jtgc 临到
 jtgd 昨天
 jtge 日程表
-jtgf 星 鉴于 星球 归咎于 蝩
+jtgf 星球 鉴于 归咎于 蝩
 jtgg 蜂王 甠 﨡
 jtgj 监理 日复一日
 jtgk 监事
@@ -40398,7 +40398,7 @@ qmtg 负重
 qmth 铅版 铜牌 铜版 鎽
 qmtm 铜币
 qmtp 金刚般若波罗蜜 钢管
-qmtt 铅笔 钢笔
+qmtt 钢笔 铅笔
 qmu 负 負
 qmua 钢瓶
 qmum 鋼
@@ -67973,7 +67973,7 @@ ytxa 旋绕
 ytxe 放缓
 ytxg 放射线
 ytxh 诱引
-ytxj 房租费 旅费 话费
+ytxj 话费
 ytxn 旋纽
 ytxq 谢绝
 ytxu 诲 誨
