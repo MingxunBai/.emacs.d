@@ -31,7 +31,8 @@
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
-(setq ac-auto-start nil
+(setq ac-auto-start t
+      ac-auto-show-menu 0
       ac-ignore-case nil
       ac-use-menu-map t)
 
@@ -164,5 +165,9 @@
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
+
+;; Solarized
+(require-package 'solarized-theme)
+(require 'solarized-light-theme)
 
 (provide 'init-mode)

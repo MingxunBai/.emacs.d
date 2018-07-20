@@ -103,7 +103,7 @@
 
       column-number-mode                ;;
       line-number-mode                  ; 显示行号列号
-      linum-format " %2d|"              ;;
+      linum-format " %3d "              ;;
 
       frame-title-format                ;;
       '("Emacs " emacs-version " - "    ; Title Format
@@ -112,8 +112,8 @@
       eshell-prompt-function            ;;
       (lambda ()                        ; Eshell Prompt
         (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)) 'face `(:foreground "green"))
-         (propertize (eshell/pwd) 'face `(:foreground "blue"))
+         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
+         (propertize (eshell/pwd))
          (if (= (user-uid) 0) " # " " $ "))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes/no
@@ -130,3 +130,4 @@
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
+

@@ -1,14 +1,26 @@
-;; Before save hook
+;; Save hook
 (defun custom-before-save-hook ()
   (delete-trailing-whitespace)
-  (custom-ff-utf-8-unix))
-(add-hook 'before-save-hook 'custom-before-save-hook)
-
+  (custom-ff-utf-8-unix)
+  )
 (defun custom-ff-utf-8-unix ()
   (if (and (and (not (eq major-mode 'bat-mode))
                 (not (eq major-mode 'java-mode)))
            (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
       (set-buffer-file-coding-system 'utf-8-unix)))
+
+(defun custom-after-save-hook ()
+  (custom-compile-el)
+  )
+(defun custom-compile-el ()
+  (if (string-match "\.emacs\.d/plugins/lib" (buffer-file-name))
+      (progn
+        (byte-compile-file (buffer-file-name))
+        (delete-other-windows)))
+  )
+
+(add-hook 'before-save-hook 'custom-before-save-hook)
+(add-hook 'after-save-hook 'custom-after-save-hook)
 
 ;; Command 分离窗口运行
 (defun custom-split-window (command &optional param)

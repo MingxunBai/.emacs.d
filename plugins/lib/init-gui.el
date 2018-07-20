@@ -8,13 +8,13 @@
 
 (defface my-linum-hl
   `((t :inherit linum
-       :background "#E8E8FF"
+       ;; :background "#E8E8FF"
        :foreground "#000000",(face-background 'hl-line nil t)))
   "Face for the current line number."
   :group 'linum)
 
 (defun my-linum-format (line-number)
-  (propertize (format " %2d " line-number) 'face
+  (propertize (format " %3d " line-number) 'face
               (if (eq line-number my-linum-current-line-number)
                   'my-linum-hl
                 'linum)))
