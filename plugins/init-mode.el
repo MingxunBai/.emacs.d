@@ -19,9 +19,10 @@
 (winner-mode)                           ; 窗口控制
 
 ;; Input Method
-(require 'chinese-wbim-extra)
+(require-package 'chinese-wbim)
 (autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" "wb.txt")
+(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" (expand-file-name "plugins/wb.txt" user-emacs-directory))
+(require 'chinese-wbim-extra)
 (setq chinese-wbim-use-tooltip nil)
 
 (set-input-method 'chinese-wbim)
@@ -38,6 +39,16 @@
 
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 (define-key ac-completing-map (kbd "M-/") 'ac-stop)
+
+;; Emmet
+(require-package 'emmet-mode)
+(require 'emmet-mode)
+(setq emmet-self-closing-tag-style ""
+      emmet-move-cursor-between-quotes t)
+
+(define-key emmet-mode-keymap (kbd "<C-return>") nil)
+(define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
+(define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
 
 ;; Eshell
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
@@ -70,17 +81,6 @@
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
 
-;; Markdown
-(require-package 'markdown-mode)
-(defun enable-markdown-mode ()
-  (interactive)
-  (require 'markdown-mode)
-  (markdown-mode)
-  (when *WINDOWS*
-    (custom-set-variables '(markdown-command "markdown.pl")))
-
-  (define-key markdown-mode-map (kbd "C-c C-k") nil))
-
 ;; Multiple Cursors
 (require-package 'multiple-cursors)
 (require 'multiple-cursors)
@@ -103,36 +103,10 @@
 (define-key neotree-mode-map (kbd "C-c c") 'custom-neotree-copy-relative-path)
 
 ;; Org
-(require-package 'htmlize)
-(add-hook 'org-mode-hook 'custom-org-mode-hook)
-(defun custom-org-mode-hook ()
-  (org-indent-mode)
-  (setq org-html-validation-link nil
-        org-log-done 'time)
-
-  (require 'htmlize)
-  (setq org-src-fontify-natively t)   ;  HTML 代码高亮
-
-  (define-key org-mode-map (kbd "C-c C-k") nil)
-
-  (defun org-insert-src-block ()
-    (interactive
-     (let ((src-code-types
-            '("emacs-lisp" "python" "C" "sh" "java" "js" "clojure" "C++"
-              "css" "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond"
-              "mscgen" "octave" "oz" "plantuml" "R" "sass" "screen" "sql"
-              "awk" "ditaa" "haskell" "latex" "lisp" "matlab" "ocaml"
-              "org" "perl" "ruby" "scheme" "sqlite" "html")))
-       (list (ido-completing-read "Source code type: " src-code-types))))
-    (progn
-      (insert (format "#+BEGIN_SRC %s\n" src-code-type))
-      (newline-and-indent)
-      (insert "#+END_SRC")
-      (previous-line 2)
-      (org-edit-src-code)))
-
-  (local-set-key (kbd "C-c c e") 'org-edit-src-code)
-  (local-set-key (kbd "C-c c i") 'org-insert-src-block))
+(setq org-indent-mode t
+      org-html-validation-link nil
+      org-src-fontify-natively t
+      org-log-done 'time)
 
 ;; Origami
 (require-package 'origami)
@@ -142,9 +116,6 @@
 ;; Scheme
 (setq scheme-program-name "scheme")
 (add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
-(add-hook 'inferior-scheme-mode-hook
-          (lambda ()
-            (define-key inferior-scheme-mode-map (kbd "C-c C-k") 'nil)))
 
 (defun scheme-proc ()
   (unless (and ("shceme-buffer")
@@ -162,22 +133,12 @@
 
 (defun custom-init-scheme-mode ()
   (require 'cmuscheme)
-
-  (define-key scheme-mode-map (kbd "C-c C-k") 'nil)
-  (define-key scheme-mode-map (kbd "<f5>")    'custom-scheme-send-definition))
+  (define-key scheme-mode-map (kbd "<f5>") 'custom-scheme-send-definition))
 
 ;; Smart Parens
 (require-package 'smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
-
-;; Solarized
-(require-package 'solarized-theme)
-(require 'solarized-light-theme)
-(defcustom solarized-scale-org-headlines t
-  "Whether scaling of outline-headlines should apply to `org-mode' headlines."
-  :type 'boolean
-  :group 'solarized)
 
 (provide 'init-mode)

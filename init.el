@@ -1,12 +1,7 @@
 (setq debug-on-error t)
 
 ;; Alias
-(defalias 'alr 'align-regexp)
-(defalias 'cw  'compare-windows)
-(defalias 'ev  'eval-buffer)
 (defalias 'es  'custom-eshll)
-(defalias 'ff  'set-buffer-file-coding-system)
-(defalias 'ha  'helm-apropos)
 (defalias 'hb  'helm-buffers-list)
 (defalias 'hr  'helm-recentf)
 (defalias 'rr  'replace-regexp)
@@ -19,24 +14,24 @@
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
-(add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
+;; (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
 
 ;; ELPA
-(package-initialize)
-(require 'package)
 (setq package-archives
-      '(
-        ("gnu"       . "http://elpa.emacs-china.org/gnu/")
-        ("marmalade" . "http://elpa.emacs-china.org/marmalade/")
+      '(("gnu"       . "http://elpa.emacs-china.org/gnu/")
         ("melpa"     . "http://elpa.emacs-china.org/melpa/")
-        ("org"       . "http://elpa.emacs-china.org/org/")
-        ))
+        ("marmalade" . "http://elpa.emacs-china.org/marmalade/")))
+(require 'package)
+(package-initialize)
 
 (defun require-package (package &optional min-version no-refresh)
   (if (package-installed-p package min-version)
       t
     (if (or (assoc package package-archive-contents) no-refresh)
-        (package-install package)
+        (if (boundp 'package-selected-packages)
+            (package-install package nil)
+          (package-install package))
       (progn
         (package-refresh-contents)
         (require-package package min-version t)))))
@@ -54,7 +49,7 @@
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
-  (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 buffer-line 日期不乱码
+  (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 mode-line 日期不乱码
   )
 
 ;; GC
@@ -65,9 +60,7 @@
 
 ;; Major Mode
 (setq auto-mode-alist
-      (append '(("\\.bash"   . sh-mode)
-                ("\\.ahk\\'" . (lambda () (enable-ahk-mode)))
-                ("\\.md\\'"  . (lambda () (enable-markdown-mode))))
+      (append '(("\\.bash"   . sh-mode))
               auto-mode-alist))
 
 ;; Setting
@@ -84,13 +77,7 @@
       scroll-margin 3                   ;;
       scroll-conservatively 10000       ; 靠近屏幕边沿3行时就开始滚动
 
-      font-lock-maximum-decoration t    ;;
-      font-lock-verbose t               ; 渲染当前 buffer 语法高亮
-      font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
-
       kill-ring-max 500                 ; 设置历史记录数量
-
-      inhibit-startup-message t         ; 关闭出错提示音
 
       kill-whole-line t                 ; 在行首 C-k 时，同时删除该行
 
@@ -101,20 +88,9 @@
       auto-save-default nil             ; 不生成临时文件
       make-backup-files nil             ; 不生成备份文件
 
-      column-number-mode                ;;
-      line-number-mode                  ; 显示行号列号
-      linum-format " %3d "              ;;
-
       frame-title-format                ;;
       '("Emacs " emacs-version " - "    ; Title Format
-        (buffer-file-name "%f" (dired-directory dired-directory "%b")))
-
-      eshell-prompt-function            ;;
-      (lambda ()                        ; Eshell Prompt
-        (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
-         (propertize (eshell/pwd))
-         (if (= (user-uid) 0) " # " " $ "))))
+        (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes/no
 
@@ -130,18 +106,3 @@
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Documents/todo.org")))
- '(package-selected-packages
-   (quote
-    (exec-path-from-shell flycheck json-mode tide solarized-theme smartparens origami neotree multiple-cursors markdown-mode htmlize helm evil-nerd-commenter auto-complete auto-compile 0blayout))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
