@@ -34294,7 +34294,7 @@ ntta 司务长
 nttd 恬适
 nttf 发行 履行 改造 改选 改行 必选
 nttg 发生
-ntth 发臭 发牌 改版 发自
+ntth 改版 发牌 发臭
 nttj 必得
 nttk 屩
 nttl 必备

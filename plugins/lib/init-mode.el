@@ -62,6 +62,10 @@
 (require-package 'helm)
 (require 'helm-config)
 
+;; JSON
+(require-package 'json-mode)
+(require 'json-mode)
+
 ;; Lisp
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
 (define-key lisp-interaction-mode-map (kbd "<f5>") 'eval-last-sexp)
@@ -103,7 +107,9 @@
 (add-hook 'org-mode-hook 'custom-org-mode-hook)
 (defun custom-org-mode-hook ()
   (org-indent-mode)
-  (setq org-startup-indented t)
+  (setq org-html-validation-link nil
+        org-log-done 'time)
+
   (require 'htmlize)
   (setq org-src-fontify-natively t)   ;  HTML 代码高亮
 
@@ -123,10 +129,10 @@
       (newline-and-indent)
       (insert "#+END_SRC")
       (previous-line 2)
-      (org-edit-src-code))
+      (org-edit-src-code)))
 
-    (local-set-key (kbd "C-c c e") 'org-edit-src-code)
-    (local-set-key (kbd "C-c c i") 'org-insert-src-block)))
+  (local-set-key (kbd "C-c c e") 'org-edit-src-code)
+  (local-set-key (kbd "C-c c i") 'org-insert-src-block))
 
 ;; Origami
 (require-package 'origami)
@@ -169,5 +175,9 @@
 ;; Solarized
 (require-package 'solarized-theme)
 (require 'solarized-light-theme)
+(defcustom solarized-scale-org-headlines t
+  "Whether scaling of outline-headlines should apply to `org-mode' headlines."
+  :type 'boolean
+  :group 'solarized)
 
 (provide 'init-mode)

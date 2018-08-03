@@ -130,4 +130,18 @@
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Documents/todo.org")))
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell flycheck json-mode tide solarized-theme smartparens origami neotree multiple-cursors markdown-mode htmlize helm evil-nerd-commenter auto-complete auto-compile 0blayout))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

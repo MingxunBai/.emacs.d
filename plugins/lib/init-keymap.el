@@ -1,5 +1,9 @@
 (dolist (key-map
-         '(("C-c 4 r" . winner-redo)
+         '(
+           ;; System
+
+           ;; Winner mode
+           ("C-c 4 r" . winner-redo)
            ("C-c 4 u" . winner-undo)
 
            ;; Custom Feature
