@@ -7,10 +7,10 @@
       font-lock-verbose t               ; 渲染当前 buffer 语法高亮
       font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
       eshell-prompt-function (lambda () ;; Eshell Prompt
-        (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
-         (propertize (eshell/pwd))
-         (if (= (user-uid) 0) " # " " $ "))))
+                               (concat
+                                (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
+                                (propertize (eshell/pwd))
+                                (if (= (user-uid) 0) " # " " $ "))))
 
 (require 'hl-line)
 
@@ -45,7 +45,13 @@
 
 ;; Solarized Theme
 (require-package 'solarized-theme)
-(setq solarized-scale-org-headlines nil)
+(setq solarized-scale-org-headlines nil
+      solarized-use-variable-pitch nil
+      solarized-height-minus-1 1.0
+      solarized-height-plus-1 1.0
+      solarized-height-plus-2 1.0
+      solarized-height-plus-3 1.0
+      solarized-height-plus-4 1.0)
 (require 'solarized-light-theme)
 
 (provide 'init-gui)
