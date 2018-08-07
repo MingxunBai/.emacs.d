@@ -19,9 +19,11 @@
 
 ;; ELPA
 (setq package-archives
-      '(("gnu"       . "http://elpa.emacs-china.org/gnu/")
-        ("melpa"     . "http://elpa.emacs-china.org/melpa/")
-        ("marmalade" . "http://elpa.emacs-china.org/marmalade/")))
+      '(("cn-gnu"       . "http://elpa.emacs-china.org/gnu/")
+        ("cn-melpa"     . "http://elpa.emacs-china.org/melpa/")
+        ("cn-marmalade" . "http://elpa.emacs-china.org/marmalade/")
+        ("cn-org"       . "http://elpa.emacs-china.org/org/")
+        ))
 (require 'package)
 (package-initialize)
 
@@ -57,11 +59,6 @@
   (setq gc-cons-threshold (* 512 1024 1024)
         gc-cons-percentage 0.5)
   (run-with-idle-timer 5 t #'garbage-collect))
-
-;; Major Mode
-(setq auto-mode-alist
-      (append '(("\\.bash"   . sh-mode))
-              auto-mode-alist))
 
 ;; Setting
 (setq-default indent-tabs-mode nil      ;;

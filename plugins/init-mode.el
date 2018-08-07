@@ -103,10 +103,19 @@
 (define-key neotree-mode-map (kbd "C-c c") 'custom-neotree-copy-relative-path)
 
 ;; Org
-(setq org-indent-mode t
+(setq org-startup-indented t
       org-html-validation-link nil
       org-src-fontify-natively t
-      org-log-done 'time)
+      org-log-done 'time
+      org-agenda-custom-commands
+      '(("d" "Agenda for current week" agenda "DONE"
+         ((org-agenda-time-grid nil)
+          (org-agenda-span 'week)
+          (org-agenda-entry-types '(:closed))))
+        ("p" . "Agenda for PRIORITIES")
+        ("pa" "URGENCY" tags-todo "+PRIORITY=\"A\"")
+        ("pb" "NORMAL " tags-todo "+PRIORITY=\"B\"")
+        ("pc" "FEATURE" tags-todo "+PRIORITY=\"C\"")))
 
 ;; Origami
 (require-package 'origami)
