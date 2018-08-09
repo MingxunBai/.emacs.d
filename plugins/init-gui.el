@@ -1,5 +1,7 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
 
+(setq-default mode-line-format nil)
+
 (setq line-number-mode t                ;;
       linum-format 'my-linum-format     ; 显示行号列号
       column-number-mode t              ;;
