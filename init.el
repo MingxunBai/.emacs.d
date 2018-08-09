@@ -82,22 +82,20 @@
 
       x-select-enable-clipboard t       ; 支持和外部程序的拷贝
 
-      auto-save-default nil             ; 不生成临时文件
-      make-backup-files nil             ; 不生成备份文件
+      auto-save-timeout 3               ; 自动保存等待时间
 
       frame-title-format                ;;
       '("Emacs " emacs-version " - "    ; Title Format
         (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes/no
+(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes / no
 
-(advice-add 'y-or-n-p                   ; Enter 代替 y
-            :around #'y-or-n-p-with-return)
-
+;; Enter 代替 y
 (defun y-or-n-p-with-return (orig-func &rest args)
   (let ((query-replace-map (copy-keymap query-replace-map)))
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
+(advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
 
 (require 'init-gui)
 (require 'init-mode)

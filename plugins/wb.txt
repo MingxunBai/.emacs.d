@@ -50552,14 +50552,14 @@ tfrh 丢掉 千年
 tfrl 街舞
 tfrn 赞扬
 tfrp 靠近
-tfrr 自动控制 告白 先哲 第二把手
-tfrt 选手 徒手 千斤 先手 靠手
+tfrr 告白 先哲
+tfrt 选手 徒手 千斤 先手
 tfrv 靠垫 造势
 tfrw 丢失
 tfrx 待批
 tfsb 行李
 tfsd 靠椅
-tfsf 自动检索 选材 选票 翻云覆雨
+tfsf 翻云覆雨 选材 选票
 tfsg 选配 选本
 tfsi 自动检测
 tfsj 待查
@@ -50573,9 +50573,9 @@ tfsx 行楷
 tft 箸
 tfta 行长
 tftc 行径
-tftd 先知 告辞 告知 适者生存
+tftd 告辞 先知 告知 适者生存
 tfte 行船 造船
-tftf 德行 等待 乖乖 毛毯 等等 壬午 先进生产者 先行 幷 筓
+tftf 等待 等等 毛毯 幷 筓
 tftg 先生 毛重
 tfth 科教片 迁徙 选自
 tftj 箸 毛利 奥地利
