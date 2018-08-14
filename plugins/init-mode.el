@@ -122,6 +122,12 @@
 (require 'origami)
 (global-origami-mode)
 
+;; PATH
+(require-package 'exec-path-from-shell)
+(require 'exec-path-from-shell)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; Scheme
 (setq scheme-program-name "scheme")
 (add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
@@ -149,5 +155,21 @@
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
+
+;; TIDE
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode)
+  (tide-hl-identifier-mode))
+
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; Web
+(require-package 'web-mode)
+(require 'web-mode)
 
 (provide 'init-mode)
