@@ -9952,7 +9952,7 @@ efa 膹
 efai 脑震荡
 efal 肝功
 efam 膹 豮 豶
-efbb 脖子 肚子
+efbb 肚子 脖子
 efc 肢
 efca 脖颈
 efcb 脚 腳
@@ -67736,7 +67736,7 @@ ysyn 订户
 ysys 磨床
 ysyw 订座
 ysyy 魔方 訹
-yt 放 话 谢
+yt 话 放 谢
 yta 旗
 ytaa 施工 方程式 施特劳斯 妄自菲薄
 ytad 诈欺 话茬
@@ -68464,7 +68464,7 @@ ywxn 论 讹 訛 譌
 ywy 谁
 ywyc 詅 謢 﨎
 ywyf 论诗
-ywyg 认证 论语 谶语 谁 誰
+ywyg 谁 认证 论语 谶语 誰
 ywyk 认识 誝 謒
 ywyl 认为
 ywym 论调 夜市
