@@ -1,4 +1,4 @@
-(set-frame-parameter (selected-frame) 'alpha '(95 . 90))
+;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
 
 (setq line-number-mode t                ;;
       linum-format 'my-linum-format     ; 显示行号列号

@@ -157,6 +157,8 @@
 (add-hook 'eshell-mode-hook 'smartparens-mode)
 
 ;; TIDE
+(require-package 'tide)
+(require 'tide)
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
