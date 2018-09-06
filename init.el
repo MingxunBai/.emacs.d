@@ -83,6 +83,7 @@
       x-select-enable-clipboard t       ; 支持和外部程序的拷贝
 
       auto-save-timeout 3               ; 自动保存等待时间
+      make-backup-files nil             ; 禁用文件备份
 
       frame-title-format                ;;
       '("Emacs " emacs-version " - "    ; Title Format

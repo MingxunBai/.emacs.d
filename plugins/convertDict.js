@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-fs.readFile("wb.txt", function(err, data){
+fs.readFile(process.env.HOME + "/.emacs.d/plugins/wb.txt", function(err, data){
     if(err) console.log(err)
     var lines = data.toString().split("\n");
     var newLines = [

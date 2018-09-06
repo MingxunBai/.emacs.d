@@ -20,7 +20,7 @@
 
 ;; Input Method
 (require-package 'chinese-wbim)
-(autoload 'chinese-wbim-use-package "chinese-wbim" "Another emacs input method")
+(autoload 'chinese-wbim-use-package "chinese-wbim" "Emacs input method")
 (register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" (expand-file-name "plugins/wb.txt" user-emacs-directory))
 (require 'chinese-wbim-extra)
 (setq chinese-wbim-use-tooltip nil)
@@ -43,7 +43,7 @@
 ;; Emmet
 (require-package 'emmet-mode)
 (require 'emmet-mode)
-(setq emmet-self-closing-tag-style ""
+(setq emmet-self-closing-tag-style " /"
       emmet-move-cursor-between-quotes t)
 
 (define-key emmet-mode-keymap (kbd "<C-return>") nil)
