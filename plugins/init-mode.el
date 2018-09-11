@@ -49,6 +49,9 @@
 (define-key emmet-mode-keymap (kbd "<C-return>") nil)
 (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
 (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
+(define-key emmet-mode-keymap (kbd "C-c w") 'emmet-wrap-with-markup)
+
+(add-hook 'web-mode-hook 'emmet-mode)
 
 ;; Eshell
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
@@ -173,5 +176,13 @@
 ;; Web
 (require-package 'web-mode)
 (require 'web-mode)
+(setq web-mode-markup-indent-offset 2
+      web-mode-css-indent-offset 2
+      web-mode-code-indent-offset 2
+      web-mode-style-padding 2
+      web-mode-script-padding 2)
+
+(add-hook 'html-mode-hook 'web-mode)
+(add-hook 'css-mode-hook 'web-mode)
 
 (provide 'init-mode)
