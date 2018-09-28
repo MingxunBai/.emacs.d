@@ -9,19 +9,18 @@
 (recentf-mode)                          ; 历史记录
 
 (scroll-bar-mode -1)                    ; 隐藏滚动条
+(tool-bar-mode -1)                      ; 隐藏工具栏
 
 (server-mode)                           ; 守护进程
 
 (show-paren-mode)                       ; 高亮匹配括号
-
-(tool-bar-mode -1)                      ; 隐藏工具栏
 
 (winner-mode)                           ; 窗口控制
 
 ;; Input Method
 (require-package 'chinese-wbim)
 (autoload 'chinese-wbim-use-package "chinese-wbim" "Emacs input method")
-(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "五笔" "汉字五笔输入法" (expand-file-name "plugins/wb.txt" user-emacs-directory))
+(register-input-method "chinese-wbim" "euc-cn" 'chinese-wbim-use-package "WuBi " "汉字五笔输入法" (expand-file-name "plugins/wb.txt" user-emacs-directory))
 (require 'chinese-wbim-extra)
 (setq chinese-wbim-use-tooltip nil)
 
@@ -42,13 +41,15 @@
 
 ;; Emmet
 (require-package 'emmet-mode)
-(require 'emmet-mode)
 (setq emmet-self-closing-tag-style " /"
       emmet-move-cursor-between-quotes t)
 
 (define-key emmet-mode-keymap (kbd "<C-return>") nil)
 (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
 (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
+(define-key emmet-mode-keymap (kbd "C-c w") 'emmet-wrap-with-markup)
+
+(add-hook 'web-mode-hook 'emmet-mode)
 
 ;; Eshell
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
@@ -67,15 +68,15 @@
 
 ;; Evil Nerd Commenter
 (require-package 'evil-nerd-commenter)
-(require 'evil-nerd-commenter)
+
+;; Flycheck
+(require-package 'flycheck)
 
 ;; Helm
 (require-package 'helm)
-(require 'helm-config)
 
 ;; JSON
 (require-package 'json-mode)
-(require 'json-mode)
 
 ;; Lisp
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-last-sexp)
@@ -83,11 +84,9 @@
 
 ;; Multiple Cursors
 (require-package 'multiple-cursors)
-(require 'multiple-cursors)
 
 ;; NEROTree
 (require-package 'neotree)
-(require 'neotree)
 (setq neo-theme 'ascii)
 
 (defun custom-neotree-copy-relative-path ()
@@ -119,12 +118,10 @@
 
 ;; Origami
 (require-package 'origami)
-(require 'origami)
 (global-origami-mode)
 
 ;; PATH
 (require-package 'exec-path-from-shell)
-(require 'exec-path-from-shell)
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
@@ -158,20 +155,27 @@
 
 ;; TIDE
 (require-package 'tide)
-(require 'tide)
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
   (flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode)
-  (tide-hl-identifier-mode))
+  (tide-hl-identifier-mode)
+  (setq-default typescript-indent-level 2)
+  )
 
 (add-hook 'before-save-hook 'tide-format-before-save)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; Web
 (require-package 'web-mode)
-(require 'web-mode)
+(setq web-mode-markup-indent-offset 2
+      web-mode-css-indent-offset 2
+      web-mode-code-indent-offset 2
+      web-mode-style-padding 2
+      web-mode-script-padding 2)
+
+(add-hook 'html-mode-hook 'web-mode)
+(add-hook 'css-mode-hook 'web-mode)
 
 (provide 'init-mode)

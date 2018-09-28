@@ -29,7 +29,7 @@
 
 (defun require-package (package &optional min-version no-refresh)
   (if (package-installed-p package min-version)
-      t
+      (require package)
     (if (or (assoc package package-archive-contents) no-refresh)
         (if (boundp 'package-selected-packages)
             (package-install package nil)

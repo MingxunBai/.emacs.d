@@ -40615,7 +40615,7 @@ qnu 饼
 qnua 饼 餅
 qnud 馒头 饲养 乌头 皱眉头 包头
 qnue 饭前
-qnuf 馐 包装 饈
+qnuf 包装 馐 饈
 qnug 急性病 多发病
 qnuj 包间
 qnuk 餢 饍
