@@ -3,21 +3,11 @@
   (delete-trailing-whitespace)
   (custom-ff-utf-8-unix))
 (defun custom-ff-utf-8-unix ()
-  (if (and (and (not (eq major-mode 'bat-mode))
-                (not (eq major-mode 'java-mode)))
-           (not (string-match "utf-8-unix" (symbol-name buffer-file-coding-system))))
+  (if (not
+       (string-match "utf-8-unix" (symbol-name buffer-file-coding-system)))
       (set-buffer-file-coding-system 'utf-8-unix)))
 
-(defun custom-after-save-hook ()
-  (custom-compile-el))
-(defun custom-compile-el ()
-  (if (string-match "\.emacs\.d/plugins/" (buffer-file-name))
-      (progn
-        (byte-compile-file (buffer-file-name))
-        (delete-other-windows))))
-
 (add-hook 'before-save-hook 'custom-before-save-hook)
-;; (add-hook 'after-save-hook 'custom-after-save-hook)
 
 ;; Command 分离窗口运行
 (defun custom-split-window (command &optional param)
@@ -29,7 +19,7 @@
   (funcall command param)
   (other-window 1))
 
-;; Git
+;; Find file or dir in current diskpart
 (defun custom-find-dir (dir reg)
   (interactive)
   (if (not (string-match "[a-z0-9_-]/" dir))
@@ -37,20 +27,6 @@
     (if (file-exists-p (expand-file-name reg dir))
         dir
       (custom-find-dir (expand-file-name "../" dir) reg))))
-
-(defun custom-git-push (root)
-  (shell-command (concat "cd " root " && git add ."))
-  (shell-command (concat "cd " root " && git commit -m 'Update'"))
-  (shell-command (concat "cd " root " && git push")))
-
-(defun custom-git-push-current-buffer ()
-  (interactive)
-  (if (condition-case nil
-          (setq file-path (file-name-directory (buffer-file-name)))
-        (error nil))
-      (let ((root (custom-find-dir file-path ".git/")))
-        (custom-git-push root))
-    (message "Git need a local file!")))
 
 ;; 缩进重排
 (defun custom-remeber-line ()
@@ -169,6 +145,14 @@
   (newline-and-indent)
   (previous-line)
   (indent-according-to-mode))
+
+;; 删除
+(defun custom-backword ()
+  (interactive)
+  (if (= (char-before) ?\\)
+      (message "whitespace")
+    (message "has word"))
+  )
 
 ;; Javadoc
 (defun custom-javadoc-begin-newline ()

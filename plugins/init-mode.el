@@ -71,9 +71,13 @@
 
 ;; Flycheck
 (require-package 'flycheck)
+(global-flycheck-mode)
 
 ;; Helm
 (require-package 'helm)
+
+;; Hunger Delete
+(require-package 'hungry-delete)
 
 ;; JSON
 (require-package 'json-mode)
@@ -89,7 +93,7 @@
 (require-package 'neotree)
 (setq neo-theme 'ascii)
 
-(defun custom-neotree-copy-relative-path ()
+(defun custom-copy-relative-path ()
   (interactive)
   (neotree-copy-filepath-to-yank-ring)
   (other-window 1)
@@ -99,7 +103,7 @@
 (define-key neotree-mode-map (kbd "k") 'neotree-previous-line)
 (define-key neotree-mode-map (kbd "]") 'neotree-select-next-sibling-node)
 (define-key neotree-mode-map (kbd "[") 'neotree-select-previous-sibling-node)
-(define-key neotree-mode-map (kbd "C-c c") 'custom-neotree-copy-relative-path)
+(define-key neotree-mode-map (kbd "C-c c") 'custom-copy-relative-path)
 
 ;; Org
 (setq org-startup-indented t
@@ -158,24 +162,28 @@
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
-  (flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (tide-hl-identifier-mode)
-  (setq-default typescript-indent-level 2)
-  )
+  (setq-default typescript-indent-level 2))
 
 (add-hook 'before-save-hook 'tide-format-before-save)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; Web
 (require-package 'web-mode)
-(setq web-mode-markup-indent-offset 2
-      web-mode-css-indent-offset 2
-      web-mode-code-indent-offset 2
-      web-mode-style-padding 2
-      web-mode-script-padding 2)
+(defun web-mode-on-hook ()
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-style-padding 2
+        web-mode-script-padding 2)
+  (flycheck-add-mode 'html-tidy 'web-mode)
+  (flycheck-add-mode 'css-csslint 'web-mode)
+  (hungry-delete-mode)
+  (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file))
 
-(add-hook 'html-mode-hook 'web-mode)
-(add-hook 'css-mode-hook 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-hook 'web-mode-hook #'web-mode-on-hook)
 
 (provide 'init-mode)
