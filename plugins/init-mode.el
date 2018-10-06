@@ -11,8 +11,6 @@
 (scroll-bar-mode -1)                    ; 隐藏滚动条
 (tool-bar-mode -1)                      ; 隐藏工具栏
 
-(server-mode)                           ; 守护进程
-
 (show-paren-mode)                       ; 高亮匹配括号
 
 (winner-mode)                           ; 窗口控制
