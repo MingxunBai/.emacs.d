@@ -33,6 +33,7 @@
       ac-auto-show-menu 0
       ac-ignore-case nil
       ac-use-menu-map t)
+(add-to-list 'ac-modes 'bat-mode)
 
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 (define-key ac-completing-map (kbd "M-/") 'ac-stop)
