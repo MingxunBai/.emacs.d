@@ -46,6 +46,6 @@
       x-underline-at-descent-line t)
 (if (eq window-system 'nil)
     (menu-bar-mode -1)
-  (require 'solarized-light-theme))
+  (load-theme 'solarized-light))
 
 (provide 'init-gui)

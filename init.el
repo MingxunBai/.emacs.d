@@ -7,10 +7,9 @@
 (defalias 'rr  'replace-regexp)
 (defalias 'rs  'replace-string)
 
-;; Const
-(defconst *WINDOWS*  (eq system-type 'windows-nt))
+;; Load Path
 (defun add-subdirs-to-load-path (dir)
-  "Recursive add directories to `load-path'."
+  "Recursive add `DIR' to `load-path'."
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
@@ -40,19 +39,17 @@
 
 ;; Encoding
 (setq current-language-environment "utf-8"
-      default-buffer-file-coding-system 'utf-8
       locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
-(when *WINDOWS*
+(when (eq system-type 'windows-nt)
   ;; use gbk for Windows
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
-  (setq locale-coding-system 'gbk) ; 覆盖 utf-8, 确保 Windows 下 mode-line 日期不乱码
-  )
+  (setq locale-coding-system 'gbk)) ; 覆盖 utf-8, 确保 Windows 下 mode-line 日期不乱码
 
 ;; GC
 (when (version< "24.5" emacs-version)
@@ -63,9 +60,11 @@
 ;; Setting
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
-              tab-width 4)              ;;
+              tab-width 4               ;;
+              default-buffer-file-coding-system 'utf-8)
 
 (setq inhibit-startup-message t         ; 关闭启动动画
+      custom-safe-themes t              ; 信任主题
 
       visible-bell t                    ;;
       ring-bell-function 'ignore        ; 关闭错误提示音
@@ -80,7 +79,7 @@
 
       track-eol t                       ; 换行时，光标始终保持在行首尾
 
-      x-select-enable-clipboard t       ; 支持和外部程序的拷贝
+      select-enable-clipboard t         ; 支持和外部程序的拷贝
 
       auto-save-timeout 3               ; 自动保存等待时间
       make-backup-files nil             ; 禁用文件备份
@@ -102,3 +101,5 @@
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
+
+(provide 'init)
