@@ -40,14 +40,16 @@
 
 ;; Emmet
 (require-package 'emmet-mode)
-(setq emmet-self-closing-tag-style " /"
-      emmet-move-cursor-between-quotes t)
+(defun emmet-mode-on-hook () 
+  (setq emmet-self-closing-tag-style " /"
+        emmet-move-cursor-between-quotes t)
 
-(define-key emmet-mode-keymap (kbd "<C-return>") nil)
-(define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
-(define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
-(define-key emmet-mode-keymap (kbd "C-c w") 'emmet-wrap-with-markup)
+  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
+  (define-key emmet-mode-keymap (kbd "C-M-[") 'emmet-prev-edit-point)
+  (define-key emmet-mode-keymap (kbd "C-M-]") 'emmet-next-edit-point)
+  (define-key emmet-mode-keymap (kbd "C-c w") 'emmet-wrap-with-markup))
 
+(add-hook 'emmet-mode-hook #'emmet-mode-on-hook)
 (add-hook 'web-mode-hook 'emmet-mode)
 
 ;; Eshell
@@ -88,7 +90,7 @@
 ;; Multiple Cursors
 (require-package 'multiple-cursors)
 
-;; NEROTree
+;; NEOTree
 (require-package 'neotree)
 (setq neo-theme 'ascii)
 
@@ -98,11 +100,14 @@
   (other-window 1)
   (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
 
-(define-key neotree-mode-map (kbd "j") 'neotree-next-line)
-(define-key neotree-mode-map (kbd "k") 'neotree-previous-line)
-(define-key neotree-mode-map (kbd "]") 'neotree-select-next-sibling-node)
-(define-key neotree-mode-map (kbd "[") 'neotree-select-previous-sibling-node)
-(define-key neotree-mode-map (kbd "C-c c") 'custom-copy-relative-path)
+(defun neotree-mode-on-hook ()
+  (define-key neotree-mode-map (kbd "j") 'neotree-next-line)
+  (define-key neotree-mode-map (kbd "k") 'neotree-previous-line)
+  (define-key neotree-mode-map (kbd "]") 'neotree-select-next-sibling-node)
+  (define-key neotree-mode-map (kbd "[") 'neotree-select-previous-sibling-node)
+  (define-key neotree-mode-map (kbd "C-c c") 'custom-copy-relative-path))
+
+(add-hook 'neotree-mode-hook #'neotree-mode-on-hook)
 
 ;; Org
 (setq org-startup-indented t
