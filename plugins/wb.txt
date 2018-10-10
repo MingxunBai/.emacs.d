@@ -26410,6 +26410,7 @@ kdjg 咟
 kdjh 顺畅
 kdjn 唵
 kdka 踌躇
+kdkd 嘎嘎
 kdkf 咕嘟
 kdkh 顺路
 kdkk 顺口
@@ -41439,7 +41440,7 @@ qtdx 独龙 猛袭
 qtdy 狂态 犹太 犾 鉃
 qte 犭 锈
 qtec 猨
-qtee 獬豸
+qtee 猎豹 獬豸
 qteg 狙
 qteh 猙
 qtem 猺
