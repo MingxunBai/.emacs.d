@@ -1,4 +1,5 @@
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 (setq line-number-mode t                ;;
       linum-format 'my-linum-format     ; 显示行号列号

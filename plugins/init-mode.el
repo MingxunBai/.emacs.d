@@ -26,21 +26,31 @@
 (toggle-input-method)
 
 ;; Auto Complete
-(require-package 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-auto-start t
-      ac-auto-show-menu 0
-      ac-ignore-case nil
-      ac-use-menu-map t)
-(add-to-list 'ac-modes 'bat-mode)
+;; (require-package 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (setq ac-auto-start t
+;;       ac-auto-show-menu 0
+;;       ac-ignore-case nil
+;;       ac-use-menu-map t)
+;; (add-to-list 'ac-modes 'bat-mode)
+;; (add-to-list 'ac-modes 'json-mode)
 
-(define-key ac-mode-map (kbd "M-/") 'auto-complete)
-(define-key ac-completing-map (kbd "M-/") 'ac-stop)
+;; (define-key ac-mode-map (kbd "M-/") 'auto-complete)
+;; (define-key ac-completing-map (kbd "M-/") 'ac-stop)
+
+;; Company
+(require-package 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0
+      company-echo-delay 0
+      company-minimum-prefix-length 1
+      company-tooltip-limit 10
+      company-tooltip-align-annotations t)
 
 ;; Emmet
 (require-package 'emmet-mode)
-(defun emmet-mode-on-hook () 
+(defun emmet-mode-on-hook ()
   (setq emmet-self-closing-tag-style " /"
         emmet-move-cursor-between-quotes t)
 
@@ -164,10 +174,10 @@
 ;; TIDE
 (require-package 'tide)
 (defun setup-tide-mode ()
-  (interactive)
   (tide-setup)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (tide-hl-identifier-mode)
+  (hungry-delete-mode)
   (setq-default typescript-indent-level 2))
 
 (add-hook 'before-save-hook 'tide-format-before-save)
