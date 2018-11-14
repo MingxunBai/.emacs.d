@@ -200,4 +200,8 @@
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook #'web-mode-on-hook)
 
+;; Window Numbering
+(require-package 'window-numbering)
+(window-numbering-mode)
+
 (provide 'init-mode)
