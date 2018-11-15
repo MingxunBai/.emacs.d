@@ -1,3 +1,9 @@
+;;; init.el --- Initial configuration
+
+;;; Commentary:
+
+;;; Code:
+
 (setq debug-on-error t)
 
 ;; Alias
@@ -101,3 +107,5 @@
 (require 'init-feature)
 
 (provide 'init)
+
+;;; init.el ends here

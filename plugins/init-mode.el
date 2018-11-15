@@ -1,3 +1,9 @@
+;;; init-mode.el --- modes
+
+;;; Commentary:
+
+;;; Code:
+
 (ido-mode)
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
@@ -205,3 +211,5 @@
 (window-numbering-mode)
 
 (provide 'init-mode)
+
+;;; init-mode.el ends here
