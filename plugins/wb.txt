@@ -22397,7 +22397,7 @@ ipyo 演变
 ipyq 演义
 ipyt 党旗 常州
 ipyu 学说 演说
-ipyw 学府 深夜 泛神论
+ipyw 深夜 学府
 ipyy 深广 常言
 iq 光 兆
 iqa 汦
@@ -23048,7 +23048,7 @@ itpy 泛 洗礼
 itq 瀩
 itqd 浩然
 itqe 海角 海蟹
-itqg 省钱 洗印 海鲜 海鱼 洗钱
+itqg 海鲜 省钱
 itqh 海外 省外
 itqi 海尔
 itqj 海龟 海象
@@ -47498,7 +47498,7 @@ sgty 酥
 sgu 枰
 sgua 醝
 sguc 酸痛
-sgud 本着 酌减
+sgud 配送 本着 酌减
 sgue 醸
 sguf 西装 顶天立地 酙
 sgug 酸辣
@@ -54893,7 +54893,7 @@ ugwt 痛不欲生
 ugwv 美分
 ugww 病人 美人
 ugwx 美化
-ugwy 决不食言 美食 盖住 闲不住 站不住
+ugwy 美食 决不食言 盖住
 ugx 冱 沍
 ugxf 症结
 ugxg 冱
@@ -62792,7 +62792,7 @@ wyry 会计制度 仗义执言
 wys 集
 wysc 集权
 wysd 化腐朽为神奇
-wysf 邻村 售票 全文检索
+wysf 食材 售票 全文检索
 wysg 修订本 贪杯 含酸 合订本
 wysl 人言可畏
 wysm 停机
@@ -66063,7 +66063,7 @@ ygwr 证件
 ygws 主体
 ygwt 主任
 ygwv 评分
-ygww 主人 证人 评价 主从 肇事人
+ygww 评价 证人 肇事人
 ygwy 主食 证伪
 ygxe 评级
 ygxg 主线
