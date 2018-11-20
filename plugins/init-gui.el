@@ -1,3 +1,9 @@
+;;; init-gui.el --- GUI
+
+;;; Commentary:
+
+;;; Code:
+
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
@@ -23,11 +29,13 @@
   "Face for the current line number."
   :group 'linum)
 (defun my-linum-format (line-number)
+  "Linum format: LINE-NUMBER."
   (propertize (format " %3d " line-number) 'face
               (if (eq line-number my-linum-current-line-number)
                   'my-linum-hl
                 'linum)))
 (defadvice linum-update (around my-linum-update)
+  "Linum update: AROUND MY-LINUM-UPDATE."
   (let ((my-linum-current-line-number (line-number-at-pos)))
     ad-do-it))
 (ad-activate 'linum-update)
@@ -50,3 +58,5 @@
   (load-theme 'solarized-light))
 
 (provide 'init-gui)
+
+;;; init-gui.el ends here

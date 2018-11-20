@@ -1,3 +1,9 @@
+;;; init-mode.el --- modes
+
+;;; Commentary:
+
+;;; Code:
+
 (ido-mode)
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
@@ -200,4 +206,10 @@
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook #'web-mode-on-hook)
 
+;; Window Numbering
+(require-package 'window-numbering)
+(window-numbering-mode)
+
 (provide 'init-mode)
+
+;;; init-mode.el ends here

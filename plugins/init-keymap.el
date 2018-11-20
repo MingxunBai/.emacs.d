@@ -1,3 +1,9 @@
+;;; init-keymap.el --- Custom keymap
+
+;;; Commentary:
+
+;;; Code:
+
 (dolist (key-map
          '(
            ;; System
@@ -50,3 +56,5 @@
   (global-set-key (kbd (car key-map)) (cdr key-map)))
 
 (provide 'init-keymap)
+
+;;; init-keymap.el ends here

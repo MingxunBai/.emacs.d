@@ -1,3 +1,9 @@
+;;; init.el --- Initial configuration
+
+;;; Commentary:
+
+;;; Code:
+
 (setq debug-on-error t)
 
 ;; Alias
@@ -75,8 +81,6 @@
 
       kill-ring-max 500                 ; 设置历史记录数量
 
-      kill-whole-line t                 ; 在行首 C-k 时，同时删除该行
-
       track-eol t                       ; 换行时，光标始终保持在行首尾
 
       select-enable-clipboard t         ; 支持和外部程序的拷贝
@@ -103,3 +107,5 @@
 (require 'init-feature)
 
 (provide 'init)
+
+;;; init.el ends here
