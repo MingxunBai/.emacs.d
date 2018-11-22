@@ -14,12 +14,14 @@
 
 (recentf-mode)                          ; 历史记录
 
-(scroll-bar-mode -1)                    ; 隐藏滚动条
-(tool-bar-mode -1)                      ; 隐藏工具栏
-
 (show-paren-mode)                       ; 高亮匹配括号
 
 (winner-mode)                           ; 窗口控制
+
+(if (not (eq window-system 'nil))       ; 非X窗口
+    (scroll-bar-mode -1))               ; 隐藏滚动条
+(menu-bar-mode -1)                      ; 隐藏菜单栏
+(tool-bar-mode -1)                      ; 隐藏工具栏
 
 ;; Input Method
 (require-package 'chinese-wbim)

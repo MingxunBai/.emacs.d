@@ -40,8 +40,6 @@
     ad-do-it))
 (ad-activate 'linum-update)
 (global-hl-line-mode)
-(set-face-attribute hl-line-face nil :background "#EEE8D5")
-(set-face-background 'mode-line "#EDEDED")
 
 ;; Solarized Theme
 (require-package 'solarized-theme)
@@ -53,9 +51,7 @@
       solarized-height-plus-3 1.0
       solarized-height-plus-4 1.0
       x-underline-at-descent-line t)
-(if (eq window-system 'nil)
-    (menu-bar-mode -1)
-  (load-theme 'solarized-light))
+(load-theme 'solarized-light)
 
 (provide 'init-gui)
 
