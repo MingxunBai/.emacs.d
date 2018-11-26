@@ -56,6 +56,8 @@
       company-tooltip-limit 10
       company-tooltip-align-annotations t)
 
+(define-key company-mode-map (kbd "M-/") #'company-complete)
+
 ;; Emmet
 (require-package 'emmet-mode)
 (defun emmet-mode-on-hook ()
