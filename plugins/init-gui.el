@@ -20,6 +20,13 @@
          (propertize (eshell/pwd))
          (if (= (user-uid) 0) " # " " $ "))))
 
+(add-hook 'before-change-functions
+          (lambda (&rest args)
+            (if (not (buffer-modified-p))
+                (setq frame-title-format '("Emacs " emacs-version " - " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+              (setq frame-title-format '("* Emacs " emacs-version " - " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+              )))
+
 (require 'hl-line)
 (defvar my-linum-current-line-number 0)
 (defface my-linum-hl

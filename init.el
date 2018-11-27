@@ -87,10 +87,7 @@
 
       auto-save-timeout 3               ; 自动保存等待时间
       make-backup-files nil             ; 禁用文件备份
-
-      frame-title-format                ;;
-      '("Emacs " emacs-version " - "    ; Title Format
-        (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+      )
 
 (fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes / no
 
