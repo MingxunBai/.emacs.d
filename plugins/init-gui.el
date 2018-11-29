@@ -7,6 +7,17 @@
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+(add-hook 'prog-mode-hook 'linum-mode)
+
+(if (not (eq window-system 'nil))       ; X 窗口
+    (scroll-bar-mode -1))               ; 隐藏滚动条
+(if (and (eq system-type 'darwin)
+         (not (eq window-system 'nil)))
+    t
+  (menu-bar-mode -1)                    ; 隐藏菜单栏
+  )
+(tool-bar-mode -1)                      ; 隐藏工具栏
+
 (setq line-number-mode t                ;;
       linum-format 'my-linum-format     ; 显示行号列号
       column-number-mode t              ;;
