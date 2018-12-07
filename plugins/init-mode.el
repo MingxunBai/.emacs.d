@@ -92,6 +92,7 @@
 
 ;; Hunger Delete
 (require-package 'hungry-delete)
+(add-hook 'prog-mode-hook 'hungry-delete-mode)
 
 ;; JSON
 (require-package 'json-mode)
@@ -180,7 +181,6 @@
   (tide-setup)
   ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (tide-hl-identifier-mode)
-  (hungry-delete-mode)
   (setq-default typescript-indent-level 2))
 
 (add-hook 'before-save-hook 'tide-format-before-save)
@@ -196,7 +196,6 @@
         web-mode-script-padding 2)
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode)
-  (hungry-delete-mode)
   (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))

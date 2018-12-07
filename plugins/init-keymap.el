@@ -7,6 +7,7 @@
 (dolist (key-map
          '(
            ;; System
+           ("C-a" . custom-move-beginning-of-line)
 
            ;; Winner mode
            ("C-c 4 r" . winner-redo)

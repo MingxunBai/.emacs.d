@@ -39,6 +39,15 @@
         dir
       (custom-find-dir (expand-file-name "../" dir) reg))))
 
+;; 移动光标至行首或非空字符处
+(defun custom-move-beginning-of-line ()
+  "Move caret beginning of line or indentation of line."
+  (interactive)
+  (let ((pos (point)))
+    (back-to-indentation)
+    (if (eq pos (point))
+        (move-beginning-of-line nil))))
+
 ;; 缩进重排
 (defun custom-remeber-line ()
   "Remeber line."
@@ -132,15 +141,15 @@
 ;; 匹配光标上下文
 (defun custom-paren-match (bef end)
   "Paren match BEF END."
-  (if (and (string-equal bef (string (preceding-char)))
-           (string-equal end (string (following-char))))
+  (if (and (string-match bef (string (preceding-char)))
+           (string-match end (string (following-char))))
       't
     nil))
 
 (defun custom-is-in-paren? ()
   "Is in paren?"
   (if (or (custom-paren-match "{" "}")
-          (custom-paren-match "[" "]")
+          (custom-paren-match "\\[" "\\]")
           (custom-paren-match "(" ")")
           (custom-paren-match ">" "<"))
       't
