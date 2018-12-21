@@ -78,7 +78,9 @@
         (eshell/cd path))
     (progn
       (custom-split-window 'eshell)
-      (other-window 1))))
+      (other-window 1)))
+  (tabbar-local-mode)
+  (company-mode -1))
 
 ;; Evil Nerd Commenter
 (require-package 'evil-nerd-commenter)
