@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(ido-mode)
+(ido-mode t)
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
 
@@ -92,7 +92,7 @@
 
 ;; Hunger Delete
 (require-package 'hungry-delete)
-(add-hook 'prog-mode-hook 'hungry-delete-mode)
+(global-hungry-delete-mode)
 
 ;; JSON
 (require-package 'json-mode)
@@ -132,11 +132,7 @@
       '(("d" "Agenda for current week" agenda "DONE"
          ((org-agenda-time-grid nil)
           (org-agenda-span 'week)
-          (org-agenda-entry-types '(:closed))))
-        ("p" . "Agenda for PRIORITIES")
-        ("pa" "URGENCY" tags-todo "+PRIORITY=\"A\"")
-        ("pb" "NORMAL " tags-todo "+PRIORITY=\"B\"")
-        ("pc" "FEATURE" tags-todo "+PRIORITY=\"C\"")))
+          (org-agenda-entry-types '(:closed))))))
 
 ;; Origami
 (require-package 'origami)
@@ -146,6 +142,10 @@
 (require-package 'exec-path-from-shell)
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+;; Powerline
+(require-package 'powerline)
+(powerline-center-theme)
 
 ;; Scheme
 (setq scheme-program-name "scheme")
@@ -175,6 +175,13 @@
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
 
+;; Tabbar
+(require-package 'tabbar)
+
+;; Tabbar Ruler
+(require-package 'tabbar-ruler)
+(tabbar-ruler-group-by-projectile-project)
+
 ;; TIDE
 (require-package 'tide)
 (defun setup-tide-mode ()
@@ -198,7 +205,7 @@
   (flycheck-add-mode 'css-csslint 'web-mode)
   (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file))
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook #'web-mode-on-hook)
 
