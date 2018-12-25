@@ -171,6 +171,10 @@
   (require 'cmuscheme)
   (define-key scheme-mode-map (kbd "<f5>") 'custom-scheme-send-definition))
 
+;; Server Mode
+(when (eq system-type 'windows-nt)
+  (server-mode))
+
 ;; Smart Parens
 (require-package 'smartparens)
 (require 'smartparens-config)
