@@ -54,6 +54,7 @@
 ;; Emmet
 (require-package 'emmet-mode)
 (defun emmet-mode-on-hook ()
+  "Emmet mode hook."
   (setq emmet-self-closing-tag-style " /"
         emmet-move-cursor-between-quotes t)
 
@@ -68,6 +69,7 @@
 ;; Eshell
 (add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
 (defun custom-eshll ()
+  "Eshell."
   (interactive)
   (if (condition-case nil
           (setq path (file-name-directory (buffer-file-name)))
@@ -111,12 +113,14 @@
 (setq neo-theme 'ascii)
 
 (defun custom-copy-relative-path ()
+  "Copy relative path."
   (interactive)
   (neotree-copy-filepath-to-yank-ring)
   (other-window 1)
   (kill-new (file-relative-name (car kill-ring) (file-name-directory (buffer-file-name)))))
 
 (defun neotree-mode-on-hook ()
+  "Neotree mode hook."
   (define-key neotree-mode-map (kbd "j") 'neotree-next-line)
   (define-key neotree-mode-map (kbd "k") 'neotree-previous-line)
   (define-key neotree-mode-map (kbd "]") 'neotree-select-next-sibling-node)
@@ -145,10 +149,6 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-;; Powerline
-(require-package 'powerline)
-(powerline-center-theme)
-
 ;; Scheme
 (setq scheme-program-name "scheme")
 (add-hook 'scheme-mode-hook 'custom-init-scheme-mode)
@@ -172,21 +172,14 @@
   (define-key scheme-mode-map (kbd "<f5>") 'custom-scheme-send-definition))
 
 ;; Server Mode
-(when (eq system-type 'windows-nt)
-  (server-mode))
+(require-package 'server)
+(unless (server-running-p) (server-mode))
 
 ;; Smart Parens
 (require-package 'smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
-
-;; Tabbar
-(require-package 'tabbar)
-
-;; Tabbar Ruler
-(require-package 'tabbar-ruler)
-(tabbar-ruler-group-by-projectile-project)
 
 ;; TIDE
 (require-package 'tide)

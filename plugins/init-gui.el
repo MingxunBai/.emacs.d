@@ -7,30 +7,29 @@
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
 (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-(add-hook 'prog-mode-hook 'linum-mode)
-
-(if (not (eq window-system 'nil))       ; X 窗口
-    (scroll-bar-mode -1))               ; 隐藏滚动条
 (if (and (eq system-type 'darwin)
-         (not (eq window-system 'nil)))
+         (display-graphic-p))
     t
   (menu-bar-mode -1)                    ; 隐藏菜单栏
   )
 (tool-bar-mode -1)                      ; 隐藏工具栏
+(scroll-bar-mode -1)                    ; 隐藏滚动条
 
-(setq line-number-mode t                ;;
-      linum-format 'my-linum-format     ; 显示行号列号
-      column-number-mode t              ;;
-      font-lock-maximum-decoration t    ;;
-      font-lock-verbose t               ; 渲染当前 buffer 语法高亮
-      font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
-      eshell-prompt-function            ; Eshell Prompt
-      (lambda ()
-        (concat
-         (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
-         (propertize (eshell/pwd))
-         (if (= (user-uid) 0) " # " " $ ")))
-      frame-title-format '("Emacs " emacs-version " - " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+(add-hook 'prog-mode-hook 'linum-mode)
+(setq-default mode-line-format nil
+              line-number-mode t             ;;
+              linum-format 'my-linum-format  ; 显示行号列号
+              column-number-mode t           ;;
+              font-lock-maximum-decoration t ;;
+              font-lock-verbose t       ; 渲染当前 buffer 语法高亮
+              font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000))
+              eshell-prompt-function    ; Eshell Prompt
+              (lambda ()
+                (concat
+                 (propertize (format-time-string "[%Y-%m-%d %H:%M:%S] " (current-time)))
+                 (propertize (eshell/pwd))
+                 (if (= (user-uid) 0) " # " " $ ")))
+              frame-title-format '("Emacs " emacs-version " - " (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 (require 'hl-line)
 (defvar my-linum-current-line-number 0)

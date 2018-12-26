@@ -37,8 +37,8 @@
            ("C-c c p" . evilnc-comment-or-uncomment-paragraphs)
 
            ;; Helm
-           ("C-c c b" . helm-buffers-list)
-           ("C-c c f" . helm-find-files)
+           ("C-c b" . helm-buffers-list)
+           ("C-c f" . helm-find-files)
            ("M-x"     . helm-M-x)
 
            ;; Multiple cursors

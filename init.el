@@ -7,41 +7,20 @@
 (setq debug-on-error t)
 
 ;; Alias
-(defalias 'es  'custom-eshll)
-(defalias 'hb  'helm-buffers-list)
-(defalias 'hr  'helm-recentf)
-(defalias 'rr  'replace-regexp)
-(defalias 'rs  'replace-string)
-
-;; Load Path
-(defun add-subdirs-to-load-path (dir)
-  "Recursive add `DIR' to `load-path'."
-  (let ((default-directory (file-name-as-directory dir)))
-    (add-to-list 'load-path dir)
-    (normal-top-level-add-subdirs-to-load-path)))
-;; (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+(defalias 'es 'custom-eshll)
+(defalias 'hb 'helm-buffers-list)
+(defalias 'hr 'helm-recentf)
+(defalias 'rr 'replace-regexp)
+(defalias 'rs 'replace-string)
 
 ;; ELPA
 (setq package-archives
       '(("cn-gnu"       . "http://elpa.emacs-china.org/gnu/")
         ("cn-melpa"     . "http://elpa.emacs-china.org/melpa/")
         ("cn-marmalade" . "http://elpa.emacs-china.org/marmalade/")
-        ("cn-org"       . "http://elpa.emacs-china.org/org/")
-        ))
+        ("cn-org"       . "http://elpa.emacs-china.org/org/")))
 (require 'package)
 (package-initialize)
-
-(defun require-package (package &optional min-version no-refresh)
-  (if (package-installed-p package min-version)
-      (require package)
-    (if (or (assoc package package-archive-contents) no-refresh)
-        (if (boundp 'package-selected-packages)
-            (package-install package nil)
-          (package-install package))
-      (progn
-        (package-refresh-contents)
-        (require-package package min-version t)))))
 
 ;; Encoding
 (setq current-language-environment "utf-8"
@@ -58,50 +37,76 @@
   (setq locale-coding-system 'gbk)) ; 覆盖 utf-8, 确保 Windows 下 mode-line 日期不乱码
 
 ;; GC
+(setq gc-cons-threshold 100000000)
 (when (version< "24.5" emacs-version)
   (setq gc-cons-threshold (* 512 1024 1024)
         gc-cons-percentage 0.5)
   (run-with-idle-timer 5 t #'garbage-collect))
 
+;; Load Path
+(defun add-subdirs-to-load-path (dir)
+  "Recursive add `DIR' to `load-path'."
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
+    (normal-top-level-add-subdirs-to-load-path)))
+;; (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+
+(defun require-package (package &optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (or (package-installed-p package min-version)
+      (let* ((known (cdr (assoc package package-archive-contents)))
+             (versions (mapcar #'package-desc-version known)))
+        (if (cl-find-if (lambda (v) (version-list-<= min-version v)) versions)
+            (package-install package)
+          (if no-refresh
+              (error "No version of %s >= %S is available" package min-version)
+            (package-refresh-contents)
+            (require-package package min-version t)))))
+  (require package))
+
 ;; Setting
 (setq-default indent-tabs-mode nil      ;;
               c-basic-offset 4          ; 设置缩进为 4 个空格
               tab-width 4               ;;
-              default-buffer-file-coding-system 'utf-8)
 
-(setq inhibit-startup-message t         ; 关闭启动动画
-      custom-safe-themes t              ; 信任主题
+              default-buffer-file-coding-system 'utf-8
 
-      visible-bell t                    ;;
-      ring-bell-function 'ignore        ; 关闭错误提示音
-      save-abbrevs nil                  ;;
+              inhibit-startup-message t ; 关闭启动动画
+              custom-safe-themes t      ; 信任主题
 
-      scroll-margin 3                   ;;
-      scroll-conservatively 10000       ; 靠近屏幕边沿3行时就开始滚动
+              visible-bell t             ;;
+              ring-bell-function 'ignore ; 关闭错误提示音
+              save-abbrevs nil           ;;
 
-      kill-ring-max 500                 ; 设置历史记录数量
+              scroll-margin 3             ;;
+              scroll-conservatively 10000 ; 靠近屏幕边沿3行时就开始滚动
 
-      track-eol t                       ; 换行时，光标始终保持在行首尾
+              kill-ring-max 500         ; 设置历史记录数量
 
-      select-enable-clipboard t         ; 支持和外部程序的拷贝
+              track-eol t               ; 换行时，光标始终保持在行首尾
 
-      auto-save-timeout 3               ; 自动保存等待时间
-      make-backup-files nil             ; 禁用文件备份
-      )
+              select-enable-clipboard t ; 支持和外部程序的拷贝
 
-(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes / no
+              auto-save-timeout 3       ; 自动保存等待时间
+              make-backup-files nil     ; 禁用文件备份
+              )
 
 ;; Enter 代替 y
 (defun y-or-n-p-with-return (orig-func &rest args)
+  "ORIG-FUNC ARGS?."
   (let ((query-replace-map (copy-keymap query-replace-map)))
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
 (advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
+(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes / no
 
-(require 'init-gui)
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
+(require 'init-gui)
 
 (provide 'init)
 

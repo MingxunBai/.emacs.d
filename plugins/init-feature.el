@@ -117,7 +117,7 @@
   (progn
     (beginning-of-line)
     (newline-and-indent)
-    (previous-line)
+    (forward-line -1)
     (indent-according-to-mode)))
 
 ;; 向下新建一行
@@ -161,7 +161,7 @@
   (interactive)
   (newline-and-indent)
   (newline-and-indent)
-  (previous-line)
+  (forward-line -1)
   (indent-according-to-mode))
 
 ;; 在右侧新建一个窗口
@@ -187,16 +187,16 @@
     (indent-region point-before (point))))
 
 ;; 移动当前行
-(defun custom-move-current-line (n)
-  "Move caret N lines."
+(defun custom-move-current-line (line caret)
+  "Move caret to (LINE, CARET) ."
   (kill-new "")
   (beginning-of-line)
   (kill-whole-line)
-  (forward-line n)
+  (forward-line line)
   (yank)
   (forward-line -1)
   (back-to-indentation)
-  (forward-char n)
+  (forward-char caret)
   (indent-according-to-mode))
 
 (defun custom-remeber-point-step ()
@@ -250,8 +250,8 @@
           ((custom-eobp? 0)
            (newline)
            (forward-line -1)
-           (custom-move-current-line -1))
-          (t (custom-move-current-line -1)))))
+           (custom-move-current-line -1 step))
+          (t (custom-move-current-line -1 step)))))
 
 ;; 下移一行
 (defun custom-move-down-current-line ()
@@ -266,8 +266,8 @@
            (custom-forward-line-end 1)
            (newline)
            (forward-line -2)
-           (custom-move-current-line 1))
-          (t (custom-move-current-line 1)))))
+           (custom-move-current-line 1 step))
+          (t (custom-move-current-line 1 step)))))
 
 ;; 复制当前行
 (defun custom-duplicate-line ()
