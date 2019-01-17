@@ -16,8 +16,7 @@
 (scroll-bar-mode -1)                    ; 隐藏滚动条
 
 (add-hook 'prog-mode-hook 'linum-mode)
-(setq-default mode-line-format nil
-              line-number-mode t             ;;
+(setq-default line-number-mode t             ;;
               linum-format 'my-linum-format  ; 显示行号列号
               column-number-mode t           ;;
               font-lock-maximum-decoration t ;;

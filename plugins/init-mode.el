@@ -81,7 +81,6 @@
     (progn
       (custom-split-window 'eshell)
       (other-window 1)))
-  (tabbar-local-mode)
   (company-mode -1))
 
 ;; Evil Nerd Commenter
@@ -174,6 +173,10 @@
 ;; Server Mode
 (require-package 'server)
 (unless (server-running-p) (server-mode))
+
+;; Smart Mode Line
+(require-package 'smart-mode-line)
+(sml/setup)
 
 ;; Smart Parens
 (require-package 'smartparens)
