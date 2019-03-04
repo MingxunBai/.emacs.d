@@ -177,6 +177,7 @@
 ;; Smart Mode Line
 (require-package 'smart-mode-line)
 (sml/setup)
+(setq sml/name-width 0)
 
 ;; Smart Parens
 (require-package 'smartparens)
@@ -188,7 +189,7 @@
 (require-package 'tide)
 (defun setup-tide-mode ()
   (tide-setup)
-  ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (tide-hl-identifier-mode)
   (setq-default typescript-indent-level 2))
 
@@ -203,11 +204,11 @@
         web-mode-code-indent-offset 2
         web-mode-style-padding 2
         web-mode-script-padding 2)
-  (flycheck-add-mode 'html-tidy 'web-mode)
+  ;; (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode)
   (define-key web-mode-map (kbd "C-c v") 'browse-url-of-file))
 
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-hook 'web-mode-hook #'web-mode-on-hook)
 

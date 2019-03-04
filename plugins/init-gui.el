@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 90))
-(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+;; (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 (if (not (display-graphic-p))
   (menu-bar-mode -1))                   ; 隐藏菜单栏
