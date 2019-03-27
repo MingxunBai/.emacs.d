@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-fs.readFile(process.env.HOME + "/.emacs.d/plugins/wb.txt", function(err, data){
-    if(err) console.log(err)
+fs.readFile(process.env.HOME + "/.emacs.d/plugins/wb.txt", function (err, data) {
+    if (err) console.log(err)
     var lines = data.toString().split("\n");
     var newLines = [
         "jfuj,2=%yyyy%-%MM%-%dd% %HH%:%mm%:%ss%\n",
@@ -19,8 +19,8 @@ fs.readFile(process.env.HOME + "/.emacs.d/plugins/wb.txt", function(err, data){
         }
     }
 
-    fs.writeFile("C:/Program Files (x86)/Microsoft Bing Pinyin/1.6.98.04/Shared/userdefinephrase.dat", newLines.join(""), function(err){
-        if(err) console.log(err)
+    fs.writeFile("C:/Program Files (x86)/Microsoft Bing Pinyin/1.6.98.04/Shared/userdefinephrase.dat", newLines.join(""), function (err) {
+        if (err) console.log(err)
         else console.log("Write success!");
     })
 })
