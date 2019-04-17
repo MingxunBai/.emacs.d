@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
 
 fs.readFile(process.env.HOME + "/.emacs.d/plugins/wb.txt", function (err, data) {
