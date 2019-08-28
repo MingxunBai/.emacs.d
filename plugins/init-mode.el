@@ -51,6 +51,11 @@
 
 (define-key company-mode-map (kbd "M-/") #'company-complete)
 
+;; Doom Modeline
+(require-package 'doom-modeline)
+(setq doom-modeline-icon nil)
+(doom-modeline-mode)
+
 ;; Emmet
 (require-package 'emmet-mode)
 (defun emmet-mode-on-hook ()
