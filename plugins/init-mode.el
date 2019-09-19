@@ -8,8 +8,7 @@
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
 
-(if (display-graphic-p)                 ; GUI 判断
-    ;; (load-theme )                       ; 选择主题
+(if (not (display-graphic-p))           ; GUI 判断
   (menu-bar-mode -1))                   ; 隐藏菜单栏
 
 (global-auto-revert-mode t)             ; Auto revert
