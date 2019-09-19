@@ -8,13 +8,16 @@
 (setq ido-save-directory-list-file nil
       ido-enable-flex-matching t)       ; 模糊匹配
 
-(global-auto-revert-mode)               ; Auto revert
+(if (display-graphic-p)                 ; GUI 判断
+    ;; (load-theme )                       ; 选择主题
+  (menu-bar-mode -1))                   ; 隐藏菜单栏
 
-(recentf-mode)                          ; 历史记录
-
-(show-paren-mode)                       ; 高亮匹配括号
-
-(winner-mode)                           ; 窗口控制
+(global-auto-revert-mode t)             ; Auto revert
+(recentf-mode t)                        ; 历史记录
+(show-paren-mode t)                     ; 高亮匹配括号
+(scroll-bar-mode -1)                    ; 隐藏滚动条
+(tool-bar-mode -1)                      ; 隐藏工具栏
+(winner-mode t)                         ; 窗口控制
 
 ;; Input Method
 (require-package 'chinese-wbim)
@@ -45,7 +48,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0
       company-echo-delay 0
-      company-minimum-prefix-length 1
+      company-minimum-prefix-length 3
       company-tooltip-limit 10
       company-tooltip-align-annotations t)
 
@@ -54,7 +57,7 @@
 ;; Doom Modeline
 (require-package 'doom-modeline)
 (setq doom-modeline-icon nil)
-(doom-modeline-mode)
+(doom-modeline-mode t)
 
 ;; Emmet
 (require-package 'emmet-mode)
@@ -71,36 +74,19 @@
 (add-hook 'emmet-mode-hook #'emmet-mode-on-hook)
 (add-hook 'web-mode-hook 'emmet-mode)
 
-;; Eshell
-(add-hook 'eshell-exit-hook (lambda () (if (not (eq (count-windows) 1)) (delete-window))))
-(defun custom-eshll ()
-  "Eshell."
-  (interactive)
-  (if (condition-case nil
-          (setq path (file-name-directory (buffer-file-name)))
-        (error nil))
-      (progn
-        (custom-split-window 'eshell)
-        (other-window 1)
-        (eshell/cd path))
-    (progn
-      (custom-split-window 'eshell)
-      (other-window 1)))
-  (company-mode -1))
-
 ;; Evil Nerd Commenter
 (require-package 'evil-nerd-commenter)
 
 ;; Flycheck
 (require-package 'flycheck)
-(global-flycheck-mode)
+(global-flycheck-mode t)
 
 ;; Helm
 (require-package 'helm)
 
 ;; Hunger Delete
 (require-package 'hungry-delete)
-(global-hungry-delete-mode)
+(global-hungry-delete-mode t)
 
 ;; JSON
 (require-package 'json-mode)
@@ -146,7 +132,7 @@
 
 ;; Origami
 (require-package 'origami)
-(global-origami-mode)
+(global-origami-mode t)
 
 ;; PATH
 (require-package 'exec-path-from-shell)
@@ -187,7 +173,7 @@
 ;; Smart Parens
 (require-package 'smartparens)
 (require 'smartparens-config)
-(smartparens-global-mode)
+(smartparens-global-mode t)
 (add-hook 'eshell-mode-hook 'smartparens-mode)
 
 ;; TIDE
@@ -195,7 +181,7 @@
 (defun setup-tide-mode ()
   (tide-setup)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (tide-hl-identifier-mode)
+  (tide-hl-identifier-mode t)
   (setq-default typescript-indent-level 2))
 
 (add-hook 'before-save-hook 'tide-format-before-save)
@@ -219,7 +205,7 @@
 
 ;; Window Numbering
 (require-package 'window-numbering)
-(window-numbering-mode)
+(window-numbering-mode t)
 
 (provide 'init-mode)
 

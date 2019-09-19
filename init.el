@@ -106,8 +106,5 @@ re-downloaded in order to locate PACKAGE."
 (require 'init-mode)
 (require 'init-keymap)
 (require 'init-feature)
-(require 'init-gui)
 
 (provide 'init)
-
-;;; init.el ends here
