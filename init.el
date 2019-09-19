@@ -108,3 +108,5 @@ re-downloaded in order to locate PACKAGE."
 (require 'init-feature)
 
 (provide 'init)
+
+;;; init ends here
