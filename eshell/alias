@@ -1,3 +1,0 @@
-alias ll ls -l
-alias la ls -a
-alias wb node ~/.emacs.d/plugins/convertDict.js
