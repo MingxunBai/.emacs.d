@@ -9,13 +9,14 @@
       ido-enable-flex-matching t)       ; 模糊匹配
 
 (if (not (display-graphic-p))           ; GUI 判断
-  (menu-bar-mode -1))                   ; 隐藏菜单栏
+  (menu-bar-mode -1)                    ; 隐藏菜单栏
+  (lambda ()
+    (scroll-bar-mode -1)                ; 隐藏滚动条
+    (tool-bar-mode -1)))                ; 隐藏工具栏
 
 (global-auto-revert-mode t)             ; Auto revert
 (recentf-mode t)                        ; 历史记录
 (show-paren-mode t)                     ; 高亮匹配括号
-(scroll-bar-mode -1)                    ; 隐藏滚动条
-(tool-bar-mode -1)                      ; 隐藏工具栏
 (winner-mode t)                         ; 窗口控制
 
 ;; Input Method
@@ -97,7 +98,7 @@
 ;; Multiple Cursors
 (require-package 'multiple-cursors)
 
-;; NEOTree
+;; NeoTree
 (require-package 'neotree)
 (setq neo-theme 'ascii)
 
