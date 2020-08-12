@@ -39,7 +39,7 @@
            ;; Helm
            ("C-c b" . helm-buffers-list)
            ("C-c f" . helm-find-files)
-           ("M-x"     . helm-M-x)
+           ("M-x"   . helm-M-x)
 
            ;; Multiple cursors
            ("M-<down-mouse-1>" . nil)
