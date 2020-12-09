@@ -14,10 +14,10 @@
 
 ;; Setting
 (setq-default tab-width 4
-	          indent-tabs-mode nil)
+              indent-tabs-mode nil)
 (setq ido-enable-flex-matching t
-	  make-backup-files nil
-	  track-eol t)
+      make-backup-files nil
+      track-eol t)
 
 ;; Modes
 (global-auto-revert-mode t)
