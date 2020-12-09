@@ -1,17 +1,9 @@
-;;; init.el --- Initial configuration
+;;; init.el --- Initial
 
 ;;; Commentary:
 
 ;;; Code:
-
 (setq debug-on-error t)
-
-;; Alias
-(defalias 'es 'custom-eshll)
-(defalias 'hb 'helm-buffers-list)
-(defalias 'hr 'helm-recentf)
-(defalias 'rr 'replace-regexp)
-(defalias 'rs 'replace-string)
 
 ;; ELPA
 (setq package-archives
@@ -29,29 +21,7 @@
 (prefer-coding-system 'utf-8)
 (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
-(when (eq system-type 'windows-nt)
-  ;; use gbk for Windows
-  (set-default 'process-coding-system-alist
-               '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
-                 ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos)))
-  (setq locale-coding-system 'gbk)) ; 覆盖 utf-8, 确保 Windows 下 mode-line 日期不乱码
-
-;; GC
-(setq gc-cons-threshold 100000000)
-(when (version< "24.5" emacs-version)
-  (setq gc-cons-threshold (* 512 1024 1024)
-        gc-cons-percentage 0.5)
-  (run-with-idle-timer 5 t #'garbage-collect))
-
-;; Load Path
-(defun add-subdirs-to-load-path (dir)
-  "Recursive add `DIR' to `load-path'."
-  (let ((default-directory (file-name-as-directory dir)))
-    (add-to-list 'load-path dir)
-    (normal-top-level-add-subdirs-to-load-path)))
-;; (add-subdirs-to-load-path (expand-file-name "plugins" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
-
+;; Require Package
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
@@ -67,46 +37,36 @@ re-downloaded in order to locate PACKAGE."
             (require-package package min-version t)))))
   (require package))
 
-;; Setting
-(setq-default indent-tabs-mode nil      ;;
-              c-basic-offset 4          ; 设置缩进为 4 个空格
-              tab-width 4               ;;
-
-              default-buffer-file-coding-system 'utf-8
-
-              inhibit-startup-message t ; 关闭启动动画
-              custom-safe-themes t      ; 信任主题
-
-              visible-bell t             ;;
-              ring-bell-function 'ignore ; 关闭错误提示音
-              save-abbrevs nil           ;;
-
-              scroll-margin 3             ;;
-              scroll-conservatively 10000 ; 靠近屏幕边沿3行时就开始滚动
-
-              kill-ring-max 500         ; 设置历史记录数量
-
-              track-eol t               ; 换行时，光标始终保持在行首尾
-
-              select-enable-clipboard t ; 支持和外部程序的拷贝
-
-              auto-save-timeout 3       ; 自动保存等待时间
-              make-backup-files nil     ; 禁用文件备份
-              )
-
-;; Enter 代替 y
+;; Return instead of YES
 (defun y-or-n-p-with-return (orig-func &rest args)
   "ORIG-FUNC ARGS?."
   (let ((query-replace-map (copy-keymap query-replace-map)))
     (define-key query-replace-map (kbd "RET") 'act)
     (apply orig-func args)))
 (advice-add 'y-or-n-p :around #'y-or-n-p-with-return)
-(fset 'yes-or-no-p 'y-or-n-p)           ; y / n 代替 yes / no
+(fset 'yes-or-no-p 'y-or-n-p)
 
-(require 'init-mode)
-(require 'init-keymap)
-(require 'init-feature)
+;; Setting
+(setq-default tab-width 4
+              indent-tabs-mode nil
+              ido-enable-flex-matching t
+              make-backup-files nil
+              track-eol t)
+
+;; Modes
+(global-auto-revert-mode t)
+(ido-mode t)
+(show-paren-mode t)
+
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+
+(require-package 'doom-modeline)
+(setq doom-modeline-icon nil)
+(doom-modeline-mode t)
+
+(require-package 'multiple-cursors)
 
 (provide 'init)
-
 ;;; init ends here
