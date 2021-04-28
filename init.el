@@ -13,8 +13,10 @@
 (modify-coding-system-alist 'file "\\.bat\\'" 'chinese-iso-8bit)
 
 ;; Setting
-(setq-default tab-width 4
-              indent-tabs-mode nil)
+(setq-default tab-width 2
+              indent-tabs-mode nil
+              mode-line-format nil)
+
 (setq ido-enable-flex-matching t
       make-backup-files nil
       track-eol t)
